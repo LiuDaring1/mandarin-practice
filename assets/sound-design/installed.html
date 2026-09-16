@@ -1,0 +1,17 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>方案 A · 已接入音效</title><link rel="stylesheet" href="library.css"><link rel="icon" href="data:,"></head><body>
+<header><a class="brand" href="/">♪ 声音实验室</a><span class="edition">04 / 方案 A 接入版</span></header><main>
+<section class="intro"><div><p class="eyebrow">A 保留 · 奖励轻亮一点</p><h1>熟悉的触感，<br>更清楚的开心。</h1><p class="lede">日常音沿用原 A，奖励与完成重新收了节奏和尾音。<br>这里播放的新版文件，与 APP 当前使用的完全相同。</p></div><img src="/illustrations/celebrate.webp" alt="庆祝的小精灵"></section>
+<div class="toolbar"><span id="status" role="status">点击按钮试听</span><button id="stop">■ 停止</button></div>
+<article class="pack primary"><h2>四种奖励，逐项比较</h2><div class="local-controls"><label for="volume">音量 <output id="level">70%</output></label><input id="volume" type="range" min="0" max="100" value="70"></div><div id="rewards"></div></article>
+<article class="pack"><h2>原 A · 日常声音</h2><p class="note">保留原文件，跟读提示仍默认关闭。</p><div id="daily" class="samples named-samples"></div></article>
+<aside class="previous"><a href="http://127.0.0.1:8769/">进入正式 APP ↗</a><p>已预留 11 个事件音效插槽。以后可替换音频文件和音量，不需重写训练逻辑。</p></aside>
+<footer><a href="/index.html">前两轮历史试听</a> · <a href="/library.html">免费音库存档</a><p>独立试听，不记录训练或作品进度。</p></footer></main>
+<script type="module">
+const audio=new Audio();audio.volume=.7;let run=0;
+const status=document.querySelector('#status');
+function stop(){++run;audio.pause();audio.removeAttribute('src');audio.load();status.textContent='试听已停止';}
+document.querySelector('#stop').onclick=stop;document.addEventListener('keydown',e=>{if(e.key==='Escape')stop();});document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();});
+document.querySelector('#volume').oninput=e=>{audio.volume=Number(e.target.value)/100;document.querySelector('#level').value=e.target.value+'%';};
+function button(label,url){const b=document.createElement('button');b.textContent='▶ '+label;b.onclick=()=>{stop();const own=run;audio.src=url;status.textContent=label;audio.play().catch(()=>{if(own===run)status.textContent='播放失败，请重试';});};return b;}
+try{const m=await(await fetch('/installed-sounds/manifest.json')).json();for(const s of m.sounds){if(s.bus==='celebration'){const row=document.createElement('section');row.style='margin-top:24px;padding-top:16px;border-top:1px solid #e1e6da';const h=document.createElement('h3');h.textContent=s.label;row.append(h,button('原 A','/exports/a-'+s.id.replaceAll('.','-')+'-01.wav'),document.createTextNode(' '),button('当前优化版 · '+(s.duration_ms/1000).toFixed(2)+' 秒','/installed-sounds/'+s.variants[0]));document.querySelector('#rewards').append(row);}else{const b=button(s.label,'/installed-sounds/'+s.variants[0]);b.className='sample';document.querySelector('#daily').append(b);}}}catch{status.textContent='音效清单未加载，请刷新重试';}
+</script></body></html>

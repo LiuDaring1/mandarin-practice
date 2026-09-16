@@ -1,0 +1,191 @@
+{
+  "version": "v1",
+  "artworks": [
+    {
+      "artwork_id": "mic",
+      "name": "麦克风",
+      "category": "声音",
+      "tagline": "第一支麦，开口就有声",
+      "canvas_width": 14,
+      "canvas_height": 11,
+      "active_bead_count": 58,
+      "size_tier": "small",
+      "unlock_rule": { "kind": "starter" },
+      "fill_sequence_mode": "row-major",
+      "is_active": true,
+      "palette": {
+        "k": "#3A3845",
+        "w": "#F7F5F0",
+        "g": "#C6C0B2",
+        "t": "#21B6A3"
+      },
+      "grid": [
+        "..............",
+        "....kkkkkk....",
+        "...kwwwwwwk...",
+        "...kwwgwwgk...",
+        "...kwwgwwgk...",
+        "...kwwwwwwk...",
+        "....kkkkkk....",
+        "......kk......",
+        ".....ktwk.....",
+        ".....ktwk.....",
+        ".....kkkk....."
+      ]
+    },
+    {
+      "artwork_id": "headphones",
+      "name": "耳机",
+      "category": "声音",
+      "tagline": "把标准音听进耳朵里",
+      "canvas_width": 16,
+      "canvas_height": 11,
+      "active_bead_count": 56,
+      "size_tier": "small",
+      "unlock_rule": { "kind": "starter" },
+      "fill_sequence_mode": "row-major",
+      "is_active": true,
+      "palette": {
+        "k": "#3A3845",
+        "t": "#21B6A3"
+      },
+      "grid": [
+        "................",
+        ".....kkkkkk.....",
+        "....k......k....",
+        "....k......k....",
+        ".....kkkkkk.....",
+        "...kkkk..kkkk...",
+        "...kttk..kttk...",
+        "...kttk..kttk...",
+        "...kttk..kttk...",
+        "...kkkk..kkkk...",
+        "................"
+      ]
+    },
+    {
+      "artwork_id": "wave_monster",
+      "name": "声波小怪",
+      "category": "角色",
+      "tagline": "它收集每一次跟读的声波",
+      "canvas_width": 16,
+      "canvas_height": 11,
+      "active_bead_count": 58,
+      "size_tier": "small",
+      "unlock_rule": { "kind": "starter" },
+      "fill_sequence_mode": "row-major",
+      "is_active": true,
+      "palette": {
+        "k": "#3A3845",
+        "w": "#F7F5F0",
+        "t": "#21B6A3"
+      },
+      "grid": [
+        "................",
+        ".....kkkkk......",
+        "....kwwwwwk.....",
+        "....kwkwwkwk.tt.",
+        "....kwwwwwk..tt.",
+        "....kwwwwwk..tt.",
+        ".....kwwwwk.....",
+        "......kkkk......",
+        ".....k....k.....",
+        "....kkk..kkk....",
+        "................"
+      ]
+    },
+    {
+      "artwork_id": "recorder",
+      "name": "小录音机",
+      "category": "声音",
+      "tagline": "把练习一格格录下来",
+      "canvas_width": 18,
+      "canvas_height": 9,
+      "active_bead_count": 104,
+      "size_tier": "medium",
+      "unlock_rule": { "kind": "after_completions", "count": 1 },
+      "fill_sequence_mode": "row-major",
+      "is_active": true,
+      "palette": {
+        "k": "#3A3845",
+        "w": "#F7F5F0",
+        "o": "#F08A3C"
+      },
+      "grid": [
+        "..................",
+        "..kkkkkkkkkkkkkk..",
+        "..kwwwwwwwwwwwwk..",
+        "..kkwwwkwwkwwwkk..",
+        "..kkwkwkwwkwkwkk..",
+        "..kkwwwkwwkwwwkk..",
+        "..kwwwwwwwwwwwwk..",
+        "..kkkkkkkkkkkkkk..",
+        "....ko..ko..ko...."
+      ]
+    },
+    {
+      "artwork_id": "neon_sign",
+      "name": "霓虹招牌",
+      "category": "潮流",
+      "tagline": "练到字正腔圆，灯就亮了",
+      "canvas_width": 22,
+      "canvas_height": 12,
+      "active_bead_count": 90,
+      "size_tier": "medium",
+      "unlock_rule": { "kind": "after_completions", "count": 1 },
+      "fill_sequence_mode": "row-major",
+      "is_active": true,
+      "palette": {
+        "k": "#3A3845",
+        "c": "#45D8F5",
+        "p": "#F58CB0"
+      },
+      "grid": [
+        "..........cc..........",
+        "...kkkkkkkkkkkkkkkk...",
+        "...kp.kkkkkkk....pk...",
+        "...k..k.....k.....k...",
+        "...k..k.....k.....k...",
+        "...k..k.....k.....k...",
+        "...k..kkkkkkk.....k...",
+        "...k..k.....k.....k...",
+        "...k..k.....k.....k...",
+        "...k..k.ppp.k.....k...",
+        "...k..kkkkkkk.....k...",
+        "...kkkkkkkkkkkkkkkk..."
+      ]
+    },
+    {
+      "artwork_id": "nasal_twins",
+      "name": "前后鼻音双子",
+      "category": "角色",
+      "tagline": "n 和 ng，本来就是一对",
+      "canvas_width": 22,
+      "canvas_height": 11,
+      "active_bead_count": 116,
+      "size_tier": "medium",
+      "unlock_rule": { "kind": "after_completions", "count": 1 },
+      "fill_sequence_mode": "row-major",
+      "is_active": true,
+      "palette": {
+        "k": "#3A3845",
+        "t": "#21B6A3",
+        "o": "#F08A3C",
+        "w": "#F7F5F0"
+      },
+      "grid": [
+        "......................",
+        "....kkkkk....kkkkk....",
+        "...ktttttk..koooook...",
+        "...ktwtktk..kowowok...",
+        "...ktttttk..koooook...",
+        "...ktkwktktokokwkok...",
+        "...ktttttk..koooook...",
+        "....kkkkk....kkkkk....",
+        "....kttk......kook....",
+        "...kttttk....kooook...",
+        "....tt........oo......"
+      ]
+    }
+  ]
+}

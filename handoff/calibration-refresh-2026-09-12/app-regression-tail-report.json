@@ -1,0 +1,8 @@
+{
+  "checks": [
+    "Local-only images load; reduced motion is respected",
+    "Session generation failure retries successfully; early exit under 20% earns no reward"
+  ],
+  "errors": [],
+  "status": "passed"
+}

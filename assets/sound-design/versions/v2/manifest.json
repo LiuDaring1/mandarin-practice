@@ -1,0 +1,711 @@
+{
+  "version": "sound-lab-2026-09-12-v2",
+  "sample_rate": 44100,
+  "format": "mono PCM16 WAV",
+  "recommended_style": "a",
+  "styles": {
+    "a": {
+      "name": "奶油木珠",
+      "note": "推荐 · 温暖、短促、轻实物触感"
+    },
+    "b": {
+      "name": "软糖气泡",
+      "note": "对比 · 更多弹性滑音，四个关键声音"
+    },
+    "a-lift": {
+      "name": "奶油木珠 · 欢庆版",
+      "note": "A 音色延续，四种庆祝增强；待用户试听"
+    }
+  },
+  "defaults": {
+    "volume": 0.7,
+    "muted": false,
+    "max_voices": 4,
+    "preference_key": "pth-sound-lab-preferences-v1"
+  },
+  "sounds": [
+    {
+      "id": "ui.confirm",
+      "style": "a",
+      "label": "确认 / 切换",
+      "description": "短木珠轻触，只确认明确操作",
+      "duration_ms": 78,
+      "gain": 1,
+      "peak_dbfs": -23,
+      "bus": "interaction",
+      "priority": 1,
+      "cooldown_ms": 90,
+      "variants": [
+        "exports/a-ui-confirm-01.wav"
+      ],
+      "default_enabled": true,
+      "source": "原创程序合成；sources/generate.py；seed 20260912"
+    },
+    {
+      "id": "training.start",
+      "style": "a",
+      "label": "开始训练",
+      "description": "轻抬一步，播完再进入示范",
+      "duration_ms": 280,
+      "gain": 1,
+      "peak_dbfs": -21,
+      "bus": "feedback",
+      "priority": 3,
+      "cooldown_ms": 400,
+      "variants": [
+        "exports/a-training-start-01.wav"
+      ],
+      "default_enabled": true,
+      "source": "原创程序合成；sources/generate.py；seed 20260912"
+    },
+    {
+      "id": "follow.ready",
+      "style": "a",
+      "label": "轮到你跟读（可选）",
+      "description": "中性单颗，默认关闭，不代表发音判断",
+      "duration_ms": 100,
+      "gain": 1,
+      "peak_dbfs": -28,
+      "bus": "interaction",
+      "priority": 1,
+      "cooldown_ms": 500,
+      "variants": [
+        "exports/a-follow-ready-01.wav"
+      ],
+      "default_enabled": false,
+      "source": "原创程序合成；sources/generate.py；seed 20260912"
+    },
+    {
+      "id": "answer.correct",
+      "style": "a",
+      "label": "辨音答对",
+      "description": "短双珠，同一方向的小肯定",
+      "duration_ms": 220,
+      "gain": 1,
+      "peak_dbfs": -20,
+      "bus": "feedback",
+      "priority": 3,
+      "cooldown_ms": 220,
+      "variants": [
+        "exports/a-answer-correct-01.wav"
+      ],
+      "default_enabled": true,
+      "source": "原创程序合成；sources/generate.py；seed 20260912"
+    },
+    {
+      "id": "answer.retry",
+      "style": "a",
+      "label": "辨音答错",
+      "description": "低而柔的双触，无惩罚性警报",
+      "duration_ms": 200,
+      "gain": 1,
+      "peak_dbfs": -24,
+      "bus": "feedback",
+      "priority": 3,
+      "cooldown_ms": 250,
+      "variants": [
+        "exports/a-answer-retry-01.wav"
+      ],
+      "default_enabled": true,
+      "source": "原创程序合成；sources/generate.py；seed 20260912"
+    },
+    {
+      "id": "reward.arrive",
+      "style": "a",
+      "label": "结算 / 奖励到账",
+      "description": "三颗舒展，所有到账合并一次",
+      "duration_ms": 650,
+      "gain": 1,
+      "peak_dbfs": -19,
+      "bus": "celebration",
+      "priority": 2,
+      "cooldown_ms": 1200,
+      "variants": [
+        "exports/a-reward-arrive-01.wav"
+      ],
+      "default_enabled": true,
+      "source": "原创程序合成；sources/generate.py；seed 20260912"
+    },
+    {
+      "id": "day.complete",
+      "style": "a",
+      "label": "今日三练达成",
+      "description": "在到账动机上多一个柔亮收尾",
+      "duration_ms": 940,
+      "gain": 1,
+      "peak_dbfs": -18.5,
+      "bus": "celebration",
+      "priority": 2,
+      "cooldown_ms": 1500,
+      "variants": [
+        "exports/a-day-complete-01.wav"
+      ],
+      "default_enabled": true,
+      "source": "原创程序合成；sources/generate.py；seed 20260912"
+    },
+    {
+      "id": "bead.place",
+      "style": "a",
+      "label": "拼入一颗",
+      "description": "六个物理落珠变体，限流、不排队",
+      "duration_ms": 66,
+      "gain": 1,
+      "peak_dbfs": -25,
+      "bus": "bead",
+      "priority": 1,
+      "cooldown_ms": 100,
+      "variants": [
+        "exports/a-bead-place-01.wav",
+        "exports/a-bead-place-02.wav",
+        "exports/a-bead-place-03.wav",
+        "exports/a-bead-place-04.wav",
+        "exports/a-bead-place-05.wav",
+        "exports/a-bead-place-06.wav"
+      ],
+      "default_enabled": true,
+      "source": "原创程序合成；sources/generate.py；seed 20260912"
+    },
+    {
+      "id": "artwork.fuse",
+      "style": "a",
+      "label": "熨烫 / 融合",
+      "description": "柔软摩擦与共鸣，淡入淡出贴合动画",
+      "duration_ms": 1800,
+      "gain": 1,
+      "peak_dbfs": -27,
+      "bus": "texture",
+      "priority": 1,
+      "cooldown_ms": 1900,
+      "variants": [
+        "exports/a-artwork-fuse-01.wav"
+      ],
+      "default_enabled": true,
+      "source": "原创程序合成；sources/generate.py；seed 20260912"
+    },
+    {
+      "id": "artwork.complete",
+      "style": "a",
+      "label": "单件作品完成",
+      "description": "珠子落稳后绽放，尾音干净",
+      "duration_ms": 1200,
+      "gain": 1,
+      "peak_dbfs": -18.5,
+      "bus": "celebration",
+      "priority": 2,
+      "cooldown_ms": 1500,
+      "variants": [
+        "exports/a-artwork-complete-01.wav"
+      ],
+      "default_enabled": true,
+      "source": "原创程序合成；sources/generate.py；seed 20260912"
+    },
+    {
+      "id": "series.complete",
+      "style": "a",
+      "label": "系列集齐",
+      "description": "同一家族加一层和声，只实际集齐时用",
+      "duration_ms": 1650,
+      "gain": 1,
+      "peak_dbfs": -18,
+      "bus": "celebration",
+      "priority": 2,
+      "cooldown_ms": 2000,
+      "variants": [
+        "exports/a-series-complete-01.wav"
+      ],
+      "default_enabled": true,
+      "source": "原创程序合成；sources/generate.py；seed 20260912"
+    },
+    {
+      "id": "ui.confirm",
+      "style": "b",
+      "label": "确认 / 切换",
+      "description": "短木珠轻触，只确认明确操作",
+      "duration_ms": 78,
+      "gain": 1,
+      "peak_dbfs": -23,
+      "bus": "interaction",
+      "priority": 1,
+      "cooldown_ms": 90,
+      "variants": [
+        "exports/b-ui-confirm-01.wav"
+      ],
+      "default_enabled": true,
+      "source": "原创程序合成；sources/generate.py；seed 20260912"
+    },
+    {
+      "id": "answer.correct",
+      "style": "b",
+      "label": "辨音答对",
+      "description": "短双珠，同一方向的小肯定",
+      "duration_ms": 220,
+      "gain": 1,
+      "peak_dbfs": -20,
+      "bus": "feedback",
+      "priority": 3,
+      "cooldown_ms": 220,
+      "variants": [
+        "exports/b-answer-correct-01.wav"
+      ],
+      "default_enabled": true,
+      "source": "原创程序合成；sources/generate.py；seed 20260912"
+    },
+    {
+      "id": "bead.place",
+      "style": "b",
+      "label": "拼入一颗",
+      "description": "六个物理落珠变体，限流、不排队",
+      "duration_ms": 66,
+      "gain": 1,
+      "peak_dbfs": -25,
+      "bus": "bead",
+      "priority": 1,
+      "cooldown_ms": 100,
+      "variants": [
+        "exports/b-bead-place-01.wav",
+        "exports/b-bead-place-02.wav",
+        "exports/b-bead-place-03.wav"
+      ],
+      "default_enabled": true,
+      "source": "原创程序合成；sources/generate.py；seed 20260912"
+    },
+    {
+      "id": "artwork.complete",
+      "style": "b",
+      "label": "单件作品完成",
+      "description": "珠子落稳后绽放，尾音干净",
+      "duration_ms": 1200,
+      "gain": 1,
+      "peak_dbfs": -18.5,
+      "bus": "celebration",
+      "priority": 2,
+      "cooldown_ms": 1500,
+      "variants": [
+        "exports/b-artwork-complete-01.wav"
+      ],
+      "default_enabled": true,
+      "source": "原创程序合成；sources/generate.py；seed 20260912"
+    },
+    {
+      "id": "bead.legacy",
+      "style": "legacy",
+      "label": "原有拼豆音（参照）",
+      "description": "原三角波逻辑固定 1600 Hz 的代表样本；加微淡入淡出，非逐次随机录音",
+      "duration_ms": 60,
+      "gain": 1,
+      "peak_dbfs": -29.2,
+      "bus": "bead",
+      "priority": 1,
+      "cooldown_ms": 70,
+      "variants": [
+        "exports/legacy-bead-legacy-01.wav"
+      ],
+      "default_enabled": true,
+      "source": "当前 app.js playPlaceTick 的代表性离线复刻"
+    },
+    {
+      "id": "reward.arrive",
+      "style": "a-lift",
+      "label": "奖励到账",
+      "description": "四颗木珠轻快跃起，最后一颗落在明亮和弦上。",
+      "duration_ms": 950,
+      "gain": 1,
+      "peak_dbfs": -19,
+      "bus": "celebration",
+      "priority": 2,
+      "cooldown_ms": 1150,
+      "variants": [
+        "exports/a-lift-reward-arrive-01.wav"
+      ],
+      "default_enabled": true,
+      "source": "原创程序合成；sources/generate_celebrations.py；seed 2026091202",
+      "revision": "v2",
+      "compares_to_style": "a",
+      "design": {
+        "landing_ms": 255,
+        "layers": [
+          "木珠／拨片上行动机",
+          "柔和大三和弦",
+          "短低音支撑",
+          "少量亮音与短空间"
+        ],
+        "notes": [
+          [
+            0,
+            523.25,
+            0.6
+          ],
+          [
+            0.085,
+            659.25,
+            0.74
+          ],
+          [
+            0.17,
+            783.99,
+            0.85
+          ],
+          [
+            0.255,
+            1046.5,
+            1.1
+          ]
+        ]
+      }
+    },
+    {
+      "id": "day.complete",
+      "style": "a-lift",
+      "label": "今日三练",
+      "description": "多一步向上推进，三练完成时亮开一个小笑容。",
+      "duration_ms": 1220,
+      "gain": 1,
+      "peak_dbfs": -18.5,
+      "bus": "celebration",
+      "priority": 2,
+      "cooldown_ms": 1420,
+      "variants": [
+        "exports/a-lift-day-complete-01.wav"
+      ],
+      "default_enabled": true,
+      "source": "原创程序合成；sources/generate_celebrations.py；seed 2026091202",
+      "revision": "v2",
+      "compares_to_style": "a",
+      "design": {
+        "landing_ms": 370,
+        "layers": [
+          "木珠／拨片上行动机",
+          "柔和大三和弦",
+          "短低音支撑",
+          "少量亮音与短空间"
+        ],
+        "notes": [
+          [
+            0,
+            523.25,
+            0.52
+          ],
+          [
+            0.085,
+            659.25,
+            0.64
+          ],
+          [
+            0.17,
+            783.99,
+            0.78
+          ],
+          [
+            0.27,
+            987.77,
+            0.68
+          ],
+          [
+            0.37,
+            1046.5,
+            1.1
+          ],
+          [
+            0.53,
+            1318.51,
+            0.4
+          ]
+        ]
+      }
+    },
+    {
+      "id": "artwork.complete",
+      "style": "a-lift",
+      "label": "单件作品完成",
+      "description": "短短蓄势后展开，带温暖低音和清亮收尾。",
+      "duration_ms": 1800,
+      "gain": 1,
+      "peak_dbfs": -18.5,
+      "bus": "celebration",
+      "priority": 2,
+      "cooldown_ms": 2000,
+      "variants": [
+        "exports/a-lift-artwork-complete-01.wav"
+      ],
+      "default_enabled": true,
+      "source": "原创程序合成；sources/generate_celebrations.py；seed 2026091202",
+      "revision": "v2",
+      "compares_to_style": "a",
+      "design": {
+        "landing_ms": 600,
+        "layers": [
+          "木珠／拨片上行动机",
+          "柔和大三和弦",
+          "短低音支撑",
+          "少量亮音与短空间"
+        ],
+        "notes": [
+          [
+            0,
+            392,
+            0.5
+          ],
+          [
+            0.1,
+            523.25,
+            0.57
+          ],
+          [
+            0.2,
+            659.25,
+            0.66
+          ],
+          [
+            0.31,
+            783.99,
+            0.75
+          ],
+          [
+            0.42,
+            1046.5,
+            0.9
+          ],
+          [
+            0.6,
+            1318.51,
+            1.05
+          ],
+          [
+            0.82,
+            1174.66,
+            0.53
+          ],
+          [
+            0.94,
+            1046.5,
+            0.86
+          ]
+        ]
+      }
+    },
+    {
+      "id": "series.complete",
+      "style": "a-lift",
+      "label": "系列集齐",
+      "description": "更完整的上行与落稳，两次展开，留给真正的集齐。",
+      "duration_ms": 2250,
+      "gain": 1,
+      "peak_dbfs": -18,
+      "bus": "celebration",
+      "priority": 2,
+      "cooldown_ms": 2450,
+      "variants": [
+        "exports/a-lift-series-complete-01.wav"
+      ],
+      "default_enabled": true,
+      "source": "原创程序合成；sources/generate_celebrations.py；seed 2026091202",
+      "revision": "v2",
+      "compares_to_style": "a",
+      "design": {
+        "landing_ms": 780,
+        "layers": [
+          "木珠／拨片上行动机",
+          "柔和大三和弦",
+          "短低音支撑",
+          "少量亮音与短空间"
+        ],
+        "notes": [
+          [
+            0,
+            392,
+            0.44
+          ],
+          [
+            0.1,
+            523.25,
+            0.52
+          ],
+          [
+            0.2,
+            659.25,
+            0.64
+          ],
+          [
+            0.3,
+            783.99,
+            0.74
+          ],
+          [
+            0.405,
+            1046.5,
+            0.83
+          ],
+          [
+            0.51,
+            1318.51,
+            0.92
+          ],
+          [
+            0.62,
+            1567.98,
+            0.72
+          ],
+          [
+            0.78,
+            2093,
+            0.63
+          ],
+          [
+            1.02,
+            1567.98,
+            0.49
+          ],
+          [
+            1.15,
+            1318.51,
+            0.63
+          ],
+          [
+            1.3,
+            1046.5,
+            1.03
+          ]
+        ]
+      }
+    }
+  ],
+  "reels": [
+    {
+      "style": "a",
+      "label": "奶油木珠 · 四声预览",
+      "file": "exports/a-comparison-01.wav"
+    },
+    {
+      "style": "b",
+      "label": "软糖气泡 · 四声预览",
+      "file": "exports/b-comparison-01.wav"
+    },
+    {
+      "style": "a-lift",
+      "label": "A 欢庆版 · 四段预览",
+      "file": "exports/a-lift-celebrations-preview.wav"
+    }
+  ],
+  "scenes": [
+    {
+      "scene": "按钮确认 / 选项切换",
+      "strategy": "独立音效",
+      "sound": "ui.confirm",
+      "reason": "仅明确确认；前后鼻选项用完全相同的声音"
+    },
+    {
+      "scene": "普通导航 / 浏览历史 / 作品墙",
+      "strategy": "保持安静",
+      "sound": null,
+      "reason": "高频浏览无须附加声响"
+    },
+    {
+      "scene": "开始字词 / 句子 / 辨音",
+      "strategy": "独立音效",
+      "sound": "training.start",
+      "reason": "一次短起步；示范要开始时立即让路"
+    },
+    {
+      "scene": "示范结束 → 进入跟读",
+      "strategy": "独立音效",
+      "sound": "follow.ready",
+      "reason": "可选，默认关闭；示范 ended 后留 120 ms 空隙"
+    },
+    {
+      "scene": "跟读每秒 / 计时结束",
+      "strategy": "保持安静",
+      "sound": null,
+      "reason": "只有计时，没有发音评测，不能播放答对音"
+    },
+    {
+      "scene": "辨音整词全对",
+      "strategy": "独立音效",
+      "sound": "answer.correct",
+      "reason": "服务器真实判题结果，每整词一次"
+    },
+    {
+      "scene": "辨音有错 / 连续有错",
+      "strategy": "独立音效",
+      "sound": "answer.retry",
+      "reason": "每整词一次，连错不加重音量或警报"
+    },
+    {
+      "scene": "趁热巩固 / 跨天复习开始",
+      "strategy": "复用音效",
+      "sound": "training.start",
+      "reason": "同为起步，无需新增一种声音"
+    },
+    {
+      "scene": "巩固 / 复习正误",
+      "strategy": "复用音效",
+      "sound": "answer.correct / answer.retry",
+      "reason": "沿用实际判题语义"
+    },
+    {
+      "scene": "训练结算 + 基础奖励 + 复习奖励",
+      "strategy": "独立音效",
+      "sound": "reward.arrive",
+      "reason": "实际到账才响，同一结算合并一次"
+    },
+    {
+      "scene": "今日三练完成",
+      "strategy": "独立音效",
+      "sound": "day.complete",
+      "reason": "当次真的新达成，替代普通到账音"
+    },
+    {
+      "scene": "单颗拼入",
+      "strategy": "独立音效",
+      "sound": "bead.place",
+      "reason": "六个变体轮换，继承现有拼入反馈职责"
+    },
+    {
+      "scene": "按住连续拼入",
+      "strategy": "复用音效",
+      "sound": "bead.place",
+      "reason": "只由实际拼入事件触发，最多 10 次/秒，松手终止"
+    },
+    {
+      "scene": "熨烫 / 融合",
+      "strategy": "独立音效",
+      "sound": "artwork.fuse",
+      "reason": "1.8 秒单次纹理，关闭弹层就结束"
+    },
+    {
+      "scene": "单件作品完成",
+      "strategy": "独立音效",
+      "sound": "artwork.complete",
+      "reason": "只在首次完成后显示成品时触发"
+    },
+    {
+      "scene": "系列集齐",
+      "strategy": "独立音效",
+      "sound": "series.complete",
+      "reason": "替代该次单件完成音，不叠放两段庆祝"
+    },
+    {
+      "scene": "暂停 / 恢复 / 退出 / 取消",
+      "strategy": "保持安静",
+      "sound": null,
+      "reason": "让用户可以立即安静下来"
+    },
+    {
+      "scene": "加载中 / 网络失败 / 音效不可用",
+      "strategy": "保持安静",
+      "sound": null,
+      "reason": "文字反馈即可，错误不应制造更多噪声"
+    },
+    {
+      "scene": "示范音频 / 标准视频播放期间",
+      "strategy": "保持安静",
+      "sound": null,
+      "reason": "教学最高优先，全部音效淡出且丢弃新事件"
+    }
+  ],
+  "teaching_fixture": {
+    "url": "/teaching.wav",
+    "note": "只读本地既有语料，非本任务原创；仅用于示范优先衔接模拟"
+  },
+  "approved_base_style": "a",
+  "recommended_celebration_style": "a-lift"
+}

@@ -1,0 +1,250 @@
+--- src/pth_corpus/prototype_static/app.js (initial integration)
++++ src/pth_corpus/prototype_static/app.js
+@@ -92,6 +92,7 @@
+   calLink: document.getElementById("cal-link"),
+   calBack: document.getElementById("cal-back"),
+   calGroups: document.getElementById("cal-groups"),
++  calTabs: document.getElementById("cal-tabs"),
+   calStop: document.getElementById("cal-stop"),
+   calStatus: document.getElementById("cal-status"),
+   wallBack: document.getElementById("wall-back"),
+@@ -163,6 +164,7 @@
+   artworks: [],
+   calibration: null,
+   calibrationSpeed: "normal",
++  calibrationGroup: "an_ang",
+   progress: loadProgress(),
+   timingDefaults: { extra_follow_sec: 0.8, min_follow_sec: 1.8, transition_sec: 0.3 },
+   entryId: null,
+@@ -2879,30 +2881,41 @@
+   state.pickerChoice = null;
+ }
+ 
+-/* ---------- 校音页（六音动画，正常原声 / 已渲染半速静音） ---------- */
+-
+-const CALIBRATION_VERSION = "2026-09-12-series-v2";
++/* ---------- 校音页（分组单画面，正常 / 音画同步半速） ---------- */
++
++const CALIBRATION_VERSION = "2026-09-12-mobile-v3";
+ let calRunId = 0;
+ let calLoadTimer = null;
+ 
+ function calVideoUrl(finalName) {
+-  const suffix = state.calibrationSpeed === "slow" ? "-slow" : "";
+-  return `/assets/calibration/${finalName}${suffix}.mp4?v=${CALIBRATION_VERSION}`;
++  // 两种速度都用交付正常有声文件，让浏览器同步放慢同一段音画。
++  return `/assets/calibration/${finalName}.mp4?v=${CALIBRATION_VERSION}`;
+ }
+ 
+ function calModeLabel() {
+-  return state.calibrationSpeed === "slow" ? "半速 · 静音" : "正常 · 有声";
++  return state.calibrationSpeed === "slow" ? "半速 · 音画同步放慢" : "正常速度";
+ }
+ 
+ function renderCalibration() {
+   stopCalVideos();
+   els.calGroups.textContent = "";
++  els.calTabs.textContent = "";
+   (state.calibration.groups || []).forEach((group) => {
++    const tab = document.createElement("button");
++    tab.type = "button";
++    tab.dataset.calGroup = group.id;
++    tab.textContent = `${group.a.final} / ${group.b.final}`;
++    tab.setAttribute("aria-controls", `cal-panel-${group.id}`);
++    tab.setAttribute("aria-pressed", String(group.id === state.calibrationGroup));
++    tab.addEventListener("click", () => selectCalibrationGroup(group.id));
++    els.calTabs.appendChild(tab);
+     const section = document.createElement("section");
+     section.className = "cal-group";
++    section.id = `cal-panel-${group.id}`;
++    section.hidden = group.id !== state.calibrationGroup;
+     section.setAttribute("aria-label", group.label);
+     section.innerHTML =
+-      `<h3 class="cal-group-label">${group.label}</h3>` +
++      `<h3 class="cal-group-label"><span class="cal-current-final">${group.a.final}</span><span class="cal-current-type">前鼻音 · 舌尖收 n</span></h3>` +
+       '<div class="cal-pair">' +
+       calibrationCard(group, "a") + calibrationCard(group, "b") +
+       "</div>" +
+@@ -2923,17 +2936,31 @@
+   const item = group[side];
+   const tone = TONES[item.tone] || TONES.teal;
+   return (
+-    `<div class="cal-card" data-group="${group.id}" data-side="${side}" style="--card-tone:${tone.main}">` +
++    `<div class="cal-card" data-group="${group.id}" data-side="${side}" style="--card-tone:${tone.main}"${side === "b" ? " hidden" : ""}>` +
+     '<div class="cal-video">' +
+     `<video data-final="${item.final}" aria-label="${item.final} 发音动画" src="${calVideoUrl(item.final)}" ` +
+     `poster="/assets/calibration/${item.final}-poster.webp?v=${CALIBRATION_VERSION}" ` +
+-    `preload="metadata" playsinline webkit-playsinline disablepictureinpicture${state.calibrationSpeed === "slow" ? " muted" : ""}></video>` +
++    `preload="metadata" playsinline webkit-playsinline disablepictureinpicture></video>` +
+     "</div></div>"
+   );
+ }
+ 
+ function getCalVideo(groupId, side) {
+   return els.calGroups.querySelector(`.cal-card[data-group="${groupId}"][data-side="${side}"] video`);
++}
++
++function selectCalibrationGroup(groupId) {
++  if (!(state.calibration.groups || []).some(group => group.id === groupId)) return;
++  if (groupId === state.calibrationGroup) return;
++  stopCalVideos();
++  state.calibrationGroup = groupId;
++  els.calTabs.querySelectorAll("button").forEach(btn => {
++    btn.setAttribute("aria-pressed", String(btn.dataset.calGroup === groupId));
++  });
++  els.calGroups.querySelectorAll(".cal-group").forEach(section => {
++    section.hidden = section.id !== `cal-panel-${groupId}`;
++  });
++  els.calStatus.textContent = "点音名听示范，点箭头依次对比";
+ }
+ 
+ function setCalibrationSpeed(speed) {
+@@ -2944,18 +2971,17 @@
+     btn.setAttribute("aria-pressed", String(btn.dataset.calSpeed === speed));
+   });
+   els.calGroups.querySelectorAll("video").forEach((video) => {
+-    video.muted = speed === "slow";
+-    // 半速素材本身已有双倍画面时长；不能再设 playbackRate = 0.5。
+-    video.defaultPlaybackRate = video.playbackRate = 1;
+-    video.src = calVideoUrl(video.dataset.final);
+-    video.load();
+-  });
+-  els.calStatus.textContent = `已切换${calModeLabel()}，点音名或箭头开始播放`;
++    video.muted = false;
++    video.defaultPlaybackRate = video.playbackRate = speed === "slow" ? 0.5 : 1;
++    video.preservesPitch = true;
++  });
++  els.calStatus.textContent = `已切换${calModeLabel()}，点音名开始播放`;
+ }
+ 
+ function playCalibration(groupId, seq) {
+   const group = (state.calibration.groups || []).find((g) => g.id === groupId);
+   if (!group || !["a", "b", "ab", "ba"].includes(seq)) return;
++  selectCalibrationGroup(groupId);
+   stopCalVideos();
+   const runId = calRunId;
+   const sides = seq.split("");
+@@ -2981,9 +3007,10 @@
+     const step = cursor;
+     markCalPlaying(groupId, side);
+     els.calStatus.textContent = `正在加载 ${group[side].final} · ${calModeLabel()}`;
+-    video.muted = state.calibrationSpeed === "slow";
++    video.muted = false;
+     video.volume = 1;
+-    video.playbackRate = 1;
++    video.playbackRate = state.calibrationSpeed === "slow" ? 0.5 : 1;
++    video.preservesPitch = true;
+     video.onended = () => {
+       if (!currentRun() || cursor !== step || !video.ended) return;
+       video.onended = video.onplaying = video.onerror = video.onwaiting = null;
+@@ -3018,12 +3045,19 @@
+ }
+ 
+ function markCalPlaying(groupId, side) {
++  const group = state.calibration.groups.find(g => g.id === groupId);
+   els.calGroups.querySelectorAll(".cal-card").forEach((card) => {
+-    card.classList.toggle("playing", card.dataset.group === groupId && card.dataset.side === side);
+-  });
+-}
+-
+-function stopCalVideos(message = `${calModeLabel()}，点音名或箭头开始播放`) {
++    const active = card.dataset.group === groupId && card.dataset.side === side;
++    card.classList.toggle("playing", active);
++    if (card.dataset.group === groupId) card.hidden = !active;
++  });
++  const section = document.getElementById(`cal-panel-${groupId}`);
++  section.querySelector(".cal-current-final").textContent = group[side].final;
++  section.querySelector(".cal-current-type").textContent = side === "a" ? "前鼻音 · 舌尖收 n" : "后鼻音 · 舌后部收 ng";
++  section.dataset.side = side;
++}
++
++function stopCalVideos(message = "点音名听示范，点箭头依次对比") {
+   // 先使所有已排队回调失效，再暂停；保护快速重播、换组和换模式。
+   calRunId += 1;
+   clearTimeout(calLoadTimer);
+--- src/pth_corpus/prototype_static/index.html (initial integration)
++++ src/pth_corpus/prototype_static/index.html
+@@ -6,7 +6,7 @@
+   <title>前后鼻音专项训练</title>
+   <link rel="icon" href="data:,">
+   <link rel="stylesheet" href="/assets/styles.css">
+-  <link rel="stylesheet" href="/assets/ui-theme.css?v=2026-09-12-cal-v2">
++  <link rel="stylesheet" href="/assets/ui-theme.css?v=2026-09-12-cal-mobile-v3">
+   <meta name="theme-color" content="#fff9ef">
+ </head>
+ <body>
+@@ -185,16 +185,18 @@
+           <p>听标准音，分辨前鼻 n 与后鼻 ng</p>
+         </div>
+       </header>
+-      <p class="cal-tip">前鼻音舌尖抵上齿龈收 n，后鼻音舌根抬起送 ng。多听几遍对比，再开口跟读。</p>
++      <div id="cal-tabs" class="cal-tabs" role="group" aria-label="选择对比音组"></div>
++      <p class="cal-tip">前鼻音看舌尖，后鼻音看舌后部</p>
++      <section id="cal-groups" class="cal-groups"></section>
+       <div class="cal-toolbar">
+-        <div class="cal-speed" role="group" aria-label="动画速度">
+-          <button type="button" data-cal-speed="normal" aria-pressed="true">正常 · 有声</button>
+-          <button type="button" data-cal-speed="slow" aria-pressed="false">半速 · 静音</button>
++        <div class="cal-speed" role="group" aria-label="播放速度">
++          <button type="button" data-cal-speed="normal" aria-pressed="true">正常</button>
++          <button type="button" data-cal-speed="slow" aria-pressed="false">半速</button>
+         </div>
+         <button id="cal-stop" class="ghost-btn" type="button" disabled>停止</button>
+       </div>
+-      <p id="cal-status" class="cal-status" role="status" aria-live="polite" aria-atomic="true">正常 · 有声，点音名或箭头开始播放</p>
+-      <section id="cal-groups" class="cal-groups"></section>
++      <p id="cal-status" class="cal-status" role="status" aria-live="polite" aria-atomic="true">点音名听示范，点箭头依次对比</p>
++
+     </main>
+ 
+     <!-- 页面 5：作品墙 -->
+@@ -394,6 +396,6 @@
+     })();
+   </script>
+   <script src="/assets/ui.js"></script>
+-  <script src="/assets/app.js?v=2026-09-12-cal-v2"></script>
++  <script src="/assets/app.js?v=2026-09-12-cal-mobile-v3"></script>
+ </body>
+ </html>
+--- src/pth_corpus/prototype_static/ui-theme.css (initial integration)
++++ src/pth_corpus/prototype_static/ui-theme.css
+@@ -270,17 +270,25 @@
+ .page-title p { font-size: 10px; line-height: 1.7; margin-top: 7px; color: #8c7a65; }
+ .page-header::after { content: ""; position: absolute; right: -5px; top: 35px; width: 92px; height: 100px; background: url('/assets/illustrations/welcome.webp') center / contain no-repeat; pointer-events: none; }
+ #view-wall .page-header::after { background-image: url('/assets/illustrations/bead-jar.webp'); width: 86px; }
+-#view-calibration .page-header::after { background-image: url('/assets/illustrations/listen.webp'); }
+-.cal-tip { background: #f1ebfa; border: 1px solid #e6dcf0; color: #7b6591; padding: 13px 15px; border-radius: 19px; font-size: 11px; line-height: 1.8; margin: 0 0 19px; }
+-.cal-groups { gap: 17px; padding-bottom: 28px; }
+-.cal-group { padding: 16px 13px 13px; border: 1px solid #eee0ca; border-radius: 25px; background: #fffdfa; box-shadow: var(--shadow-card); }
+-.cal-group-label { margin: 0 0 11px; text-align: center; font-size: 19px; font-weight: 650; color: #5e4936; }
++#view-calibration .page-header { min-height: 110px; padding-bottom: 18px; }
++#view-calibration .page-header::after { background-image: url('/assets/illustrations/listen.webp'); top: 20px; width: 78px; height: 78px; }
++.cal-tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 5px; padding: 5px; background: #f2eadd; border-radius: 18px; }
++.cal-tabs button { min-height: 44px; min-width: 0; border: 0; border-radius: 13px; padding: 8px 3px; color: var(--muted); background: transparent; font-size: 13px; white-space: nowrap; }
++.cal-tabs button[aria-pressed="true"] { color: var(--teal-deep); background: #fffefa; box-shadow: var(--shadow-soft); }
++.cal-tip { margin: 12px 0; padding: 0; border: 0; background: transparent; text-align: center; color: #8c7a65; font-size: 12px; line-height: 1.6; }
++.cal-groups { display: block; padding: 0; margin-bottom: 16px; }
++.cal-group { padding: 14px 12px 12px; border: 1px solid #eee0ca; border-radius: 25px; background: #fffdfa; box-shadow: var(--shadow-card); }
++.cal-group[hidden], .cal-card[hidden] { display: none; }
++.cal-group-label { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin: 0 2px 12px; font-weight: 650; letter-spacing: 0; }
++.cal-current-final { font-size: 25px; color: var(--teal-deep); line-height: 1.2; }
++.cal-current-type { font-size: 12px; font-weight: 500; color: var(--muted); }
++.cal-group[data-side="b"] .cal-current-final { color: var(--orange-deep); }
+ .cal-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+ .cal-speed { display: flex; flex: 1; gap: 4px; padding: 4px; border-radius: 17px; background: var(--violet-soft); }
+ .cal-speed button { flex: 1; min-height: 44px; padding: 8px; border: 0; border-radius: 13px; background: transparent; color: var(--violet-deep); font-size: 12px; white-space: nowrap; }
+ .cal-speed button[aria-pressed="true"] { background: #fffefa; box-shadow: var(--shadow-soft); color: var(--teal-deep); }
+ #cal-stop { width: auto; flex: 0 0 auto; min-width: 56px; min-height: 44px; padding: 8px; }
+-.cal-status { min-height: 40px; margin: 9px 2px 0; font-size: 12px; color: var(--muted); line-height: 1.6; }
++.cal-status { min-height: 40px; margin: 10px 2px 0; padding-bottom: env(safe-area-inset-bottom); font-size: 12px; color: var(--muted); line-height: 1.6; }
+ .cal-pair { gap: 9px; flex-direction: column; }
+ .cal-card { min-width: 0; padding: 0; }
+ .cal-card .cal-video { aspect-ratio: 16 / 9; background: #fffaf0; }
+@@ -294,6 +302,7 @@
+ .cal-seq button:nth-child(odd) { color: var(--teal-deep); }
+ .cal-seq button:nth-child(even) { color: var(--orange-deep); }
+ .cal-seq button.active { color: #fff; background: var(--teal-deep); border-color: var(--teal-deep); }
++.cal-seq button:nth-child(even).active { background: var(--orange-deep); border-color: var(--orange-deep); }
+ .wall-body { padding-bottom: 30px; }
+ .wall-section-title { margin: 23px 0 12px; font-size: 18px; font-weight: 700; }
+ .wall-section-title:first-child { margin-top: 0; }

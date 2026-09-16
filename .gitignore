@@ -1,0 +1,95 @@
+# Local environments and tooling
+.DS_Store
+.venv/
+.uv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Local corpus inputs and derivatives (keep README.md directory notes)
+data/raw/*
+!data/raw/README.md
+data/derived/*
+!data/derived/README.md
+data/review/*
+!data/review/README.md
+data/*.sqlite3
+data/*.sqlite3-*
+data/runs/
+
+# 训练规则与报告（小文件，纳入版本管理）
+!data/derived/training-generator-v1/
+data/derived/training-generator-v1/sessions/
+data/derived/training-generator-v1/word_checklists_v1.csv
+data/derived/training-generator-v1/candidate_pool_stats_v1.json
+data/derived/training-generator-v1/generator_stats_v1.json
+!data/derived/training-generator-v1/generator_config_v1.json
+!data/derived/training-generator-v1/CANDIDATE_POOL_REPORT_V1.md
+!data/derived/training-generator-v1/GENERATOR_REPORT_V1.md
+!data/derived/training-generator-v2/
+data/derived/training-generator-v2/sessions/
+data/derived/training-generator-v2/history/
+data/derived/training-generator-v2/generator_stats_v2.json
+!data/derived/training-generator-v2/generator_config_v2.json
+!data/derived/training-generator-v2/PLAN_V2_1_ADJUSTMENTS.md
+!data/derived/training-generator-v2/PROFILE_AVAILABILITY_REPORT_V2.md
+!data/derived/training-generator-v2/GENERATOR_REPORT_V2.md
+!data/derived/training-generator-v2/profile_availability_v2.json
+
+# 大型历史交接件不入库（保留本地）
+handoff/deepseek-audio-alignment-2026-08-06-full.tar.gz
+handoff/deepseek-audio-alignment-2026-08-06/corpus-pre-v2.sqlite3
+
+# 朗读作品源材料（新大纲朗读作品音频+PDF）与句子练习产物：校内本地试用，不入库
+新大纲普通话水平测试用朗读作品音频/
+
+# PDF 处理工作目录（源 PDF / OCR 中间产物，约 282MB）：校内本地试用，不入库
+pdf_work/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# GitHub public baseline: local-only data, secrets and redundant deliveries
+.local-release/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+node_modules/
+*.zip
+*.tar.gz
+*.tgz
+*.log
+**/backups/
+# Teaching recordings and derived videos require separate source authorization
+*.mp4
+*.mp3
+*.m4a
+*.flac
+*.ogg
+鼻韵母示范/
+# Third-party packs are not the installed A sound family; do not redistribute raw packs
+assets/sound-design/external/
+# Experiments include nested repositories and duplicate rendered media
+动画试验/
+系统UI建议/
+# Historical raw corpus exports and alignment deliveries remain local
+handoff/deepseek-audio-alignment-2026-08-06/
+# Generated screenshot collections remain local; Markdown and JSON evidence is versioned
+handoff/**/*.png
+handoff/**/*.webp
+handoff/**/*.jpg
+assets/sound-design/qa/**/*.png
+assets/sound-design/qa/**/*.webp
+# Hash inventories can reveal personal training history filenames; keep them local too
+**/protected-before.json
+**/protected-after.json
+**/user-data-before-qa.json
+**/user-data-after-qa.json

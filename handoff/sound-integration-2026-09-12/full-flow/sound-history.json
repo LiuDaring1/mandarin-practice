@@ -1,0 +1,881 @@
+{
+  "state": "running",
+  "loaded": 16,
+  "active": 0,
+  "maxObserved": 2,
+  "teaching": 1,
+  "preferences": {
+    "volume": 0.7,
+    "muted": false
+  },
+  "history": [
+    {
+      "time": 10168,
+      "action": "played",
+      "id": "ui.confirm",
+      "style": "a",
+      "variant": 0,
+      "voices": 1
+    },
+    {
+      "time": 11587,
+      "action": "played",
+      "id": "training.start",
+      "style": "a",
+      "variant": 0,
+      "voices": 1
+    },
+    {
+      "time": 15532,
+      "action": "played",
+      "id": "reward.arrive",
+      "style": "a",
+      "variant": 0,
+      "voices": 1
+    },
+    {
+      "time": 19168,
+      "action": "played",
+      "id": "bead.place",
+      "style": "a",
+      "variant": 0,
+      "voices": 1
+    },
+    {
+      "time": 19187,
+      "action": "dropped",
+      "id": "bead.place",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 19214,
+      "action": "dropped",
+      "id": "bead.place",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 19661,
+      "action": "played",
+      "id": "bead.place",
+      "style": "a",
+      "variant": 1,
+      "voices": 1
+    },
+    {
+      "time": 19745,
+      "action": "dropped",
+      "id": "bead.place",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 19829,
+      "action": "played",
+      "id": "bead.place",
+      "style": "a",
+      "variant": 2,
+      "voices": 1
+    },
+    {
+      "time": 19894,
+      "action": "dropped",
+      "id": "bead.place",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 19962,
+      "action": "played",
+      "id": "bead.place",
+      "style": "a",
+      "variant": 3,
+      "voices": 1
+    },
+    {
+      "time": 20028,
+      "action": "dropped",
+      "id": "bead.place",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 20489,
+      "action": "played",
+      "id": "bead.place",
+      "style": "a",
+      "variant": 4,
+      "voices": 1
+    },
+    {
+      "time": 20928,
+      "action": "played",
+      "id": "bead.place",
+      "style": "a",
+      "variant": 5,
+      "voices": 1
+    },
+    {
+      "time": 21028,
+      "action": "dropped",
+      "id": "bead.place",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 21111,
+      "action": "played",
+      "id": "bead.place",
+      "style": "a",
+      "variant": 0,
+      "voices": 1
+    },
+    {
+      "time": 21178,
+      "action": "dropped",
+      "id": "bead.place",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 21245,
+      "action": "played",
+      "id": "bead.place",
+      "style": "a",
+      "variant": 1,
+      "voices": 1
+    },
+    {
+      "time": 21311,
+      "action": "dropped",
+      "id": "bead.place",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 21361,
+      "action": "played",
+      "id": "bead.place",
+      "style": "a",
+      "variant": 2,
+      "voices": 1
+    },
+    {
+      "time": 21411,
+      "action": "dropped",
+      "id": "bead.place",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 21478,
+      "action": "played",
+      "id": "bead.place",
+      "style": "a",
+      "variant": 3,
+      "voices": 1
+    },
+    {
+      "time": 21528,
+      "action": "dropped",
+      "id": "bead.place",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 21561,
+      "action": "dropped",
+      "id": "bead.place",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 21611,
+      "action": "played",
+      "id": "bead.place",
+      "style": "a",
+      "variant": 4,
+      "voices": 1
+    },
+    {
+      "time": 21661,
+      "action": "dropped",
+      "id": "bead.place",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 21694,
+      "action": "dropped",
+      "id": "bead.place",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 21744,
+      "action": "played",
+      "id": "bead.place",
+      "style": "a",
+      "variant": 5,
+      "voices": 1
+    },
+    {
+      "time": 21778,
+      "action": "dropped",
+      "id": "bead.place",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 21830,
+      "action": "dropped",
+      "id": "bead.place",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 21862,
+      "action": "played",
+      "id": "bead.place",
+      "style": "a",
+      "variant": 0,
+      "voices": 1
+    },
+    {
+      "time": 21895,
+      "action": "dropped",
+      "id": "bead.place",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 21928,
+      "action": "dropped",
+      "id": "bead.place",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 21978,
+      "action": "played",
+      "id": "bead.place",
+      "style": "a",
+      "variant": 1,
+      "voices": 1
+    },
+    {
+      "time": 22011,
+      "action": "dropped",
+      "id": "bead.place",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 22045,
+      "action": "dropped",
+      "id": "bead.place",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 22078,
+      "action": "played",
+      "id": "bead.place",
+      "style": "a",
+      "variant": 2,
+      "voices": 1
+    },
+    {
+      "time": 22112,
+      "action": "dropped",
+      "id": "bead.place",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 22144,
+      "action": "dropped",
+      "id": "bead.place",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 22178,
+      "action": "played",
+      "id": "bead.place",
+      "style": "a",
+      "variant": 3,
+      "voices": 1
+    },
+    {
+      "time": 22195,
+      "action": "dropped",
+      "id": "bead.place",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 22228,
+      "action": "dropped",
+      "id": "bead.place",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 22261,
+      "action": "dropped",
+      "id": "bead.place",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 22295,
+      "action": "played",
+      "id": "bead.place",
+      "style": "a",
+      "variant": 4,
+      "voices": 1
+    },
+    {
+      "time": 22328,
+      "action": "dropped",
+      "id": "bead.place",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 22345,
+      "action": "dropped",
+      "id": "bead.place",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 22378,
+      "action": "dropped",
+      "id": "bead.place",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 22411,
+      "action": "played",
+      "id": "bead.place",
+      "style": "a",
+      "variant": 5,
+      "voices": 1
+    },
+    {
+      "time": 22428,
+      "action": "dropped",
+      "id": "bead.place",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 22462,
+      "action": "dropped",
+      "id": "bead.place",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 22495,
+      "action": "dropped",
+      "id": "bead.place",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 22512,
+      "action": "played",
+      "id": "bead.place",
+      "style": "a",
+      "variant": 0,
+      "voices": 1
+    },
+    {
+      "time": 22545,
+      "action": "dropped",
+      "id": "bead.place",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 22562,
+      "action": "dropped",
+      "id": "bead.place",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 22595,
+      "action": "dropped",
+      "id": "bead.place",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 22611,
+      "action": "dropped",
+      "id": "bead.place",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 22645,
+      "action": "played",
+      "id": "bead.place",
+      "style": "a",
+      "variant": 1,
+      "voices": 1
+    },
+    {
+      "time": 22662,
+      "action": "dropped",
+      "id": "bead.place",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 22695,
+      "action": "dropped",
+      "id": "bead.place",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 22712,
+      "action": "dropped",
+      "id": "bead.place",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 22744,
+      "action": "dropped",
+      "id": "bead.place",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 22745,
+      "action": "played",
+      "id": "artwork.fuse",
+      "style": "a",
+      "variant": 0,
+      "voices": 1
+    },
+    {
+      "time": 24547,
+      "action": "played",
+      "id": "artwork.complete",
+      "style": "a",
+      "variant": 0,
+      "voices": 2
+    },
+    {
+      "time": 78881,
+      "action": "played",
+      "id": "ui.confirm",
+      "style": "a",
+      "variant": 0,
+      "voices": 1
+    },
+    {
+      "time": 79052,
+      "action": "played",
+      "id": "training.start",
+      "style": "a",
+      "variant": 0,
+      "voices": 2
+    },
+    {
+      "time": 91694,
+      "action": "dropped",
+      "id": "reward.arrive",
+      "reason": "teaching"
+    },
+    {
+      "time": 96594,
+      "action": "played",
+      "id": "training.start",
+      "style": "a",
+      "variant": 0,
+      "voices": 1
+    },
+    {
+      "time": 98426,
+      "action": "played",
+      "id": "answer.retry",
+      "style": "a",
+      "variant": 0,
+      "voices": 1
+    },
+    {
+      "time": 98576,
+      "action": "dropped",
+      "id": "answer.retry",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 99126,
+      "action": "played",
+      "id": "answer.correct",
+      "style": "a",
+      "variant": 0,
+      "voices": 1
+    },
+    {
+      "time": 99276,
+      "action": "dropped",
+      "id": "answer.correct",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 99426,
+      "action": "played",
+      "id": "answer.correct",
+      "style": "a",
+      "variant": 0,
+      "voices": 1
+    },
+    {
+      "time": 99575,
+      "action": "dropped",
+      "id": "answer.correct",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 99726,
+      "action": "played",
+      "id": "answer.correct",
+      "style": "a",
+      "variant": 0,
+      "voices": 1
+    },
+    {
+      "time": 99876,
+      "action": "dropped",
+      "id": "answer.correct",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 100026,
+      "action": "played",
+      "id": "answer.correct",
+      "style": "a",
+      "variant": 0,
+      "voices": 1
+    },
+    {
+      "time": 100176,
+      "action": "dropped",
+      "id": "answer.correct",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 100326,
+      "action": "played",
+      "id": "answer.correct",
+      "style": "a",
+      "variant": 0,
+      "voices": 1
+    },
+    {
+      "time": 100476,
+      "action": "dropped",
+      "id": "answer.correct",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 100626,
+      "action": "played",
+      "id": "answer.correct",
+      "style": "a",
+      "variant": 0,
+      "voices": 1
+    },
+    {
+      "time": 100776,
+      "action": "dropped",
+      "id": "answer.correct",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 100926,
+      "action": "played",
+      "id": "answer.correct",
+      "style": "a",
+      "variant": 0,
+      "voices": 1
+    },
+    {
+      "time": 101075,
+      "action": "dropped",
+      "id": "answer.correct",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 101225,
+      "action": "played",
+      "id": "answer.correct",
+      "style": "a",
+      "variant": 0,
+      "voices": 1
+    },
+    {
+      "time": 101375,
+      "action": "dropped",
+      "id": "answer.correct",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 101525,
+      "action": "played",
+      "id": "answer.correct",
+      "style": "a",
+      "variant": 0,
+      "voices": 1
+    },
+    {
+      "time": 101676,
+      "action": "dropped",
+      "id": "answer.correct",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 101825,
+      "action": "played",
+      "id": "answer.correct",
+      "style": "a",
+      "variant": 0,
+      "voices": 1
+    },
+    {
+      "time": 102009,
+      "action": "dropped",
+      "id": "answer.correct",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 102158,
+      "action": "played",
+      "id": "answer.correct",
+      "style": "a",
+      "variant": 0,
+      "voices": 1
+    },
+    {
+      "time": 102309,
+      "action": "dropped",
+      "id": "answer.correct",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 102459,
+      "action": "played",
+      "id": "answer.correct",
+      "style": "a",
+      "variant": 0,
+      "voices": 1
+    },
+    {
+      "time": 102609,
+      "action": "dropped",
+      "id": "answer.correct",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 102792,
+      "action": "played",
+      "id": "answer.correct",
+      "style": "a",
+      "variant": 0,
+      "voices": 1
+    },
+    {
+      "time": 102975,
+      "action": "dropped",
+      "id": "answer.correct",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 103125,
+      "action": "played",
+      "id": "answer.correct",
+      "style": "a",
+      "variant": 0,
+      "voices": 1
+    },
+    {
+      "time": 103276,
+      "action": "dropped",
+      "id": "answer.correct",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 103459,
+      "action": "played",
+      "id": "answer.correct",
+      "style": "a",
+      "variant": 0,
+      "voices": 1
+    },
+    {
+      "time": 103609,
+      "action": "dropped",
+      "id": "answer.correct",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 103792,
+      "action": "played",
+      "id": "answer.correct",
+      "style": "a",
+      "variant": 0,
+      "voices": 1
+    },
+    {
+      "time": 103942,
+      "action": "dropped",
+      "id": "answer.correct",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 104125,
+      "action": "played",
+      "id": "answer.correct",
+      "style": "a",
+      "variant": 0,
+      "voices": 1
+    },
+    {
+      "time": 104276,
+      "action": "dropped",
+      "id": "answer.correct",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 104426,
+      "action": "played",
+      "id": "answer.correct",
+      "style": "a",
+      "variant": 0,
+      "voices": 1
+    },
+    {
+      "time": 104575,
+      "action": "dropped",
+      "id": "answer.correct",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 104725,
+      "action": "played",
+      "id": "answer.correct",
+      "style": "a",
+      "variant": 0,
+      "voices": 1
+    },
+    {
+      "time": 104876,
+      "action": "dropped",
+      "id": "answer.correct",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 105026,
+      "action": "played",
+      "id": "answer.correct",
+      "style": "a",
+      "variant": 0,
+      "voices": 1
+    },
+    {
+      "time": 105175,
+      "action": "dropped",
+      "id": "answer.correct",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 105326,
+      "action": "played",
+      "id": "answer.correct",
+      "style": "a",
+      "variant": 0,
+      "voices": 1
+    },
+    {
+      "time": 105476,
+      "action": "dropped",
+      "id": "answer.correct",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 105658,
+      "action": "played",
+      "id": "answer.correct",
+      "style": "a",
+      "variant": 0,
+      "voices": 1
+    },
+    {
+      "time": 105809,
+      "action": "dropped",
+      "id": "answer.correct",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 105959,
+      "action": "played",
+      "id": "answer.correct",
+      "style": "a",
+      "variant": 0,
+      "voices": 1
+    },
+    {
+      "time": 106109,
+      "action": "dropped",
+      "id": "answer.correct",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 106259,
+      "action": "played",
+      "id": "answer.correct",
+      "style": "a",
+      "variant": 0,
+      "voices": 1
+    },
+    {
+      "time": 106409,
+      "action": "dropped",
+      "id": "answer.correct",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 106501,
+      "action": "played",
+      "id": "training.start",
+      "style": "a",
+      "variant": 0,
+      "voices": 1
+    },
+    {
+      "time": 106959,
+      "action": "played",
+      "id": "answer.correct",
+      "style": "a",
+      "variant": 0,
+      "voices": 1
+    },
+    {
+      "time": 107108,
+      "action": "dropped",
+      "id": "answer.correct",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 107226,
+      "action": "played",
+      "id": "day.complete",
+      "style": "a",
+      "variant": 0,
+      "voices": 1
+    },
+    {
+      "time": 112008,
+      "action": "played",
+      "id": "training.start",
+      "style": "a",
+      "variant": 0,
+      "voices": 1
+    },
+    {
+      "time": 112475,
+      "action": "played",
+      "id": "answer.correct",
+      "style": "a",
+      "variant": 0,
+      "voices": 1
+    },
+    {
+      "time": 112625,
+      "action": "dropped",
+      "id": "answer.correct",
+      "reason": "rate-limit"
+    },
+    {
+      "time": 112741,
+      "action": "played",
+      "id": "reward.arrive",
+      "style": "a",
+      "variant": 0,
+      "voices": 1
+    }
+  ]
+}

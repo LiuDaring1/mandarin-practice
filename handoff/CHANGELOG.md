@@ -1,0 +1,80 @@
+# 更新日志（CHANGELOG）
+
+> 每次改动**追加一行**：`- 日期 模块：一句话改动（涉及文件）`。小改也要记。
+> 2026-08-23 之前的大节点见 `../README.md` 节点清单与 `handoff/MEMORY-*.md`（未逐条回填）。
+
+## 2026-09-16
+
+- 版本管理：正式 APP 从父目录旧 Git 独立，建立公开仓库 `LiuDaring1/mandarin-practice` 与 v0.2.0 基线；统一包／CLI 版本，加入 AGENTS、协作规范、待启用 CI 模板、版本说明与本地数据清单。旧 Git 历史在 `.local-release/` 备份、不上传；排除真实进度、语料媒体、第三方原包和秘密文件，代码与交接文档统一同步；现有 OAuth 缺 workflow 权限，CI 模板保存在 `ci/`，尚未启用云端自动测试。
+
+- 音效入口：按用户反馈撤掉首页临时音效开关／音量控件及定位样式，默认开启、70%；在内存覆盖旧静音／零音量而不改旧偏好存储，移除适配层对控件 DOM 的依赖，素材加载失败仍不阻塞训练；保留声音插槽与播放器设置能力，待独立系统设置页再显性提供。更新资源版本、专项验收与现行说明（`prototype_static/{index.html,ui-theme.css,sfx.js}`、`scripts/qa_sound_contract.cjs`、`handoff/sound-settings-2026-09-16/`）。
+
+## 2026-09-12
+
+- 音效接入：按用户最新授权选回 A，保留七种日常／六落珠变体，重做四种轻快奖励，11 槽／16 WAV 安装正式 APP；新增独立开关／音量、教学优先、结算互斥与去重、后台与关闭取消，替换旧落珠振荡器并保留单击短音；修复融合旧回调覆盖新弹层、开关被解锁回调回写的问题。清单支持直接换样本；8772 根页读取 APP 同文件，前两轮与 90 免费原音归档保留。14 项专项、12 项完整流程／84 张截图、pytest 319 通过／1 跳过；真实进度与原 30 WAV 保护核验（`prototype_static/{app.js,index.html,ui-theme.css,sfx.js,sounds/}`、`assets/sound-design/{installed.html,sources/build_app_sounds.py,qa/integration-v4/}`、`scripts/qa_sound_*.cjs`、`serve_sound_lab.py`、`handoff/sound-integration-2026-09-12/` 及现行说明）。
+
+- 音效三轮预算收口：用户明确只用现成免费、无损、有授权的素材，撤下付费候选与第三方播放器；追加 R4orce Cute UI 40 个免费许可 PCM24 原音，与 Dustyroom 50 个 CC0 原音共 90 WAV，本地分包试听／连听，保留两套原包和许可、逐文件核对哈希；无购买、无正式接入（`assets/sound-design/library.*`、`external/r4orce/`、`library-manifest.json`、`LIBRARIES.md`、`sources/index_library.py`、`qa/library-v3/`、`scripts/serve_sound_lab.py`、相关现行说明）。
+
+- 音效三轮：记录用户否决第二轮“闷、土、不够 Q 弹可爱”的反馈，切换到现成游戏音库试听；加入 SwishSwoosh Cute UI／BOOM CASUAL UI 官方播放器与 Dustyroom 50 个 CC0 无损原音，保留原包许可证／逐文件哈希，独立页提供连听、单音、停止与来源；旧 30 WAV 不改、第二轮标记历史否决，付费库未购买、正式 APP 未接入（`assets/sound-design/library.*`、`library-manifest.json`、`external/dustyroom/`、`LIBRARIES.md`、`sources/index_library.py`、`sources/check_library.cjs`、`qa/library-v3/`、`versions/v2/`、`scripts/serve_sound_lab.py`、历史 QA 路由与交接说明）。
+
+- 音效二轮：记录用户认可 A、希望庆祝更有情绪；新增四种欢庆音与九秒连听预览，保留原版文件和峰值层级，试听页加入原版／新版比较与流程切换，日常 A 不变；30 WAV 数值检查、9 项新增专项及 21 项共享回归通过，正式前端／进度未改（`assets/sound-design/sources/generate_celebrations.py`、`exports/a-lift-*`、`manifest.json`、`index.html`、`lab.js`、`lab.css`、`versions/v1/`、`qa/celebration-v2/`、相关说明及 STATUS；尚未正式接入）。
+
+- 2026-09-12 标准音手机修订：按用户反馈取消六视频长页，改为三组切换／当前单画面及顺序播放跟随；正常和半速均有声，用正常交付文件 1／0.5 倍音画同步播放。34 项浏览器检查、4 项控制补验、五档布局和 pytest 319 通过／1 跳过（`prototype_static/app.js`、`index.html`、`ui-theme.css`、`scripts/qa_calibration_*.cjs`、`handoff/calibration-mobile-2026-09-12/`、`MEMORY-2026-09-12-calibration-mobile.md`）。
+
+- 音效首轮：交付 A「奶油木珠」/ B「软糖气泡」原创样音（含变体与参照共 25 WAV）、完整声音场景清单、8772 独立试听页及统一播放器；教学优先、跟读计时安静、落珠限密与取消；25 WAV 数值检查、21 项浏览器专项通过，真实进度 68 文件一致；正式接入／人耳听检待完成（`assets/sound-design/`、`scripts/serve_sound_lab.py`、`scripts/qa_sound_lab.cjs`、`handoff/modules/sound-design.md`、`MEMORY-2026-09-12-sound-design-v1.md`、`STATUS.md`、`README.md`）。
+
+- 2026-09-12 标准音：接入权威交付六音 12 个正常／半速视频（含 ang／ing 修订）与新版封面，完成全幅显示、速度／停止／重播／顺序播放及过期回调保护；独立播放矩阵、布局、音轨与哈希验证通过，pytest 319 通过／1 跳过，保留完整回归记录与旧资源快照（`prototype_static/app.js`、`index.html`、`ui-theme.css`、`calibration/`、`scripts/qa_calibration_*.cjs`、`handoff/calibration-refresh-2026-09-12/`、`MEMORY-2026-09-12-calibration-refresh.md`）。
+
+- 标准音接入规划：读取用户指定动画对话，核实六音 12 个视频与制作报告一致，发现应用存档 ing 两个视频落后于最新修订；建立接入任务书并更新第 1 项执行口径，转新任务替换视频、封面与播放控制，现有音轨保留、换声独立推进（`handoff/TASK-2026-09-12-calibration-animation.md`、`STATUS.md`、`ROADMAP.md`）。
+
+- 音效规划：按用户要求编写新对话任务书，覆盖声音风格、全场景事件、原创样音与独立试听页、示范音优先级和数据保护；记录 UI 审核暂缓，音效正式接入尚未开始（`handoff/TASK-2026-09-12-sound-design.md`、`STATUS.md`、`ROADMAP.md`）。
+
+- 应用外壳/UI：完成首轮全页换新（首页三 Tab、字词／句子／辨音、错题复习、全部结算、作品墙／拼入／熨烫、标准音、历史、筛选／选作品／退出弹层）；新增 10 张 imagegen 透明 PNG 原图与 512 px WebP、统一主题和 SVG 图标、真实示范音／跟读计时、焦点循环和键盘拼豆；去掉库存数、默认选中前鼻音，修复无会话时重播无法重试及移动端遮挡／弹层横向溢出（`prototype_static/index.html`、`styles.css` 保留、`app.js`、`ui.js`、`ui-theme.css`、`illustrations/`、`assets/ui-refresh/`）。
+- 回归修复：真实浏览器全流程发现辨音前端以判断音节数匹配词数档位，含多判断点／趁热巩固时可导致结算失败；现按已完成主词库词数和所选 50/100/150 词档位传参，保留原 API 字段、奖励规则及历史结构（`app.js`、`scripts/qa_ui_refresh.cjs`）。
+- 验收与交接：319 项现有测试通过、1 预期跳过；使用独立临时进度和浏览器上下文进行交互及多尺寸截图验收，保留前端快照、素材说明、提示词及检查结果（`scripts/serve_ui_qa.py`、`handoff/ui-refresh-2026-09-12/`、`MEMORY-2026-09-12-ui-refresh.md`）。
+
+- 标准动画：归档三代试验（eng_animation/eng_articulation/eng_layered，来自原根目录精选拷贝）+ 六音交付版说明——an/ang/en/eng/in/ing 正常版+半速版 MP4 已由并行工作产出（09-12），剩余：用户验收→换声（走 #2 音色替换）→替换校音页 calibration 视频（`动画试验/` + `动画试验/README.md`；ROADMAP #1 改「进行中」）
+- 交接：制作 2026-09-12 版交接包索引（阅读顺序、目录结构、剔噪表、注意事项），STATUS 交接包指针切到新版（handoff/HANDOFF-INDEX-2026-09-12.md、handoff/STATUS.md）
+- 规划：新增中期路线图——用户口述的 9 件事（① 标准示范动画程序化重做 ② 示范音音色替换 ③ 句子语料加新闻 ④ 去掉库存数字 ⑤ 辨音答错播词示范音 ⑥ 整体 UI 换皮 ⑦ 整体音效设计；远期 ⑧ 语音评测（API/自研，建议先本地 VAD 防挂机）⑨ 账户与数据管理），逐件推进；已按用户反馈修正：删经文只加新闻且新闻示范音同样换音色入库、#5 定为答错时播（handoff/ROADMAP.md、handoff/STATUS.md）
+
+## 2026-08-27
+
+- 标准音页：改版为真人示范视频卡——只保留 an/ang、en/eng、in/ing 三组（ian/iang、uan/uang 移除），音卡内嵌示范视频（用户提供的 mp4 放 `prototype_static/calibration/`，经 `/assets/calibration/` 静态服务，音频即视频原声），四个播放键用真实音名（an、ang、an → ang、ang → an；→ 键依次连放两段视频）；卡片冗余元素全部移除（大音名 + 例字·拼音、顶部虚线色条均按用户要求去掉），卡片只留视频本身（视频画面自带音名角标），删除旧 cal-player 音频通道与卡片内播放按钮（`prototype_app.py` CALIBRATION_GROUPS、`prototype_static/app.js` renderCalibration/playCalibration、`index.html`、`styles.css`、`tests/test_prototype_app.py`）
+
+- 应用外壳/UI：头部二次微调（用户反馈）——「作品/历史/标准音」恢复描边胶囊按钮（紧凑版，移入标题行右侧）；删「听清 · 分清 · 读准」标语；删三练行「再完成 X」提示（三练行只留三项状态）；连续训练改橙色火焰图标 + 橙色数字；标题缩至 17px 保证 375px 一行；修复窄屏横向溢出（标题行 flex-wrap，≤419px 按钮独立一行右对齐），360/375/430 三档宽度实测无横向滚动；头部节奏放宽（顶部留白 46px、统计/三练行距 20/14px、字词区上间距 24px），360/375 实测「开始训练」仍在一屏内不滚动（`prototype_static/index.html`、`app.js` renderTrioBar/els、`styles.css` home-top/chip-btn/streak-badge/trio-bar/stats-line/home-pane）
+
+- 应用外壳/UI：头部视觉减负——去掉统计行与三练条的卡片容器（裸文字三层：标题 → 轻统计 → 三练状态）；「连续训练」改为小图标+强数字（去胶囊，绿色右对齐）；「作品/历史/标准音」从胶囊按钮降为文字型次级入口；三练条删常驻「三项齐 +100」与勾号，改为「差一项时出『再完成 X，今日三练完成』轻提示、全齐显示『今日三练完成 ✓』并整条淡出」——奖励从常驻说明书改为事件反馈（`prototype_static/index.html`、`app.js` renderTrioBar、`styles.css` stats-line/streak-badge/trio-bar/chip-btn）
+
+- 应用外壳/UI：首页顶部两层结构落地——①「连续训练 X 天」从普通统计提升为绿色链条徽记胶囊（与「今日/累计」用分隔线分开，突出但不做强任务）；②统计行下新增「今日三练」全局状态条（`renderTrioBar`，Tab 之上跨三模块）：字词/句子/辨音三色点 + ✓ 逐项点亮、右侧「三项齐 · +100 拼点」、全齐显示「今日三练完成 ✓」，不用 1/3 数字；两套状态明确分家（连续=当天任意训练 ≥20%，三练=三类各完整完成一次）（`prototype_static/index.html`、`app.js` renderTrioBar/renderStats、`styles.css` streak-badge/trio-bar）
+- 奖励与作品：修复「待拼耗尽后按钮冻结」——待拼拼完的瞬间按钮停在最后一个非零值（如「剩 2 颗」）但实际已无可拼，现就地切回「去训练赚拼点」态；并防护 placeBeads 重渲染后 pointerdown 处理器对空 placement 的引用（`prototype_static/app.js` placeBeads / bindPlacement）
+- 奖励与作品：长按拼入加速曲线改为随待拼量自适应——8 颗/秒起步、2.5 秒升到 ~52 颗/秒（小作品保持颗粒感），待拼越多越快（大堆峰值 ~240 颗/秒）、快拼完自动减速收尾；按住不放耗时 2539 颗 ~63s→~23s、标准训练日 1900 颗 ~48s→~20s、58 颗 ~2s（`prototype_static/app.js` startHold）
+- 奖励与作品（大节点）：拼豆作品从「展示型进度条」改为「亲手拼入」交互——结算拼点只进当前作品「待拼」（数据模型拆分 placedBeads/pendingBeads，v2→v3 迁移：旧 earnedBeads 整体迁为已拼入），用户在作品详情「按住拼入」（单击 1 颗 / 长按加速连拼 + WebAudio 轻音效与震动），拼满最后一颗在弹层内走熨烫仪式 → 成品庆祝（系列 6/6 庆祝移入弹层，删除旧完成页庆祝函数）；fill_order 从随机洗牌改为「同色连通块 + 自上而下 + 块内 BFS 外扩」的区域成块浮现（纯几何排序无随机数，catalog 已重新生成，计数真值不变，4343/4232/3739/3871/4100/4119）；作品详情页删训练分项与「继续练习」，按钮按状态切换（按住拼入 N 颗 / 开始拼这张 / 设为当前作品 / 去训练赚拼点）；结算页改「待拼 · 作品名 +N」轻提示 + 去拼入；作品墙未开始作品 = 毛坯点阵轮廓（0 点亮；当日试过降饱和幽灵预览后按用户偏好回退）；修复改码引入的结算双倍入账 bug（balance 在 applyReward 内重复 +beads）；测试新增 fill_order 成块性断言，全量 319 通过 / 1 跳过；节点记录见 handoff/MEMORY-2026-08-27-bead-placement-regional-fill.md（`scripts/convert_webfem_csv.py`、`prototype_data/artwork_catalog_v2.json`、`prototype_static/app.js`、`prototype_static/styles.css`、`tests/test_webfem_cat_assets.py`、`handoff/*`）
+
+- 奖励与作品：修复作品渲染反逻辑——未开始的作品不再显示彩色成品图、开始拼 0% 不再显示空白；未点亮珠子统一渲染为毛坯底板小点（灰色点阵轮廓，可辨外形），点亮后恢复真实颜色，形成「毛坯 → 逐渐拼成 → 全彩」的视觉推进；同步修正作品墙卡片、作品详情弹层、选作品弹层三处 previewCount 取值（previewCount = 未开始 0 / 进行中已挣颗数 / 完成全量）（`prototype_static/app.js` 的 wallTile / renderDetail / openPicker、`prototype_static/styles.css` 的 `.bead-art .bead:not(.on)`）
+
+## 2026-08-26
+
+- 交接：新增 `handoff/HANDOFF-INDEX-2026-08-26.md`（包索引：阅读顺序/目录/运行/剔噪差异/注意事项）与 `handoff/MEMORY-2026-08-26-cats-v1-rewards-100x100.md`（大节点：决策/验收真值/改动清单）；README 节点清单与 STATUS 指向二者；打包 `普通话语音系统-交接包-2026-08-26.zip`（含源码/资产/数据/音频的可运行快照，剔除 .venv/.git/beads29/原始素材）
+
+- 奖励与作品 100×100 基线：新增 `scripts/convert_webfem_csv.py`（边缘多数色 + 4 邻域 flood-fill 导入 Webfem CSV，禁止写死背景色），6 件猫猫 CSV 真值 4343/4232/3739/3871/4100/4119（合计 24404）全部验收通过；新增 `achievement_config_v2.json`（档位制 word 600/1200、sentence 600/900、discrim 300/600/900、trio_bonus 100、review_reward 100）与 `artwork_catalog_v2.json`（mic 新手 + cat1..cat6 100×100 null/#HEX grid + 确定性 fill_order）；`achievement.py` 重写为 `compute_activity_reward`（≥20% 按比例浮点结算、正确率解绑、无 streak/上限/轮次递减）；`prototype_app.py` 改 v2 加载与 RewardRequest 新字段（discrim 用 completed_points/total_points）；前端改系列作品墙（新手 + 猫猫系列 X/6）、熨烫完成仪式、6/6 系列庆祝、今日三练 +100、首页统计「累计训练 X 天」、辨音/句子档位提示、localStorage v2 迁移；字词档位收敛为 5/10 分钟、句子 10/15 句；测试更新 + 新增 `tests/test_webfem_cat_assets.py`（全量 314 通过 / 6 环境失败不变）（`src/pth_corpus/achievement.py`、`prototype_app.py`、`prototype_data/*`、`prototype_static/*`、`training/models.py`、`data/derived/training-generator-v2/generator_config_v2.json`、`tests/*`、`README.md`、`handoff/STATUS.md`、`handoff/modules/rewards-achievement.md`）
+
+## 2026-08-23
+
+- 听辨 v3 重构：主词库「轮次+固定乱序+游标」持续覆盖；词库批末趁热巩固；长期错题复习 1/3/7 天间隔；双卡片恢复；反馈 0.7s + 轻触跳过；今日复习完成 +2 拼点；删除旧冲刺/触发/归档逻辑（`src/pth_corpus/discrim_progress.py`、`prototype_app.py`、`achievement.py`、`prototype_static/*`、两个 config json、tests 两个文件）
+- 修复：`test_training_v2::test_history_window_pruning` 硬编码日期改为以当前时间为基准（`tests/test_training_v2.py`）
+- 交接系统重组：新增 `handoff/README.md`、`handoff/STATUS.md`、`handoff/CHANGELOG.md`、`handoff/modules/*.md`；README 节点清单指向新入口
+
+- 交接文档：删除 STATUS.md 中「下一步是用户用 V4 flash 做小细节修改」的表述（handoff/STATUS.md）
+- 评审材料：新增「奖励与作品系统现状完整说明」文档，供产品评审后按结论修改（handoff/PRODUCT-REVIEW-rewards-artworks-2026-08-23.md）
+- 评审材料：新增「产品与体验背景（一页纸人话版）」；核对共识版设计文档与现状差异（听辨轮长已改 50/100/150 词、复习 +2 为新增；费率/三层/上限一致）（handoff/PRODUCT-CONTEXT-2026-08-23.md）
+
+## 2026-08-22
+
+- 听辨 UI：标准音从底部导航移回顶栏 chip（不做 tab），顶栏改两行布局（标题行 + 副标语/三个 chip 行）（`prototype_static/index.html`、`styles.css`、`app.js`）
+
+## 2026-08-16 ~ 08-22
+
+- 拼豆明示：句子/辨音「练多久」提示加基础拼点（与服务端口径一致，听辨随当日轮次递减）（`prototype_static/app.js`）
+- 首页统计加回「累计练习」；辨音单卡去掉勾选语义（`index.html`、`app.js`）
+- 标准音（原「音卡」）从辨音面板剥离为全局工具入口，页面标题改名（`index.html`、`app.js`、`styles.css`）
+- 错题本第一版（列表 + 单点复习）→ 升级为平行练习来源（服务端 wrongbook 出题）→ 被 08-23 v3 重构取代（`discrimination.py`、`prototype_app.py`、`prototype_static/*`）

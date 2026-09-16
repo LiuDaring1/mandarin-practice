@@ -1,0 +1,203 @@
+{
+  "version": "a-app-v4-2026-09-12",
+  "description": "A original daily cues + revised rewards. Swap slot variants/gain in this manifest; keep event IDs.",
+  "defaults": {
+    "volume": 0.7,
+    "muted": false,
+    "preference_key": "pth-sound-preferences-v1"
+  },
+  "sounds": [
+    {
+      "id": "ui.confirm",
+      "style": "a",
+      "label": "确认 / 切换",
+      "description": "短木珠轻触，只确认明确操作",
+      "duration_ms": 78,
+      "gain": 1,
+      "peak_dbfs": -23,
+      "bus": "interaction",
+      "priority": 1,
+      "cooldown_ms": 90,
+      "variants": [
+        "a-ui-confirm-01.wav"
+      ],
+      "default_enabled": true,
+      "source": "原创程序合成；sources/generate.py；seed 20260912"
+    },
+    {
+      "id": "training.start",
+      "style": "a",
+      "label": "开始训练",
+      "description": "开始时轻提示；示范音立即优先，不延迟训练",
+      "duration_ms": 280,
+      "gain": 1,
+      "peak_dbfs": -21,
+      "bus": "feedback",
+      "priority": 3,
+      "cooldown_ms": 400,
+      "variants": [
+        "a-training-start-01.wav"
+      ],
+      "default_enabled": true,
+      "source": "原创程序合成；sources/generate.py；seed 20260912"
+    },
+    {
+      "id": "follow.ready",
+      "style": "a",
+      "label": "轮到你跟读（可选）",
+      "description": "中性单颗，默认关闭，不代表发音判断",
+      "duration_ms": 100,
+      "gain": 1,
+      "peak_dbfs": -28,
+      "bus": "interaction",
+      "priority": 1,
+      "cooldown_ms": 500,
+      "variants": [
+        "a-follow-ready-01.wav"
+      ],
+      "default_enabled": false,
+      "source": "原创程序合成；sources/generate.py；seed 20260912"
+    },
+    {
+      "id": "answer.correct",
+      "style": "a",
+      "label": "辨音答对",
+      "description": "短双珠，同一方向的小肯定",
+      "duration_ms": 220,
+      "gain": 1,
+      "peak_dbfs": -20,
+      "bus": "feedback",
+      "priority": 3,
+      "cooldown_ms": 220,
+      "variants": [
+        "a-answer-correct-01.wav"
+      ],
+      "default_enabled": true,
+      "source": "原创程序合成；sources/generate.py；seed 20260912"
+    },
+    {
+      "id": "answer.retry",
+      "style": "a",
+      "label": "辨音答错",
+      "description": "低而柔的双触，无惩罚性警报",
+      "duration_ms": 200,
+      "gain": 1,
+      "peak_dbfs": -24,
+      "bus": "feedback",
+      "priority": 3,
+      "cooldown_ms": 250,
+      "variants": [
+        "a-answer-retry-01.wav"
+      ],
+      "default_enabled": true,
+      "source": "原创程序合成；sources/generate.py；seed 20260912"
+    },
+    {
+      "id": "reward.arrive",
+      "style": "a",
+      "label": "结算 / 奖励到账",
+      "description": "A 原动机：轻快上行、短亮泛音与干净收尾",
+      "duration_ms": 720,
+      "gain": 1,
+      "peak_dbfs": -19,
+      "bus": "celebration",
+      "priority": 2,
+      "cooldown_ms": 1200,
+      "variants": [
+        "a-v4-reward-arrive.wav"
+      ],
+      "default_enabled": true,
+      "source": "Original A reward refinement; sources/build_app_sounds.py"
+    },
+    {
+      "id": "day.complete",
+      "style": "a",
+      "label": "今日三练达成",
+      "description": "A 原动机：轻快上行、短亮泛音与干净收尾",
+      "duration_ms": 960,
+      "gain": 1,
+      "peak_dbfs": -18.5,
+      "bus": "celebration",
+      "priority": 2,
+      "cooldown_ms": 1500,
+      "variants": [
+        "a-v4-day-complete.wav"
+      ],
+      "default_enabled": true,
+      "source": "Original A reward refinement; sources/build_app_sounds.py"
+    },
+    {
+      "id": "bead.place",
+      "style": "a",
+      "label": "拼入一颗",
+      "description": "六个物理落珠变体，限流、不排队",
+      "duration_ms": 66,
+      "gain": 1,
+      "peak_dbfs": -25,
+      "bus": "bead",
+      "priority": 1,
+      "cooldown_ms": 100,
+      "variants": [
+        "a-bead-place-01.wav",
+        "a-bead-place-02.wav",
+        "a-bead-place-03.wav",
+        "a-bead-place-04.wav",
+        "a-bead-place-05.wav",
+        "a-bead-place-06.wav"
+      ],
+      "default_enabled": true,
+      "source": "原创程序合成；sources/generate.py；seed 20260912"
+    },
+    {
+      "id": "artwork.fuse",
+      "style": "a",
+      "label": "熨烫 / 融合",
+      "description": "柔软摩擦与共鸣，淡入淡出贴合动画",
+      "duration_ms": 1800,
+      "gain": 1,
+      "peak_dbfs": -27,
+      "bus": "texture",
+      "priority": 1,
+      "cooldown_ms": 1900,
+      "variants": [
+        "a-artwork-fuse-01.wav"
+      ],
+      "default_enabled": true,
+      "source": "原创程序合成；sources/generate.py；seed 20260912"
+    },
+    {
+      "id": "artwork.complete",
+      "style": "a",
+      "label": "单件作品完成",
+      "description": "A 原动机：轻快上行、短亮泛音与干净收尾",
+      "duration_ms": 1250,
+      "gain": 1,
+      "peak_dbfs": -18.5,
+      "bus": "celebration",
+      "priority": 2,
+      "cooldown_ms": 1500,
+      "variants": [
+        "a-v4-artwork-complete.wav"
+      ],
+      "default_enabled": true,
+      "source": "Original A reward refinement; sources/build_app_sounds.py"
+    },
+    {
+      "id": "series.complete",
+      "style": "a",
+      "label": "系列集齐",
+      "description": "A 原动机：轻快上行、短亮泛音与干净收尾",
+      "duration_ms": 1650,
+      "gain": 1,
+      "peak_dbfs": -18,
+      "bus": "celebration",
+      "priority": 2,
+      "cooldown_ms": 2000,
+      "variants": [
+        "a-v4-series-complete.wav"
+      ],
+      "default_enabled": true,
+      "source": "Original A reward refinement; sources/build_app_sounds.py"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "checks": [
+    "Premature/stale DOM ended event cannot advance the current queue",
+    "Real failed network request recovers via same-button retry without changing source or reloading page",
+    "12-second loading timeout gives retry feedback and clears queue",
+    "Fresh page defaults to normal audible mode"
+  ],
+  "status": "passed"
+}

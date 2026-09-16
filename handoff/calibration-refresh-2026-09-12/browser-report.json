@@ -1,0 +1,1632 @@
+{
+  "environment": "Desktop Chrome, isolated context; emulated viewport sizes, not physical phones",
+  "checks": [
+    {
+      "name": "normal an_ang a: natural playback and audio",
+      "detail": {
+        "events": [
+          {
+            "type": "playing",
+            "final": "an",
+            "src": "http://127.0.0.1:8771/assets/calibration/an.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": false,
+            "time": 0,
+            "audioBytes": 72
+          },
+          {
+            "type": "ended",
+            "final": "an",
+            "src": "http://127.0.0.1:8771/assets/calibration/an.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": false,
+            "time": 2.482993,
+            "audioBytes": 17092
+          }
+        ],
+        "peaks": {
+          "an": 0.33873561400439967
+        },
+        "status": "播放完毕 · 正常 · 有声，可再次点按重播"
+      }
+    },
+    {
+      "name": "normal an_ang b: natural playback and audio",
+      "detail": {
+        "events": [
+          {
+            "type": "playing",
+            "final": "ang",
+            "src": "http://127.0.0.1:8771/assets/calibration/ang.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": false,
+            "time": 0,
+            "audioBytes": 144
+          },
+          {
+            "type": "ended",
+            "final": "ang",
+            "src": "http://127.0.0.1:8771/assets/calibration/ang.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": false,
+            "time": 2.482993,
+            "audioBytes": 18876
+          }
+        ],
+        "peaks": {
+          "ang": 0.38598681920188205
+        },
+        "status": "播放完毕 · 正常 · 有声，可再次点按重播"
+      }
+    },
+    {
+      "name": "normal an_ang ab: natural playback and audio",
+      "detail": {
+        "events": [
+          {
+            "type": "playing",
+            "final": "an",
+            "src": "http://127.0.0.1:8771/assets/calibration/an.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": false,
+            "time": 0.005805,
+            "audioBytes": 17236
+          },
+          {
+            "type": "ended",
+            "final": "an",
+            "src": "http://127.0.0.1:8771/assets/calibration/an.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": false,
+            "time": 2.482993,
+            "audioBytes": 34256
+          },
+          {
+            "type": "playing",
+            "final": "ang",
+            "src": "http://127.0.0.1:8771/assets/calibration/ang.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": false,
+            "time": 0,
+            "audioBytes": 18948
+          },
+          {
+            "type": "ended",
+            "final": "ang",
+            "src": "http://127.0.0.1:8771/assets/calibration/ang.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": false,
+            "time": 2.482993,
+            "audioBytes": 37680
+          }
+        ],
+        "peaks": {
+          "an": 0.3364061324779064,
+          "ang": 0.38465593157102157
+        },
+        "status": "播放完毕 · 正常 · 有声，可再次点按重播"
+      }
+    },
+    {
+      "name": "normal an_ang ba: natural playback and audio",
+      "detail": {
+        "events": [
+          {
+            "type": "playing",
+            "final": "ang",
+            "src": "http://127.0.0.1:8771/assets/calibration/ang.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": false,
+            "time": 0.004542,
+            "audioBytes": 37824
+          },
+          {
+            "type": "ended",
+            "final": "ang",
+            "src": "http://127.0.0.1:8771/assets/calibration/ang.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": false,
+            "time": 2.482993,
+            "audioBytes": 56556
+          },
+          {
+            "type": "playing",
+            "final": "an",
+            "src": "http://127.0.0.1:8771/assets/calibration/an.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": false,
+            "time": 0,
+            "audioBytes": 34328
+          },
+          {
+            "type": "ended",
+            "final": "an",
+            "src": "http://127.0.0.1:8771/assets/calibration/an.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": false,
+            "time": 2.482993,
+            "audioBytes": 51348
+          }
+        ],
+        "peaks": {
+          "ang": 0.384655904453246,
+          "an": 0.33209967279096403
+        },
+        "status": "播放完毕 · 正常 · 有声，可再次点按重播"
+      }
+    },
+    {
+      "name": "normal en_eng a: natural playback and audio",
+      "detail": {
+        "events": [
+          {
+            "type": "playing",
+            "final": "en",
+            "src": "http://127.0.0.1:8771/assets/calibration/en.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": false,
+            "time": 0,
+            "audioBytes": 144
+          },
+          {
+            "type": "ended",
+            "final": "en",
+            "src": "http://127.0.0.1:8771/assets/calibration/en.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": false,
+            "time": 2.482993,
+            "audioBytes": 31639
+          }
+        ],
+        "peaks": {
+          "en": 0.12129296505504715
+        },
+        "status": "播放完毕 · 正常 · 有声，可再次点按重播"
+      }
+    },
+    {
+      "name": "normal en_eng b: natural playback and audio",
+      "detail": {
+        "events": [
+          {
+            "type": "playing",
+            "final": "eng",
+            "src": "http://127.0.0.1:8771/assets/calibration/eng.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": false,
+            "time": 0,
+            "audioBytes": 144
+          },
+          {
+            "type": "ended",
+            "final": "eng",
+            "src": "http://127.0.0.1:8771/assets/calibration/eng.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": false,
+            "time": 2.482993,
+            "audioBytes": 39535
+          }
+        ],
+        "peaks": {
+          "eng": 0.2798712390207161
+        },
+        "status": "播放完毕 · 正常 · 有声，可再次点按重播"
+      }
+    },
+    {
+      "name": "normal en_eng ab: natural playback and audio",
+      "detail": {
+        "events": [
+          {
+            "type": "playing",
+            "final": "en",
+            "src": "http://127.0.0.1:8771/assets/calibration/en.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": false,
+            "time": 0.000105,
+            "audioBytes": 31783
+          },
+          {
+            "type": "ended",
+            "final": "en",
+            "src": "http://127.0.0.1:8771/assets/calibration/en.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": false,
+            "time": 2.482993,
+            "audioBytes": 63278
+          },
+          {
+            "type": "playing",
+            "final": "eng",
+            "src": "http://127.0.0.1:8771/assets/calibration/eng.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": false,
+            "time": 0,
+            "audioBytes": 39607
+          },
+          {
+            "type": "ended",
+            "final": "eng",
+            "src": "http://127.0.0.1:8771/assets/calibration/eng.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": false,
+            "time": 2.482993,
+            "audioBytes": 78998
+          }
+        ],
+        "peaks": {
+          "en": 0.12235675380154372,
+          "eng": 0.2798420414168201
+        },
+        "status": "播放完毕 · 正常 · 有声，可再次点按重播"
+      }
+    },
+    {
+      "name": "normal en_eng ba: natural playback and audio",
+      "detail": {
+        "events": [
+          {
+            "type": "playing",
+            "final": "eng",
+            "src": "http://127.0.0.1:8771/assets/calibration/eng.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": false,
+            "time": 0.003467,
+            "audioBytes": 79142
+          },
+          {
+            "type": "ended",
+            "final": "eng",
+            "src": "http://127.0.0.1:8771/assets/calibration/eng.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": false,
+            "time": 2.482993,
+            "audioBytes": 118533
+          },
+          {
+            "type": "playing",
+            "final": "en",
+            "src": "http://127.0.0.1:8771/assets/calibration/en.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": false,
+            "time": 0,
+            "audioBytes": 63350
+          },
+          {
+            "type": "ended",
+            "final": "en",
+            "src": "http://127.0.0.1:8771/assets/calibration/en.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": false,
+            "time": 2.482993,
+            "audioBytes": 94845
+          }
+        ],
+        "peaks": {
+          "eng": 0.27996394030849525,
+          "en": 0.12123035200282671
+        },
+        "status": "播放完毕 · 正常 · 有声，可再次点按重播"
+      }
+    },
+    {
+      "name": "normal in_ing a: natural playback and audio",
+      "detail": {
+        "events": [
+          {
+            "type": "playing",
+            "final": "in",
+            "src": "http://127.0.0.1:8771/assets/calibration/in.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": false,
+            "time": 0,
+            "audioBytes": 144
+          },
+          {
+            "type": "ended",
+            "final": "in",
+            "src": "http://127.0.0.1:8771/assets/calibration/in.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": false,
+            "time": 2.482993,
+            "audioBytes": 44245
+          }
+        ],
+        "peaks": {
+          "in": 0.13441886772099582
+        },
+        "status": "播放完毕 · 正常 · 有声，可再次点按重播"
+      }
+    },
+    {
+      "name": "normal in_ing b: natural playback and audio",
+      "detail": {
+        "events": [
+          {
+            "type": "playing",
+            "final": "ing",
+            "src": "http://127.0.0.1:8771/assets/calibration/ing.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": false,
+            "time": 0,
+            "audioBytes": 5950
+          },
+          {
+            "type": "ended",
+            "final": "ing",
+            "src": "http://127.0.0.1:8771/assets/calibration/ing.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": false,
+            "time": 2.482993,
+            "audioBytes": 52943
+          }
+        ],
+        "peaks": {
+          "ing": 0.1189889097715919
+        },
+        "status": "播放完毕 · 正常 · 有声，可再次点按重播"
+      }
+    },
+    {
+      "name": "normal in_ing ab: natural playback and audio",
+      "detail": {
+        "events": [
+          {
+            "type": "playing",
+            "final": "in",
+            "src": "http://127.0.0.1:8771/assets/calibration/in.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": false,
+            "time": 0.004539,
+            "audioBytes": 44389
+          },
+          {
+            "type": "ended",
+            "final": "in",
+            "src": "http://127.0.0.1:8771/assets/calibration/in.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": false,
+            "time": 2.482993,
+            "audioBytes": 88490
+          },
+          {
+            "type": "playing",
+            "final": "ing",
+            "src": "http://127.0.0.1:8771/assets/calibration/ing.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": false,
+            "time": 0,
+            "audioBytes": 55918
+          },
+          {
+            "type": "ended",
+            "final": "ing",
+            "src": "http://127.0.0.1:8771/assets/calibration/ing.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": false,
+            "time": 2.482993,
+            "audioBytes": 102911
+          }
+        ],
+        "peaks": {
+          "in": 0.1340810522425111,
+          "ing": 0.11619366772522563
+        },
+        "status": "播放完毕 · 正常 · 有声，可再次点按重播"
+      }
+    },
+    {
+      "name": "normal in_ing ba: natural playback and audio",
+      "detail": {
+        "events": [
+          {
+            "type": "playing",
+            "final": "ing",
+            "src": "http://127.0.0.1:8771/assets/calibration/ing.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": false,
+            "time": 0.003394,
+            "audioBytes": 108861
+          },
+          {
+            "type": "ended",
+            "final": "ing",
+            "src": "http://127.0.0.1:8771/assets/calibration/ing.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": false,
+            "time": 2.482993,
+            "audioBytes": 155854
+          },
+          {
+            "type": "playing",
+            "final": "in",
+            "src": "http://127.0.0.1:8771/assets/calibration/in.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": false,
+            "time": 0,
+            "audioBytes": 88562
+          },
+          {
+            "type": "ended",
+            "final": "in",
+            "src": "http://127.0.0.1:8771/assets/calibration/in.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": false,
+            "time": 2.482993,
+            "audioBytes": 132663
+          }
+        ],
+        "peaks": {
+          "ing": 0.11619359622969382,
+          "in": 0.13455495877171494
+        },
+        "status": "播放完毕 · 正常 · 有声，可再次点按重播"
+      }
+    },
+    {
+      "name": "slow an_ang a: natural playback and audio",
+      "detail": {
+        "events": [
+          {
+            "type": "playing",
+            "final": "an",
+            "src": "http://127.0.0.1:8771/assets/calibration/an-slow.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": true,
+            "time": 0.000182,
+            "audioBytes": 0
+          },
+          {
+            "type": "ended",
+            "final": "an",
+            "src": "http://127.0.0.1:8771/assets/calibration/an-slow.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": true,
+            "time": 4.933333,
+            "audioBytes": 0
+          }
+        ],
+        "peaks": {
+          "an": 0
+        },
+        "status": "播放完毕 · 半速 · 静音，可再次点按重播"
+      }
+    },
+    {
+      "name": "slow an_ang b: natural playback and audio",
+      "detail": {
+        "events": [
+          {
+            "type": "playing",
+            "final": "ang",
+            "src": "http://127.0.0.1:8771/assets/calibration/ang-slow.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": true,
+            "time": 0.000225,
+            "audioBytes": 0
+          },
+          {
+            "type": "ended",
+            "final": "ang",
+            "src": "http://127.0.0.1:8771/assets/calibration/ang-slow.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": true,
+            "time": 4.933333,
+            "audioBytes": 0
+          }
+        ],
+        "peaks": {
+          "ang": 0
+        },
+        "status": "播放完毕 · 半速 · 静音，可再次点按重播"
+      }
+    },
+    {
+      "name": "slow an_ang ab: natural playback and audio",
+      "detail": {
+        "events": [
+          {
+            "type": "playing",
+            "final": "an",
+            "src": "http://127.0.0.1:8771/assets/calibration/an-slow.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": true,
+            "time": 0.00014,
+            "audioBytes": 0
+          },
+          {
+            "type": "ended",
+            "final": "an",
+            "src": "http://127.0.0.1:8771/assets/calibration/an-slow.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": true,
+            "time": 4.933333,
+            "audioBytes": 0
+          },
+          {
+            "type": "playing",
+            "final": "ang",
+            "src": "http://127.0.0.1:8771/assets/calibration/ang-slow.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": true,
+            "time": 0.000189,
+            "audioBytes": 0
+          },
+          {
+            "type": "ended",
+            "final": "ang",
+            "src": "http://127.0.0.1:8771/assets/calibration/ang-slow.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": true,
+            "time": 4.933333,
+            "audioBytes": 0
+          }
+        ],
+        "peaks": {
+          "an": 0,
+          "ang": 0
+        },
+        "status": "播放完毕 · 半速 · 静音，可再次点按重播"
+      }
+    },
+    {
+      "name": "slow an_ang ba: natural playback and audio",
+      "detail": {
+        "events": [
+          {
+            "type": "playing",
+            "final": "ang",
+            "src": "http://127.0.0.1:8771/assets/calibration/ang-slow.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": true,
+            "time": 0.000138,
+            "audioBytes": 0
+          },
+          {
+            "type": "playing",
+            "final": "ang",
+            "src": "http://127.0.0.1:8771/assets/calibration/ang-slow.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": true,
+            "time": 1.984945,
+            "audioBytes": 0
+          },
+          {
+            "type": "ended",
+            "final": "ang",
+            "src": "http://127.0.0.1:8771/assets/calibration/ang-slow.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": true,
+            "time": 4.933333,
+            "audioBytes": 0
+          },
+          {
+            "type": "playing",
+            "final": "an",
+            "src": "http://127.0.0.1:8771/assets/calibration/an-slow.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": true,
+            "time": 0.000314,
+            "audioBytes": 0
+          },
+          {
+            "type": "ended",
+            "final": "an",
+            "src": "http://127.0.0.1:8771/assets/calibration/an-slow.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": true,
+            "time": 4.933333,
+            "audioBytes": 0
+          }
+        ],
+        "peaks": {
+          "ang": 0,
+          "an": 0
+        },
+        "status": "播放完毕 · 半速 · 静音，可再次点按重播"
+      }
+    },
+    {
+      "name": "slow en_eng a: natural playback and audio",
+      "detail": {
+        "events": [
+          {
+            "type": "playing",
+            "final": "en",
+            "src": "http://127.0.0.1:8771/assets/calibration/en-slow.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": true,
+            "time": 0.000154,
+            "audioBytes": 0
+          },
+          {
+            "type": "ended",
+            "final": "en",
+            "src": "http://127.0.0.1:8771/assets/calibration/en-slow.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": true,
+            "time": 4.8,
+            "audioBytes": 0
+          }
+        ],
+        "peaks": {
+          "en": 0
+        },
+        "status": "播放完毕 · 半速 · 静音，可再次点按重播"
+      }
+    },
+    {
+      "name": "slow en_eng b: natural playback and audio",
+      "detail": {
+        "events": [
+          {
+            "type": "playing",
+            "final": "eng",
+            "src": "http://127.0.0.1:8771/assets/calibration/eng-slow.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": true,
+            "time": 0.000203,
+            "audioBytes": 0
+          },
+          {
+            "type": "ended",
+            "final": "eng",
+            "src": "http://127.0.0.1:8771/assets/calibration/eng-slow.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": true,
+            "time": 4.933333,
+            "audioBytes": 0
+          }
+        ],
+        "peaks": {
+          "eng": 0
+        },
+        "status": "播放完毕 · 半速 · 静音，可再次点按重播"
+      }
+    },
+    {
+      "name": "slow en_eng ab: natural playback and audio",
+      "detail": {
+        "events": [
+          {
+            "type": "playing",
+            "final": "en",
+            "src": "http://127.0.0.1:8771/assets/calibration/en-slow.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": true,
+            "time": 0.000127,
+            "audioBytes": 0
+          },
+          {
+            "type": "ended",
+            "final": "en",
+            "src": "http://127.0.0.1:8771/assets/calibration/en-slow.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": true,
+            "time": 4.8,
+            "audioBytes": 0
+          },
+          {
+            "type": "playing",
+            "final": "eng",
+            "src": "http://127.0.0.1:8771/assets/calibration/eng-slow.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": true,
+            "time": 0.00206,
+            "audioBytes": 0
+          },
+          {
+            "type": "ended",
+            "final": "eng",
+            "src": "http://127.0.0.1:8771/assets/calibration/eng-slow.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": true,
+            "time": 4.933333,
+            "audioBytes": 0
+          }
+        ],
+        "peaks": {
+          "en": 0,
+          "eng": 0
+        },
+        "status": "播放完毕 · 半速 · 静音，可再次点按重播"
+      }
+    },
+    {
+      "name": "slow en_eng ba: natural playback and audio",
+      "detail": {
+        "events": [
+          {
+            "type": "playing",
+            "final": "eng",
+            "src": "http://127.0.0.1:8771/assets/calibration/eng-slow.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": true,
+            "time": 0.000263,
+            "audioBytes": 0
+          },
+          {
+            "type": "ended",
+            "final": "eng",
+            "src": "http://127.0.0.1:8771/assets/calibration/eng-slow.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": true,
+            "time": 4.933333,
+            "audioBytes": 0
+          },
+          {
+            "type": "playing",
+            "final": "en",
+            "src": "http://127.0.0.1:8771/assets/calibration/en-slow.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": true,
+            "time": 0.004542,
+            "audioBytes": 0
+          },
+          {
+            "type": "ended",
+            "final": "en",
+            "src": "http://127.0.0.1:8771/assets/calibration/en-slow.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": true,
+            "time": 4.8,
+            "audioBytes": 0
+          }
+        ],
+        "peaks": {
+          "eng": 0,
+          "en": 0
+        },
+        "status": "播放完毕 · 半速 · 静音，可再次点按重播"
+      }
+    },
+    {
+      "name": "slow in_ing a: natural playback and audio",
+      "detail": {
+        "events": [
+          {
+            "type": "playing",
+            "final": "in",
+            "src": "http://127.0.0.1:8771/assets/calibration/in-slow.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": true,
+            "time": 0.000295,
+            "audioBytes": 0
+          },
+          {
+            "type": "ended",
+            "final": "in",
+            "src": "http://127.0.0.1:8771/assets/calibration/in-slow.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": true,
+            "time": 4.933333,
+            "audioBytes": 0
+          }
+        ],
+        "peaks": {
+          "in": 0
+        },
+        "status": "播放完毕 · 半速 · 静音，可再次点按重播"
+      }
+    },
+    {
+      "name": "slow in_ing b: natural playback and audio",
+      "detail": {
+        "events": [
+          {
+            "type": "playing",
+            "final": "ing",
+            "src": "http://127.0.0.1:8771/assets/calibration/ing-slow.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": true,
+            "time": 0.000151,
+            "audioBytes": 0
+          },
+          {
+            "type": "ended",
+            "final": "ing",
+            "src": "http://127.0.0.1:8771/assets/calibration/ing-slow.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": true,
+            "time": 4.933333,
+            "audioBytes": 0
+          }
+        ],
+        "peaks": {
+          "ing": 0
+        },
+        "status": "播放完毕 · 半速 · 静音，可再次点按重播"
+      }
+    },
+    {
+      "name": "slow in_ing ab: natural playback and audio",
+      "detail": {
+        "events": [
+          {
+            "type": "playing",
+            "final": "in",
+            "src": "http://127.0.0.1:8771/assets/calibration/in-slow.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": true,
+            "time": 0.00016,
+            "audioBytes": 0
+          },
+          {
+            "type": "ended",
+            "final": "in",
+            "src": "http://127.0.0.1:8771/assets/calibration/in-slow.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": true,
+            "time": 4.933333,
+            "audioBytes": 0
+          },
+          {
+            "type": "playing",
+            "final": "ing",
+            "src": "http://127.0.0.1:8771/assets/calibration/ing-slow.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": true,
+            "time": 0.000304,
+            "audioBytes": 0
+          },
+          {
+            "type": "ended",
+            "final": "ing",
+            "src": "http://127.0.0.1:8771/assets/calibration/ing-slow.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": true,
+            "time": 4.933333,
+            "audioBytes": 0
+          }
+        ],
+        "peaks": {
+          "in": 0,
+          "ing": 0
+        },
+        "status": "播放完毕 · 半速 · 静音，可再次点按重播"
+      }
+    },
+    {
+      "name": "slow in_ing ba: natural playback and audio",
+      "detail": {
+        "events": [
+          {
+            "type": "playing",
+            "final": "ing",
+            "src": "http://127.0.0.1:8771/assets/calibration/ing-slow.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": true,
+            "time": 0.000158,
+            "audioBytes": 0
+          },
+          {
+            "type": "ended",
+            "final": "ing",
+            "src": "http://127.0.0.1:8771/assets/calibration/ing-slow.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": true,
+            "time": 4.933333,
+            "audioBytes": 0
+          },
+          {
+            "type": "playing",
+            "final": "in",
+            "src": "http://127.0.0.1:8771/assets/calibration/in-slow.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": true,
+            "time": 0.000149,
+            "audioBytes": 0
+          },
+          {
+            "type": "ended",
+            "final": "in",
+            "src": "http://127.0.0.1:8771/assets/calibration/in-slow.mp4?v=2026-09-12-series-v2",
+            "rate": 1,
+            "muted": true,
+            "time": 4.933333,
+            "audioBytes": 0
+          }
+        ],
+        "peaks": {
+          "ing": 0,
+          "in": 0
+        },
+        "status": "播放完毕 · 半速 · 静音，可再次点按重播"
+      }
+    },
+    {
+      "name": "rapid group switch ignores captured old ended callback",
+      "detail": true
+    },
+    {
+      "name": "speed switch and stop cancel the whole queue",
+      "detail": true
+    },
+    {
+      "name": "replay starts at zero; navigating away cancels queue",
+      "detail": true
+    },
+    {
+      "name": "autoplay rejection feedback and manual retry",
+      "detail": true
+    },
+    {
+      "name": "late play rejection cannot stop a newer selection",
+      "detail": true
+    },
+    {
+      "name": "missing media reports failure, no next clip, retry succeeds",
+      "detail": true
+    },
+    {
+      "name": "pagehide and hidden-page handlers stop playback (simulated browser events)",
+      "detail": true
+    },
+    {
+      "name": "no overlapping videos during all flows",
+      "detail": true
+    },
+    {
+      "name": "keyboard Enter and Space activate speed, playback and stop",
+      "detail": true
+    },
+    {
+      "name": "360/390/430/600/1024 layout, full 16:9 frame, 44px controls, local-only resources",
+      "detail": true
+    }
+  ],
+  "layouts": [
+    {
+      "width": 360,
+      "scrollWidth": 360,
+      "videos": [
+        {
+          "w": 298,
+          "h": 167.625,
+          "fit": "contain",
+          "sourceWidth": 1920,
+          "sourceHeight": 1080
+        },
+        {
+          "w": 298,
+          "h": 167.625,
+          "fit": "contain",
+          "sourceWidth": 1920,
+          "sourceHeight": 1080
+        },
+        {
+          "w": 298,
+          "h": 167.625,
+          "fit": "contain",
+          "sourceWidth": 1920,
+          "sourceHeight": 1080
+        },
+        {
+          "w": 298,
+          "h": 167.625,
+          "fit": "contain",
+          "sourceWidth": 1920,
+          "sourceHeight": 1080
+        },
+        {
+          "w": 298,
+          "h": 167.625,
+          "fit": "contain",
+          "sourceWidth": 1920,
+          "sourceHeight": 1080
+        },
+        {
+          "w": 298,
+          "h": 167.625,
+          "fit": "contain",
+          "sourceWidth": 1920,
+          "sourceHeight": 1080
+        }
+      ],
+      "buttons": [
+        {
+          "text": "‹",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "text": "正常 · 有声",
+          "w": 158,
+          "h": 44
+        },
+        {
+          "text": "半速 · 静音",
+          "w": 158,
+          "h": 44
+        },
+        {
+          "text": "停止",
+          "w": 328,
+          "h": 44
+        },
+        {
+          "text": "an",
+          "w": 146.5,
+          "h": 44
+        },
+        {
+          "text": "ang",
+          "w": 146.5,
+          "h": 44
+        },
+        {
+          "text": "an → ang",
+          "w": 146.5,
+          "h": 44
+        },
+        {
+          "text": "ang → an",
+          "w": 146.5,
+          "h": 44
+        },
+        {
+          "text": "en",
+          "w": 146.5,
+          "h": 44
+        },
+        {
+          "text": "eng",
+          "w": 146.5,
+          "h": 44
+        },
+        {
+          "text": "en → eng",
+          "w": 146.5,
+          "h": 44
+        },
+        {
+          "text": "eng → en",
+          "w": 146.5,
+          "h": 44
+        },
+        {
+          "text": "in",
+          "w": 146.5,
+          "h": 44
+        },
+        {
+          "text": "ing",
+          "w": 146.5,
+          "h": 44
+        },
+        {
+          "text": "in → ing",
+          "w": 146.5,
+          "h": 44
+        },
+        {
+          "text": "ing → in",
+          "w": 146.5,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "scrollWidth": 390,
+      "videos": [
+        {
+          "w": 320,
+          "h": 180,
+          "fit": "contain",
+          "sourceWidth": 1920,
+          "sourceHeight": 1080
+        },
+        {
+          "w": 320,
+          "h": 180,
+          "fit": "contain",
+          "sourceWidth": 1920,
+          "sourceHeight": 1080
+        },
+        {
+          "w": 320,
+          "h": 180,
+          "fit": "contain",
+          "sourceWidth": 1920,
+          "sourceHeight": 1080
+        },
+        {
+          "w": 320,
+          "h": 180,
+          "fit": "contain",
+          "sourceWidth": 1920,
+          "sourceHeight": 1080
+        },
+        {
+          "w": 320,
+          "h": 180,
+          "fit": "contain",
+          "sourceWidth": 1920,
+          "sourceHeight": 1080
+        },
+        {
+          "w": 320,
+          "h": 180,
+          "fit": "contain",
+          "sourceWidth": 1920,
+          "sourceHeight": 1080
+        }
+      ],
+      "buttons": [
+        {
+          "text": "‹",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "text": "正常 · 有声",
+          "w": 169,
+          "h": 44
+        },
+        {
+          "text": "半速 · 静音",
+          "w": 169,
+          "h": 44
+        },
+        {
+          "text": "停止",
+          "w": 350,
+          "h": 44
+        },
+        {
+          "text": "an",
+          "w": 157.5,
+          "h": 44
+        },
+        {
+          "text": "ang",
+          "w": 157.5,
+          "h": 44
+        },
+        {
+          "text": "an → ang",
+          "w": 157.5,
+          "h": 44
+        },
+        {
+          "text": "ang → an",
+          "w": 157.5,
+          "h": 44
+        },
+        {
+          "text": "en",
+          "w": 157.5,
+          "h": 44
+        },
+        {
+          "text": "eng",
+          "w": 157.5,
+          "h": 44
+        },
+        {
+          "text": "en → eng",
+          "w": 157.5,
+          "h": 44
+        },
+        {
+          "text": "eng → en",
+          "w": 157.5,
+          "h": 44
+        },
+        {
+          "text": "in",
+          "w": 157.5,
+          "h": 44
+        },
+        {
+          "text": "ing",
+          "w": 157.5,
+          "h": 44
+        },
+        {
+          "text": "in → ing",
+          "w": 157.5,
+          "h": 44
+        },
+        {
+          "text": "ing → in",
+          "w": 157.5,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "width": 430,
+      "scrollWidth": 430,
+      "videos": [
+        {
+          "w": 360,
+          "h": 202.5,
+          "fit": "contain",
+          "sourceWidth": 1920,
+          "sourceHeight": 1080
+        },
+        {
+          "w": 360,
+          "h": 202.5,
+          "fit": "contain",
+          "sourceWidth": 1920,
+          "sourceHeight": 1080
+        },
+        {
+          "w": 360,
+          "h": 202.5,
+          "fit": "contain",
+          "sourceWidth": 1920,
+          "sourceHeight": 1080
+        },
+        {
+          "w": 360,
+          "h": 202.5,
+          "fit": "contain",
+          "sourceWidth": 1920,
+          "sourceHeight": 1080
+        },
+        {
+          "w": 360,
+          "h": 202.5,
+          "fit": "contain",
+          "sourceWidth": 1920,
+          "sourceHeight": 1080
+        },
+        {
+          "w": 360,
+          "h": 202.5,
+          "fit": "contain",
+          "sourceWidth": 1920,
+          "sourceHeight": 1080
+        }
+      ],
+      "buttons": [
+        {
+          "text": "‹",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "text": "正常 · 有声",
+          "w": 189,
+          "h": 44
+        },
+        {
+          "text": "半速 · 静音",
+          "w": 189,
+          "h": 44
+        },
+        {
+          "text": "停止",
+          "w": 390,
+          "h": 44
+        },
+        {
+          "text": "an",
+          "w": 177.5,
+          "h": 44
+        },
+        {
+          "text": "ang",
+          "w": 177.5,
+          "h": 44
+        },
+        {
+          "text": "an → ang",
+          "w": 177.5,
+          "h": 44
+        },
+        {
+          "text": "ang → an",
+          "w": 177.5,
+          "h": 44
+        },
+        {
+          "text": "en",
+          "w": 177.5,
+          "h": 44
+        },
+        {
+          "text": "eng",
+          "w": 177.5,
+          "h": 44
+        },
+        {
+          "text": "en → eng",
+          "w": 177.5,
+          "h": 44
+        },
+        {
+          "text": "eng → en",
+          "w": 177.5,
+          "h": 44
+        },
+        {
+          "text": "in",
+          "w": 177.5,
+          "h": 44
+        },
+        {
+          "text": "ing",
+          "w": 177.5,
+          "h": 44
+        },
+        {
+          "text": "in → ing",
+          "w": 177.5,
+          "h": 44
+        },
+        {
+          "text": "ing → in",
+          "w": 177.5,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "width": 600,
+      "scrollWidth": 600,
+      "videos": [
+        {
+          "w": 388,
+          "h": 218.25,
+          "fit": "contain",
+          "sourceWidth": 1920,
+          "sourceHeight": 1080
+        },
+        {
+          "w": 388,
+          "h": 218.25,
+          "fit": "contain",
+          "sourceWidth": 1920,
+          "sourceHeight": 1080
+        },
+        {
+          "w": 388,
+          "h": 218.25,
+          "fit": "contain",
+          "sourceWidth": 1920,
+          "sourceHeight": 1080
+        },
+        {
+          "w": 388,
+          "h": 218.25,
+          "fit": "contain",
+          "sourceWidth": 1920,
+          "sourceHeight": 1080
+        },
+        {
+          "w": 388,
+          "h": 218.25,
+          "fit": "contain",
+          "sourceWidth": 1920,
+          "sourceHeight": 1080
+        },
+        {
+          "w": 388,
+          "h": 218.25,
+          "fit": "contain",
+          "sourceWidth": 1920,
+          "sourceHeight": 1080
+        }
+      ],
+      "buttons": [
+        {
+          "text": "‹",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "text": "正常 · 有声",
+          "w": 203,
+          "h": 44
+        },
+        {
+          "text": "半速 · 静音",
+          "w": 203,
+          "h": 44
+        },
+        {
+          "text": "停止",
+          "w": 418,
+          "h": 44
+        },
+        {
+          "text": "an",
+          "w": 191.5,
+          "h": 44
+        },
+        {
+          "text": "ang",
+          "w": 191.5,
+          "h": 44
+        },
+        {
+          "text": "an → ang",
+          "w": 191.5,
+          "h": 44
+        },
+        {
+          "text": "ang → an",
+          "w": 191.5,
+          "h": 44
+        },
+        {
+          "text": "en",
+          "w": 191.5,
+          "h": 44
+        },
+        {
+          "text": "eng",
+          "w": 191.5,
+          "h": 44
+        },
+        {
+          "text": "en → eng",
+          "w": 191.5,
+          "h": 44
+        },
+        {
+          "text": "eng → en",
+          "w": 191.5,
+          "h": 44
+        },
+        {
+          "text": "in",
+          "w": 191.5,
+          "h": 44
+        },
+        {
+          "text": "ing",
+          "w": 191.5,
+          "h": 44
+        },
+        {
+          "text": "in → ing",
+          "w": 191.5,
+          "h": 44
+        },
+        {
+          "text": "ing → in",
+          "w": 191.5,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "scrollWidth": 1024,
+      "videos": [
+        {
+          "w": 388,
+          "h": 218.25,
+          "fit": "contain",
+          "sourceWidth": 1920,
+          "sourceHeight": 1080
+        },
+        {
+          "w": 388,
+          "h": 218.25,
+          "fit": "contain",
+          "sourceWidth": 1920,
+          "sourceHeight": 1080
+        },
+        {
+          "w": 388,
+          "h": 218.25,
+          "fit": "contain",
+          "sourceWidth": 1920,
+          "sourceHeight": 1080
+        },
+        {
+          "w": 388,
+          "h": 218.25,
+          "fit": "contain",
+          "sourceWidth": 1920,
+          "sourceHeight": 1080
+        },
+        {
+          "w": 388,
+          "h": 218.25,
+          "fit": "contain",
+          "sourceWidth": 1920,
+          "sourceHeight": 1080
+        },
+        {
+          "w": 388,
+          "h": 218.25,
+          "fit": "contain",
+          "sourceWidth": 1920,
+          "sourceHeight": 1080
+        }
+      ],
+      "buttons": [
+        {
+          "text": "‹",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "text": "正常 · 有声",
+          "w": 203,
+          "h": 44
+        },
+        {
+          "text": "半速 · 静音",
+          "w": 203,
+          "h": 44
+        },
+        {
+          "text": "停止",
+          "w": 418,
+          "h": 44
+        },
+        {
+          "text": "an",
+          "w": 191.5,
+          "h": 44
+        },
+        {
+          "text": "ang",
+          "w": 191.5,
+          "h": 44
+        },
+        {
+          "text": "an → ang",
+          "w": 191.5,
+          "h": 44
+        },
+        {
+          "text": "ang → an",
+          "w": 191.5,
+          "h": 44
+        },
+        {
+          "text": "en",
+          "w": 191.5,
+          "h": 44
+        },
+        {
+          "text": "eng",
+          "w": 191.5,
+          "h": 44
+        },
+        {
+          "text": "en → eng",
+          "w": 191.5,
+          "h": 44
+        },
+        {
+          "text": "eng → en",
+          "w": 191.5,
+          "h": 44
+        },
+        {
+          "text": "in",
+          "w": 191.5,
+          "h": 44
+        },
+        {
+          "text": "ing",
+          "w": 191.5,
+          "h": 44
+        },
+        {
+          "text": "in → ing",
+          "w": 191.5,
+          "h": 44
+        },
+        {
+          "text": "ing → in",
+          "w": 191.5,
+          "h": 44
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "status": "passed"
+}

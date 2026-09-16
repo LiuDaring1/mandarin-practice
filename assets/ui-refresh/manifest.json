@@ -1,0 +1,152 @@
+[
+  {
+    "name": "orange-encourage",
+    "png_size": [
+      1254,
+      1254
+    ],
+    "png_mode": "RGBA",
+    "webp_size": [
+      512,
+      512
+    ],
+    "webp_mode": "RGBA",
+    "transparent_ratio": 0.613,
+    "webp_bytes": 22840
+  },
+  {
+    "name": "welcome",
+    "png_size": [
+      1254,
+      1254
+    ],
+    "png_mode": "RGBA",
+    "webp_size": [
+      512,
+      512
+    ],
+    "webp_mode": "RGBA",
+    "transparent_ratio": 0.555,
+    "webp_bytes": 31618
+  },
+  {
+    "name": "listen",
+    "png_size": [
+      1254,
+      1254
+    ],
+    "png_mode": "RGBA",
+    "webp_size": [
+      512,
+      512
+    ],
+    "webp_mode": "RGBA",
+    "transparent_ratio": 0.587,
+    "webp_bytes": 28682
+  },
+  {
+    "name": "celebrate",
+    "png_size": [
+      1254,
+      1254
+    ],
+    "png_mode": "RGBA",
+    "webp_size": [
+      512,
+      512
+    ],
+    "webp_mode": "RGBA",
+    "transparent_ratio": 0.627,
+    "webp_bytes": 27104
+  },
+  {
+    "name": "beading",
+    "png_size": [
+      1254,
+      1254
+    ],
+    "png_mode": "RGBA",
+    "webp_size": [
+      512,
+      512
+    ],
+    "webp_mode": "RGBA",
+    "transparent_ratio": 0.57,
+    "webp_bytes": 31700
+  },
+  {
+    "name": "orange",
+    "png_size": [
+      1254,
+      1254
+    ],
+    "png_mode": "RGBA",
+    "webp_size": [
+      512,
+      512
+    ],
+    "webp_mode": "RGBA",
+    "transparent_ratio": 0.64,
+    "webp_bytes": 22102
+  },
+  {
+    "name": "violet",
+    "png_size": [
+      1254,
+      1254
+    ],
+    "png_mode": "RGBA",
+    "webp_size": [
+      512,
+      512
+    ],
+    "webp_mode": "RGBA",
+    "transparent_ratio": 0.659,
+    "webp_bytes": 21556
+  },
+  {
+    "name": "encourage",
+    "png_size": [
+      1254,
+      1254
+    ],
+    "png_mode": "RGBA",
+    "webp_size": [
+      512,
+      512
+    ],
+    "webp_mode": "RGBA",
+    "transparent_ratio": 0.641,
+    "webp_bytes": 22550
+  },
+  {
+    "name": "bead-jar",
+    "png_size": [
+      1254,
+      1254
+    ],
+    "png_mode": "RGBA",
+    "webp_size": [
+      512,
+      512
+    ],
+    "webp_mode": "RGBA",
+    "transparent_ratio": 0.573,
+    "webp_bytes": 32868
+  },
+  {
+    "name": "garden",
+    "png_size": [
+      1254,
+      1254
+    ],
+    "png_mode": "RGBA",
+    "webp_size": [
+      512,
+      512
+    ],
+    "webp_mode": "RGBA",
+    "transparent_ratio": 0.773,
+    "webp_bytes": 21308
+  }
+]

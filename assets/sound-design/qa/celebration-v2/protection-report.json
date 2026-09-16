@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "changed": [],
+  "protected_files": 126,
+  "original_wavs_unchanged": 25,
+  "prototype_files_unchanged": 68,
+  "static_frontend_unchanged": true,
+  "app_http": 200,
+  "lab_http": 200
+}

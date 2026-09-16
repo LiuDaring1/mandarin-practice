@@ -1,0 +1,61 @@
+{
+  "checks": [
+    {
+      "name": "真实用户手势解锁一个播放器，16 个样本就绪",
+      "detail": true
+    },
+    {
+      "name": "开关与音量独立持久化，静音阻止音效，不改训练存储",
+      "detail": true
+    },
+    {
+      "name": "字词示范占用时奖励与反馈被丢弃，示范音量保持 1",
+      "detail": true
+    },
+    {
+      "name": "跟读计时结束不产生答对音",
+      "detail": true
+    },
+    {
+      "name": "标准音顺序播放全程让路，停止释放教学占用",
+      "detail": true
+    },
+    {
+      "name": "同次结算去重、三练替代普通到账、零奖励安静",
+      "detail": true
+    },
+    {
+      "name": "真实最后一颗落珠 → 融合 → 单件完成，仅一段庆祝",
+      "detail": true
+    },
+    {
+      "name": "最后一件完成只响集齐，替代单件，不叠放",
+      "detail": true
+    },
+    {
+      "name": "融合期间关闭后再开别件，旧回调不改新弹层、不补庆祝",
+      "detail": true
+    },
+    {
+      "name": "普通单击保留完整短音，松手不截断 66ms 落珠",
+      "detail": true
+    },
+    {
+      "name": "真实长按播放 A 变体、限流，松手约 10ms 后无残音",
+      "detail": true
+    },
+    {
+      "name": "音效设置四档宽度无溢出",
+      "detail": true
+    },
+    {
+      "name": "只替换 manifest 文件映射，原 reward.arrive 事件立即使用替代样本",
+      "detail": true
+    },
+    {
+      "name": "音库清单加载失败仍可开始训练、播放示范",
+      "detail": true
+    }
+  ],
+  "errors": []
+}

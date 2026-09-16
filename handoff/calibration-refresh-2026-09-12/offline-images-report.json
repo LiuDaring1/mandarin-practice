@@ -1,0 +1,79 @@
+{
+  "status": "passed",
+  "initial": [
+    {
+      "src": "http://127.0.0.1:8771/assets/illustrations/welcome.webp",
+      "complete": true,
+      "w": 512
+    },
+    {
+      "src": "http://127.0.0.1:8771/assets/illustrations/welcome.webp",
+      "complete": true,
+      "w": 512
+    },
+    {
+      "src": "http://127.0.0.1:8771/assets/illustrations/orange.webp",
+      "complete": false,
+      "w": 0
+    },
+    {
+      "src": "http://127.0.0.1:8771/assets/illustrations/violet.webp",
+      "complete": true,
+      "w": 512
+    },
+    {
+      "src": "http://127.0.0.1:8771/assets/illustrations/listen.webp",
+      "complete": true,
+      "w": 512
+    },
+    {
+      "src": "http://127.0.0.1:8771/assets/illustrations/violet.webp",
+      "complete": true,
+      "w": 512
+    }
+  ],
+  "final": [
+    {
+      "src": "http://127.0.0.1:8771/assets/illustrations/welcome.webp",
+      "complete": true,
+      "w": 512
+    },
+    {
+      "src": "http://127.0.0.1:8771/assets/illustrations/welcome.webp",
+      "complete": true,
+      "w": 512
+    },
+    {
+      "src": "http://127.0.0.1:8771/assets/illustrations/orange.webp",
+      "complete": true,
+      "w": 512
+    },
+    {
+      "src": "http://127.0.0.1:8771/assets/illustrations/violet.webp",
+      "complete": true,
+      "w": 512
+    },
+    {
+      "src": "http://127.0.0.1:8771/assets/illustrations/violet.webp",
+      "complete": true,
+      "w": 512
+    },
+    {
+      "src": "http://127.0.0.1:8771/assets/illustrations/orange.webp",
+      "complete": true,
+      "w": 512
+    },
+    {
+      "src": "http://127.0.0.1:8771/assets/illustrations/listen.webp",
+      "complete": true,
+      "w": 512
+    },
+    {
+      "src": "http://127.0.0.1:8771/assets/illustrations/violet.webp",
+      "complete": true,
+      "w": 512
+    }
+  ],
+  "failed": [],
+  "comment": "Explicitly wait for asynchronously loaded DOM images; startup ready flag only guards training readiness."
+}

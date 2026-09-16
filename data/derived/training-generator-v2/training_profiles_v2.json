@@ -1,0 +1,1287 @@
+[
+  {
+    "id": "bilabial_focus",
+    "name": "双唇音单项",
+    "dimension": "initial",
+    "mode": "single_focus",
+    "target_sets": {"T": ["b", "p", "m"]},
+    "buckets": [
+      {
+        "id": "core",
+        "label": "核心 T×T",
+        "target_ratio": 0.8,
+        "role": "core",
+        "rule": {"op": "all_in", "sets": ["T"]},
+        "pair_specs": [{"left": "T", "right": "T"}]
+      },
+      {
+        "id": "supplement",
+        "label": "补充 T↔O",
+        "target_ratio": 0.2,
+        "role": "supplement",
+        "rule": {
+          "op": "all",
+          "rules": [
+            {"op": "any_in", "sets": ["T"]},
+            {"op": "not", "rule": {"op": "all_in", "sets": ["T"]}}
+          ]
+        },
+        "pair_specs": [
+          {"left": "T", "right": "O"},
+          {"left": "O", "right": "T"}
+        ]
+      }
+    ],
+    "allow_other": true,
+    "scarcity": {"repeat_allowed": true, "max_repeat": 2, "min_gap": 20},
+    "notes": "单字 b/p/m 属核心单点。"
+  },
+  {
+    "id": "h_f_focus",
+    "name": "f/h 对比（f 为核心）",
+    "dimension": "initial",
+    "mode": "single_focus",
+    "target_sets": {"F": ["f"], "H": ["h"]},
+    "candidate_rule": {"op": "any_in", "sets": ["F"]},
+    "buckets": [
+      {
+        "id": "core",
+        "label": "核心 f+f / h+f / f+h",
+        "target_ratio": 0.8,
+        "role": "core",
+        "rule": {
+          "op": "all",
+          "rules": [
+            {"op": "any_in", "sets": ["F"]},
+            {"op": "all_in", "sets": ["F", "H"]}
+          ]
+        },
+        "pair_specs": [
+          {"left": "F", "right": "F"},
+          {"left": "H", "right": "F"},
+          {"left": "F", "right": "H"}
+        ]
+      },
+      {
+        "id": "supplement",
+        "label": "补充 f↔O",
+        "target_ratio": 0.2,
+        "role": "supplement",
+        "rule": {
+          "op": "all",
+          "rules": [
+            {"op": "any_in", "sets": ["F"]},
+            {"op": "not", "rule": {"op": "all_in", "sets": ["F", "H"]}}
+          ]
+        },
+        "pair_specs": [
+          {"left": "F", "right": "O"},
+          {"left": "O", "right": "F"}
+        ]
+      }
+    ],
+    "allow_other": true,
+    "scarcity": {"repeat_allowed": true, "max_repeat": 2, "min_gap": 20},
+    "notes": "h+h 不含 f，不进核心。"
+  },
+  {
+    "id": "flat_focus",
+    "name": "平舌音单项",
+    "dimension": "initial",
+    "mode": "single_focus",
+    "target_sets": {"T": ["z", "c", "s"]},
+    "buckets": [
+      {
+        "id": "core",
+        "label": "核心 T×T",
+        "target_ratio": 0.8,
+        "role": "core",
+        "rule": {"op": "all_in", "sets": ["T"]},
+        "pair_specs": [{"left": "T", "right": "T"}]
+      },
+      {
+        "id": "supplement",
+        "label": "补充 T↔O",
+        "target_ratio": 0.2,
+        "role": "supplement",
+        "rule": {
+          "op": "all",
+          "rules": [
+            {"op": "any_in", "sets": ["T"]},
+            {"op": "not", "rule": {"op": "all_in", "sets": ["T"]}}
+          ]
+        },
+        "pair_specs": [
+          {"left": "T", "right": "O"},
+          {"left": "O", "right": "T"}
+        ]
+      }
+    ],
+    "allow_other": true,
+    "scarcity": {"repeat_allowed": true, "max_repeat": 2, "min_gap": 20},
+    "notes": "20 分钟核心池略缺，按 v2.1 自动间隔重复。"
+  },
+  {
+    "id": "retroflex_focus",
+    "name": "翘舌音单项",
+    "dimension": "initial",
+    "mode": "single_focus",
+    "target_sets": {"T": ["zh", "ch", "sh", "r"]},
+    "buckets": [
+      {
+        "id": "core",
+        "label": "核心 T×T",
+        "target_ratio": 0.8,
+        "role": "core",
+        "rule": {"op": "all_in", "sets": ["T"]},
+        "pair_specs": [{"left": "T", "right": "T"}]
+      },
+      {
+        "id": "supplement",
+        "label": "补充 T↔O",
+        "target_ratio": 0.2,
+        "role": "supplement",
+        "rule": {
+          "op": "all",
+          "rules": [
+            {"op": "any_in", "sets": ["T"]},
+            {"op": "not", "rule": {"op": "all_in", "sets": ["T"]}}
+          ]
+        },
+        "pair_specs": [
+          {"left": "T", "right": "O"},
+          {"left": "O", "right": "T"}
+        ]
+      }
+    ],
+    "allow_other": true,
+    "scarcity": {"repeat_allowed": true, "max_repeat": 2, "min_gap": 20},
+    "notes": "r 属翘舌音。"
+  },
+  {
+    "id": "flat_retroflex_contrast",
+    "name": "平翘舌对比（含 r）",
+    "dimension": "initial",
+    "mode": "contrast",
+    "target_sets": {
+      "A": ["z", "c", "s"],
+      "B": ["zh", "ch", "sh", "r"]
+    },
+    "allow_other": false,
+    "buckets": [
+      {
+        "id": "cross",
+        "label": "跨组 A↔B",
+        "target_ratio": 0.6,
+        "role": "cross",
+        "rule": {
+          "op": "all",
+          "rules": [
+            {"op": "all_in", "sets": ["A", "B"]},
+            {"op": "groups_present", "sets": ["A", "B"], "min": 2}
+          ]
+        },
+        "pair_specs": [
+          {"left": "A", "right": "B"},
+          {"left": "B", "right": "A"}
+        ]
+      },
+      {
+        "id": "same",
+        "label": "同组 A+A / B+B",
+        "target_ratio": 0.4,
+        "role": "same",
+        "rule": {
+          "op": "all",
+          "rules": [
+            {"op": "all_in", "sets": ["A", "B"]},
+            {
+              "op": "not",
+              "rule": {"op": "groups_present", "sets": ["A", "B"], "min": 2}
+            }
+          ]
+        },
+        "pair_specs": [
+          {"left": "A", "right": "A"},
+          {"left": "B", "right": "B"}
+        ]
+      }
+    ],
+    "scarcity": {"repeat_allowed": true, "max_repeat": 2, "min_gap": 20},
+    "notes": "100% 在 A/B 体系内部，O=0；单字归同组。"
+  },
+  {
+    "id": "flat_retroflex_contrast_no_r",
+    "name": "平翘舌对比（不含 r）",
+    "dimension": "initial",
+    "mode": "contrast",
+    "target_sets": {
+      "A": ["z", "c", "s"],
+      "B": ["zh", "ch", "sh"]
+    },
+    "allow_other": false,
+    "buckets": [
+      {
+        "id": "cross",
+        "label": "跨组 A↔B",
+        "target_ratio": 0.6,
+        "role": "cross",
+        "rule": {
+          "op": "all",
+          "rules": [
+            {"op": "all_in", "sets": ["A", "B"]},
+            {"op": "groups_present", "sets": ["A", "B"], "min": 2}
+          ]
+        },
+        "pair_specs": [
+          {"left": "A", "right": "B"},
+          {"left": "B", "right": "A"}
+        ]
+      },
+      {
+        "id": "same",
+        "label": "同组 A+A / B+B",
+        "target_ratio": 0.4,
+        "role": "same",
+        "rule": {
+          "op": "all",
+          "rules": [
+            {"op": "all_in", "sets": ["A", "B"]},
+            {
+              "op": "not",
+              "rule": {"op": "groups_present", "sets": ["A", "B"], "min": 2}
+            }
+          ]
+        },
+        "pair_specs": [
+          {"left": "A", "right": "A"},
+          {"left": "B", "right": "B"}
+        ]
+      }
+    ],
+    "scarcity": {"repeat_allowed": true, "max_repeat": 2, "min_gap": 20},
+    "notes": "传统 z/c/s ↔ zh/ch/sh，不含 r。"
+  },
+  {
+    "id": "n_l_contrast",
+    "name": "n/l 对比",
+    "dimension": "initial",
+    "mode": "contrast",
+    "target_sets": {"A": ["n"], "B": ["l"]},
+    "allow_other": true,
+    "buckets": [
+      {
+        "id": "core",
+        "label": "核心 n/l 内部",
+        "target_ratio": 0.8,
+        "role": "core",
+        "rule": {"op": "all_in", "sets": ["A", "B"]},
+        "pair_specs": [
+          {"left": "A", "right": "A"},
+          {"left": "A", "right": "B"},
+          {"left": "B", "right": "A"},
+          {"left": "B", "right": "B"}
+        ]
+      },
+      {
+        "id": "supplement",
+        "label": "补充 n/l↔O",
+        "target_ratio": 0.2,
+        "role": "supplement",
+        "rule": {
+          "op": "all",
+          "rules": [
+            {"op": "any_in", "sets": ["A", "B"]},
+            {
+              "op": "not",
+              "rule": {"op": "all_in", "sets": ["A", "B"]}
+            }
+          ]
+        },
+        "pair_specs": [
+          {"left": "A", "right": "O"},
+          {"left": "B", "right": "O"},
+          {"left": "O", "right": "A"},
+          {"left": "O", "right": "B"}
+        ]
+      }
+    ],
+    "scarcity": {"repeat_allowed": true, "max_repeat": 2, "min_gap": 20},
+    "notes": "n/l 内部 80%，允许与其他声母自然组合 20%。"
+  },
+  {
+    "id": "jqx_special",
+    "name": "j/q/x 尖音问题",
+    "dimension": "initial",
+    "mode": "special_mix",
+    "target_sets": {
+      "J": ["j", "q", "x"],
+      "Z": ["z", "c", "s"]
+    },
+    "candidate_rule": {"op": "any_in", "sets": ["J"]},
+    "allow_other": true,
+    "buckets": [
+      {
+        "id": "jqx_core",
+        "label": "核心 J×J",
+        "target_ratio": 0.7,
+        "role": "core",
+        "rule": {"op": "all_in", "sets": ["J"]},
+        "pair_specs": [{"left": "J", "right": "J"}]
+      },
+      {
+        "id": "flat_relation",
+        "label": "平舌关联 J↔Z",
+        "target_ratio": 0.2,
+        "role": "relation",
+        "rule": {
+          "op": "all",
+          "rules": [
+            {"op": "any_in", "sets": ["J"]},
+            {"op": "any_in", "sets": ["Z"]},
+            {"op": "all_in", "sets": ["J", "Z"]}
+          ]
+        },
+        "pair_specs": [
+          {"left": "J", "right": "Z"},
+          {"left": "Z", "right": "J"}
+        ]
+      },
+      {
+        "id": "jqx_other",
+        "label": "其他补充 J↔O",
+        "target_ratio": 0.1,
+        "role": "supplement",
+        "rule": {
+          "op": "all",
+          "rules": [
+            {"op": "any_in", "sets": ["J"]},
+            {"op": "not", "rule": {"op": "all_in", "sets": ["J", "Z"]}}
+          ]
+        },
+        "pair_specs": [
+          {"left": "J", "right": "O"},
+          {"left": "O", "right": "J"}
+        ]
+      }
+    ],
+    "scarcity": {"repeat_allowed": true, "max_repeat": 2, "min_gap": 20},
+    "notes": "70/20/10。"
+  },
+  {
+    "id": "velar_focus",
+    "name": "舌根音单项",
+    "dimension": "initial",
+    "mode": "single_focus",
+    "target_sets": {"T": ["g", "k", "h"]},
+    "buckets": [
+      {
+        "id": "core",
+        "label": "核心 T×T",
+        "target_ratio": 0.8,
+        "role": "core",
+        "rule": {"op": "all_in", "sets": ["T"]},
+        "pair_specs": [{"left": "T", "right": "T"}]
+      },
+      {
+        "id": "supplement",
+        "label": "补充 T↔O",
+        "target_ratio": 0.2,
+        "role": "supplement",
+        "rule": {
+          "op": "all",
+          "rules": [
+            {"op": "any_in", "sets": ["T"]},
+            {"op": "not", "rule": {"op": "all_in", "sets": ["T"]}}
+          ]
+        },
+        "pair_specs": [
+          {"left": "T", "right": "O"},
+          {"left": "O", "right": "T"}
+        ]
+      }
+    ],
+    "allow_other": true,
+    "scarcity": {"repeat_allowed": true, "max_repeat": 2, "min_gap": 20},
+    "notes": ""
+  },
+  {
+    "id": "dt_focus",
+    "name": "d/t 舌尖中音强化",
+    "dimension": "initial",
+    "mode": "single_focus",
+    "target_sets": {"T": ["d", "t"]},
+    "buckets": [
+      {
+        "id": "core",
+        "label": "核心 T×T",
+        "target_ratio": 0.8,
+        "role": "core",
+        "rule": {"op": "all_in", "sets": ["T"]},
+        "pair_specs": [{"left": "T", "right": "T"}]
+      },
+      {
+        "id": "supplement",
+        "label": "补充 T↔O",
+        "target_ratio": 0.2,
+        "role": "supplement",
+        "rule": {
+          "op": "all",
+          "rules": [
+            {"op": "any_in", "sets": ["T"]},
+            {"op": "not", "rule": {"op": "all_in", "sets": ["T"]}}
+          ]
+        },
+        "pair_specs": [
+          {"left": "T", "right": "O"},
+          {"left": "O", "right": "T"}
+        ]
+      }
+    ],
+    "allow_other": true,
+    "scarcity": {"repeat_allowed": true, "max_repeat": 2, "min_gap": 20},
+    "notes": ""
+  },
+  {
+    "id": "simple_final_focus",
+    "name": "单韵母综合",
+    "dimension": "final",
+    "mode": "single_focus",
+    "target_sets": {"T": ["a", "o", "e", "i", "u", "ü", "er"]},
+    "buckets": [
+      {
+        "id": "core",
+        "label": "核心 T×T",
+        "target_ratio": 0.8,
+        "role": "core",
+        "rule": {"op": "all_in", "sets": ["T"]},
+        "pair_specs": [{"left": "T", "right": "T"}]
+      },
+      {
+        "id": "supplement",
+        "label": "补充 T↔O",
+        "target_ratio": 0.2,
+        "role": "supplement",
+        "rule": {
+          "op": "all",
+          "rules": [
+            {"op": "any_in", "sets": ["T"]},
+            {"op": "not", "rule": {"op": "all_in", "sets": ["T"]}}
+          ]
+        },
+        "pair_specs": [
+          {"left": "T", "right": "O"},
+          {"left": "O", "right": "T"}
+        ]
+      }
+    ],
+    "allow_other": true,
+    "scarcity": {"repeat_allowed": true, "max_repeat": 2, "min_gap": 20},
+    "notes": "ê、-i_front/-i_back 暂不进入基础单韵母。"
+  },
+  {
+    "id": "compound_all",
+    "name": "复韵母综合",
+    "dimension": "final",
+    "mode": "single_focus",
+    "target_sets": {
+      "T": ["ai", "ao", "ei", "ia", "iao", "ie", "iou", "ou", "ua", "uai", "uei", "uo", "üe"]
+    },
+    "buckets": [
+      {
+        "id": "core",
+        "label": "核心 复韵母×复韵母",
+        "target_ratio": 0.8,
+        "role": "core",
+        "rule": {"op": "all_in", "sets": ["T"]},
+        "pair_specs": [{"left": "T", "right": "T"}]
+      },
+      {
+        "id": "supplement",
+        "label": "补充 复韵母↔其他",
+        "target_ratio": 0.2,
+        "role": "supplement",
+        "rule": {
+          "op": "all",
+          "rules": [
+            {"op": "any_in", "sets": ["T"]},
+            {"op": "not", "rule": {"op": "all_in", "sets": ["T"]}}
+          ]
+        },
+        "pair_specs": [
+          {"left": "T", "right": "O"},
+          {"left": "O", "right": "T"}
+        ]
+      }
+    ],
+    "allow_other": true,
+    "scarcity": {"repeat_allowed": true, "max_repeat": 2, "min_gap": 20},
+    "notes": "核心内部平衡前响/中响/后响与具体复韵母。"
+  },
+  {
+    "id": "compound_front",
+    "name": "前响复韵母",
+    "dimension": "final",
+    "mode": "single_focus",
+    "target_sets": {"T": ["ai", "ei", "ao", "ou"]},
+    "buckets": [
+      {
+        "id": "core",
+        "label": "核心 T×T",
+        "target_ratio": 0.8,
+        "role": "core",
+        "rule": {"op": "all_in", "sets": ["T"]},
+        "pair_specs": [{"left": "T", "right": "T"}]
+      },
+      {
+        "id": "supplement",
+        "label": "补充 T↔O",
+        "target_ratio": 0.2,
+        "role": "supplement",
+        "rule": {
+          "op": "all",
+          "rules": [
+            {"op": "any_in", "sets": ["T"]},
+            {"op": "not", "rule": {"op": "all_in", "sets": ["T"]}}
+          ]
+        },
+        "pair_specs": [
+          {"left": "T", "right": "O"},
+          {"left": "O", "right": "T"}
+        ]
+      }
+    ],
+    "allow_other": true,
+    "scarcity": {"repeat_allowed": true, "max_repeat": 2, "min_gap": 20},
+    "notes": ""
+  },
+  {
+    "id": "compound_middle",
+    "name": "中响复韵母",
+    "dimension": "final",
+    "mode": "single_focus",
+    "target_sets": {"T": ["iao", "iou", "uai", "uei"]},
+    "buckets": [
+      {
+        "id": "core",
+        "label": "核心 T×T",
+        "target_ratio": 0.8,
+        "role": "core",
+        "rule": {"op": "all_in", "sets": ["T"]},
+        "pair_specs": [{"left": "T", "right": "T"}]
+      },
+      {
+        "id": "supplement",
+        "label": "补充 T↔O",
+        "target_ratio": 0.2,
+        "role": "supplement",
+        "rule": {
+          "op": "all",
+          "rules": [
+            {"op": "any_in", "sets": ["T"]},
+            {"op": "not", "rule": {"op": "all_in", "sets": ["T"]}}
+          ]
+        },
+        "pair_specs": [
+          {"left": "T", "right": "O"},
+          {"left": "O", "right": "T"}
+        ]
+      }
+    ],
+    "allow_other": true,
+    "scarcity": {"repeat_allowed": true, "max_repeat": 2, "min_gap": 20},
+    "notes": ""
+  },
+  {
+    "id": "compound_back",
+    "name": "后响复韵母",
+    "dimension": "final",
+    "mode": "single_focus",
+    "target_sets": {"T": ["ia", "ie", "ua", "uo", "üe"]},
+    "buckets": [
+      {
+        "id": "core",
+        "label": "核心 T×T",
+        "target_ratio": 0.8,
+        "role": "core",
+        "rule": {"op": "all_in", "sets": ["T"]},
+        "pair_specs": [{"left": "T", "right": "T"}]
+      },
+      {
+        "id": "supplement",
+        "label": "补充 T↔O",
+        "target_ratio": 0.2,
+        "role": "supplement",
+        "rule": {
+          "op": "all",
+          "rules": [
+            {"op": "any_in", "sets": ["T"]},
+            {"op": "not", "rule": {"op": "all_in", "sets": ["T"]}}
+          ]
+        },
+        "pair_specs": [
+          {"left": "T", "right": "O"},
+          {"left": "O", "right": "T"}
+        ]
+      }
+    ],
+    "allow_other": true,
+    "scarcity": {"repeat_allowed": true, "max_repeat": 2, "min_gap": 20},
+    "notes": ""
+  },
+  {
+    "id": "front_nasal_basic",
+    "name": "前鼻音专项一（基础）",
+    "dimension": "final",
+    "mode": "single_focus",
+    "target_sets": {"T": ["an", "en", "in"]},
+    "buckets": [
+      {
+        "id": "core",
+        "label": "核心 T×T",
+        "target_ratio": 0.8,
+        "role": "core",
+        "rule": {"op": "all_in", "sets": ["T"]},
+        "pair_specs": [{"left": "T", "right": "T"}]
+      },
+      {
+        "id": "supplement",
+        "label": "补充 T↔O",
+        "target_ratio": 0.2,
+        "role": "supplement",
+        "rule": {
+          "op": "all",
+          "rules": [
+            {"op": "any_in", "sets": ["T"]},
+            {"op": "not", "rule": {"op": "all_in", "sets": ["T"]}}
+          ]
+        },
+        "pair_specs": [
+          {"left": "T", "right": "O"},
+          {"left": "O", "right": "T"}
+        ]
+      }
+    ],
+    "allow_other": true,
+    "scarcity": {"repeat_allowed": true, "max_repeat": 2, "min_gap": 20},
+    "notes": ""
+  },
+  {
+    "id": "front_nasal_extended",
+    "name": "前鼻音专项二（扩展）",
+    "dimension": "final",
+    "mode": "single_focus",
+    "target_sets": {"T": ["ian", "uan", "uen", "üan", "ün"]},
+    "buckets": [
+      {
+        "id": "core",
+        "label": "核心 T×T",
+        "target_ratio": 0.8,
+        "role": "core",
+        "rule": {"op": "all_in", "sets": ["T"]},
+        "pair_specs": [{"left": "T", "right": "T"}]
+      },
+      {
+        "id": "supplement",
+        "label": "补充 T↔O",
+        "target_ratio": 0.2,
+        "role": "supplement",
+        "rule": {
+          "op": "all",
+          "rules": [
+            {"op": "any_in", "sets": ["T"]},
+            {"op": "not", "rule": {"op": "all_in", "sets": ["T"]}}
+          ]
+        },
+        "pair_specs": [
+          {"left": "T", "right": "O"},
+          {"left": "O", "right": "T"}
+        ]
+      }
+    ],
+    "allow_other": true,
+    "scarcity": {"repeat_allowed": true, "max_repeat": 2, "min_gap": 20},
+    "notes": "un 等表面拼写由 phonology-v1 canonical final 归一。"
+  },
+  {
+    "id": "front_nasal_all",
+    "name": "前鼻音综合",
+    "dimension": "final",
+    "mode": "single_focus",
+    "target_sets": {"T": ["an", "en", "ian", "in", "uan", "uen", "üan", "ün"]},
+    "buckets": [
+      {
+        "id": "core",
+        "label": "核心 T×T",
+        "target_ratio": 0.8,
+        "role": "core",
+        "rule": {"op": "all_in", "sets": ["T"]},
+        "pair_specs": [{"left": "T", "right": "T"}]
+      },
+      {
+        "id": "supplement",
+        "label": "补充 T↔O",
+        "target_ratio": 0.2,
+        "role": "supplement",
+        "rule": {
+          "op": "all",
+          "rules": [
+            {"op": "any_in", "sets": ["T"]},
+            {"op": "not", "rule": {"op": "all_in", "sets": ["T"]}}
+          ]
+        },
+        "pair_specs": [
+          {"left": "T", "right": "O"},
+          {"left": "O", "right": "T"}
+        ]
+      }
+    ],
+    "allow_other": true,
+    "scarcity": {"repeat_allowed": true, "max_repeat": 2, "min_gap": 20},
+    "notes": "内部平衡基础组/扩展组/具体韵母。"
+  },
+  {
+    "id": "back_nasal_basic",
+    "name": "后鼻音专项一（基础）",
+    "dimension": "final",
+    "mode": "single_focus",
+    "target_sets": {"T": ["ang", "eng", "ing", "ong"]},
+    "buckets": [
+      {
+        "id": "core",
+        "label": "核心 T×T",
+        "target_ratio": 0.8,
+        "role": "core",
+        "rule": {"op": "all_in", "sets": ["T"]},
+        "pair_specs": [{"left": "T", "right": "T"}]
+      },
+      {
+        "id": "supplement",
+        "label": "补充 T↔O",
+        "target_ratio": 0.2,
+        "role": "supplement",
+        "rule": {
+          "op": "all",
+          "rules": [
+            {"op": "any_in", "sets": ["T"]},
+            {"op": "not", "rule": {"op": "all_in", "sets": ["T"]}}
+          ]
+        },
+        "pair_specs": [
+          {"left": "T", "right": "O"},
+          {"left": "O", "right": "T"}
+        ]
+      }
+    ],
+    "allow_other": true,
+    "scarcity": {"repeat_allowed": true, "max_repeat": 2, "min_gap": 20},
+    "notes": ""
+  },
+  {
+    "id": "back_nasal_extended",
+    "name": "后鼻音专项二（扩展）",
+    "dimension": "final",
+    "mode": "single_focus",
+    "target_sets": {"T": ["iang", "uang", "ueng", "iong"]},
+    "buckets": [
+      {
+        "id": "core",
+        "label": "核心 T×T",
+        "target_ratio": 0.8,
+        "role": "core",
+        "rule": {"op": "all_in", "sets": ["T"]},
+        "pair_specs": [{"left": "T", "right": "T"}]
+      },
+      {
+        "id": "supplement",
+        "label": "补充 T↔O",
+        "target_ratio": 0.2,
+        "role": "supplement",
+        "rule": {
+          "op": "all",
+          "rules": [
+            {"op": "any_in", "sets": ["T"]},
+            {"op": "not", "rule": {"op": "all_in", "sets": ["T"]}}
+          ]
+        },
+        "pair_specs": [
+          {"left": "T", "right": "O"},
+          {"left": "O", "right": "T"}
+        ]
+      }
+    ],
+    "allow_other": true,
+    "scarcity": {"repeat_allowed": true, "max_repeat": 2, "min_gap": 20},
+    "notes": "ueng 稀缺；15/20 分钟核心不足时自动间隔重复。"
+  },
+  {
+    "id": "back_nasal_all",
+    "name": "后鼻音综合",
+    "dimension": "final",
+    "mode": "single_focus",
+    "target_sets": {"T": ["ang", "eng", "iang", "ing", "iong", "ong", "uang", "ueng"]},
+    "buckets": [
+      {
+        "id": "core",
+        "label": "核心 T×T",
+        "target_ratio": 0.8,
+        "role": "core",
+        "rule": {"op": "all_in", "sets": ["T"]},
+        "pair_specs": [{"left": "T", "right": "T"}]
+      },
+      {
+        "id": "supplement",
+        "label": "补充 T↔O",
+        "target_ratio": 0.2,
+        "role": "supplement",
+        "rule": {
+          "op": "all",
+          "rules": [
+            {"op": "any_in", "sets": ["T"]},
+            {"op": "not", "rule": {"op": "all_in", "sets": ["T"]}}
+          ]
+        },
+        "pair_specs": [
+          {"left": "T", "right": "O"},
+          {"left": "O", "right": "T"}
+        ]
+      }
+    ],
+    "allow_other": true,
+    "scarcity": {"repeat_allowed": true, "max_repeat": 2, "min_gap": 20},
+    "notes": ""
+  },
+  {
+    "id": "front_back_nasal_contrast_1",
+    "name": "前后鼻音对比一",
+    "dimension": "final",
+    "mode": "contrast",
+    "target_sets": {"P": ["en", "in"], "Q": ["eng", "ing"]},
+    "allow_other": false,
+    "buckets": [
+      {
+        "id": "cross",
+        "label": "跨组 en↔eng / in↔ing",
+        "target_ratio": 0.65,
+        "role": "cross",
+        "rule": {
+          "op": "all",
+          "rules": [
+            {"op": "all_in", "sets": ["P", "Q"]},
+            {"op": "groups_present", "sets": ["P", "Q"], "min": 2}
+          ]
+        },
+        "pair_specs": [
+          {"left": "P", "right": "Q"},
+          {"left": "Q", "right": "P"}
+        ]
+      },
+      {
+        "id": "same",
+        "label": "同组 P+P / Q+Q",
+        "target_ratio": 0.35,
+        "role": "same",
+        "rule": {
+          "op": "all",
+          "rules": [
+            {"op": "all_in", "sets": ["P", "Q"]},
+            {
+              "op": "not",
+              "rule": {"op": "groups_present", "sets": ["P", "Q"], "min": 2}
+            }
+          ]
+        },
+        "pair_specs": [
+          {"left": "P", "right": "P"},
+          {"left": "Q", "right": "Q"}
+        ]
+      }
+    ],
+    "scarcity": {"repeat_allowed": true, "max_repeat": 2, "min_gap": 20},
+    "notes": "100% 前鼻/后鼻体系内。"
+  },
+  {
+    "id": "front_back_nasal_contrast_2",
+    "name": "前后鼻音对比二",
+    "dimension": "final",
+    "mode": "contrast",
+    "target_sets": {"P": ["an", "ian", "uan"], "Q": ["ang", "iang", "uang"]},
+    "allow_other": false,
+    "buckets": [
+      {
+        "id": "cross",
+        "label": "跨组 an↔ang 等",
+        "target_ratio": 0.65,
+        "role": "cross",
+        "rule": {
+          "op": "all",
+          "rules": [
+            {"op": "all_in", "sets": ["P", "Q"]},
+            {"op": "groups_present", "sets": ["P", "Q"], "min": 2}
+          ]
+        },
+        "pair_specs": [
+          {"left": "P", "right": "Q"},
+          {"left": "Q", "right": "P"}
+        ]
+      },
+      {
+        "id": "same",
+        "label": "同组 P+P / Q+Q",
+        "target_ratio": 0.35,
+        "role": "same",
+        "rule": {
+          "op": "all",
+          "rules": [
+            {"op": "all_in", "sets": ["P", "Q"]},
+            {
+              "op": "not",
+              "rule": {"op": "groups_present", "sets": ["P", "Q"], "min": 2}
+            }
+          ]
+        },
+        "pair_specs": [
+          {"left": "P", "right": "P"},
+          {"left": "Q", "right": "Q"}
+        ]
+      }
+    ],
+    "scarcity": {"repeat_allowed": true, "max_repeat": 2, "min_gap": 20},
+    "notes": "100% 前鼻/后鼻体系内；uen↔ueng 不启用。"
+  },
+  {
+    "id": "tone_1",
+    "name": "阴平专项",
+    "dimension": "tone",
+    "mode": "single_focus",
+    "target_sets": {"T": ["1"]},
+    "buckets": [
+      {
+        "id": "core",
+        "label": "核心 1-1 / 单字 1",
+        "target_ratio": 0.8,
+        "role": "core",
+        "rule": {"op": "all_in", "sets": ["T"]},
+        "pair_specs": [{"left": "T", "right": "T"}]
+      },
+      {
+        "id": "supplement",
+        "label": "补充 1-x / x-1",
+        "target_ratio": 0.2,
+        "role": "supplement",
+        "rule": {
+          "op": "all",
+          "rules": [
+            {"op": "any_in", "sets": ["T"]},
+            {"op": "not", "rule": {"op": "all_in", "sets": ["T"]}}
+          ]
+        },
+        "pair_specs": [
+          {"left": "T", "right": "O"},
+          {"left": "O", "right": "T"}
+        ]
+      }
+    ],
+    "allow_other": true,
+    "scarcity": {"repeat_allowed": true, "max_repeat": 2, "min_gap": 20},
+    "notes": ""
+  },
+  {
+    "id": "tone_2",
+    "name": "阳平专项",
+    "dimension": "tone",
+    "mode": "single_focus",
+    "target_sets": {"T": ["2"]},
+    "buckets": [
+      {
+        "id": "core",
+        "label": "核心 2-2 / 单字 2",
+        "target_ratio": 0.8,
+        "role": "core",
+        "rule": {"op": "all_in", "sets": ["T"]},
+        "pair_specs": [{"left": "T", "right": "T"}]
+      },
+      {
+        "id": "supplement",
+        "label": "补充 2-x / x-2",
+        "target_ratio": 0.2,
+        "role": "supplement",
+        "rule": {
+          "op": "all",
+          "rules": [
+            {"op": "any_in", "sets": ["T"]},
+            {"op": "not", "rule": {"op": "all_in", "sets": ["T"]}}
+          ]
+        },
+        "pair_specs": [
+          {"left": "T", "right": "O"},
+          {"left": "O", "right": "T"}
+        ]
+      }
+    ],
+    "allow_other": true,
+    "scarcity": {"repeat_allowed": true, "max_repeat": 2, "min_gap": 20},
+    "notes": ""
+  },
+  {
+    "id": "tone_3",
+    "name": "上声专项",
+    "dimension": "tone",
+    "mode": "single_focus",
+    "target_sets": {"T": ["3"]},
+    "buckets": [
+      {
+        "id": "core",
+        "label": "核心 3-3 / 单字 3",
+        "target_ratio": 0.8,
+        "role": "core",
+        "rule": {"op": "all_in", "sets": ["T"]},
+        "pair_specs": [{"left": "T", "right": "T"}]
+      },
+      {
+        "id": "supplement",
+        "label": "补充 3-x / x-3",
+        "target_ratio": 0.2,
+        "role": "supplement",
+        "rule": {
+          "op": "all",
+          "rules": [
+            {"op": "any_in", "sets": ["T"]},
+            {"op": "not", "rule": {"op": "all_in", "sets": ["T"]}}
+          ]
+        },
+        "pair_specs": [
+          {"left": "T", "right": "O"},
+          {"left": "O", "right": "T"}
+        ]
+      }
+    ],
+    "allow_other": true,
+    "scarcity": {"repeat_allowed": true, "max_repeat": 2, "min_gap": 20},
+    "notes": "3-3 沿用 phonology-v1 候选口径，不猜表面调值。"
+  },
+  {
+    "id": "tone_4",
+    "name": "去声专项",
+    "dimension": "tone",
+    "mode": "single_focus",
+    "target_sets": {"T": ["4"]},
+    "buckets": [
+      {
+        "id": "core",
+        "label": "核心 4-4 / 单字 4",
+        "target_ratio": 0.8,
+        "role": "core",
+        "rule": {"op": "all_in", "sets": ["T"]},
+        "pair_specs": [{"left": "T", "right": "T"}]
+      },
+      {
+        "id": "supplement",
+        "label": "补充 4-x / x-4",
+        "target_ratio": 0.2,
+        "role": "supplement",
+        "rule": {
+          "op": "all",
+          "rules": [
+            {"op": "any_in", "sets": ["T"]},
+            {"op": "not", "rule": {"op": "all_in", "sets": ["T"]}}
+          ]
+        },
+        "pair_specs": [
+          {"left": "T", "right": "O"},
+          {"left": "O", "right": "T"}
+        ]
+      }
+    ],
+    "allow_other": true,
+    "scarcity": {"repeat_allowed": true, "max_repeat": 2, "min_gap": 20},
+    "notes": ""
+  },
+  {
+    "id": "tone_all",
+    "name": "四声综合",
+    "dimension": "tone",
+    "mode": "comprehensive",
+    "target_sets": {"T": ["1", "2", "3", "4"]},
+    "buckets": [
+      {
+        "id": "all",
+        "label": "全部",
+        "target_ratio": 1.0,
+        "role": "core",
+        "rule": {"op": "any_in", "sets": ["T"]},
+        "pair_specs": [{"left": "T", "right": "T"}]
+      }
+    ],
+    "allow_other": true,
+    "scarcity": {"repeat_allowed": false, "max_repeat": 1, "min_gap": 0},
+    "notes": "16 个双字声调对尽量覆盖。"
+  },
+  {
+    "id": "tone_33",
+    "name": "上声变调（3-3 连读）",
+    "dimension": "tone",
+    "mode": "special_mix",
+    "target_sets": {"T": ["3"]},
+    "candidate_rule": {"op": "adjacent_window", "values": ["3", "3"]},
+    "buckets": [
+      {
+        "id": "adjacent",
+        "label": "相邻 3-3",
+        "target_ratio": 1.0,
+        "role": "core",
+        "rule": {"op": "adjacent_window", "values": ["3", "3"]},
+        "pair_specs": [{"left": "T", "right": "T"}]
+      }
+    ],
+    "allow_other": true,
+    "scarcity": {"repeat_allowed": true, "max_repeat": 2, "min_gap": 20},
+    "notes": "上声变调专项（当前覆盖相邻 3-3）；只做变调候选，不猜实际表面调值。"
+  },
+  {
+    "id": "general",
+    "name": "日常综合练习",
+    "dimension": "initial",
+    "mode": "comprehensive",
+    "target_sets": {
+      "T": ["b", "p", "m", "f", "d", "t", "n", "l", "g", "k", "h", "j", "q", "x", "zh", "ch", "sh", "r", "z", "c", "s", "y", "w"]
+    },
+    "candidate_rule": {"op": "always"},
+    "buckets": [
+      {
+        "id": "all",
+        "label": "综合全库",
+        "target_ratio": 1.0,
+        "role": "all",
+        "rule": {"op": "always"},
+        "pair_specs": []
+      }
+    ],
+    "allow_other": true,
+    "scarcity": {"repeat_allowed": true, "max_repeat": 2, "min_gap": 20},
+    "notes": "全库日常综合练习，按声母覆盖平衡。"
+  },
+  {
+    "id": "neutral_focus",
+    "name": "轻声专项",
+    "dimension": "tone",
+    "mode": "special_mix",
+    "target_sets": {"T": ["0"]},
+    "candidate_rule": {"op": "any_in", "sets": ["T"]},
+    "buckets": [
+      {
+        "id": "all",
+        "label": "轻声词",
+        "target_ratio": 1.0,
+        "role": "all",
+        "rule": {"op": "any_in", "sets": ["T"]},
+        "pair_specs": []
+      }
+    ],
+    "allow_other": true,
+    "scarcity": {"repeat_allowed": true, "max_repeat": 2, "min_gap": 20},
+    "notes": "轻声词：含声调为 0（轻读）音节的词条。"
+  },
+  {
+    "id": "erhua_focus",
+    "name": "儿化专项",
+    "dimension": "final",
+    "mode": "special_mix",
+    "target_sets": {"T": []},
+    "candidate_rule": {"op": "always"},
+    "flag_rule": {"op": "any", "rules": [{"field": "has_erhua", "eq": 1}]},
+    "buckets": [
+      {
+        "id": "all",
+        "label": "儿化词",
+        "target_ratio": 1.0,
+        "role": "all",
+        "rule": {"op": "always"},
+        "pair_specs": []
+      }
+    ],
+    "allow_other": true,
+    "scarcity": {"repeat_allowed": true, "max_repeat": 4, "min_gap": 10},
+    "notes": "儿化词：全库仅 39 条，长时长会间隔重复。"
+  },
+  {
+    "id": "yi_bu_focus",
+    "name": "一/不变调",
+    "dimension": "initial",
+    "mode": "special_mix",
+    "target_sets": {"Y": ["y"], "B": ["b"]},
+    "candidate_rule": {"op": "always"},
+    "flag_rule": {
+      "op": "any",
+      "rules": [
+        {"field": "contains_yi", "eq": 1},
+        {"field": "contains_bu", "eq": 1}
+      ]
+    },
+    "buckets": [
+      {
+        "id": "all",
+        "label": "一/不词语",
+        "target_ratio": 1.0,
+        "role": "all",
+        "rule": {"op": "always"},
+        "pair_specs": []
+      }
+    ],
+    "allow_other": true,
+    "scarcity": {"repeat_allowed": true, "max_repeat": 2, "min_gap": 20},
+    "notes": "含“一”或“不”的词语，用于一/不变调练习；只做候选，不猜实际表面调值。"
+  },
+  {
+    "id": "front_back_nasal_contrast",
+    "name": "前后鼻音对比（综合）",
+    "dimension": "final",
+    "mode": "contrast",
+    "target_sets": {
+      "P": ["an", "en", "in", "ian", "uan", "uen", "üan", "ün"],
+      "Q": ["ang", "eng", "ing", "ong", "iang", "uang", "ueng", "iong"]
+    },
+    "allow_other": false,
+    "buckets": [
+      {
+        "id": "cross",
+        "label": "跨组 前鼻↔后鼻",
+        "target_ratio": 0.65,
+        "role": "cross",
+        "rule": {
+          "op": "all",
+          "rules": [
+            {"op": "all_in", "sets": ["P", "Q"]},
+            {"op": "groups_present", "sets": ["P", "Q"], "min": 2}
+          ]
+        },
+        "pair_specs": [
+          {"left": "P", "right": "Q"},
+          {"left": "Q", "right": "P"}
+        ]
+      },
+      {
+        "id": "same",
+        "label": "同组 前鼻+前鼻 / 后鼻+后鼻",
+        "target_ratio": 0.35,
+        "role": "same",
+        "rule": {
+          "op": "all",
+          "rules": [
+            {"op": "all_in", "sets": ["P", "Q"]},
+            {
+              "op": "not",
+              "rule": {"op": "groups_present", "sets": ["P", "Q"], "min": 2}
+            }
+          ]
+        },
+        "pair_specs": [
+          {"left": "P", "right": "P"},
+          {"left": "Q", "right": "Q"}
+        ]
+      }
+    ],
+    "scarcity": {"repeat_allowed": true, "max_repeat": 2, "min_gap": 20},
+    "notes": "前台“前后鼻音对比”入口：P=全量前鼻韵母、Q=全量后鼻韵母；an↔ang / en↔eng / in↔ing / ian↔iang / uan↔uang 等五组对比在同一 Profile 内自然覆盖，不重写生成算法。"
+  }
+]

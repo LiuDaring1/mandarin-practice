@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "practice_sizes": [50, 100, 150],
+  "default_practice_size": 50,
+  "review_intervals_days": [1, 3, 7]
+}

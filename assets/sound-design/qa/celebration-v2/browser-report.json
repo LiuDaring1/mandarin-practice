@@ -1,0 +1,81 @@
+{
+  "checks": [
+    {
+      "name": "A 已确认；四项原版/新版对比与七种日常音分别呈现",
+      "detail": true
+    },
+    {
+      "name": "真实点击解锁并解码 27 个运行时样本",
+      "detail": true
+    },
+    {
+      "name": "八个原版/新版按钮实际播放到 ended，没有覆盖原版",
+      "detail": true
+    },
+    {
+      "name": "四段连续试听按顺序完整播放",
+      "detail": [
+        [
+          "reward.arrive",
+          "a-lift"
+        ],
+        [
+          "day.complete",
+          "a-lift"
+        ],
+        [
+          "artwork.complete",
+          "a-lift"
+        ],
+        [
+          "series.complete",
+          "a-lift"
+        ]
+      ]
+    },
+    {
+      "name": "完成仪式遵循新版/原版切换；融合仍用 A，系列与单件互斥",
+      "detail": true
+    },
+    {
+      "name": "答题反馈仍是已认可 A，结算自动采用新版欢庆",
+      "detail": true
+    },
+    {
+      "name": "更长的庆祝音仍服从教学优先",
+      "detail": true
+    },
+    {
+      "name": "新增长尾庆祝可立即静音，重新开启不补播",
+      "detail": true
+    },
+    {
+      "name": "庆祝对比区五档宽度无横向溢出",
+      "detail": true
+    }
+  ],
+  "errors": [],
+  "layouts": [
+    {
+      "width": 360,
+      "scrollWidth": 360
+    },
+    {
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "width": 430,
+      "scrollWidth": 430
+    },
+    {
+      "width": 768,
+      "scrollWidth": 768
+    },
+    {
+      "width": 1024,
+      "scrollWidth": 1024
+    }
+  ],
+  "status": "passed"
+}

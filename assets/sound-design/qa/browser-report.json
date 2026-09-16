@@ -1,0 +1,456 @@
+{
+  "checks": [
+    {
+      "name": "独立只读服务，不加载训练或进度 API",
+      "detail": {
+        "isolated": true,
+        "read_only": true,
+        "progress_dir": null,
+        "kind": "sound-lab",
+        "teaching_word": "安心",
+        "teaching_item": "t1-00019"
+      }
+    },
+    {
+      "name": "首次加载不自动播放，不创建运行中的 AudioContext",
+      "detail": true
+    },
+    {
+      "name": "真实用户点击解锁，全部运行时样本成功解码",
+      "detail": true
+    },
+    {
+      "name": "Web Audio 输出链有非零音频能量（不等于人耳验收）",
+      "detail": {
+        "peak": 0.0700632706284523
+      }
+    },
+    {
+      "name": "每个样本实际 start → ended，释放音源节点",
+      "detail": 27
+    },
+    {
+      "name": "事件去重与默认关闭的跟读提示",
+      "detail": {
+        "duplicate": "duplicate",
+        "optional": "optional-off"
+      }
+    },
+    {
+      "name": "密集 10 题预设正误，连错没有警报升级",
+      "detail": [
+        "answer.correct",
+        "answer.correct",
+        "answer.retry",
+        "answer.correct",
+        "answer.retry",
+        "answer.retry",
+        "answer.correct",
+        "answer.correct",
+        "answer.correct",
+        "answer.correct"
+      ]
+    },
+    {
+      "name": "10 秒加速拼豆，音符限流、六变体、无积压",
+      "detail": {
+        "ticks": 74,
+        "placed": 1244,
+        "minInterval": 100,
+        "variants": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "maxObserved": 2,
+        "active": 0
+      }
+    },
+    {
+      "name": "真实长按松手立即停，计数与音源不继续",
+      "detail": true
+    },
+    {
+      "name": "Space / Enter 按下和释放，不产生键盘重复队列",
+      "detail": true
+    },
+    {
+      "name": "1.8 秒融合及系列音替代单件庆祝",
+      "detail": [
+        "bead.place",
+        "bead.place",
+        "bead.place",
+        "bead.place",
+        "artwork.fuse",
+        "series.complete"
+      ]
+    },
+    {
+      "name": "实际示范播放优先，奖励丢弃不补播；跟读结束安静",
+      "detail": [
+        {
+          "time": 46401,
+          "action": "played",
+          "id": "training.start",
+          "style": "a",
+          "variant": 0,
+          "voices": 1
+        },
+        {
+          "time": 46968,
+          "action": "dropped",
+          "id": "reward.arrive",
+          "reason": "teaching"
+        }
+      ]
+    },
+    {
+      "name": "可选跟读提示开启后仅一次，计时结束不响",
+      "detail": true
+    },
+    {
+      "name": "关闭音效不关闭或压低教学音频，全部停止可停示范",
+      "detail": true
+    },
+    {
+      "name": "音量 0 静音，滑杆键盘可调整",
+      "detail": true
+    },
+    {
+      "name": "模拟 visibilitychange：挂起、取消流程、回来不补播，点击恢复",
+      "detail": true
+    },
+    {
+      "name": "真实 AudioContext suspend / 手势 resume",
+      "detail": true
+    },
+    {
+      "name": "只写独立音效偏好键，不写训练存储键",
+      "detail": [
+        "pth-sound-lab-preferences-v1",
+        "qa-unrelated-sentinel"
+      ]
+    },
+    {
+      "name": "360 / 390 / 430 / 768 / 1024 无横向溢出",
+      "detail": true
+    },
+    {
+      "name": "减少动态效果模式",
+      "detail": true
+    },
+    {
+      "name": "销毁关闭 AudioContext 与缓存",
+      "detail": true
+    }
+  ],
+  "layouts": [
+    {
+      "width": 360,
+      "scrollWidth": 360
+    },
+    {
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "width": 430,
+      "scrollWidth": 430
+    },
+    {
+      "width": 768,
+      "scrollWidth": 768
+    },
+    {
+      "width": 1024,
+      "scrollWidth": 1024
+    }
+  ],
+  "errors": [],
+  "requests": [
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/lab.css"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/lab.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/illustrations/listen.webp"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/illustrations/welcome.webp"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/teaching.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/sound-manager.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/manifest.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/a-ui-confirm-01.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/a-training-start-01.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/a-follow-ready-01.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/a-answer-correct-01.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/a-answer-retry-01.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/a-reward-arrive-01.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/a-day-complete-01.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/a-bead-place-01.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/a-bead-place-02.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/a-bead-place-03.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/a-bead-place-04.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/a-bead-place-05.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/a-bead-place-06.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/a-artwork-fuse-01.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/a-artwork-complete-01.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/a-series-complete-01.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/b-ui-confirm-01.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/b-answer-correct-01.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/b-bead-place-01.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/b-bead-place-02.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/b-bead-place-03.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/b-artwork-complete-01.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/legacy-bead-legacy-01.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/a-lift-reward-arrive-01.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/a-lift-day-complete-01.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/a-lift-artwork-complete-01.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/a-lift-series-complete-01.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/lab.css"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/lab.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/illustrations/listen.webp"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/illustrations/welcome.webp"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/teaching.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/sound-manager.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/manifest.json"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/a-ui-confirm-01.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/a-training-start-01.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/a-follow-ready-01.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/a-answer-correct-01.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/a-answer-retry-01.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/a-reward-arrive-01.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/a-day-complete-01.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/a-bead-place-01.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/a-bead-place-02.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/a-bead-place-03.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/a-bead-place-04.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/a-bead-place-05.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/a-bead-place-06.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/a-artwork-fuse-01.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/a-artwork-complete-01.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/a-series-complete-01.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/b-ui-confirm-01.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/b-answer-correct-01.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/b-bead-place-01.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/b-bead-place-02.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/b-bead-place-03.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/b-artwork-complete-01.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/legacy-bead-legacy-01.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/a-lift-reward-arrive-01.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/a-lift-day-complete-01.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/a-lift-artwork-complete-01.wav"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8772/exports/a-lift-series-complete-01.wav"
+    }
+  ],
+  "status": "passed"
+}

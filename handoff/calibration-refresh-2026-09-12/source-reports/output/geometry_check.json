@@ -1,0 +1,52 @@
+{
+  "an": {
+    "vowel": {
+      "tongue_velum_contact_pixels": 0,
+      "anterior_palate_contact_pixels": 0
+    },
+    "closure": {
+      "tongue_velum_contact_pixels": 0,
+      "anterior_palate_contact_pixels": 334
+    }
+  },
+  "en": {
+    "vowel": {
+      "tongue_velum_contact_pixels": 0,
+      "anterior_palate_contact_pixels": 0
+    },
+    "closure": {
+      "tongue_velum_contact_pixels": 0,
+      "anterior_palate_contact_pixels": 334
+    }
+  },
+  "in": {
+    "vowel": {
+      "tongue_velum_contact_pixels": 0,
+      "anterior_palate_contact_pixels": 0
+    },
+    "closure": {
+      "tongue_velum_contact_pixels": 0,
+      "anterior_palate_contact_pixels": 334
+    }
+  },
+  "ang": {
+    "vowel": {
+      "tongue_velum_contact_pixels": 0,
+      "anterior_palate_contact_pixels": 0
+    },
+    "closure": {
+      "tongue_velum_contact_pixels": 309,
+      "anterior_palate_contact_pixels": 0
+    }
+  },
+  "ing": {
+    "vowel": {
+      "tongue_velum_contact_pixels": 0,
+      "anterior_palate_contact_pixels": 0
+    },
+    "closure": {
+      "tongue_velum_contact_pixels": 333,
+      "anterior_palate_contact_pixels": 0
+    }
+  }
+}

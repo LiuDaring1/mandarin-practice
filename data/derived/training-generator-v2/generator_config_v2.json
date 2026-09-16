@@ -1,0 +1,48 @@
+{
+  "version": "v2",
+  "top_k": 50,
+  "max_attempts": 12,
+  "random_jitter": 0.05,
+  "max_same_target_consecutive": 2,
+  "max_same_position_consecutive": 3,
+  "max_same_length_consecutive": 4,
+  "max_same_tone_pattern_consecutive": 3,
+  "extra_follow_sec": 0.8,
+  "min_follow_sec": 1.8,
+  "transition_sec": 0.3,
+  "duration_tolerance_ratio": 0.05,
+  "weight_coverage": 1.0,
+  "weight_pattern": 1.0,
+  "weight_group": 1.0,
+  "weight_position": 0.8,
+  "weight_length": 0.5,
+  "weight_tone_pattern": 0.4,
+  "weight_purity": 0.15,
+  "weight_overshoot_penalty": 0.5,
+  "history_window_days": 7,
+  "history_window_sessions": 7,
+  "history_penalty": 0.6,
+  "allowed_duration_minutes": [
+    5,
+    10
+  ],
+  "allowed_practice_repetitions": [
+    1,
+    2
+  ],
+  "benchmark_seeds_5m": [
+    20260801,
+    20260802,
+    20260803
+  ],
+  "benchmark_seeds_10m": [
+    20260804,
+    20260805,
+    20260806
+  ],
+  "benchmark_seeds_20m": [
+    20260807,
+    20260808
+  ],
+  "benchmark_matrix": {}
+}

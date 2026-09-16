@@ -1,0 +1,514 @@
+{
+  "checks": [
+    {
+      "name": "独立只读服务",
+      "detail": true
+    },
+    {
+      "name": "白名单拒绝原 ZIP、越界编号、路径穿越与真实数据",
+      "detail": true
+    },
+    {
+      "name": "50 个原音就绪，未点击不加载第三方播放器、不自动播放",
+      "detail": true
+    },
+    {
+      "name": "50 个原始 PCM24 WAV 在浏览器成功解码，保留立体声",
+      "detail": 50
+    },
+    {
+      "name": "真实点击单音播放并自然结束",
+      "detail": true
+    },
+    {
+      "name": "六段顺序试听完成",
+      "detail": [
+        2,
+        7,
+        5,
+        23,
+        11,
+        49
+      ]
+    },
+    {
+      "name": "停止取消正在播放的声音与后续队列",
+      "detail": true
+    },
+    {
+      "name": "切换单音互斥，Escape 停止",
+      "detail": true
+    },
+    {
+      "name": "本地音量实时生效",
+      "detail": true
+    },
+    {
+      "name": "两个官方演示使用源站嵌入，一次仅一个 iframe",
+      "detail": true
+    },
+    {
+      "name": "视频备用入口指向作者官方演示",
+      "detail": true
+    },
+    {
+      "name": "本地试听与官方演示互斥，停止卸载外部播放器",
+      "detail": true
+    },
+    {
+      "name": "不写浏览器存储",
+      "detail": true
+    },
+    {
+      "name": "四档布局无横向溢出",
+      "detail": true
+    },
+    {
+      "name": "历史页明确标记否决，原 A 样音仍可播放",
+      "detail": true
+    },
+    {
+      "name": "本地只读请求，无页面脚本错误",
+      "detail": true
+    }
+  ],
+  "layouts": [
+    {
+      "width": 360,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "width": 1024,
+      "overflow": false
+    }
+  ],
+  "errors": [],
+  "localRequests": [
+    {
+      "url": "http://127.0.0.1:8772/?round=3",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/library.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/library.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/illustrations/celebrate.webp",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/library-manifest.json",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/library-manifest.json",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-01.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-02.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-03.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-04.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-05.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-06.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-07.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-08.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-09.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-10.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-11.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-12.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-13.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-14.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-15.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-16.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-17.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-18.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-19.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-20.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-21.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-22.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-23.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-24.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-25.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-26.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-27.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-28.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-29.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-30.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-31.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-32.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-33.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-34.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-35.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-36.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-37.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-38.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-39.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-40.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-41.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-42.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-43.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-44.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-45.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-46.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-47.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-48.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-49.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-50.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-05.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-02.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-07.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-05.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-23.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-11.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-49.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-02.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-11.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-49.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/external/dustyroom/DM-CGS-11.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/index.html",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/lab.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/lab.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/illustrations/listen.webp",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/illustrations/welcome.webp",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/teaching.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/sound-manager.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/manifest.json",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/exports/a-ui-confirm-01.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/exports/a-training-start-01.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/exports/a-follow-ready-01.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/exports/a-answer-correct-01.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/exports/a-answer-retry-01.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/exports/a-reward-arrive-01.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/exports/a-day-complete-01.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/exports/a-bead-place-01.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/exports/a-bead-place-02.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/exports/a-bead-place-03.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/exports/a-bead-place-04.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/exports/a-bead-place-05.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/exports/a-bead-place-06.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/exports/a-artwork-fuse-01.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/exports/a-artwork-complete-01.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/exports/a-series-complete-01.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/exports/b-ui-confirm-01.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/exports/b-answer-correct-01.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/exports/b-bead-place-01.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/exports/b-bead-place-02.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/exports/b-bead-place-03.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/exports/b-artwork-complete-01.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/exports/legacy-bead-legacy-01.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/exports/a-lift-reward-arrive-01.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/exports/a-lift-day-complete-01.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/exports/a-lift-artwork-complete-01.wav",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8772/exports/a-lift-series-complete-01.wav",
+      "method": "GET"
+    }
+  ],
+  "externalPlayers": [
+    {
+      "name": "cute-audio",
+      "text": "External player unavailable: locator.waitFor: Timeout 20000ms exceeded."
+    },
+    {
+      "name": "boom-audio",
+      "text": "External player unavailable: locator.waitFor: Timeout 20000ms exceeded."
+    }
+  ]
+}

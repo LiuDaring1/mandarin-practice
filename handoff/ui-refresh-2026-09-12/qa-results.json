@@ -1,0 +1,563 @@
+{
+  "checks": [
+    {
+      "name": "390×844 首页开始按钮完整可见",
+      "detail": {
+        "ctaBottom": 745.5,
+        "navTop": 764,
+        "enabled": true
+      }
+    },
+    {
+      "name": "弹层焦点循环、Escape 关闭和返回焦点",
+      "detail": true
+    },
+    {
+      "name": "字词真实音频、跟读计时、暂停／继续、重播和退出取消",
+      "detail": true
+    },
+    {
+      "name": "600 拼点结算；单颗、键盘和真实鼠标长按拼入；熨烫与收藏",
+      "detail": true
+    },
+    {
+      "name": "切换猫猫作品，已有拼入和待拼继续保留",
+      "detail": true
+    },
+    {
+      "name": "句子真实音频、长句拼音、开关、暂停重播、两遍跟读和结算",
+      "detail": true
+    },
+    {
+      "name": "50 词实际答题、连错提示、趁热巩固、300 拼点＋三练 100",
+      "detail": true
+    },
+    {
+      "name": "独立进度模拟跨天到期复习，两词过关，100 拼点",
+      "detail": true
+    },
+    {
+      "name": "历史和三个标准音对比组；现有视频真实播放",
+      "detail": true
+    },
+    {
+      "name": "断开外网后刷新仍加载本地素材；减少动态效果",
+      "detail": true
+    },
+    {
+      "name": "生成错误可重试；提前退出不足 20% 不奖励",
+      "detail": true
+    },
+    {
+      "name": "无 JavaScript 运行错误",
+      "detail": true
+    }
+  ],
+  "layouts": [
+    {
+      "name": "home-words",
+      "width": 360,
+      "scrollWidth": 360,
+      "innerOverflow": []
+    },
+    {
+      "name": "home-words",
+      "width": 390,
+      "scrollWidth": 390,
+      "innerOverflow": []
+    },
+    {
+      "name": "home-words",
+      "width": 430,
+      "scrollWidth": 430,
+      "innerOverflow": []
+    },
+    {
+      "name": "home-words",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "innerOverflow": []
+    },
+    {
+      "name": "home-sentence",
+      "width": 360,
+      "scrollWidth": 360,
+      "innerOverflow": []
+    },
+    {
+      "name": "home-sentence",
+      "width": 390,
+      "scrollWidth": 390,
+      "innerOverflow": []
+    },
+    {
+      "name": "home-sentence",
+      "width": 430,
+      "scrollWidth": 430,
+      "innerOverflow": []
+    },
+    {
+      "name": "home-sentence",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "innerOverflow": []
+    },
+    {
+      "name": "home-discrim",
+      "width": 360,
+      "scrollWidth": 360,
+      "innerOverflow": []
+    },
+    {
+      "name": "home-discrim",
+      "width": 390,
+      "scrollWidth": 390,
+      "innerOverflow": []
+    },
+    {
+      "name": "home-discrim",
+      "width": 430,
+      "scrollWidth": 430,
+      "innerOverflow": []
+    },
+    {
+      "name": "home-discrim",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "innerOverflow": []
+    },
+    {
+      "name": "history-empty",
+      "width": 390,
+      "scrollWidth": 390,
+      "innerOverflow": []
+    },
+    {
+      "name": "filter",
+      "width": 360,
+      "scrollWidth": 360,
+      "innerOverflow": []
+    },
+    {
+      "name": "filter",
+      "width": 390,
+      "scrollWidth": 390,
+      "innerOverflow": []
+    },
+    {
+      "name": "filter",
+      "width": 430,
+      "scrollWidth": 430,
+      "innerOverflow": []
+    },
+    {
+      "name": "filter",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "innerOverflow": []
+    },
+    {
+      "name": "words-paused",
+      "width": 360,
+      "scrollWidth": 360,
+      "innerOverflow": []
+    },
+    {
+      "name": "words-paused",
+      "width": 390,
+      "scrollWidth": 390,
+      "innerOverflow": []
+    },
+    {
+      "name": "words-paused",
+      "width": 430,
+      "scrollWidth": 430,
+      "innerOverflow": []
+    },
+    {
+      "name": "words-paused",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "innerOverflow": []
+    },
+    {
+      "name": "words-follow-paused",
+      "width": 390,
+      "scrollWidth": 390,
+      "innerOverflow": []
+    },
+    {
+      "name": "exit-dialog",
+      "width": 390,
+      "scrollWidth": 390,
+      "innerOverflow": []
+    },
+    {
+      "name": "complete-words",
+      "width": 360,
+      "scrollWidth": 360,
+      "innerOverflow": []
+    },
+    {
+      "name": "complete-words",
+      "width": 390,
+      "scrollWidth": 390,
+      "innerOverflow": []
+    },
+    {
+      "name": "complete-words",
+      "width": 430,
+      "scrollWidth": 430,
+      "innerOverflow": []
+    },
+    {
+      "name": "complete-words",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "innerOverflow": []
+    },
+    {
+      "name": "beads-ready",
+      "width": 360,
+      "scrollWidth": 360,
+      "innerOverflow": []
+    },
+    {
+      "name": "beads-ready",
+      "width": 390,
+      "scrollWidth": 390,
+      "innerOverflow": []
+    },
+    {
+      "name": "beads-ready",
+      "width": 430,
+      "scrollWidth": 430,
+      "innerOverflow": []
+    },
+    {
+      "name": "beads-ready",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "innerOverflow": []
+    },
+    {
+      "name": "beads-in-progress",
+      "width": 390,
+      "scrollWidth": 390,
+      "innerOverflow": []
+    },
+    {
+      "name": "beads-ironing",
+      "width": 390,
+      "scrollWidth": 390,
+      "innerOverflow": []
+    },
+    {
+      "name": "beads-finished",
+      "width": 360,
+      "scrollWidth": 360,
+      "innerOverflow": []
+    },
+    {
+      "name": "beads-finished",
+      "width": 390,
+      "scrollWidth": 390,
+      "innerOverflow": []
+    },
+    {
+      "name": "beads-finished",
+      "width": 430,
+      "scrollWidth": 430,
+      "innerOverflow": []
+    },
+    {
+      "name": "beads-finished",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "innerOverflow": []
+    },
+    {
+      "name": "artwork-wall",
+      "width": 360,
+      "scrollWidth": 360,
+      "innerOverflow": []
+    },
+    {
+      "name": "artwork-wall",
+      "width": 390,
+      "scrollWidth": 390,
+      "innerOverflow": []
+    },
+    {
+      "name": "artwork-wall",
+      "width": 430,
+      "scrollWidth": 430,
+      "innerOverflow": []
+    },
+    {
+      "name": "artwork-wall",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "innerOverflow": []
+    },
+    {
+      "name": "beads-cat",
+      "width": 390,
+      "scrollWidth": 390,
+      "innerOverflow": []
+    },
+    {
+      "name": "artwork-picker",
+      "width": 360,
+      "scrollWidth": 360,
+      "innerOverflow": []
+    },
+    {
+      "name": "artwork-picker",
+      "width": 390,
+      "scrollWidth": 390,
+      "innerOverflow": []
+    },
+    {
+      "name": "artwork-picker",
+      "width": 430,
+      "scrollWidth": 430,
+      "innerOverflow": []
+    },
+    {
+      "name": "artwork-picker",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "innerOverflow": []
+    },
+    {
+      "name": "sentence-practice",
+      "width": 360,
+      "scrollWidth": 360,
+      "innerOverflow": []
+    },
+    {
+      "name": "sentence-practice",
+      "width": 390,
+      "scrollWidth": 390,
+      "innerOverflow": []
+    },
+    {
+      "name": "sentence-practice",
+      "width": 430,
+      "scrollWidth": 430,
+      "innerOverflow": []
+    },
+    {
+      "name": "sentence-practice",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "innerOverflow": []
+    },
+    {
+      "name": "sentence-long",
+      "width": 360,
+      "scrollWidth": 360,
+      "innerOverflow": []
+    },
+    {
+      "name": "sentence-long",
+      "width": 390,
+      "scrollWidth": 390,
+      "innerOverflow": []
+    },
+    {
+      "name": "sentence-long",
+      "width": 430,
+      "scrollWidth": 430,
+      "innerOverflow": []
+    },
+    {
+      "name": "sentence-long",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "innerOverflow": []
+    },
+    {
+      "name": "complete-sentence",
+      "width": 360,
+      "scrollWidth": 360,
+      "innerOverflow": []
+    },
+    {
+      "name": "complete-sentence",
+      "width": 390,
+      "scrollWidth": 390,
+      "innerOverflow": []
+    },
+    {
+      "name": "complete-sentence",
+      "width": 430,
+      "scrollWidth": 430,
+      "innerOverflow": []
+    },
+    {
+      "name": "complete-sentence",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "innerOverflow": []
+    },
+    {
+      "name": "discrim-practice",
+      "width": 360,
+      "scrollWidth": 360,
+      "innerOverflow": []
+    },
+    {
+      "name": "discrim-practice",
+      "width": 390,
+      "scrollWidth": 390,
+      "innerOverflow": []
+    },
+    {
+      "name": "discrim-practice",
+      "width": 430,
+      "scrollWidth": 430,
+      "innerOverflow": []
+    },
+    {
+      "name": "discrim-practice",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "innerOverflow": []
+    },
+    {
+      "name": "discrim-wrong",
+      "width": 390,
+      "scrollWidth": 390,
+      "innerOverflow": []
+    },
+    {
+      "name": "discrim-warmup",
+      "width": 390,
+      "scrollWidth": 390,
+      "innerOverflow": []
+    },
+    {
+      "name": "complete-discrim",
+      "width": 360,
+      "scrollWidth": 360,
+      "innerOverflow": []
+    },
+    {
+      "name": "complete-discrim",
+      "width": 390,
+      "scrollWidth": 390,
+      "innerOverflow": []
+    },
+    {
+      "name": "complete-discrim",
+      "width": 430,
+      "scrollWidth": 430,
+      "innerOverflow": []
+    },
+    {
+      "name": "complete-discrim",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "innerOverflow": []
+    },
+    {
+      "name": "review-due",
+      "width": 390,
+      "scrollWidth": 390,
+      "innerOverflow": []
+    },
+    {
+      "name": "review-practice",
+      "width": 390,
+      "scrollWidth": 390,
+      "innerOverflow": []
+    },
+    {
+      "name": "complete-review",
+      "width": 360,
+      "scrollWidth": 360,
+      "innerOverflow": []
+    },
+    {
+      "name": "complete-review",
+      "width": 390,
+      "scrollWidth": 390,
+      "innerOverflow": []
+    },
+    {
+      "name": "complete-review",
+      "width": 430,
+      "scrollWidth": 430,
+      "innerOverflow": []
+    },
+    {
+      "name": "complete-review",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "innerOverflow": []
+    },
+    {
+      "name": "history",
+      "width": 360,
+      "scrollWidth": 360,
+      "innerOverflow": []
+    },
+    {
+      "name": "history",
+      "width": 390,
+      "scrollWidth": 390,
+      "innerOverflow": []
+    },
+    {
+      "name": "history",
+      "width": 430,
+      "scrollWidth": 430,
+      "innerOverflow": []
+    },
+    {
+      "name": "history",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "innerOverflow": []
+    },
+    {
+      "name": "standard-sounds",
+      "width": 360,
+      "scrollWidth": 360,
+      "innerOverflow": []
+    },
+    {
+      "name": "standard-sounds",
+      "width": 390,
+      "scrollWidth": 390,
+      "innerOverflow": []
+    },
+    {
+      "name": "standard-sounds",
+      "width": 430,
+      "scrollWidth": 430,
+      "innerOverflow": []
+    },
+    {
+      "name": "standard-sounds",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "innerOverflow": []
+    },
+    {
+      "name": "audio-error",
+      "width": 390,
+      "scrollWidth": 390,
+      "innerOverflow": []
+    },
+    {
+      "name": "complete-early",
+      "width": 390,
+      "scrollWidth": 390,
+      "innerOverflow": []
+    }
+  ],
+  "errors": []
+}

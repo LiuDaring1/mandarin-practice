@@ -1,0 +1,31 @@
+{
+  "prototype_files_before": 68,
+  "prototype_files_after": 68,
+  "prototype_changed_or_added": [],
+  "prototype_unchanged": true,
+  "concurrent_frontend_changes": [
+    "src/pth_corpus/prototype_static/index.html",
+    "src/pth_corpus/prototype_static/ui-theme.css",
+    "src/pth_corpus/prototype_static/app.js",
+    "src/pth_corpus/prototype_static/calibration/an.mp4",
+    "src/pth_corpus/prototype_static/calibration/an-poster.webp",
+    "src/pth_corpus/prototype_static/calibration/ing.mp4",
+    "src/pth_corpus/prototype_static/calibration/ing-poster.webp",
+    "src/pth_corpus/prototype_static/calibration/ang.mp4",
+    "src/pth_corpus/prototype_static/calibration/en.mp4",
+    "src/pth_corpus/prototype_static/calibration/in.mp4",
+    "src/pth_corpus/prototype_static/calibration/in-poster.webp",
+    "src/pth_corpus/prototype_static/calibration/eng.mp4",
+    "src/pth_corpus/prototype_static/calibration/ang-poster.webp",
+    "src/pth_corpus/prototype_static/calibration/eng-poster.webp",
+    "src/pth_corpus/prototype_static/calibration/en-poster.webp",
+    "src/pth_corpus/prototype_static/calibration/in-slow.mp4",
+    "src/pth_corpus/prototype_static/calibration/eng-slow.mp4",
+    "src/pth_corpus/prototype_static/calibration/en-slow.mp4",
+    "src/pth_corpus/prototype_static/calibration/ing-slow.mp4",
+    "src/pth_corpus/prototype_static/calibration/ang-slow.mp4",
+    "src/pth_corpus/prototype_static/calibration/an-slow.mp4"
+  ],
+  "note": "本任务所有写入限定 assets/sound-design、两个新 scripts 和交接文档；同期标准动画接入任务更新正式前端，未还原或覆盖其变化。",
+  "training_service_status": 200
+}

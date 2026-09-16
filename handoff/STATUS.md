@@ -1,0 +1,81 @@
+# 普通话训练系统 · 现行状态总览（STATUS）
+
+> **最近更新**：2026-09-16：建立独立 GitHub 公开仓库与 v0.2.0 版本基线，新增 AGENTS / 协作规则 / 待启用 CI 模板，见 [版本说明](releases/v0.2.0.md)；撤掉首页音效入口，默认开启、70% 音量，等独立系统设置页再显性提供；原音效插槽保留。09-12：用户选回方案 A，四类奖励优化并正式接入 APP；11 个可替换音效插槽、默认开启、设置入口待系统设置页统一提供、教学优先。见 [音效接入交接](sound-integration-2026-09-12/README.md)。UI 首轮已交付、用户暂缓审核；六音动画已接入并完成手机分组单画面、正常／半速有声修订。
+> 本文件是唯一现行状态入口，**原地更新，不换文件名**。开工前先读它。
+> 旧快照（STATUS-2026-08-13.md / STATUS-2026-08-23.md）仅作历史参考。
+
+## 项目是什么
+
+面向校内、本地试用的普通话前后鼻音练习应用（原型）：16,156 条正式语料（pthxx.com 来源，遵守其使用边界），
+前台三 Tab（字词 / 句子 / 辨音）+ 拼豆奖励系统（100×100 猫猫系列作品 + 新版档位制奖励）。
+详见 `../README.md`。
+
+## 模块现状一览
+
+| 模块 | 一句话现状 | 模块文档 |
+|---|---|---|
+| 语料管线 | 全量 16,156 条已收口，异常 919 条已排除，机器 QA 门可用 | `modules/corpus-pipeline.md` |
+| 训练生成器 | v2 平衡随机生成器 + 音筛选 include_finals；字词前台档位 5/10 分钟 | `modules/training-generator.md` |
+| 句子练习 | 582 条示范音切片，人耳验收 97.1% 达标，三档筛选；前台档位 10/15 句 | `modules/sentence-practice.md` |
+| 听辨练习 | **v3：主词库持续覆盖 + 趁热巩固 + 1/3/7 天错题复习**（50/100/150 词/轮） | `modules/discrimination.md` |
+| 奖励与作品 | **拼点→待拼→用户在详情「按住拼入」（placedBeads/pendingBeads 模型）；fill_order 区域成块浮现；详情页只留作品/进度/待拼/拼入；猫猫系列 6 件 100×100（4343/4232/3739/3871/4100/4119，合计 24404）+ 新手麦克风；档位制 600/600/600 + 三练/复习各 100** | `modules/rewards-achievement.md` |
+| 应用外壳/UI | 奶油底 + 青／橙／紫小精灵；全页换新；真实示范音／跟读计时；新版六音分组单画面、正常／半速均有声；弹层焦点管理；去掉库存数 | `modules/app-shell-ui.md` |
+| 音效设计 | 用户选回 A，日常保留、四种奖励优化，已接入；11 个插槽／16 WAV，默认开启、设置入口待系统设置页统一提供、教学优先 | `modules/sound-design.md` |
+
+## 运行与测试
+
+正式 GitHub：https://github.com/LiuDaring1/mandarin-practice 。版本 `v0.2.0`。本机工作目录仍为 `普通话语音系统-zcode`，现为独立 Git 根目录；其他机器以 clone 根目录为准，安装／协作见 `../CONTRIBUTING.md`。公开仓库的数据边界见 `LOCAL_DATA.md`。下面命令适用于维护者现有本机环境，其他机器使用 `uv run`。
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src ../.venv/bin/python -m pth_corpus prototype --data-root data --port 8769
+PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src ../.venv/bin/python -m pytest
+```
+
+现有测试 **319 通过、1 预期跳过**（旧 pilot 夹具缺失）；此前记载的 6 个环境失败已不再出现。
+浏览器验收脚本：`scripts/qa_ui_refresh.cjs`；先启动 `scripts/serve_ui_qa.py`（8771，临时进度目录）。
+音效接入浏览器验收：`scripts/qa_sound_integration.cjs`（12 项／84 张截图）与 `scripts/qa_sound_contract.cjs`（09-16 已适配隐藏入口与默认开启，最新报告在 `sound-settings-2026-09-16/`），只连接临时进度的 8773；运行方法见接入交接。
+UI 首轮截图及检查结果见 `handoff/ui-refresh-2026-09-12/`；标准音接入检查见 `handoff/calibration-refresh-2026-09-12/`，新增脚本 `scripts/qa_calibration_refresh.cjs`、`scripts/qa_calibration_failures.cjs`。
+
+## 数据与还原（改任何东西前先看）
+
+| 数据 | 位置 | 说明 |
+|---|---|---|
+| 母库 | `data/corpus.sqlite3` | 正式语料，勿动 |
+| 语音特征 | `data/derived/phonology-v1/phonology.sqlite3` | 打标 v1 |
+| 听辨状态 | `data/derived/prototype/discrim_progress.json` | **用户真实进度，运行时读取；不要用历史文档中的游标数覆盖**。结构见 `modules/discrimination.md` |
+| 用户浏览器进度 | 用户浏览器 localStorage（`pth-nasal-progress-v1` 等） | agent 走查空间与用户空间隔离 |
+| 事件日志 | `data/derived/prototype/logs/events.jsonl` | 追加式审计；自动走查只写临时 QA 目录 |
+
+**走查规则**：自动走查使用 `serve_ui_qa.py` 创建的临时 `prototype_dir` 和独立浏览器上下文。语料只读；真实用户进度、日志和训练历史不写入、不截断、不还原。修改前端前保留快照；本次快照为 `ui-refresh-2026-09-12/backups/frontend-before.tar.gz`。
+
+## 已知待办 / 可调口径
+
+- **标准音动画接入（09-12，已完成并修订手机呈现）**：使用父目录最新版六音正常视频，包含 ang／ing 修订。用户反馈长页过长、半速也需有声后，改为顶部三组切换、单画面播放、顺序比较自动切换画面；正常 1 倍、半速 0.5 倍，声音与动作同步放慢。播放器保留停止／重播／队列保护。原交付半速静音文件作为历史资源保留，当前 UI 不再使用。最新验收、运行时映射见 `calibration-mobile-2026-09-12/`；原来源 manifest 与资源备份仍见 `calibration-refresh-2026-09-12/`。换声继续独立推进。
+
+- **音效接入（09-12，已完成）**：用户认为免费音库与场景不合，授权选回原 A 并优化奖励后安装。现有七种日常 A 保留、四种奖励轻快上行，11 槽／16 WAV；`sounds/manifest.json` 可直接替换文件映射与 gain。APP 暂不显示开关／音量，默认开启，教学优先；三练与集齐各自替代较低层级庆祝，不叠放。<http://127.0.0.1:8772/> 试听 APP 同一份文件。旧 30 WAV 与第三轮 90 原音归档保留，不进入当前运行音库；插槽说明与验收见 [接入交接](sound-integration-2026-09-12/README.md)。
+
+- **中期路线图（2026-09-12 用户口述 9 件事）**：① 标准示范动画程序化重做（**已接入**：最新版六音正常／半速视频、封面和播放控制，正常／半速均有声，分组单画面；换声独立属于第 2 项）② 示范音频音色替换（合规；长期基础设施，后续新增示范音一律走此管线）③ 句子语料加新闻（文本+配套音频，复用句子管线；示范音同样要换音色后入库）④ 界面去掉库存数字（已完成） ⑤ 辨音答错时播该词示范音（方向已定：答错播，留印象纠偏）⑥ 整体 UI 换新（已完成首轮全页交付）⑦ 整体音效设计（A 已接入，预留替换插槽）；远期：⑧ 语音评测（字词/句子朗读防挂机 + 发音判定，API 或自研，建议先做本地 VAD 防挂机）⑨ 账户与数据管理（从未做过，预研）。规划见 [ROADMAP.md](ROADMAP.md)，逐件推进。
+
+- **2026-08-27 走查残留**：内置浏览器（127.0.0.1:8766）localStorage 有测试数据——麦克风已完成、
+  棕白猫 placed 605 / 待拼 2937（含 1200 颗双倍入账 bug 期间的幻影拼点）、4 条测试 session；
+  非真实进度，清空该站点数据即归零。`events.jsonl` 已截断还原（105 行）。
+- 09-12 已以真实鼠标 pointerdown／pointerup 验证长按加速连拼、逐颗拼入、熨烫与收藏；新增 Space／Enter 键盘支持。加速规则沿用现有实现，未改奖励或作品数据。
+
+- **交接包**：`普通话语音系统-交接包-2026-09-12.zip`（当前最新，索引见 `handoff/HANDOFF-INDEX-2026-09-12.md`；
+  含路线图与 `动画试验/` 存档）。旧版 `普通话语音系统-交接包-2026-08-26.zip` 与其索引保留作历史；
+  08-26 大节点见 `handoff/MEMORY-2026-08-26-cats-v1-rewards-100x100.md`。
+- 奖励与作品已切换到 100×100 资产版基线（权威规则 = 交接包 `奖励与作品系统_新版规则_100x100基线.md`）：
+  配置 `achievement_config_v2.json`（tiers + trio_bonus 100 + review_reward 100）、
+  目录 `artwork_catalog_v2.json`（mic + cat1..cat6）、转换脚本 `scripts/convert_webfem_csv.py`。
+- 听辨参数都在配置里：`src/pth_corpus/prototype_data/discrim_config_v1.json`（题量 50/100/150、间隔 1/3/7）。
+- 猫猫中文名/标语为占位，可直接改 catalog JSON；新手作品待真实资产后替换（规则 §19）。
+- 旧评审材料 `handoff/PRODUCT-REVIEW-rewards-artworks-2026-08-23.md` / `PRODUCT-CONTEXT-2026-08-23.md`
+  为历史快照（旧费率 6/12/20/28、100 上限、轮次递减），以本次新规则为准，勿再引用其数值。
+- README 节点清单已指向本文件；`CHANGELOG.md` 从 2026-08-23 起逐次记录。
+
+## 最近三个大节点（详见 MEMORY-*）
+
+1. 2026-08-26：猫猫系列 100×100 正式资产导入（6 件真值 4343/4232/3739/3871/4100/4119，合计 24404）+
+   新版奖励规则（三类平权 600/600/600、三练/复习各 +100、废弃 streak 拼点/日上限/轮次递减/三选一）。
+2. 2026-08-16：听辨练习落地 + 统一奖励系统 + 奖励 v2（设计师共识版）+ 首页三 Tab。
+3. 2026-08-23：听辨 v3 重构（持续覆盖 + 趁热巩固 + 间隔复习）。

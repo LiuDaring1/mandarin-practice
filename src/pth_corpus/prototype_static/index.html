@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>前后鼻音专项训练</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="stylesheet" href="/assets/ui-theme.css?v=2026-09-16-sound-default">
+  <meta name="theme-color" content="#fff9ef">
+</head>
+<body>
+  <div id="app" class="app">
+
+    <!-- 页面 1：首页（三 Tab：字词 / 句子 / 辨音） -->
+    <main id="view-home" class="view">
+      <header class="home-top">
+        <div class="home-toolbar">
+          <span class="brand-sign"><span data-icon="words"></span>每日练习</span>
+          <div class="home-links">
+            <button id="wall-link" class="chip-btn" type="button"><span data-icon="gallery"></span>作品</button>
+            <button id="history-link" class="chip-btn" type="button"><span data-icon="clock"></span>历史</button>
+            <button id="cal-link" class="chip-btn" type="button"><span data-icon="speaker"></span>标准音</button>
+          </div>
+        </div>
+        <div class="home-hero">
+          <div class="brand-text"><h1>前后鼻音<br>专项训练<span class="hero-spark" aria-hidden="true">✦</span></h1></div>
+          <img class="hero-mascot" src="/assets/illustrations/welcome.webp" width="256" height="256" alt="" aria-hidden="true" fetchpriority="high" draggable="false">
+          <i class="hero-orbit one" aria-hidden="true"></i><i class="hero-orbit two" aria-hidden="true"></i>
+        </div>
+      </header>
+
+      <p class="stats-line" aria-label="训练统计">
+        <span>今日 <strong id="stat-today">0</strong> 分钟</span>
+        <span class="stats-divider" aria-hidden="true"></span>
+        <span>累计 <strong id="stat-total">0</strong> 天</span>
+        <span class="streak-badge" aria-label="连续训练天数（当天任意训练达 20% 即续上）">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 0.67s0.74 2.65 0.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l0.03-0.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8C20 8.61 17.41 3.8 13.5 0.67zM11.71 19c-1.78 0-3.22-1.4-3.22-3.14 0-1.62 1.05-2.76 2.81-3.12 1.77-0.36 3.6-1.21 4.62-2.58 0.39 1.29 0.59 2.65 0.59 4.04 0 2.65-2.15 4.8-4.8 4.8z"/></svg>连续 <strong id="stat-streak">0</strong> 天
+        </span>
+      </p>
+
+      <!-- 今日三练全局状态条：跨字词/句子/辨音三模块，与「连续训练」是两套独立状态 -->
+      <div id="trio-bar" class="trio-bar" aria-label="今日三练完成状态"></div>
+      <p id="ready-hint" class="ready-hint" role="status" hidden></p>
+
+      <!-- Tab 1：字词 -->
+      <section id="pane-words" class="home-pane active" aria-label="字词练习">
+        <div class="section-head">
+          <span class="section-label">字词</span>
+          <span class="section-hint">单字与词语 · 练哪个音可选</span>
+        </div>
+        <section class="entries" id="entry-list" aria-label="选择训练类型"></section>
+
+        <section class="duration-block">
+          <div class="section-head">
+            <span class="section-label">练多久</span>
+            <span id="reward-hint" class="section-hint">10 分钟 · +1200 拼点</span>
+          </div>
+          <div class="duration-options" id="duration-options"></div>
+        </section>
+
+        <button id="start-btn" class="primary-btn" type="button" disabled>
+          <span id="start-label">开始训练</span>
+          <span class="btn-arrow" aria-hidden="true" data-icon="arrow"></span>
+        </button>
+      </section>
+
+      <!-- Tab 2：句子 -->
+      <section id="pane-sentence" class="home-pane" aria-label="句子练习">
+        <div class="section-head">
+          <span class="section-label">句子练习</span>
+          <span class="section-hint">整句跟读 · 三档可选</span>
+        </div>
+        <div id="sentence-filter-options" class="entries" aria-label="练哪种句子"></div>
+
+        <section class="duration-block">
+          <div class="section-head">
+            <span class="section-label">练多久</span>
+            <span id="sentence-duration-hint" class="section-hint">10 句 · 约 4 分钟</span>
+          </div>
+          <div class="duration-options" id="sentence-duration-options"></div>
+        </section>
+
+        <button id="sentence-start-btn" class="primary-btn tone-green" type="button">
+          <span id="sentence-start-label">开始 · 句子练习</span>
+          <span class="btn-arrow" aria-hidden="true" data-icon="arrow"></span>
+        </button>
+      </section>
+
+      <!-- Tab 3：辨音 -->
+      <section id="pane-discrim" class="home-pane" aria-label="辨音">
+        <div class="section-head">
+          <span class="section-label">听辨练习</span>
+          <span class="section-hint">看字判韵 · en / eng · in / ing 逐字判断</span>
+        </div>
+        <div id="discrim-card" class="entries" aria-label="词库练习"></div>
+
+        <section class="duration-block" id="discrim-size-block">
+          <div class="section-head">
+            <span class="section-label">本次题量</span>
+            <span id="discrim-size-hint" class="section-hint">50 词</span>
+          </div>
+          <div class="duration-options" id="discrim-size-options"></div>
+        </section>
+
+        <button id="discrim-start-btn" class="primary-btn tone-violet" type="button">
+          <span id="discrim-start-label">开始 · 词库练习</span>
+          <span class="btn-arrow" aria-hidden="true" data-icon="arrow"></span>
+        </button>
+
+        <section class="review-block" id="discrim-review-block">
+          <div class="section-head">
+            <span class="section-label">错题复习</span>
+            <span class="section-hint">到期错词 · 间隔重考</span>
+          </div>
+          <div id="discrim-review-card" class="entries" aria-label="错题复习"></div>
+          <button id="discrim-review-btn" class="primary-btn tone-orange" type="button">
+            <span id="discrim-review-label">开始复习</span>
+            <span class="btn-arrow" aria-hidden="true" data-icon="arrow"></span>
+          </button>
+        </section>
+      </section>
+
+      <nav class="tab-bar" aria-label="主导航">
+        <button id="tab-words" class="tab-btn tone-teal active" type="button" aria-current="page">
+          <span class="tab-icon" aria-hidden="true" data-icon="words"></span>
+          <span class="tab-label">字词</span>
+        </button>
+        <button id="tab-sentence" class="tab-btn tone-green" type="button">
+          <span class="tab-icon" aria-hidden="true" data-icon="sentence"></span>
+          <span class="tab-label">句子</span>
+        </button>
+        <button id="tab-discrim" class="tab-btn tone-violet" type="button">
+          <span class="tab-icon" aria-hidden="true" data-icon="headphones"></span>
+          <span class="tab-label">辨音</span>
+        </button>
+      </nav>
+    </main>
+
+    <!-- 页面 2：训练页 -->
+    <main id="view-training" class="view hidden">
+      <header class="training-header">
+        <button id="exit-btn" class="icon-btn" type="button" aria-label="退出练习">×</button>
+        <div class="timer-wrap">
+          <span id="timer" class="timer" aria-live="off">10:00</span>
+          <div id="progress-track" class="progress-track" aria-hidden="true">
+            <div id="progress-fill" class="progress-fill"></div>
+            <span id="progress-bead" class="progress-bead"></span>
+          </div>
+        </div>
+        <button id="debug-toggle" class="debug-dot" type="button" aria-label="调试面板" title="调试面板"></button>
+      </header>
+
+      <div data-phase-slot="word"></div>
+      <section class="stage">
+        <div id="word" class="word"></div>
+        <div id="pinyin" class="pinyin"></div>
+        <div id="status" class="status" aria-live="polite"></div>
+        <img class="practice-companion" src="/assets/illustrations/listen.webp" width="96" height="96" alt="" aria-hidden="true">
+      </section>
+
+      <footer class="controls">
+        <button id="replay-btn" class="control-btn" type="button" aria-label="重播">
+          <span class="ctl-icon" aria-hidden="true" data-icon="replay"></span>
+          <span class="ctl-label">重播</span>
+        </button>
+        <button id="pause-btn" class="control-btn control-main" type="button" aria-label="暂停">
+          <span class="ctl-icon" aria-hidden="true" data-icon="pause"></span>
+          <span class="ctl-label">暂停</span>
+        </button>
+      </footer>
+    </main>
+
+    <!-- 页面 3：完成 / 拼点结算页 -->
+    <main id="view-complete" class="view hidden">
+      <section id="complete-body" class="complete-body"></section>
+    </main>
+
+    <!-- 页面 4：标准音（听音分辨参考） -->
+    <main id="view-calibration" class="view hidden">
+      <header class="page-header">
+        <button id="cal-back" class="icon-btn" type="button" aria-label="返回">‹</button>
+        <div class="page-title">
+          <h2>标准音</h2>
+          <p>听标准音，分辨前鼻 n 与后鼻 ng</p>
+        </div>
+      </header>
+      <div id="cal-tabs" class="cal-tabs" role="group" aria-label="选择对比音组"></div>
+      <p class="cal-tip">前鼻音看舌尖，后鼻音看舌后部</p>
+      <section id="cal-groups" class="cal-groups"></section>
+      <div class="cal-toolbar">
+        <div class="cal-speed" role="group" aria-label="播放速度">
+          <button type="button" data-cal-speed="normal" aria-pressed="true">正常</button>
+          <button type="button" data-cal-speed="slow" aria-pressed="false">半速</button>
+        </div>
+        <button id="cal-stop" class="ghost-btn" type="button" disabled>停止</button>
+      </div>
+      <p id="cal-status" class="cal-status" role="status" aria-live="polite" aria-atomic="true">点音名听示范，点箭头依次对比</p>
+
+    </main>
+
+    <!-- 页面 5：作品墙 -->
+    <main id="view-wall" class="view hidden">
+      <header class="page-header">
+        <button id="wall-back" class="icon-btn" type="button" aria-label="返回">‹</button>
+        <div class="page-title">
+          <h2>我的拼豆</h2>
+          <p>每一颗，都是真练出来的</p>
+        </div>
+      </header>
+      <section id="wall-body" class="wall-body"></section>
+    </main>
+
+    <!-- 页面 6：训练历史 -->
+    <main id="view-history" class="view hidden">
+      <header class="page-header">
+        <button id="history-back" class="icon-btn" type="button" aria-label="返回">‹</button>
+        <div class="page-title">
+          <h2>训练历史</h2>
+          <p>每一组练习，都算数</p>
+        </div>
+      </header>
+      <section id="history-body" class="history-body"></section>
+    </main>
+
+    <!-- 页面 7：句子练习 -->
+    <main id="view-sentence" class="view hidden">
+      <header class="training-header">
+        <button id="sentence-exit-btn" class="icon-btn" type="button" aria-label="退出练习">×</button>
+        <div class="timer-wrap">
+          <span id="sentence-progress-text" class="timer" aria-live="off">1 / 10</span>
+          <div id="sentence-progress-track" class="progress-track" aria-hidden="true">
+            <div id="sentence-progress-fill" class="progress-fill"></div>
+            <span id="sentence-progress-bead" class="progress-bead"></span>
+          </div>
+        </div>
+        <span class="sentence-tag" id="sentence-filter-tag">全部</span>
+      </header>
+
+      <div data-phase-slot="sentence"></div>
+      <section class="stage sentence-stage">
+        <p id="sentence-source" class="sentence-source"></p>
+        <div id="sentence-text" class="sentence-text"></div>
+        <div id="sentence-status" class="status" aria-live="polite"></div>
+        <div class="sentence-legend" id="sentence-legend" aria-label="拼音和鼻音标记">
+          <button id="sentence-pinyin-toggle" class="hl-toggle" type="button">拼音：开</button>
+          <span class="legend-dot teal"></span>前鼻音 n
+          <span class="legend-dot orange"></span>后鼻音 ng
+        </div>
+      </section>
+
+      <footer class="controls">
+        <button id="sentence-replay-btn" class="control-btn" type="button" aria-label="重播">
+          <span class="ctl-icon" aria-hidden="true" data-icon="replay"></span>
+          <span class="ctl-label">重播</span>
+        </button>
+        <button id="sentence-pause-btn" class="control-btn control-main" type="button" aria-label="暂停">
+          <span class="ctl-icon" aria-hidden="true" data-icon="pause"></span>
+          <span class="ctl-label">暂停</span>
+        </button>
+      </footer>
+    </main>
+
+    <!-- 页面 8：听辨练习（前后鼻音逐字判断，无示范音） -->
+    <main id="view-discrim" class="view hidden">
+      <header class="training-header">
+        <button id="discrim-exit-btn" class="icon-btn" type="button" aria-label="退出练习">×</button>
+        <div class="timer-wrap">
+          <span id="discrim-progress-text" class="timer" aria-live="off">1 / 10</span>
+          <div id="discrim-progress-track" class="progress-track" aria-hidden="true">
+            <div id="discrim-progress-fill" class="progress-fill"></div>
+            <span id="discrim-progress-bead" class="progress-bead"></span>
+          </div>
+        </div>
+        <span class="sentence-tag" id="discrim-tag">听辨练习</span>
+      </header>
+
+      <section id="discrim-stage" class="stage discrim-stage">
+        <p class="discrim-hint">看字判韵母 · 横杠指到哪个字，就判哪个字</p>
+        <div class="discrim-board"><div id="discrim-word" class="discrim-word"></div>
+          <img class="discrim-companion" src="/assets/illustrations/violet.webp" width="112" height="112" alt="" aria-hidden="true">
+        </div>
+        <div id="discrim-status" class="status" aria-live="polite"></div>
+        <div id="discrim-alert" class="discrim-alert hidden" role="alert">
+          <span class="alert-symbol" aria-hidden="true">!</span><span><strong>放慢一点，再辨一辨</strong><small>前鼻收 n，后鼻送 ng</small></span>
+        </div>
+      </section>
+
+      <footer class="controls discrim-controls">
+        <button id="discrim-front-btn" class="answer-btn front" type="button">前鼻 en</button>
+        <button id="discrim-back-btn" class="answer-btn back" type="button">后鼻 eng</button>
+      </footer>
+
+      <!-- 反馈期轻触跳过：覆盖全屏捕获点击，立即进入下一词 -->
+      <div id="discrim-skip" class="discrim-skip hidden" aria-hidden="true"></div>
+    </main>
+  </div>
+
+  <!-- 作品详情弹层 -->
+  <div id="detail-overlay" class="overlay hidden" role="presentation">
+    <div class="detail-sheet" role="dialog" aria-modal="true" aria-label="拼豆作品详情">
+      <div id="detail-body" class="detail-body"></div>
+    </div>
+  </div>
+
+  <!-- 音筛选弹层 -->
+  <div id="filter-overlay" class="overlay hidden" role="presentation">
+    <div class="filter-sheet" role="dialog" aria-modal="true" aria-label="选择练习的音">
+      <div id="filter-body" class="filter-body"></div>
+    </div>
+  </div>
+
+  <!-- 选择下一张（全部明牌可选，随时切换） -->
+  <div id="picker-overlay" class="overlay hidden" role="presentation">
+    <div class="picker-sheet" role="dialog" aria-modal="true" aria-label="选择拼豆作品">
+      <div id="picker-body" class="picker-body"></div>
+    </div>
+  </div>
+
+  <!-- 句子练习：练哪种句子 -->
+  <div id="sentence-filter-overlay" class="overlay hidden" role="presentation">
+    <div class="filter-sheet" role="dialog" aria-modal="true" aria-label="选择练习的音">
+      <div id="sentence-filter-body" class="filter-body"></div>
+    </div>
+  </div>
+
+  <!-- 退出确认 -->
+  <div id="exit-dialog" class="dialog-backdrop hidden" role="presentation">
+    <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="exit-title">
+      <h2 id="exit-title">结束本次练习？</h2>
+      <p>练到一半也可以结算，按完成比例获得拼点。</p>
+      <div class="dialog-actions">
+        <button id="continue-btn" class="primary-btn" type="button">继续练习</button>
+        <button id="end-btn" class="ghost-btn danger" type="button">结束并结算</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 隐藏开发调试面板（普通用户不可见） -->
+  <section id="debug-panel" class="debug-panel hidden" aria-label="开发调试面板">
+    <div class="debug-head">
+      <span>调试面板</span>
+      <button id="debug-close" class="debug-close" type="button" aria-label="关闭调试面板">×</button>
+    </div>
+    <dl class="debug-fields">
+      <dt>profile_id</dt><dd id="dbg-profile">-</dd>
+      <dt>session_id</dt><dd id="dbg-session">-</dd>
+      <dt>seed</dt><dd id="dbg-seed">-</dd>
+      <dt>item_id</dt><dd id="dbg-item">-</dd>
+      <dt>index</dt><dd id="dbg-index">-</dd>
+      <dt>clip duration</dt><dd id="dbg-clip">-</dd>
+      <dt>estimated item duration</dt><dd id="dbg-est">-</dd>
+      <dt>include_finals</dt><dd id="dbg-finals">-</dd>
+    </dl>
+    <div class="debug-controls">
+      <label>extra_follow_sec <input id="dbg-extra" type="number" step="0.1" min="0" max="5"></label>
+      <label>min_follow_sec <input id="dbg-min" type="number" step="0.1" min="0" max="10"></label>
+      <label>transition_sec <input id="dbg-transition" type="number" step="0.1" min="0" max="5"></label>
+      <div class="debug-row">
+        <button id="dbg-skip" class="debug-btn" type="button">跳过当前词</button>
+        <button id="dbg-finish" class="debug-btn" type="button">完成训练（测试结算）</button>
+      </div>
+      <button id="dbg-reset" class="debug-btn" type="button">恢复默认节奏</button>
+    </div>
+  </section>
+
+  <audio id="player" preload="auto"></audio>
+  <audio id="sentence-player" preload="auto"></audio>
+  <script>
+    // 防止用户双击直接打开 HTML（file://）：此时加载不到接口和样式，
+    // 五个页面会全部叠在一起，看起来像乱码。这里给出友好提示。
+    (function () {
+      if (location.protocol !== "file:") return;
+      document.title = "需要本地服务 · 前后鼻音专项训练";
+      document.body.innerHTML =
+        '<div style="max-width:440px;margin:14vh auto 0;padding:28px;' +
+        'font-family:-apple-system,BlinkMacSystemFont,\'PingFang SC\',sans-serif;' +
+        'background:#f7f3ec;color:#26221b">' +
+        '<div style="font-size:13px;letter-spacing:.12em;color:#8a8172">普通话语音系统 · 本地原型</div>' +
+        '<h1 style="font-size:24px;margin:10px 0 14px">不是乱码，是打开方式不对</h1>' +
+        '<p style="line-height:1.8;color:#5f594d;margin:0 0 18px">' +
+        '你直接双击打开了 HTML 文件，它连不上本地接口和样式，所以页面全叠在一起了。' +
+        '这个 demo 需要通过本地服务运行。</p>' +
+        '<div style="background:#fffdf9;border:1px solid #e7dfd1;border-radius:14px;' +
+        'padding:16px;font-size:13px;line-height:1.9">' +
+        '<div>1. 启动服务：</div>' +
+        '<code style="display:block;margin:6px 0 14px;padding:10px 12px;background:#26221b;' +
+        'color:#f7f3ec;border-radius:8px;font-size:12px;overflow-wrap:anywhere">' +
+        'cd "/Users/baiyanglin/Desktop/普通话语音系统/普通话语音系统-zcode"<br>' +
+        'PYTHONPATH=src ../.venv/bin/python -m pth_corpus prototype --data-root data --port 8769</code>' +
+        '<div>2. 然后打开：</div>' +
+        '<a href="http://127.0.0.1:8769" style="display:inline-block;margin-top:10px;' +
+        'padding:11px 18px;background:#0e7e70;color:#fff;border-radius:12px;' +
+        'text-decoration:none;font-size:14px">点这里打开 http://127.0.0.1:8769</a>' +
+        '</div></div>';
+    })();
+  </script>
+  <script src="/assets/ui.js"></script>
+  <script src="/assets/sfx.js?v=2026-09-16-sound-default"></script>
+  <script src="/assets/app.js?v=2026-09-12-sound-v4"></script>
+</body>
+</html>

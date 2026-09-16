@@ -1,0 +1,31 @@
+{
+  "version": "v3",
+  "reward_unit": "拼点",
+  "duration_rewards": {
+    "5": 6,
+    "10": 12,
+    "15": 20,
+    "20": 28
+  },
+  "minimum_completion_ratio": 0.2,
+  "completion_bonus": 2,
+  "streak_bonus": {
+    "start_day": 2,
+    "per_day": 1,
+    "cap": 5
+  },
+  "daily_bead_cap": 100,
+  "combo_bonus": 2,
+  "sentence_rewards": {
+    "beads_per_sentence": 0.5,
+    "completion_bonus": 1,
+    "minimum_completion_ratio": 0.2
+  },
+  "discrim_rewards": {
+    "round_rates": [2, 1, 1],
+    "tail_rate": 0.5,
+    "perfect_bonus": 1,
+    "minimum_completion_ratio": 0.2
+  },
+  "review_reward": 2
+}

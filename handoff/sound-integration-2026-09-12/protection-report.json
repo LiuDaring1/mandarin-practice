@@ -1,0 +1,11 @@
+{
+  "protected_files": 98,
+  "old_wavs": 30,
+  "changed": [],
+  "new_progress_files": [],
+  "production_assets_byte_identical": 16,
+  "preview_assets_byte_identical": 16,
+  "slots": 11,
+  "production_url": "http://127.0.0.1:8769/",
+  "external_libraries_used": false
+}

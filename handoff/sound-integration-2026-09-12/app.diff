@@ -1,0 +1,306 @@
+--- before/app.js
++++ after/app.js
+@@ -1,4 +1,7 @@
+ "use strict";
++
++// Sound assets are replaceable through sounds/manifest.json; training is independent of audio availability.
++const sfx = window.appSfx || {unlock(){},play(){},stop(){},stopBus(){},beginTeaching(){return ()=>{};},settlement(){}};
+ 
+ const TIMING_KEY = "pth-prototype-timing-v1";
+ const PROGRESS_KEY = "pth-nasal-progress-v1";
+@@ -800,6 +803,9 @@
+ /* ---------- 视图切换 ---------- */
+ 
+ function setView(name) {
++  sfx.stop();
++  cancelIronCeremony();
++  stopPlacement();
+   if (document.body.dataset.view === "calibration" && name !== "calibration") stopCalVideos();
+   document.body.dataset.view = name;
+   window.scrollTo({ top: 0, behavior: "instant" });
+@@ -1288,6 +1294,7 @@
+ }
+ 
+ async function startSentenceSession(filterId, count) {
++  sfx.unlock();
+   stopSentenceTick();
+   clearTimeout(state.sentenceFollowTimeout);
+   state.sentenceFilter = filterId || "front";
+@@ -1316,6 +1323,7 @@
+       }),
+     });
+     state.sentenceSession = session;
++    sfx.play("training.start");
+     state.sentenceStartTime = new Date().toISOString();
+     startSentenceTick();
+     playSentence(0);
+@@ -1456,6 +1464,7 @@
+ }
+ 
+ function toggleSentencePause() {
++  sfx.stop();
+   if (state.sentenceMode === "paused") {
+     resumeSentence();
+     return;
+@@ -1581,6 +1590,7 @@
+     reward,
+     rewardResult,
+   });
++  sfx.settlement(rewardResult, `sentence:${event.session_id}`);
+ }
+ 
+ function renderSentenceComplete(result) {
+@@ -1706,6 +1716,7 @@
+ }
+ 
+ async function startLibraryPractice() {
++  sfx.unlock();
+   stopDiscrimTick();
+   clearTimeout(state.discrimFeedbackTimeout);
+   resetDiscrimSessionStats();
+@@ -1720,6 +1731,7 @@
+ }
+ 
+ async function startReviewPractice() {
++  sfx.unlock();
+   stopDiscrimTick();
+   clearTimeout(state.discrimFeedbackTimeout);
+   resetDiscrimSessionStats();
+@@ -1754,6 +1766,7 @@
+     state.discrimQueueTotal = session.items.length;
+     state.discrimPlannedPoints += plannedDiscrimPoints(session.items);
+     state.discrimMode = "answering";
++    sfx.play("training.start");
+     renderDiscrimWord();
+     updateDebug();
+   } catch (err) {
+@@ -1799,6 +1812,7 @@
+     }
+     state.discrimSession = session;
+     state.discrimMode = "answering";
++    sfx.play("training.start");
+     renderDiscrimWord();
+     updateDebug();
+   } catch (err) {
+@@ -1964,6 +1978,9 @@
+   const allCorrect = Boolean(payload.all_correct);
+   const wordCorrectCount = results.filter((r) => r.correct).length;
+   const item = currentDiscrimItem();
++  sfx.play(allCorrect ? "answer.correct" : "answer.retry", {
++    eventKey: `answer:${state.discrimSession?.session_id}:${state.discrimKind}:${state.discrimIndex}`,
++  });
+   state.discrimPointCount += results.length;
+   state.discrimCorrectPoints += wordCorrectCount;
+   state.discrimWordResults.push(results);
+@@ -2214,6 +2231,7 @@
+   const reward = await settleLibraryReward(exitEarly);
+   await refreshDiscrimState();
+   renderLibraryComplete({ exitEarly, reward });
++  sfx.settlement(state.discrimLastApplyResult, `discrim:${state.discrimSession?.session_id}`);
+ }
+ 
+ async function finishDiscrimSessionEarly() {
+@@ -2266,6 +2284,7 @@
+   postDiscrimEvent(false, reward);
+   await refreshDiscrimState();
+   renderReviewComplete({ done: state.discrimReviewDone, reward });
++  sfx.settlement(state.discrimLastApplyResult, `review:${todayKey()}`);
+ }
+ 
+ function renderLibraryComplete(result) {
+@@ -2362,6 +2381,7 @@
+ /* ---------- 训练流 ---------- */
+ 
+ async function startSession(profileId, duration, entryId, seed) {
++  sfx.unlock();
+   state.profileId = profileId;
+   state.duration = duration;
+   if (entryId) state.entryId = entryId;
+@@ -2396,6 +2416,7 @@
+       }),
+     });
+     state.session = session;
++    sfx.play("training.start");
+     state.startTime = new Date().toISOString();
+     state.timerRemainingMs = Math.max(0, Math.round(session.estimated_duration_sec * 1000));
+     renderTimer();
+@@ -2468,6 +2489,7 @@
+ }
+ 
+ function togglePause() {
++  sfx.stop();
+   if (state.mode === "paused") {
+     resume();
+     return;
+@@ -2575,6 +2597,7 @@
+   const result = applyReward(reward, meta);
+   recordEvent(reward, meta);
+   renderComplete(result);
++  sfx.settlement(result, `word:${session?.session_id || state.startTime}`);
+ }
+ 
+ function applyReward(reward, meta) {
+@@ -2886,6 +2909,7 @@
+ const CALIBRATION_VERSION = "2026-09-12-mobile-v3";
+ let calRunId = 0;
+ let calLoadTimer = null;
++let calSoundRelease = null;
+ 
+ function calVideoUrl(finalName) {
+   // 两种速度都用交付正常有声文件，让浏览器同步放慢同一段音画。
+@@ -2984,6 +3008,7 @@
+   selectCalibrationGroup(groupId);
+   stopCalVideos();
+   const runId = calRunId;
++  calSoundRelease = sfx.beginTeaching();
+   const sides = seq.split("");
+   const button = els.calGroups.querySelector(`[data-group="${groupId}"][data-seq="${seq}"]`);
+   button.classList.add("active");
+@@ -3058,6 +3083,8 @@
+ }
+ 
+ function stopCalVideos(message = "点音名听示范，点箭头依次对比") {
++  calSoundRelease?.();
++  calSoundRelease = null;
+   // 先使所有已排队回调失效，再暂停；保护快速重播、换组和换模式。
+   calRunId += 1;
+   clearTimeout(calLoadTimer);
+@@ -3201,6 +3228,8 @@
+ }
+ 
+ function closeDetail() {
++  cancelIronCeremony();
++  sfx.stop();
+   stopPlacement();
+   placement = null;
+   els.detailOverlay.classList.add("hidden");
+@@ -3226,6 +3255,7 @@
+ }
+ 
+ function renderDetail(art) {
++  cancelIronCeremony();
+   const progress = state.progress;
+   stopPlacement();
+   placement = null;
+@@ -3332,6 +3362,7 @@
+ let placement = null;
+ 
+ function stopPlacement() {
++  sfx.stopBus("bead");
+   if (!placement) return;
+   placement.holding = false;
+   clearTimeout(placement.holdTimer);
+@@ -3369,7 +3400,9 @@
+     placement.holdTimer = setTimeout(startHold, 320);
+   };
+   btn.addEventListener("pointerdown", begin);
+-  const stop = () => {
++  const stop = (event) => {
++    // A tap keeps its 66ms tick; releasing a repeating hold stops the bead bus.
++    if (placement?.holding || ["pointercancel", "blur"].includes(event?.type)) sfx.stopBus("bead");
+     btn.classList.remove("holding");
+     clearTimeout(placement?.holdTimer);
+     if (placement) placement.holding = false;
+@@ -3484,48 +3517,35 @@
+ 
+ /* ---------- 拼入轻反馈（音效 / 震动）与熨烫仪式 ---------- */
+ 
+-let placeAudioCtx = null;
+ let placeTickLast = 0;
+ 
+ function ensureAudio() {
+-  try {
+-    if (placeAudioCtx) {
+-      if (placeAudioCtx.state === "suspended") placeAudioCtx.resume().catch(() => {});
+-      return;
+-    }
+-    const Ctx = window.AudioContext || window.webkitAudioContext;
+-    if (Ctx) placeAudioCtx = new Ctx();
+-  } catch {
+-    placeAudioCtx = null;
+-  }
++  sfx.unlock();
+ }
+ 
+ function playPlaceTick(count) {
+-  if (!placeAudioCtx) return;
++  sfx.play("bead.place");
+   const now = performance.now();
+   if (count > 1 && now - placeTickLast < 70) return; // 高速连拼时限频
+   placeTickLast = now;
+-  try {
+-    const t = placeAudioCtx.currentTime;
+-    const osc = placeAudioCtx.createOscillator();
+-    const gain = placeAudioCtx.createGain();
+-    osc.type = "triangle";
+-    osc.frequency.value = 1350 + Math.random() * 500;
+-    gain.gain.setValueAtTime(0.035, t);
+-    gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.05);
+-    osc.connect(gain);
+-    gain.connect(placeAudioCtx.destination);
+-    osc.start(t);
+-    osc.stop(t + 0.06);
+-  } catch {
+-    /* ignore audio errors */
+-  }
+   if (navigator.vibrate) navigator.vibrate(8);
++}
++
++let ironRun = 0, ironTimer = null, ironAudible = false;
++function cancelIronCeremony() {
++  ironRun++;
++  clearTimeout(ironTimer);
++  sfx.stopBus("texture");
++  sfx.stopBus("celebration");
+ }
+ 
+ // 单件拼满：详情弹层内直接走「熨烫 / 融合」仪式（约 1.8s）→ 成品；
+ // 系列第 6 件在此触发「猫猫系列 6/6 完成」庆祝（一次）。
+ function showIronCeremony(art, record) {
++  cancelIronCeremony();
++  const own = ironRun;
++  ironAudible = !document.hidden;
++  sfx.play("artwork.fuse");
+   const seriesDone = art.series_id ? seriesCompletedCount() : 0;
+   const seriesTotal = art.series_id ? seriesTotalCount() : 0;
+   const isSeriesComplete = Boolean(art.series_id) && seriesDone >= seriesTotal;
+@@ -3534,8 +3554,8 @@
+     `<div class="iron-mark" aria-hidden="true">${uiMascot("beading")}</div>` +
+     '<p class="iron-caption">熨烫中 · 拼豆正在融成一幅画…</p>' +
+     "</div>";
+-  setTimeout(() => {
+-    if (els.detailOverlay.classList.contains("hidden")) return;
++  ironTimer = setTimeout(() => {
++    if (own !== ironRun || els.detailOverlay.classList.contains("hidden")) return;
+     const headHtml = isSeriesComplete
+       ? "<h1>猫猫系列 · 6/6 完成</h1>" +
+         `<p class="complete-sub">${art.name} 拼好了 · 系列集齐啦</p>`
+@@ -3556,6 +3576,9 @@
+       '<div class="detail-actions">' +
+       '<button id="detail-wall-btn" class="primary-btn" type="button">收进作品墙</button>' +
+       "</div>";
++    if (ironAudible) sfx.play(isSeriesComplete ? "series.complete" : "artwork.complete", {
++      eventKey: `artwork:${art.artwork_id}:${record.completedAt}`,
++    });
+     els.detailBody.querySelector("#detail-close").addEventListener("click", closeDetail);
+     els.detailBody
+       .querySelector("#detail-wall-btn")
+@@ -3724,6 +3747,7 @@
+ /* ---------- 退出对话框 ---------- */
+ 
+ function showExitDialog(show) {
++  if (show) sfx.stop();
+   els.exitDialog.classList.toggle("hidden", !show);
+ }
+ 
+@@ -3831,8 +3855,10 @@
+     btn.addEventListener("click", () => setCalibrationSpeed(btn.dataset.calSpeed));
+   });
+   document.addEventListener("visibilitychange", () => {
++    if (document.hidden) { stopPlacement(); ironAudible = false; sfx.stop(); }
+     if (document.hidden && document.body.dataset.view === "calibration") stopCalVideos("已停止，点音名或箭头重新播放");
+   });
++  window.addEventListener("blur", () => { stopPlacement(); ironAudible = false; sfx.stop(); });
+   window.addEventListener("pagehide", () => stopCalVideos());
+   els.calLink.addEventListener("click", () => {
+     setView("calibration");

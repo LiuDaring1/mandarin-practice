@@ -1,0 +1,12 @@
+* text=auto
+*.py text eol=lf
+*.js text eol=lf
+*.cjs text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.md text eol=lf whitespace=-blank-at-eol
+# Archived unified patches contain meaningful single-space context lines.
+*.diff -whitespace
+*.wav binary
+*.png binary
+*.webp binary

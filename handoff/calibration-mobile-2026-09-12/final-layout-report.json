@@ -1,0 +1,370 @@
+{
+  "status": "passed",
+  "layouts": [
+    {
+      "width": 360,
+      "scrollWidth": 360,
+      "pageHeight": 844,
+      "viewportHeight": 844,
+      "visibleGroups": 1,
+      "controlBottom": 617.9375,
+      "buttons": [
+        {
+          "text": "‹",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "text": "an / ang",
+          "w": 102.65625,
+          "h": 44
+        },
+        {
+          "text": "en / eng",
+          "w": 102.671875,
+          "h": 44
+        },
+        {
+          "text": "in / ing",
+          "w": 102.65625,
+          "h": 44
+        },
+        {
+          "text": "an",
+          "w": 147.5,
+          "h": 44
+        },
+        {
+          "text": "ang",
+          "w": 147.5,
+          "h": 44
+        },
+        {
+          "text": "an → ang",
+          "w": 147.5,
+          "h": 44
+        },
+        {
+          "text": "ang → an",
+          "w": 147.5,
+          "h": 44
+        },
+        {
+          "text": "正常",
+          "w": 126,
+          "h": 44
+        },
+        {
+          "text": "半速",
+          "w": 126,
+          "h": 44
+        },
+        {
+          "text": "停止",
+          "w": 56,
+          "h": 44
+        }
+      ],
+      "videos": [
+        {
+          "w": 300,
+          "h": 168.75,
+          "fit": "contain"
+        }
+      ],
+      "toolbarHeight": 52
+    },
+    {
+      "width": 390,
+      "scrollWidth": 390,
+      "pageHeight": 844,
+      "viewportHeight": 844,
+      "visibleGroups": 1,
+      "controlBottom": 630.3125,
+      "buttons": [
+        {
+          "text": "‹",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "text": "an / ang",
+          "w": 110,
+          "h": 44
+        },
+        {
+          "text": "en / eng",
+          "w": 110,
+          "h": 44
+        },
+        {
+          "text": "in / ing",
+          "w": 110,
+          "h": 44
+        },
+        {
+          "text": "an",
+          "w": 158.5,
+          "h": 44
+        },
+        {
+          "text": "ang",
+          "w": 158.5,
+          "h": 44
+        },
+        {
+          "text": "an → ang",
+          "w": 158.5,
+          "h": 44
+        },
+        {
+          "text": "ang → an",
+          "w": 158.5,
+          "h": 44
+        },
+        {
+          "text": "正常",
+          "w": 137,
+          "h": 44
+        },
+        {
+          "text": "半速",
+          "w": 137,
+          "h": 44
+        },
+        {
+          "text": "停止",
+          "w": 56,
+          "h": 44
+        }
+      ],
+      "videos": [
+        {
+          "w": 322,
+          "h": 181.125,
+          "fit": "contain"
+        }
+      ],
+      "toolbarHeight": 52
+    },
+    {
+      "width": 430,
+      "scrollWidth": 430,
+      "pageHeight": 844,
+      "viewportHeight": 844,
+      "visibleGroups": 1,
+      "controlBottom": 652.8125,
+      "buttons": [
+        {
+          "text": "‹",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "text": "an / ang",
+          "w": 123.328125,
+          "h": 44
+        },
+        {
+          "text": "en / eng",
+          "w": 123.328125,
+          "h": 44
+        },
+        {
+          "text": "in / ing",
+          "w": 123.34375,
+          "h": 44
+        },
+        {
+          "text": "an",
+          "w": 178.5,
+          "h": 44
+        },
+        {
+          "text": "ang",
+          "w": 178.5,
+          "h": 44
+        },
+        {
+          "text": "an → ang",
+          "w": 178.5,
+          "h": 44
+        },
+        {
+          "text": "ang → an",
+          "w": 178.5,
+          "h": 44
+        },
+        {
+          "text": "正常",
+          "w": 157,
+          "h": 44
+        },
+        {
+          "text": "半速",
+          "w": 157,
+          "h": 44
+        },
+        {
+          "text": "停止",
+          "w": 56,
+          "h": 44
+        }
+      ],
+      "videos": [
+        {
+          "w": 362,
+          "h": 203.625,
+          "fit": "contain"
+        }
+      ],
+      "toolbarHeight": 52
+    },
+    {
+      "width": 600,
+      "scrollWidth": 600,
+      "pageHeight": 844,
+      "viewportHeight": 844,
+      "visibleGroups": 1,
+      "controlBottom": 668.5625,
+      "buttons": [
+        {
+          "text": "‹",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "text": "an / ang",
+          "w": 132.65625,
+          "h": 44
+        },
+        {
+          "text": "en / eng",
+          "w": 132.671875,
+          "h": 44
+        },
+        {
+          "text": "in / ing",
+          "w": 132.671875,
+          "h": 44
+        },
+        {
+          "text": "an",
+          "w": 192.5,
+          "h": 44
+        },
+        {
+          "text": "ang",
+          "w": 192.5,
+          "h": 44
+        },
+        {
+          "text": "an → ang",
+          "w": 192.5,
+          "h": 44
+        },
+        {
+          "text": "ang → an",
+          "w": 192.5,
+          "h": 44
+        },
+        {
+          "text": "正常",
+          "w": 171,
+          "h": 44
+        },
+        {
+          "text": "半速",
+          "w": 171,
+          "h": 44
+        },
+        {
+          "text": "停止",
+          "w": 56,
+          "h": 44
+        }
+      ],
+      "videos": [
+        {
+          "w": 390,
+          "h": 219.375,
+          "fit": "contain"
+        }
+      ],
+      "toolbarHeight": 52
+    },
+    {
+      "width": 1024,
+      "scrollWidth": 1024,
+      "pageHeight": 844,
+      "viewportHeight": 844,
+      "visibleGroups": 1,
+      "controlBottom": 668.5625,
+      "buttons": [
+        {
+          "text": "‹",
+          "w": 44,
+          "h": 44
+        },
+        {
+          "text": "an / ang",
+          "w": 132.65625,
+          "h": 44
+        },
+        {
+          "text": "en / eng",
+          "w": 132.671875,
+          "h": 44
+        },
+        {
+          "text": "in / ing",
+          "w": 132.671875,
+          "h": 44
+        },
+        {
+          "text": "an",
+          "w": 192.5,
+          "h": 44
+        },
+        {
+          "text": "ang",
+          "w": 192.5,
+          "h": 44
+        },
+        {
+          "text": "an → ang",
+          "w": 192.5,
+          "h": 44
+        },
+        {
+          "text": "ang → an",
+          "w": 192.5,
+          "h": 44
+        },
+        {
+          "text": "正常",
+          "w": 171,
+          "h": 44
+        },
+        {
+          "text": "半速",
+          "w": 171,
+          "h": 44
+        },
+        {
+          "text": "停止",
+          "w": 56,
+          "h": 44
+        }
+      ],
+      "videos": [
+        {
+          "w": 390,
+          "h": 219.375,
+          "fit": "contain"
+        }
+      ],
+      "toolbarHeight": 52
+    }
+  ]
+}

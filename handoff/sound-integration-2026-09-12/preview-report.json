@@ -1,0 +1,8 @@
+{
+  "rewardButtons": 8,
+  "dailyButtons": 7,
+  "duration": 0.72,
+  "realGesturePlayback": true,
+  "stop": true,
+  "noOverflow390": true
+}

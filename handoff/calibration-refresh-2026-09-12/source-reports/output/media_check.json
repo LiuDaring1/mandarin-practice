@@ -1,0 +1,314 @@
+{
+  "an": {
+    "正常版": {
+      "metadata": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1920,
+            "height": 1080,
+            "r_frame_rate": "60/1",
+            "duration": "2.466667",
+            "nb_frames": "148"
+          },
+          {
+            "codec_type": "audio",
+            "r_frame_rate": "0/0",
+            "duration": "2.482993",
+            "nb_frames": "109"
+          }
+        ],
+        "format": {
+          "duration": "2.482993"
+        }
+      },
+      "decode": "passed",
+      "sha256": "b3bd223860543aaa462dc86571f3bef34459668fa64df59d80e8adb797157a27"
+    },
+    "半速版": {
+      "metadata": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1920,
+            "height": 1080,
+            "r_frame_rate": "60/1",
+            "duration": "4.933333",
+            "nb_frames": "296"
+          }
+        ],
+        "format": {
+          "duration": "4.933333"
+        }
+      },
+      "decode": "passed",
+      "sha256": "2e6d824665e9e23ae215e44fc5a63dc3e886bdd7ca2704d2d946223843ffdecd"
+    },
+    "source_audio_sha256": "edc025593decb839462ba383c77454f050c2c33a2d1eff829d8e9923c44a9b14",
+    "normal_audio_sha256": "edc025593decb839462ba383c77454f050c2c33a2d1eff829d8e9923c44a9b14"
+  },
+  "en": {
+    "正常版": {
+      "metadata": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1920,
+            "height": 1080,
+            "r_frame_rate": "60/1",
+            "duration": "2.400000",
+            "nb_frames": "144"
+          },
+          {
+            "codec_type": "audio",
+            "r_frame_rate": "0/0",
+            "duration": "2.482993",
+            "nb_frames": "109"
+          }
+        ],
+        "format": {
+          "duration": "2.482993"
+        }
+      },
+      "decode": "passed",
+      "sha256": "1b5f12b5249a4d5cf84a8515df85e51d0354ee8016a6ad9dce3545dca90b4776"
+    },
+    "半速版": {
+      "metadata": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1920,
+            "height": 1080,
+            "r_frame_rate": "60/1",
+            "duration": "4.800000",
+            "nb_frames": "288"
+          }
+        ],
+        "format": {
+          "duration": "4.800000"
+        }
+      },
+      "decode": "passed",
+      "sha256": "114f1cdd688cd293cdd6f2db8e05bd6e8d838500ff1dc4b422187fd18357f719"
+    },
+    "source_audio_sha256": "440125376bdc45298a1f033d0db891ac9f222c9f72ce4646e6b03b2eb799a028",
+    "normal_audio_sha256": "440125376bdc45298a1f033d0db891ac9f222c9f72ce4646e6b03b2eb799a028"
+  },
+  "in": {
+    "正常版": {
+      "metadata": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1920,
+            "height": 1080,
+            "r_frame_rate": "60/1",
+            "duration": "2.466667",
+            "nb_frames": "148"
+          },
+          {
+            "codec_type": "audio",
+            "r_frame_rate": "0/0",
+            "duration": "2.482993",
+            "nb_frames": "109"
+          }
+        ],
+        "format": {
+          "duration": "2.482993"
+        }
+      },
+      "decode": "passed",
+      "sha256": "c2c040501217cf35caea2b0e323ff8df94a43b030ea3848f6780e631d10d5212"
+    },
+    "半速版": {
+      "metadata": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1920,
+            "height": 1080,
+            "r_frame_rate": "60/1",
+            "duration": "4.933333",
+            "nb_frames": "296"
+          }
+        ],
+        "format": {
+          "duration": "4.933333"
+        }
+      },
+      "decode": "passed",
+      "sha256": "d1c40fd440a0dfecabc1a1ed6d3be5f47294a08b4ef9490eedbe0278c3de1c34"
+    },
+    "source_audio_sha256": "ddcfe8ea735bf59e61f86c81d5324a3c42e334f6ddd46f1849ae1698c6d002f1",
+    "normal_audio_sha256": "ddcfe8ea735bf59e61f86c81d5324a3c42e334f6ddd46f1849ae1698c6d002f1"
+  },
+  "ang": {
+    "正常版": {
+      "metadata": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1920,
+            "height": 1080,
+            "r_frame_rate": "60/1",
+            "duration": "2.466667",
+            "nb_frames": "148"
+          },
+          {
+            "codec_type": "audio",
+            "r_frame_rate": "0/0",
+            "duration": "2.482993",
+            "nb_frames": "109"
+          }
+        ],
+        "format": {
+          "duration": "2.482993"
+        }
+      },
+      "decode": "passed",
+      "sha256": "04888362e7dc8e033085bc0ff3abbeb5618ea37ee6569dd7490ccb1295e7cfe3"
+    },
+    "半速版": {
+      "metadata": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1920,
+            "height": 1080,
+            "r_frame_rate": "60/1",
+            "duration": "4.933333",
+            "nb_frames": "296"
+          }
+        ],
+        "format": {
+          "duration": "4.933333"
+        }
+      },
+      "decode": "passed",
+      "sha256": "892bb7acd8a3ef744a48961cda067dcafbbcbb3bec28f3e1cd751c50ca813bb4"
+    },
+    "source_audio_sha256": "0d9b2206f29d978c022dd50ef5fff7ec8640efd7de6c55151e5501fbfd6415a3",
+    "normal_audio_sha256": "0d9b2206f29d978c022dd50ef5fff7ec8640efd7de6c55151e5501fbfd6415a3"
+  },
+  "eng": {
+    "正常版": {
+      "metadata": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1920,
+            "height": 1080,
+            "r_frame_rate": "60/1",
+            "duration": "2.466667",
+            "nb_frames": "148"
+          },
+          {
+            "codec_type": "audio",
+            "r_frame_rate": "0/0",
+            "duration": "2.482993",
+            "nb_frames": "109"
+          }
+        ],
+        "format": {
+          "duration": "2.482993"
+        }
+      },
+      "decode": "passed",
+      "sha256": "8d60acaafd3a123c86f371fb5d1a479c11bbc0e1c20d4d753286733b7bf9a1a3"
+    },
+    "半速版": {
+      "metadata": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1920,
+            "height": 1080,
+            "r_frame_rate": "60/1",
+            "duration": "4.933333",
+            "nb_frames": "296"
+          }
+        ],
+        "format": {
+          "duration": "4.933333"
+        }
+      },
+      "decode": "passed",
+      "sha256": "cc930f70a1f71cb22cfc9d9379044e0cc8216b5f28fcea9b39d8354d9e840204"
+    },
+    "source_audio_sha256": "cb4f56c45457f3facba486fa8dfb45b704d0c4c61f340d8e8b0fa6c87dbf9230",
+    "normal_audio_sha256": "cb4f56c45457f3facba486fa8dfb45b704d0c4c61f340d8e8b0fa6c87dbf9230"
+  },
+  "ing": {
+    "正常版": {
+      "metadata": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1920,
+            "height": 1080,
+            "r_frame_rate": "60/1",
+            "duration": "2.466667",
+            "nb_frames": "148"
+          },
+          {
+            "codec_type": "audio",
+            "r_frame_rate": "0/0",
+            "duration": "2.482993",
+            "nb_frames": "109"
+          }
+        ],
+        "format": {
+          "duration": "2.482993"
+        }
+      },
+      "decode": "passed",
+      "sha256": "85aa640fbde0df43377bc00a4d40b1269e73445651f3fe41d75cc683ac07155d"
+    },
+    "半速版": {
+      "metadata": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1920,
+            "height": 1080,
+            "r_frame_rate": "60/1",
+            "duration": "4.933333",
+            "nb_frames": "296"
+          }
+        ],
+        "format": {
+          "duration": "4.933333"
+        }
+      },
+      "decode": "passed",
+      "sha256": "8e3ce69df31387fd08ebe38af372a98b25b1d233170485d2790ea99ae3552095"
+    },
+    "source_audio_sha256": "d605617d29374e2408c88e00e4948706008ba6df19965296f30018fa15724d49",
+    "normal_audio_sha256": "d605617d29374e2408c88e00e4948706008ba6df19965296f30018fa15724d49"
+  }
+}
