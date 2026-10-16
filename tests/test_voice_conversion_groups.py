@@ -68,6 +68,34 @@ def test_local_repair_plan_is_parent_bound_and_resumable(tmp_path):
     assert (tmp_path/'queue.json').read_bytes()==before
 
 
+def test_timing_repair_keeps_complete_long_sentence(tmp_path):
+    import wave
+    source=tmp_path/'original.wav'
+    with wave.open(str(source),'wb') as w:
+        w.setnchannels(1);w.setsampwidth(2);w.setframerate(16000)
+        w.writeframes(bytes(40*16000*2))
+    parent={'id':'article','kind':'sentence','source':str(source),
+        'source_sha256':groups.vc.digest(source),'duration':40,'voice':'news-male',
+        'export_name':'article.wav','clips':[
+            {'id':'long-sentence','start':2,'end':32,'relative_path':'sentence.wav'}]}
+    groups.vc.write_json(tmp_path/'queue.json',{'jobs':[parent]})
+    (tmp_path/'inputs').mkdir();(tmp_path/'exports').mkdir()
+    (tmp_path/'exports/article.wav').write_bytes(b'failed export')
+    groups.vc.write_json(tmp_path/'reports/article__conversion-integrity.json',{
+        'passed':False,'file_integrity':True,'new_loss':[],
+        'timing':{'stable':False,'median_lag_ms':70,'windows':[
+            {'source_start':12,'correlation':.5,'lag_ms':70}]}})
+    groups.repair_plan(tmp_path)
+    repair=json.loads((tmp_path/'queue.json').read_text())['jobs'][1]
+    assert repair['source_origin_seconds']==0
+    assert repair['duration']==37
+    assert repair['clips']==parent['clips']
+    assert groups.vc.probe(repair['source'])['duration']==37
+    before=(tmp_path/'queue.json').read_bytes()
+    groups.repair_plan(tmp_path)
+    assert (tmp_path/'queue.json').read_bytes()==before
+
+
 def test_release_blocks_unfinished_jobs_and_changed_candidates(tmp_path):
     source=tmp_path/'source.wav';source.write_bytes(b'original protected')
     job={'id':'page','kind':'word','source':str(source),'source_sha256':groups.vc.digest(source),

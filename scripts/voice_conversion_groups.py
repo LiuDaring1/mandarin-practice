@@ -167,6 +167,12 @@ def repair_plan(batch):
                 for w in timing.get('windows',[]) if w['correlation']<.65 or abs(w['lag_ms']-median)>60]
         ranges=[]
         for lo,hi in sorted(intervals):
+            # A timing window can fall inside a sentence longer than the
+            # minimum repair duration. Keep that complete practice clip.
+            overlapping=[c for c in parent['clips'] if c['start']<hi and c['end']>lo]
+            if overlapping:
+                lo=min(lo,min(c['start'] for c in overlapping))
+                hi=max(hi,max(c['end'] for c in overlapping))
             lo=max(0,lo-5);hi=min(parent['duration'],max(hi+5,lo+14))
             lo=max(0,min(lo,hi-14))
             if ranges and lo<=ranges[-1][1]+2:
@@ -177,15 +183,17 @@ def repair_plan(batch):
                    and j.get('source_origin_seconds')==lo and j.get('duration')==round(hi-lo,6)]
             if prior:
                 continue
+            clips=[{**c,'start':c['start']-lo,'end':c['end']-lo}
+                   for c in parent['clips'] if lo<=c['start']<c['end']<=hi]
+            if not clips:
+                raise ValueError('Repair interval contains no complete practice clips')
+            if hi-lo >= 570:
+                raise ValueError('Repair requires subdivision before GUI processing')
             jid=f'repair-{len([j for j in jobs if j["kind"]=="repair"])+1:04}'
             source=batch/'inputs'/(jid+'.wav')
             subprocess.run(['ffmpeg','-v','error','-nostdin','-n','-ss',str(lo),
                 '-i',parent['source'],'-t',str(hi-lo),'-ac','1','-ar','16000',
                 '-c:a','pcm_s16le',str(source)],check=True)
-            clips=[{**c,'start':c['start']-lo,'end':c['end']-lo}
-                   for c in parent['clips'] if lo<=c['start']<c['end']<=hi]
-            if not clips:
-                raise ValueError('Repair interval contains no complete practice clips')
             job={'id':jid,'kind':'repair','parent_job':parent['id'],
                 'source_origin_seconds':lo,'source':str(source.resolve()),
                 'source_sha256':vc.digest(source),'duration':round(hi-lo,6),
