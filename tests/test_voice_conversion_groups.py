@@ -66,3 +66,49 @@ def test_local_repair_plan_is_parent_bound_and_resumable(tmp_path):
     before=(tmp_path/'queue.json').read_bytes()
     groups.repair_plan(tmp_path)
     assert (tmp_path/'queue.json').read_bytes()==before
+
+
+def test_release_blocks_unfinished_jobs_and_changed_candidates(tmp_path):
+    source=tmp_path/'source.wav';source.write_bytes(b'original protected')
+    job={'id':'page','kind':'word','source':str(source),'source_sha256':groups.vc.digest(source),
+         'export_name':'converted.wav','voice':'news-female','clips':[
+         {'id':'word','relative_path':'word.wav','start':1,'end':2}]}
+    groups.vc.write_json(tmp_path/'queue.json',{'jobs':[job]})
+    with pytest.raises(ValueError,match='incomplete'):
+        groups.release(tmp_path)
+    assert not (tmp_path/'release-preserved-v1.json').exists()
+    export=tmp_path/'exports/converted.wav';export.parent.mkdir();export.write_bytes(b'converted')
+    folder=tmp_path/'staged-preserved-v1/page';folder.mkdir(parents=True)
+    wav=folder/'word.wav';wav.write_bytes(b'new clip')
+    manifest=folder/'manifest.json'
+    groups.vc.write_json(manifest,{'clips':[{**job['clips'][0],'sha256':groups.vc.digest(wav),
+                                        'audio':{'duration':1}}]})
+    groups.vc.write_json(tmp_path/'reports/page__preserved-v1__conversion-integrity.json',{
+        'passed':True,'manifest_sha256':groups.vc.digest(manifest),
+        'export_sha256':groups.vc.digest(export)})
+    wav.write_bytes(b'modified after review')
+    with pytest.raises(ValueError,match='changed since review'):
+        groups.release(tmp_path)
+    assert not (tmp_path/'release-preserved-v1.json').exists()
+    wav.write_bytes(b'new clip')
+    groups.release(tmp_path)
+    groups.activate(tmp_path,tmp_path)
+    from pth_corpus.voice_library import VoiceLibrary
+    library=VoiceLibrary(tmp_path)
+    assert library.replacement('word','word',tmp_path/'word.wav')==wav
+    assert source.read_bytes()==b'original protected'
+
+
+def test_activation_requires_complete_review_binding(tmp_path):
+    batch=tmp_path/'batch';batch.mkdir()
+    source=tmp_path/'source.wav';source.write_bytes(b'original')
+    clip=tmp_path/'candidate.wav';clip.write_bytes(b'candidate')
+    job={'id':'page','kind':'word','source':str(source),'source_sha256':groups.vc.digest(source),
+         'clips':[{'id':'word','relative_path':'word.wav'}]}
+    groups.vc.write_json(batch/'queue.json',{'jobs':[job]})
+    groups.vc.write_json(batch/'release-preserved-v1.json',{'jobs':1,'clips':{'word':{
+        'kind':'word','original_relative_path':'word.wav','replacement':str(clip),
+        'sha256':groups.vc.digest(clip)}}})
+    with pytest.raises(ValueError,match='approval changed'):
+        groups.activate(batch,tmp_path)
+    assert not (tmp_path/'derived/voice-conversion/active.json').exists()

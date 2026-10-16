@@ -64,14 +64,20 @@ def review(batch, job_id, variant=None):
         manifest=json.loads((folder/'manifest.json').read_text())
         candidates={c['id']:c for c in manifest['clips']}
         timing=manifest['accepted_timing']
-        identity=True
+        identity=(manifest['job']==job_id and manifest['voice']==job['voice'] and
+                  len(candidates)==len(job['clips']) and len(candidates)==len(manifest['clips']))
         rows=[]
         for clip in job['clips']:
             c=candidates[clip['id']]
+            identity &= all(c[k]==clip[k] for k in ['relative_path','start','end'])
             path=vc.safe_path(folder,c['relative_path'])
             identity &= vc.digest(path)==c['sha256']
             # Candidate can contain explicit margins; compare the source core only.
-            audio=vc.decode_audio(path)
+            with wave.open(str(path),'rb') as stream:
+                if (stream.getframerate(),stream.getnchannels(),stream.getsampwidth())!=(16000,1,2):
+                    raise ValueError('Invalid candidate WAV format: '+clip['id'])
+                audio=np.frombuffer(stream.readframes(stream.getnframes()),dtype='<i2').astype(np.float32)/32768
+            identity &= abs(len(audio)/16000-c['audio']['duration'])<=.001
             shift=(c['start']+manifest['offset_ms']/1000-c['converted_start'])
             if c['conversion_job']!=job_id:
                 repair=next(j for j in vc.queue(args) if j['id']==c['conversion_job'])
@@ -94,6 +100,7 @@ def review(batch, job_id, variant=None):
             y=converted[round((clip['start']+offset)*16000):round((clip['end']+offset)*16000)]
             rows.append(compare_clip(clip,x,y))
     result={'job':job_id,'variant':variant,'export_sha256':export_hash,
+        'manifest_sha256':vc.digest(folder/'manifest.json') if variant else None,
         'scope':'new conversion loss and file identity only; old corpus issues deferred',
         'passed':bool(identity and not passthrough and timing['stable'] and not any(r['new_loss'] for r in rows)),
         'untreated_input_suspected':bool(passthrough),

@@ -53,6 +53,7 @@ from .training.v2.engine import compute_availability
 from .training.v2.generator import _universe_from_items, generate_session_v2
 from .training.v2.history import HistoryStore
 from .training.v2.schema import V2Profile, load_v2_profiles
+from .voice_library import VoiceLibrary
 
 
 DEFAULT_DURATION_MINUTES = 10
@@ -304,6 +305,7 @@ class PrototypeRuntime:
         self._warm_error: str | None = None
         self._ready = False
         self._warm_lock = threading.Lock()
+        self.voice_library = VoiceLibrary(self.data_root)
 
     # ---- data access -----------------------------------------------------
 
@@ -539,7 +541,8 @@ class PrototypeRuntime:
             resolved.relative_to(self.data_root)
         except ValueError:
             return None
-        return resolved if resolved.is_file() else None
+        replacement = self.voice_library.replacement(sentence_id, "sentence", resolved)
+        return replacement or (resolved if resolved.is_file() else None)
 
     # ---- 听辨练习（前后鼻音逐字判断，无音频，与生成器解耦） ------------
 
@@ -914,7 +917,8 @@ class PrototypeRuntime:
             resolved.relative_to(self.data_root)
         except ValueError:
             return None
-        return resolved if resolved.is_file() else None
+        replacement = self.voice_library.replacement(item_id, "word", resolved)
+        return replacement or (resolved if resolved.is_file() else None)
 
     def record_event(self, event: dict[str, Any]) -> Path:
         log_dir = self.prototype_dir / "logs"
@@ -1331,6 +1335,10 @@ def create_app(
     @app.get("/api/config")
     def player_config() -> dict[str, Any]:
         return runtime.player_config()
+
+    @app.get("/api/voice-library")
+    def voice_library_status() -> dict[str, Any]:
+        return runtime.voice_library.status()
 
     @app.post("/api/sessions", status_code=201)
     def create_session(request: SessionRequest) -> dict[str, Any]:

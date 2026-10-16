@@ -211,15 +211,98 @@ def assemble(batch):
                          'new_loss':result['new_loss']},ensure_ascii=False),flush=True)
 
 
+def release(batch):
+    jobs=[j for j in json.loads((batch/'queue.json').read_text())['jobs'] if j['kind']!='repair']
+    pending=[];mapping={};reviews={}
+    for j in jobs:
+        folder=batch/'staged-preserved-v1'/j['id']
+        manifest=folder/'manifest.json'
+        review_file=batch/'reports'/(j['id']+'__preserved-v1__conversion-integrity.json')
+        if not manifest.exists() or not review_file.exists():
+            pending.append(j['id']);continue
+        r=json.loads(review_file.read_text())
+        if not r['passed'] or r.get('manifest_sha256')!=vc.digest(manifest):
+            pending.append(j['id']);continue
+        if r['export_sha256']!=vc.digest(batch/'exports'/j['export_name']):
+            raise ValueError('Export changed since review: '+j['id'])
+        if vc.digest(Path(j['source']))!=j['source_sha256']:
+            raise ValueError('Original changed since queue: '+j['id'])
+        reviews[j['id']]={'report_sha256':vc.digest(review_file),
+                          'manifest_sha256':r['manifest_sha256'],
+                          'export_sha256':r['export_sha256']}
+        m=json.loads(manifest.read_text())
+        expected={c['id']:c for c in j['clips']}
+        if len(m['clips'])!=len(expected) or {c['id'] for c in m['clips']}!=set(expected):
+            raise ValueError('Clip set mismatch: '+j['id'])
+        for c in m['clips']:
+            if c['id'] in mapping:
+                raise ValueError('Duplicate ID in release: '+c['id'])
+            path=vc.safe_path(folder,c['relative_path'])
+            if any(c[k]!=expected[c['id']][k] for k in ['relative_path','start','end']):
+                raise ValueError('Original mapping changed: '+c['id'])
+            if vc.digest(path)!=c['sha256']:
+                raise ValueError('Candidate changed since review: '+c['id'])
+            mapping[c['id']]={'job':j['id'],'kind':j['kind'],'voice':j['voice'],
+                'original_relative_path':c['relative_path'],
+                'replacement':str(path.resolve()),'sha256':c['sha256'],'audio':c['audio']}
+    if pending:
+        raise ValueError(f'Release incomplete: {len(pending)} jobs remain; first: {pending[:5]}')
+    target=batch/'release-preserved-v1.json'
+    if target.exists():
+        raise ValueError('Release manifest already exists; do not overwrite')
+    vc.write_json(target,{'version':1,'scope':'new conversion loss only; inherited corpus issues deferred',
+        'jobs':len(jobs),'clip_count':len(mapping),'clips':mapping,'reviewed_jobs':reviews})
+    print('Release ready:',len(jobs),'jobs;',len(mapping),'clips;',target.resolve())
+
+
+def activate(batch, data_root):
+    data_root=data_root.resolve()
+    manifest=(batch/'release-preserved-v1.json').resolve()
+    manifest_relative=str(manifest.relative_to(data_root))
+    release_data=json.loads(manifest.read_text())
+    jobs=[j for j in json.loads((batch/'queue.json').read_text())['jobs'] if j['kind']!='repair']
+    expected={c['id']:(j,c) for j in jobs for c in j['clips']}
+    if release_data['jobs']!=len(jobs) or set(release_data['clips'])!=set(expected):
+        raise ValueError('Release does not cover the complete current queue')
+    for j in jobs:
+        if vc.digest(Path(j['source']))!=j['source_sha256']:
+            raise ValueError('Original changed before activation: '+j['id'])
+        review_file=batch/'reports'/(j['id']+'__preserved-v1__conversion-integrity.json')
+        record=release_data.get('reviewed_jobs',{}).get(j['id'])
+        if not record or record['report_sha256']!=vc.digest(review_file):
+            raise ValueError('Release approval changed: '+j['id'])
+        candidate=batch/'staged-preserved-v1'/j['id']/'manifest.json'
+        if record['manifest_sha256']!=vc.digest(candidate):
+            raise ValueError('Candidate manifest changed: '+j['id'])
+    for key,entry in release_data['clips'].items():
+        job,clip=expected[key]
+        if entry['kind']!=job['kind'] or entry['original_relative_path']!=clip['relative_path']:
+            raise ValueError('Release mapping mismatch: '+key)
+        path=vc.safe_path(data_root,entry['replacement'])
+        if vc.digest(path)!=entry['sha256']:
+            raise ValueError('Release audio changed: '+key)
+    active=data_root/'derived/voice-conversion/active.json'
+    if active.exists():
+        backup=active.with_name('active-before-'+vc.digest(active)[:16]+'.json')
+        if not backup.exists():
+            backup.write_bytes(active.read_bytes())
+    vc.write_json(active,{'version':1,'manifest':manifest_relative,'sha256':vc.digest(manifest)})
+    print('Activated complete library:',len(expected),'clips;',active)
+
+
 if __name__ == '__main__':
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--batch',type=Path,required=True)
-    p.add_argument('command',choices=['plan','inputs','split','review','repairs','assemble'])
+    p.add_argument('command',choices=['plan','inputs','split','review','repairs','assemble','release','activate'])
     p.add_argument('--group')
+    p.add_argument('--data-root',type=Path)
     a=p.parse_args()
     if a.command=='plan': print(json.dumps(prepare(a.batch),ensure_ascii=False))
     elif a.command=='inputs':inputs(a.batch,a.group)
     elif a.command=='split':split(a.batch,a.group)
     elif a.command=='review':review(a.batch,a.group)
     elif a.command=='repairs':repair_plan(a.batch)
-    else:assemble(a.batch)
+    elif a.command=='assemble':assemble(a.batch)
+    elif a.command=='release':release(a.batch)
+    elif a.data_root is None:p.error('activate requires --data-root')
+    else:activate(a.batch,a.data_root)

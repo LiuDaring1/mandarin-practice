@@ -771,3 +771,36 @@ def test_events_streak_fields_are_optional(tmp_path):
         payload = json.loads(log_path.read_text(encoding="utf-8").strip())
         assert "streak_days" in payload
         assert payload["streak_days"] is None
+
+
+def test_active_voice_library_serves_replacement_and_preserves_exclusions(tmp_path):
+    from pth_corpus.voice_library import file_digest
+    data_root, client, items = _make_fixture(tmp_path)
+    item = items[0]
+    original = data_root / item.clip_path
+    _write_wav(original)
+    original_hash = file_digest(original)
+    replacement = data_root / 'derived/voice-conversion/test/new.wav'
+    _write_wav(replacement)
+    with wave.open(str(replacement), 'wb') as stream:
+        stream.setnchannels(1); stream.setsampwidth(2); stream.setframerate(16000)
+        samples = 6000 * np.sin(2*np.pi*660*np.arange(16000)/16000)
+        stream.writeframes(samples.astype('<i2').tobytes())
+    manifest = replacement.parent / 'release.json'
+    manifest.write_text(json.dumps({'version':1, 'clip_count':1, 'clips':{item.item_id:{
+        'kind':'word', 'original_relative_path':item.clip_path,
+        'replacement':str(replacement), 'sha256':file_digest(replacement)}}}))
+    pointer = replacement.parent.parent / 'active.json'
+    pointer.write_text(json.dumps({'version':1, 'manifest':str(manifest.relative_to(data_root)),
+                                   'sha256':file_digest(manifest)}))
+    with client:
+        assert client.get('/api/voice-library').json()['active']
+        assert client.get(f'/api/clips/{item.item_id}').content == replacement.read_bytes()
+        assert file_digest(original) == original_hash
+        pointer.rename(pointer.with_suffix('.saved'))
+        assert client.get(f'/api/clips/{item.item_id}').content == original.read_bytes()
+        pointer.with_suffix('.saved').rename(pointer)
+        with sqlite3.connect(data_root / 'corpus.sqlite3') as db:
+            db.execute('INSERT INTO excluded_items(item_id,reason,kind) VALUES(?,?,?)',
+                       (item.item_id, 'fixture exclusion', 'test'))
+        assert client.get(f'/api/clips/{item.item_id}').status_code == 404
