@@ -94,3 +94,76 @@ def test_energy_alignment_detects_delay(tmp_path):
     result = batch.timing_analysis(*paths)
     assert result['stable']
     assert abs(result['median_lag_ms'] - 90) <= 10
+
+
+def test_boundary_screen_rejects_silent_and_truncated_audio():
+    assert batch.boundary_metrics(np.zeros(16000))['silent_or_invalid']
+    t = np.arange(16000) / 16000
+    tone = .2 * np.sin(2 * np.pi * 220 * t)
+    assert batch.boundary_metrics(tone)['boundary_risk']
+    guarded = np.concatenate([np.zeros(1600), tone, np.zeros(1600)])
+    report = batch.boundary_metrics(guarded)
+    assert not report['silent_or_invalid']
+    assert not report['boundary_risk']
+    assert report['leading_margin_ms'] >= 95
+    assert report['trailing_margin_ms'] >= 95
+
+
+def test_cut_rejects_local_dropout_even_when_page_timing_passes(tmp_path, monkeypatch):
+    source = tmp_path / 'original.wav'
+    source.write_bytes(b'protected original')
+    job = {'id': 'page', 'source': str(source), 'source_sha256': batch.digest(source),
+           'clips': [{'id': 'word', 'relative_path': 'derived/word.wav', 'start': .2, 'end': .8}]}
+    report = {'duration_within_100ms': True, 'audio': {'duration': 1},
+              'timing': {'stable': True, 'median_lag_ms': 0}, 'export': 'converted.wav'}
+    monkeypatch.setattr(batch, 'job_for', lambda _: job)
+    monkeypatch.setattr(batch, 'inspect_export', lambda _: report)
+    monkeypatch.setattr(batch, 'decode_audio', lambda _: np.zeros(16000))
+    with pytest.raises(ValueError, match='Silent or missing speech'):
+        batch.cut(argparse.Namespace(batch=tmp_path / 'batch', job='page',
+                                    timing_reviewed=True, offset_ms=0))
+    assert not (tmp_path / 'batch').exists()
+    assert source.read_bytes() == b'protected original'
+
+
+def test_repair_must_cover_entire_failed_window_and_leave_valid_evidence():
+    timing = {'stable': False, 'windows': [
+        {'source_start': 0, 'lag_ms': 70, 'correlation': .9},
+        {'source_start': 10, 'lag_ms': 70, 'correlation': .9},
+        {'source_start': 20, 'lag_ms': -20, 'correlation': .3},
+        {'source_start': 30, 'lag_ms': 80, 'correlation': .9},
+    ]}
+    assert not batch.timing_after_repairs(timing, [])['stable']
+    assert not batch.timing_after_repairs(timing, [
+        {'source_origin_seconds': 21, 'duration': 8}])['stable']
+    result = batch.timing_after_repairs(timing, [
+        {'source_origin_seconds': 19, 'duration': 10}])
+    assert result == {'stable': True, 'replaced_windows': [20]}
+    assert not batch.timing_after_repairs(timing, [
+        {'source_origin_seconds': 0, 'duration': 40}])['stable']
+
+
+def test_review_hold_blocks_a_clean_energy_screen(tmp_path):
+    root = tmp_path / 'batch'
+    staged = root / 'staged-safe/page'
+    staged.mkdir(parents=True)
+    export = root / 'exports/page.wav'
+    export.parent.mkdir()
+    t = np.arange(8000) / 16000
+    samples = np.concatenate([np.zeros(1600), .2 * np.sin(2 * np.pi * 220 * t), np.zeros(1600)])
+    for path in [staged / 'word.wav', export]:
+        with wave.open(str(path), 'wb') as stream:
+            stream.setnchannels(1)
+            stream.setsampwidth(2)
+            stream.setframerate(16000)
+            stream.writeframes((samples * 32767).astype('<i2').tobytes())
+    batch.write_json(staged / 'manifest.json', {'clips': [{'id': 'word',
+        'relative_path': 'word.wav', 'sha256': batch.digest(staged / 'word.wav'),
+        'audio': {'duration': len(samples) / 16000}}]})
+    batch.write_json(root / 'queue.json', {'jobs': [{'id': 'page', 'export_name': 'page.wav'}]})
+    batch.write_json(root / 'reports/page__holds.json', {'export_sha256': batch.digest(export),
+        'clips': [{'id': 'word', 'reason': 'Word-to-audio mapping needs review'}]})
+    result = batch.audit(argparse.Namespace(batch=root, job='page', variant='safe'))
+    assert not result['passed']
+    assert result['silent'] == [] and result['boundary_risks'] == []
+    assert result['content_review_holds'][0]['id'] == 'word'

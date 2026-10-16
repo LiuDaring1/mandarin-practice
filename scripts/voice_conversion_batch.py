@@ -10,6 +10,40 @@ import shutil
 import sqlite3
 import subprocess
 import tempfile
+import wave
+
+
+def decode_audio(path):
+    import numpy as np
+    raw = subprocess.check_output(['ffmpeg', '-v', 'error', '-nostdin', '-i', str(path),
+        '-ac', '1', '-ar', '16000', '-f', 'f32le', '-'])
+    return np.frombuffer(raw, dtype='<f4')
+
+
+def boundary_metrics(samples, sample_rate=16000):
+    """Conservative energy screen, not a listening or phoneme-quality verdict."""
+    import numpy as np
+    x = np.asarray(samples, dtype=float)
+    if not len(x) or not np.isfinite(x).all():
+        return {'silent_or_invalid': True, 'boundary_risk': True}
+    peak = float(np.max(np.abs(x)))
+    rms = float(np.sqrt(np.mean(x * x)))
+    hop = max(1, round(sample_rate * .005))
+    frames = x[:len(x) // hop * hop].reshape(-1, hop)
+    levels = np.sqrt(np.mean(frames * frames, axis=1))
+    reference = float(np.quantile(levels, .95)) if len(levels) else 0
+    edge = max(1, round(sample_rate * .04))
+    head = float(np.sqrt(np.mean(x[:edge] ** 2)))
+    tail = float(np.sqrt(np.mean(x[-edge:] ** 2)))
+    head_db = float(20 * np.log10(max(head, 1e-12) / max(reference, 1e-12)))
+    tail_db = float(20 * np.log10(max(tail, 1e-12) / max(reference, 1e-12)))
+    active = np.flatnonzero(levels > max(reference * .02, .0001))
+    return {'silent_or_invalid': peak < .005 or rms < .0003,
+            'boundary_risk': head_db > -32 or tail_db > -32,
+            'peak': round(peak, 6), 'rms': round(rms, 6),
+            'head_40ms_db': round(head_db, 2), 'tail_40ms_db': round(tail_db, 2),
+            'leading_margin_ms': int(active[0] * 5) if len(active) else None,
+            'trailing_margin_ms': int((len(levels) - active[-1] - 1) * 5) if len(active) else None}
 
 
 def digest(path):
@@ -41,9 +75,7 @@ def timing_analysis(original, converted):
     from scipy.signal import correlate
 
     def envelope(path):
-        raw = subprocess.check_output(['ffmpeg', '-v', 'error', '-nostdin', '-i', str(path),
-            '-ac', '1', '-ar', '16000', '-f', 'f32le', '-'])
-        samples = np.frombuffer(raw, dtype='<f4')
+        samples = decode_audio(path)
         frames = samples[:len(samples) // 160 * 160].reshape(-1, 160)
         return np.sqrt((frames * frames).mean(axis=1))
 
@@ -119,7 +151,8 @@ def prepare(args):
                 'start': clip['src_start'], 'end': clip['src_end']})
     for job in jobs.values():
         job['voice'] = args.voice
-        job['export_name'] = job['id'] + '__' + args.voice + '.wav'
+        export_id = job['id'].split('-', 2)[:2] if job['kind'] == 'sentence' else [job['id']]
+        job['export_name'] = '-'.join(export_id) + '__' + args.voice + '.wav'
     write_json(batch / 'queue.json', {'version': 1, 'jobs': list(jobs.values())})
     for name in ['inputs', 'exports', 'reports', 'staged']:
         (batch / name).mkdir(exist_ok=True)
@@ -138,10 +171,22 @@ def status(args):
     jobs = queue(args)
     counts = Counter(job['kind'] for job in jobs)
     exported = [j['id'] for j in jobs if (args.batch / 'exports' / j['export_name']).is_file()]
+    candidates = []
+    for manifest_path in sorted(args.batch.glob('staged*/*/manifest.json')):
+        job_id = manifest_path.parent.name
+        stage_name = manifest_path.parent.parent.name
+        variant = stage_name.removeprefix('staged-') if stage_name != 'staged' else None
+        suffix = '__' + variant if variant else ''
+        report_path = args.batch / 'reports' / (job_id + suffix + '__boundaries.json')
+        review = json.loads(report_path.read_text()) if report_path.exists() else {}
+        candidates.append({'job': job_id, 'variant': variant,
+                           'machine_audit_passed': review.get('passed'),
+                           'review_hold_count': len(review.get('content_review_holds', []))})
     print(json.dumps({'jobs': len(jobs), 'kinds': dict(counts),
         'clips': sum(len(j['clips']) for j in jobs),
         'source_hours': round(sum(j['duration'] for j in jobs) / 3600, 2),
         'exports_present_unverified': exported,
+        'candidate_versions': candidates,
         'staged': [j['id'] for j in jobs if (args.batch / 'staged' / j['id'] / 'manifest.json').exists()]}, ensure_ascii=False))
 
 
@@ -182,6 +227,74 @@ def safe_path(base, relative):
     return target
 
 
+def audit(args):
+    import numpy as np
+    final = stage_directory(args)
+    manifest = json.loads((final / 'manifest.json').read_text())
+    rows = []
+    for clip in manifest['clips']:
+        path = safe_path(final, clip['relative_path'])
+        with wave.open(str(path), 'rb') as stream:
+            valid_format = stream.getnchannels() == 1 and stream.getsampwidth() == 2 and stream.getframerate() == 16000
+            if not valid_format:
+                raise ValueError('Unexpected staged WAV format: ' + clip['id'])
+            samples = np.frombuffer(stream.readframes(stream.getnframes()), dtype='<i2') / 32768
+        duration = len(samples) / 16000
+        rows.append({'id': clip['id'], 'text': clip.get('text', ''),
+            'sha256_matches': digest(path) == clip['sha256'],
+            'duration_matches': abs(duration - clip['audio']['duration']) <= .001,
+            **boundary_metrics(samples)})
+    issues = [r for r in rows if r['silent_or_invalid'] or r['boundary_risk']
+              or not r['sha256_matches'] or not r['duration_matches']]
+    holds = []
+    hold_path = args.batch / 'reports' / (args.job + '__holds.json')
+    if hold_path.exists():
+        hold_data = json.loads(hold_path.read_text())
+        job = job_for(args)
+        if hold_data['export_sha256'] != digest(args.batch / 'exports' / job['export_name']):
+            raise ValueError('Review holds refer to a different export')
+        holds = hold_data['clips']
+        if not {h['id'] for h in holds}.issubset({c['id'] for c in rows}):
+            raise ValueError('Review holds contain unknown clips')
+    result = {'job': args.job, 'variant': getattr(args, 'variant', None),
+        'checked': len(rows), 'passed': not issues and not holds,
+        'silent': [r['id'] for r in rows if r['silent_or_invalid']],
+        'boundary_risks': [r['id'] for r in rows if r['boundary_risk']],
+        'content_review_holds': holds,
+        'phonetic_or_listening_review': False,
+        'note': 'Energy and file-integrity screening only; cannot prove pronunciation.',
+        'clips': rows}
+    suffix = '__' + args.variant if getattr(args, 'variant', None) else ''
+    write_json(args.batch / 'reports' / (args.job + suffix + '__boundaries.json'), result)
+    print(json.dumps({k: v for k, v in result.items() if k != 'clips'}, ensure_ascii=False))
+    return result
+
+
+def stage_directory(args):
+    variant = getattr(args, 'variant', None)
+    folder = 'staged' if not variant else 'staged-' + variant
+    return safe_path(args.batch, folder + '/' + args.job)
+
+
+def timing_after_repairs(timing, repairs):
+    """Ignore a failed page window only when its entire interval was reconverted."""
+    if timing['stable']:
+        return {'stable': True, 'replaced_windows': []}
+    windows = timing.get('windows', [])
+    kept, replaced = [], []
+    for window in windows:
+        start = window['source_start']
+        if any(r['source_origin_seconds'] <= start and
+               start + 8 <= r['source_origin_seconds'] + r['duration'] for r in repairs):
+            replaced.append(start)
+        else:
+            kept.append(window)
+    stable = len(kept) >= 3 and bool(replaced) and all(w['correlation'] >= .65 for w in kept)
+    lags = [w['lag_ms'] for w in kept]
+    stable = stable and max(lags) - min(lags) <= 120 and max(abs(x) for x in lags) < 950
+    return {'stable': bool(stable), 'replaced_windows': replaced}
+
+
 def cut(args):
     if not args.timing_reviewed:
         raise ValueError('Review beginning/middle/end timing before --timing-reviewed')
@@ -189,7 +302,20 @@ def cut(args):
     report = inspect_export(args)
     if not report['duration_within_100ms']:
         raise ValueError('Duration changed: realign before cutting')
-    if not report['timing']['stable']:
+    repairs = []
+    for repair_id in getattr(args, 'repair', []):
+        repair_args = argparse.Namespace(batch=args.batch, job=repair_id)
+        repair_job = job_for(repair_args)
+        if repair_job.get('parent_job') != job['id']:
+            raise ValueError('Repair parent does not match target job')
+        repair_report = inspect_export(repair_args)
+        if not repair_report['duration_within_100ms'] or not repair_report['timing']['stable']:
+            raise ValueError('Repair timing is uncertain')
+        if digest(Path(repair_job['source'])) != repair_job['source_sha256']:
+            raise ValueError('Repair source changed')
+        repairs.append((repair_job, repair_report))
+    accepted_timing = timing_after_repairs(report['timing'], [j for j, _ in repairs])
+    if not accepted_timing['stable']:
         raise ValueError('Local timing changed or uncertain: realign before cutting')
     offset = args.offset_ms / 1000
     if abs(args.offset_ms - report['timing']['median_lag_ms']) > 30:
@@ -198,30 +324,82 @@ def cut(args):
     if digest(source) != job['source_sha256']:
         raise ValueError('Original source changed since queue creation')
     # Stage each job atomically; interrupted jobs can retry without partial publication.
-    final = args.batch / 'staged' / job['id']
+    final = stage_directory(args)
     if final.exists():
         raise ValueError('Staged job already exists; inspect it rather than overwriting')
-    for clip in job['clips']:
-        safe_path(final, clip['relative_path'])
-        if not 0 <= clip['start'] + offset < clip['end'] + offset <= report['audio']['duration']:
-            raise ValueError('Invalid clip boundary: ' + clip['id'])
-    with tempfile.TemporaryDirectory(dir=args.batch / 'staged') as temporary:
+    head = getattr(args, 'head_pad_ms', 0) / 1000
+    tail = getattr(args, 'tail_pad_ms', 0) / 1000
+    if not 0 <= head <= .3 or not 0 <= tail <= .3:
+        raise ValueError('Padding must be between 0 and 300 ms')
+    plan = {}
+    corrections = {}
+    bounds_file = getattr(args, 'bounds_file', None)
+    if bounds_file:
+        bounds = json.loads(bounds_file.read_text())
+        if bounds['job'] != job['id'] or bounds['export_sha256'] != report['export_sha256']:
+            raise ValueError('Boundary corrections refer to another job or export')
+        corrections = bounds['clips']
+        if not set(corrections).issubset({c['id'] for c in job['clips']}):
+            raise ValueError('Boundary corrections contain unknown clips')
+        if any(set(c) != {'start', 'end'} for c in corrections.values()):
+            raise ValueError('Boundary corrections may only change start and end')
+
+    def add_plan(source_job, source_report, shift):
+        clips = [{**c, **(corrections.get(c['id'], {}) if source_job['id'] == job['id'] else {})}
+                 for c in source_job['clips']]
+        for index, clip in enumerate(clips):
+            safe_path(final, clip['relative_path'])
+            start, end = clip['start'] + shift, clip['end'] + shift
+            left, right = 0, source_report['audio']['duration']
+            if index and clips[index - 1]['end'] <= clip['start']:
+                left = (clips[index - 1]['end'] + clip['start']) / 2 + shift
+            if index + 1 < len(clips) and clip['end'] <= clips[index + 1]['start']:
+                right = (clip['end'] + clips[index + 1]['start']) / 2 + shift
+            start, end = max(left, start - head), min(right, end + tail)
+            if not 0 <= start < end <= source_report['audio']['duration']:
+                raise ValueError('Invalid clip boundary: ' + clip['id'])
+            plan[clip['id']] = {'clip': clip, 'start': start, 'end': end,
+                               'export': source_report['export'], 'job': source_job['id']}
+
+    add_plan(job, report, offset)
+    for repair_job, repair_report in repairs:
+        originals = {c['id']: c for c in job['clips']}
+        for c in repair_job['clips']:
+            if c['id'] not in originals or c['relative_path'] != originals[c['id']]['relative_path']:
+                raise ValueError('Repair clip mapping does not match parent')
+        add_plan(repair_job, repair_report, repair_report['timing']['median_lag_ms'] / 1000)
+    # Never publish an all-silent replacement, even if page-level timing passed.
+    audio_cache = {p: decode_audio(p) for p in {v['export'] for v in plan.values()}}
+    for item in plan.values():
+        segment = audio_cache[item['export']][round(item['start'] * 16000):round(item['end'] * 16000)]
+        if boundary_metrics(segment)['silent_or_invalid']:
+            raise ValueError('Silent or missing speech in converted clip: ' + item['clip']['id'])
+    final.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory(dir=final.parent) as temporary:
         staging = Path(temporary) / 'output'
         staging.mkdir()
         outputs = []
         for clip in job['clips']:
+            item = plan[clip['id']]
             target = safe_path(staging, clip['relative_path'])
             target.parent.mkdir(parents=True, exist_ok=True)
-            subprocess.run(['ffmpeg', '-v', 'error', '-nostdin', '-n', '-i', report['export'],
-                '-ss', str(clip['start'] + offset), '-t', str(clip['end'] - clip['start']),
+            subprocess.run(['ffmpeg', '-v', 'error', '-nostdin', '-n', '-i', item['export'],
+                '-ss', str(item['start']), '-t', str(item['end'] - item['start']),
                 '-ac', '1', '-ar', '16000', '-c:a', 'pcm_s16le', str(target)], check=True)
             info = probe(target)
-            if abs(info['duration'] - (clip['end'] - clip['start'])) > .02:
+            if abs(info['duration'] - (item['end'] - item['start'])) > .02:
                 raise ValueError('Unexpected cut duration: ' + clip['id'])
-            outputs.append({**clip, 'converted_start': clip['start'] + offset,
+            outputs.append({**clip, 'converted_start': item['start'],
+                            'converted_end': item['end'], 'conversion_job': item['job'],
+                            'export': item['export'],
+                            'boundary_correction': corrections.get(clip['id']),
                             'sha256': digest(target), 'audio': info})
         write_json(staging / 'manifest.json', {'job': job['id'], 'voice': job['voice'],
             'timing_reviewed': True, 'offset_ms': args.offset_ms,
+            'head_pad_ms': head * 1000, 'tail_pad_ms': tail * 1000,
+            'accepted_timing': accepted_timing,
+            'boundary_corrections': corrections,
+            'repairs': getattr(args, 'repair', []),
             'pronunciation_reviewed': False, 'clips': outputs})
         staging.rename(final)
     print(f'Staged {len(outputs)} clips at {final.resolve()}; live application unchanged.')
@@ -238,12 +416,18 @@ def main():
     p.add_argument('--voice', choices=['news-female', 'news-male'], default='news-female')
     p.set_defaults(func=prepare)
     sub.add_parser('status').set_defaults(func=status)
-    for name, func in [('stage-input', stage_input), ('inspect', inspect_export), ('cut', cut)]:
+    for name, func in [('stage-input', stage_input), ('inspect', inspect_export), ('cut', cut), ('audit', audit)]:
         p = sub.add_parser(name)
         p.add_argument('--job', required=True)
+        if name in {'cut', 'audit'}:
+            p.add_argument('--variant')
         if name == 'cut':
             p.add_argument('--timing-reviewed', action='store_true')
             p.add_argument('--offset-ms', type=float, required=True)
+            p.add_argument('--head-pad-ms', type=float, default=0)
+            p.add_argument('--tail-pad-ms', type=float, default=0)
+            p.add_argument('--repair', action='append', default=[])
+            p.add_argument('--bounds-file', type=Path)
         p.set_defaults(func=func)
     args = parser.parse_args()
     args.func(args)
