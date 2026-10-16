@@ -44,3 +44,9 @@
 标准音直达预览：`http://127.0.0.1:8769/?ui=2026-09-12&view=calibration`。`scripts/qa_calibration_refresh.cjs` 在独立 8771 验收服务中检查正常／半速完整播放矩阵、队列竞态、错误处理、键盘和布局；报告／截图／旧资源快照存于 `handoff/calibration-refresh-2026-09-12/`。
 
 09-12 用户第二轮反馈的最新口径：半速也有声、分组单画面；验收与截图更新至 `handoff/calibration-mobile-2026-09-12/`。上一版 `calibration-refresh-2026-09-12/` 的“半速静音／纵向双卡”记录是初次接入历史，已被本次修订取代。
+
+## 2026-10-16 可选换声音库路由
+
+用户晚间明确每条保留男女声两套。`demo-voice.js/css` 在两套已发布时显示首页男女声选择（完整可访问名称为新闻女声／新闻男声），独立 `pth-demo-voice-v1` 偏好；字词及句子播放 URL 添加所选音色。无新库时不显示选择，沿用原音；未给音色参数保持旧路由兼容，显式指定不可用音色不误播原音。v2 active 指针要求两套完整且原映射一致。独立合成夹具验证切换和刷新记忆；正式两套尚未完成／激活，最终视觉检查待完成。
+
+`voice_library.py` 从本地 `data/derived/voice-conversion/active.json` 选择完整新音库版本，按原 ID／原路径替换字词及句子 WAV，保留数据库排除和原音回退。清单与文件均做哈希／data_root 路径检查，不写练习进度；`/api/voice-library` 只读报告状态。无指针时沿用原音。换声仍在全量处理，当前尚未激活新库；执行进度和发布门禁见 `modules/voice-conversion.md`。

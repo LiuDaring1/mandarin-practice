@@ -267,3 +267,24 @@ def test_home_includes_sentence_status(tmp_path: Path) -> None:
     with TestClient(app) as client:
         body = client.get("/api/sentence/home").json()
     assert body["available"] is False
+
+
+def test_sentence_voice_library_uses_existing_id_without_changing_original(tmp_path):
+    from pth_corpus.voice_library import file_digest
+    build_sentence_data(tmp_path)
+    sid='01-读书人是幸福人-0001'
+    original=tmp_path/'derived/sentence-practice-v1/clips/01-读书人是幸福人'/f'{sid}.wav'
+    original_hash=file_digest(original)
+    folder=tmp_path/'derived/voice-conversion/test';folder.mkdir(parents=True)
+    replacement=folder/'new.wav';_make_wav(replacement,1.1)
+    manifest=folder/'release.json'
+    manifest.write_text(json.dumps({'version':1,'clip_count':1,'clips':{sid:{
+        'kind':'sentence','original_relative_path':str(original.relative_to(tmp_path)),
+        'replacement':str(replacement),'sha256':file_digest(replacement)}}}))
+    (folder.parent/'active.json').write_text(json.dumps({'version':1,
+        'manifest':str(manifest.relative_to(tmp_path)),'sha256':file_digest(manifest)}))
+    with make_client(tmp_path) as client:
+        response=client.get(f'/api/sentence/clips/{sid}')
+        assert response.content==replacement.read_bytes()
+        assert response.headers['cache-control']=='no-store'
+        assert file_digest(original)==original_hash

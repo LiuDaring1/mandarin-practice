@@ -1,0 +1,9 @@
+.demo-voice-picker[hidden] { display: none; }
+#view-home[data-tab="discrim"] .demo-voice-picker { display: none; }
+.home-toolbar:has(.demo-voice-picker:not([hidden])) .brand-sign { display: none; }
+#view-home[data-tab="discrim"] .brand-sign { display: flex; }
+.demo-voice-picker { display: flex; align-items: center; font-size: 12px; color: #766d60; }
+.demo-voice-options { display: flex; padding: 3px; gap: 3px; border-radius: 14px; background: #eee9df; }
+.demo-voice-options button { min-width: 44px; min-height: 44px; padding: 0 7px; border: 0; border-radius: 11px; background: transparent; color: #766d60; font: inherit; cursor: pointer; }
+.demo-voice-options button[aria-pressed="true"] { background: #fffdf7; color: #077d73; box-shadow: 0 1px 4px #5b4b3720; }
+.demo-voice-options button:focus-visible { outline: 2px solid #149e91; outline-offset: 2px; }
