@@ -370,9 +370,15 @@ def cut(args):
         add_plan(repair_job, repair_report, repair_report['timing']['median_lag_ms'] / 1000)
     # Never publish an all-silent replacement, even if page-level timing passed.
     audio_cache = {p: decode_audio(p) for p in {v['export'] for v in plan.values()}}
+    original_audio = decode_audio(source) if getattr(args, 'conversion_only', False) else None
     for item in plan.values():
         segment = audio_cache[item['export']][round(item['start'] * 16000):round(item['end'] * 16000)]
         if boundary_metrics(segment)['silent_or_invalid']:
+            if original_audio is not None:
+                core = next(c for c in job['clips'] if c['id'] == item['clip']['id'])
+                before = original_audio[round(core['start'] * 16000):round(core['end'] * 16000)]
+                if boundary_metrics(before)['silent_or_invalid']:
+                    continue
             raise ValueError('Silent or missing speech in converted clip: ' + item['clip']['id'])
     final.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(dir=final.parent) as temporary:
@@ -383,10 +389,15 @@ def cut(args):
             item = plan[clip['id']]
             target = safe_path(staging, clip['relative_path'])
             target.parent.mkdir(parents=True, exist_ok=True)
-            subprocess.run(['ffmpeg', '-v', 'error', '-nostdin', '-n', '-i', item['export'],
-                '-ss', str(item['start']), '-t', str(item['end'] - item['start']),
-                '-ac', '1', '-ar', '16000', '-c:a', 'pcm_s16le', str(target)], check=True)
-            info = probe(target)
+            import numpy as np
+            segment = audio_cache[item['export']][round(item['start'] * 16000):round(item['end'] * 16000)]
+            pcm = np.clip(np.rint(segment * 32768), -32768, 32767).astype('<i2')
+            with wave.open(str(target), 'wb') as stream:
+                stream.setnchannels(1)
+                stream.setsampwidth(2)
+                stream.setframerate(16000)
+                stream.writeframes(pcm.tobytes())
+            info = {'duration': len(pcm) / 16000, 'sample_rate': 16000, 'channels': 1}
             if abs(info['duration'] - (item['end'] - item['start'])) > .02:
                 raise ValueError('Unexpected cut duration: ' + clip['id'])
             outputs.append({**clip, 'converted_start': item['start'],
@@ -400,6 +411,7 @@ def cut(args):
             'accepted_timing': accepted_timing,
             'boundary_corrections': corrections,
             'repairs': getattr(args, 'repair', []),
+            'conversion_only': getattr(args, 'conversion_only', False),
             'pronunciation_reviewed': False, 'clips': outputs})
         staging.rename(final)
     print(f'Staged {len(outputs)} clips at {final.resolve()}; live application unchanged.')
@@ -428,6 +440,8 @@ def main():
             p.add_argument('--tail-pad-ms', type=float, default=0)
             p.add_argument('--repair', action='append', default=[])
             p.add_argument('--bounds-file', type=Path)
+            p.add_argument('--conversion-only', action='store_true',
+                           help='Allow silence already present at the identical source interval')
         p.set_defaults(func=func)
     args = parser.parse_args()
     args.func(args)
