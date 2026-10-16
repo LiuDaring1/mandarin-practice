@@ -21,7 +21,8 @@ def activate(root, replacement, *, original='derived/word.wav', kind='word'):
 def test_missing_library_retains_original_routing(tmp_path):
     library=VoiceLibrary(tmp_path)
     assert library.replacement('t1-00001','word',tmp_path/'derived/word.wav') is None
-    assert library.status()=={'active':False,'version':None,'clip_count':0,'error':None}
+    assert library.status()=={'active':False,'version':None,'clip_count':0,'error':None,
+                             'default_voice':None,'voices':[]}
 
 
 def test_atomic_activation_rollback_and_clip_hash_guard(tmp_path):
@@ -64,3 +65,39 @@ def test_manifest_tampering_invalidates_cached_library(tmp_path):
     manifest.write_text(manifest.read_text()+' ')
     assert not library.status()['active']
     assert 'manifest hash mismatch' in library.status()['error']
+
+
+def test_two_voices_select_the_same_original_and_detect_secondary_tampering(tmp_path):
+    parent=tmp_path/'derived/voice-conversion';parent.mkdir(parents=True)
+    descriptors={}
+    for voice in ('news-female','news-male'):
+        wav=tmp_path/(voice+'.wav');wav.write_bytes(voice.encode())
+        manifest=parent/(voice+'.json')
+        manifest.write_text(json.dumps({'version':1,'clip_count':1,'clips':{'t1-00001':{
+            'voice':voice,'kind':'word','original_relative_path':'derived/word.wav',
+            'replacement':str(wav),'sha256':file_digest(wav)}}}))
+        descriptors[voice]={'manifest':str(manifest.relative_to(tmp_path)),
+                            'sha256':file_digest(manifest)}
+    (parent/'active.json').write_text(json.dumps({'version':2,
+        'default_voice':'news-female','voices':descriptors}))
+    library=VoiceLibrary(tmp_path);original=tmp_path/'derived/word.wav'
+    assert library.replacement('t1-00001','word',original)==tmp_path/'news-female.wav'
+    assert library.replacement('t1-00001','word',original,'news-male')==tmp_path/'news-male.wav'
+    assert library.replacement('t1-00001','word',original,'unavailable') is None
+    assert [v['label'] for v in library.status()['voices']]==['新闻女声','新闻男声']
+    (parent/'news-male.json').write_text('{}')
+    assert not library.status()['active']
+
+
+def test_two_voices_reject_different_original_coverage(tmp_path):
+    root=tmp_path/'derived/voice-conversion';root.mkdir(parents=True)
+    voices={}
+    for voice,original in [('news-female','word.wav'),('news-male','different.wav')]:
+        manifest=root/(voice+'.json')
+        manifest.write_text(json.dumps({'version':1,'clip_count':1,'clips':{'id':{
+            'voice':voice,'kind':'word','original_relative_path':original}}}))
+        voices[voice]={'manifest':str(manifest.relative_to(tmp_path)),
+                       'sha256':file_digest(manifest)}
+    (root/'active.json').write_text(json.dumps({'version':2,
+        'default_voice':'news-female','voices':voices}))
+    assert 'different original clips' in VoiceLibrary(tmp_path).status()['error']

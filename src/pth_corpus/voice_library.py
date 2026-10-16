@@ -19,6 +19,9 @@ class VoiceLibrary:
         self._key = None
         self._manifest_path: Path | None = None
         self._manifest: dict = {}
+        self._voices: dict[str, dict] = {}
+        self._paths: list[Path] = []
+        self._default_voice: str | None = None
         self._version: str | None = None
         self._error: str | None = None
         self._lock = threading.Lock()
@@ -38,6 +41,9 @@ class VoiceLibrary:
             try:
                 if not self.pointer.exists():
                     self._manifest = {}
+                    self._voices = {}
+                    self._paths = []
+                    self._default_voice = None
                     self._version = None
                     self._error = None
                     self._key = None
@@ -47,38 +53,63 @@ class VoiceLibrary:
                 pointer_stamp = self._stamp(self.pointer)
                 if self._manifest_path is not None:
                     try:
-                        key = (pointer_stamp, self._stamp(self._manifest_path))
+                        key = (pointer_stamp, tuple(self._stamp(p) for p in self._paths))
                         if key == self._key:
                             return
                     except OSError:
                         pass
                 pointer = json.loads(self.pointer.read_text(encoding='utf-8'))
-                if pointer['version'] != 1:
+                if pointer['version'] not in (1, 2):
                     raise ValueError('Unsupported active voice library version')
-                manifest_path = self._inside(pointer['manifest'])
-                expected = pointer['sha256']
-                if file_digest(manifest_path) != expected:
-                    raise ValueError('Voice library manifest hash mismatch')
-                manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
-                if manifest['version'] != 1 or not isinstance(manifest['clips'], dict):
-                    raise ValueError('Invalid voice library manifest')
-                if manifest['clip_count'] != len(manifest['clips']):
-                    raise ValueError('Voice library clip count mismatch')
-                self._manifest = manifest
-                self._manifest_path = manifest_path
-                self._version = expected[:16]
-                self._key = (pointer_stamp, self._stamp(manifest_path))
+                descriptors = pointer.get('voices') if pointer['version'] == 2 else {pointer.get('voice', 'news-female'): pointer}
+                if not isinstance(descriptors, dict) or not descriptors:
+                    raise ValueError('Invalid voice library choices')
+                voices, paths = {}, []
+                mapping = None
+                for voice, descriptor in descriptors.items():
+                    path = self._inside(descriptor['manifest'])
+                    if file_digest(path) != descriptor['sha256']:
+                        raise ValueError('Voice library manifest hash mismatch')
+                    manifest = json.loads(path.read_text(encoding='utf-8'))
+                    if manifest['version'] != 1 or not isinstance(manifest['clips'], dict):
+                        raise ValueError('Invalid voice library manifest')
+                    if manifest['clip_count'] != len(manifest['clips']):
+                        raise ValueError('Voice library clip count mismatch')
+                    current = {key: (entry['kind'], entry['original_relative_path'])
+                               for key, entry in manifest['clips'].items()}
+                    if mapping is not None and current != mapping:
+                        raise ValueError('Voice libraries cover different original clips')
+                    if pointer['version'] == 2 and any(
+                            entry.get('voice') != voice for entry in manifest['clips'].values()):
+                        raise ValueError('Voice library voice mismatch')
+                    mapping = current
+                    voices[voice] = manifest
+                    paths.append(path)
+                default = pointer.get('default_voice', next(iter(voices)))
+                if default not in voices:
+                    raise ValueError('Default voice is unavailable')
+                self._voices, self._paths, self._default_voice = voices, paths, default
+                self._manifest = voices[default]
+                self._manifest_path = paths[0]
+                self._version = file_digest(self.pointer)[:16]
+                self._key = (pointer_stamp, tuple(self._stamp(p) for p in paths))
                 self._error = None
             except (OSError, ValueError, KeyError, TypeError) as exc:
                 self._manifest = {}
+                self._voices = {}
+                self._paths = []
+                self._default_voice = None
                 self._manifest_path = None
                 self._version = None
                 self._key = None
                 self._error = str(exc)
 
-    def replacement(self, clip_id: str, kind: str, original: Path) -> Path | None:
+    def replacement(self, clip_id: str, kind: str, original: Path,
+                    voice: str | None = None) -> Path | None:
         self._load()
-        entry = self._manifest.get('clips', {}).get(clip_id)
+        selected_voice = self._default_voice if voice is None else voice
+        manifest = self._voices.get(selected_voice, {})
+        entry = manifest.get('clips', {}).get(clip_id)
         if entry is None:
             return None
         try:
@@ -97,4 +128,9 @@ class VoiceLibrary:
         self._load()
         clips = self._manifest.get('clips', {})
         return {'active': bool(self._manifest), 'version': self._version,
-                'clip_count': len(clips), 'error': self._error}
+                'clip_count': len(clips), 'error': self._error,
+                'default_voice': self._default_voice,
+                'voices': [{'id': voice, 'label': {'news-female': '新闻女声',
+                            'news-male': '新闻男声'}.get(voice, voice),
+                            'clip_count': len(manifest['clips'])}
+                           for voice, manifest in self._voices.items()]}

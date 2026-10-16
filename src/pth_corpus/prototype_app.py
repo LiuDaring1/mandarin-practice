@@ -525,7 +525,7 @@ class PrototypeRuntime:
             "items": [self.sentence_item_payload(row) for row in items],
         }
 
-    def sentence_clip_path(self, sentence_id: str) -> Path | None:
+    def sentence_clip_path(self, sentence_id: str, voice: str | None = None) -> Path | None:
         if not SENTENCE_ID_RE.fullmatch(sentence_id):
             return None
         candidate = (
@@ -541,7 +541,9 @@ class PrototypeRuntime:
             resolved.relative_to(self.data_root)
         except ValueError:
             return None
-        replacement = self.voice_library.replacement(sentence_id, "sentence", resolved)
+        replacement = self.voice_library.replacement(sentence_id, "sentence", resolved, voice)
+        if voice is not None:
+            return replacement
         return replacement or (resolved if resolved.is_file() else None)
 
     # ---- 听辨练习（前后鼻音逐字判断，无音频，与生成器解耦） ------------
@@ -895,7 +897,7 @@ class PrototypeRuntime:
         )
         return path
 
-    def clip_path(self, item_id: str) -> Path | None:
+    def clip_path(self, item_id: str, voice: str | None = None) -> Path | None:
         if not ITEM_ID_RE.fullmatch(item_id):
             return None
         with sqlite3.connect(f"file:{self.db_path}?mode=ro", uri=True) as connection:
@@ -917,7 +919,9 @@ class PrototypeRuntime:
             resolved.relative_to(self.data_root)
         except ValueError:
             return None
-        replacement = self.voice_library.replacement(item_id, "word", resolved)
+        replacement = self.voice_library.replacement(item_id, "word", resolved, voice)
+        if voice is not None:
+            return replacement
         return replacement or (resolved if resolved.is_file() else None)
 
     def record_event(self, event: dict[str, Any]) -> Path:
@@ -1355,8 +1359,8 @@ def create_app(
             raise HTTPException(status_code=400, detail=str(exc)) from exc
 
     @app.get("/api/clips/{item_id}")
-    def clip_media(item_id: str) -> FileResponse:
-        path = runtime.clip_path(item_id)
+    def clip_media(item_id: str, voice: str | None = None) -> FileResponse:
+        path = runtime.clip_path(item_id, voice)
         if path is None:
             raise HTTPException(status_code=404, detail="clip not found")
         return FileResponse(path, media_type="audio/wav")
@@ -1394,8 +1398,8 @@ def create_app(
             raise HTTPException(status_code=400, detail=str(exc)) from exc
 
     @app.get("/api/sentence/clips/{sentence_id}")
-    def sentence_clip_media(sentence_id: str) -> FileResponse:
-        path = runtime.sentence_clip_path(sentence_id)
+    def sentence_clip_media(sentence_id: str, voice: str | None = None) -> FileResponse:
+        path = runtime.sentence_clip_path(sentence_id, voice)
         if path is None:
             raise HTTPException(status_code=404, detail="clip not found")
         return FileResponse(path, media_type="audio/wav")

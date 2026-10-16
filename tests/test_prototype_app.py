@@ -804,3 +804,39 @@ def test_active_voice_library_serves_replacement_and_preserves_exclusions(tmp_pa
             db.execute('INSERT INTO excluded_items(item_id,reason,kind) VALUES(?,?,?)',
                        (item.item_id, 'fixture exclusion', 'test'))
         assert client.get(f'/api/clips/{item.item_id}').status_code == 404
+
+
+def test_voice_choice_routes_word_and_sentence_without_progress_changes(tmp_path):
+    from pth_corpus.voice_library import file_digest
+    root, client, items = _make_fixture(tmp_path)
+    sentence_id='01-测试-0001'
+    originals={items[0].item_id:('word',items[0].clip_path),sentence_id:(
+        'sentence',f'derived/sentence-practice-v1/clips/01-测试/{sentence_id}.wav')}
+    parent=root/'derived/voice-conversion';parent.mkdir(parents=True)
+    descriptors={}
+    for voice in ('news-female','news-male'):
+        clips={}
+        for clip_id,(kind,relative) in originals.items():
+            replacement=parent/(voice+'-'+clip_id+'.wav')
+            replacement.write_bytes((voice+clip_id).encode())
+            clips[clip_id]={'kind':kind,'voice':voice,'original_relative_path':relative,
+                'replacement':str(replacement),'sha256':file_digest(replacement)}
+        manifest=parent/(voice+'.json')
+        manifest.write_text(json.dumps({'version':1,'clip_count':2,'clips':clips}))
+        descriptors[voice]={'manifest':str(manifest.relative_to(root)),
+                            'sha256':file_digest(manifest)}
+    (parent/'active.json').write_text(json.dumps({'version':2,
+        'default_voice':'news-female','voices':descriptors}))
+    progress=root/'derived/prototype'
+    before={str(p.relative_to(progress)):p.read_bytes() for p in progress.rglob('*') if p.is_file()}
+    with client:
+        for voice in descriptors:
+            for clip_id,(kind,_) in originals.items():
+                prefix='/api/clips/' if kind=='word' else '/api/sentence/clips/'
+                response=client.get(prefix+clip_id,params={'voice':voice})
+                assert response.status_code==200
+                assert response.content==(voice+clip_id).encode()
+        assert client.get('/api/clips/'+items[0].item_id,params={'voice':'unknown'}).status_code==404
+        assert client.get('/api/clips/'+items[0].item_id,params={'voice':''}).status_code==404
+    after={str(p.relative_to(progress)):p.read_bytes() for p in progress.rglob('*') if p.is_file()}
+    assert after==before

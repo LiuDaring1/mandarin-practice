@@ -112,3 +112,52 @@ def test_activation_requires_complete_review_binding(tmp_path):
     with pytest.raises(ValueError,match='approval changed'):
         groups.activate(batch,tmp_path)
     assert not (tmp_path/'derived/voice-conversion/active.json').exists()
+
+
+def test_second_voice_queue_preserves_originals_and_omits_old_repairs(tmp_path):
+    source=tmp_path/'source.wav';source.write_bytes(b'original')
+    female=tmp_path/'female';male=tmp_path/'male'
+    original={'id':'t1-p001','kind':'word','voice':'news-female','source':str(source),
+        'source_sha256':groups.vc.digest(source),'duration':10,
+        'export_name':'t1-p001__news-female.wav','clips':[{'id':'id','start':1,'end':2}]}
+    groups.vc.write_json(female/'queue.json',{'jobs':[original,{'kind':'repair'}]})
+    groups.clone_voice(male,female,'news-male')
+    jobs=json.loads((male/'queue.json').read_text())['jobs']
+    assert jobs==[{**original,'voice':'news-male','export_name':'t1-p001__news-male.wav'}]
+    group=groups.prepare(male)['groups'][0]
+    assert group['voice']=='news-male' and group['export_name'].endswith('__news-male.wav')
+    assert group['jobs'][0]['file'].startswith('news-male__')
+    with pytest.raises(ValueError,match='overwrite'):
+        groups.clone_voice(male,female,'news-male')
+
+
+def test_pair_activation_requires_two_complete_matching_releases(tmp_path):
+    from pth_corpus.voice_library import VoiceLibrary
+    source=tmp_path/'source.wav';source.write_bytes(b'original')
+    folders=[]
+    for voice in ('news-female','news-male'):
+        batch=tmp_path/voice;folders.append(batch)
+        job={'id':'page','kind':'word','source':str(source),'source_sha256':groups.vc.digest(source),
+             'export_name':'converted.wav','voice':voice,'clips':[
+             {'id':'word','relative_path':'word.wav','start':1,'end':2}]}
+        groups.vc.write_json(batch/'queue.json',{'jobs':[job]})
+        export=batch/'exports/converted.wav';export.parent.mkdir();export.write_bytes(voice.encode())
+        folder=batch/'staged-preserved-v1/page';folder.mkdir(parents=True)
+        wav=folder/'word.wav';wav.write_bytes(voice.encode())
+        manifest=folder/'manifest.json'
+        groups.vc.write_json(manifest,{'clips':[{**job['clips'][0],
+            'sha256':groups.vc.digest(wav),'audio':{'duration':1}}]})
+        groups.vc.write_json(batch/'reports/page__preserved-v1__conversion-integrity.json',{
+            'passed':True,'manifest_sha256':groups.vc.digest(manifest),
+            'export_sha256':groups.vc.digest(export)})
+        groups.release(batch)
+    groups.activate_pair(*folders,tmp_path)
+    library=VoiceLibrary(tmp_path)
+    assert len(library.status()['voices'])==2
+    for batch in folders:
+        assert library.replacement('word','word',tmp_path/'word.wav',batch.name).read_bytes()==batch.name.encode()
+    pointer=tmp_path/'derived/voice-conversion/active.json'
+    before=pointer.read_bytes()
+    with pytest.raises(ValueError,match='Duplicate voice'):
+        groups.activate_pair(folders[0],folders[0],tmp_path)
+    assert pointer.read_bytes()==before

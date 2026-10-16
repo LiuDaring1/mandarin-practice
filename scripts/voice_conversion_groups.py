@@ -11,6 +11,30 @@ import io
 import voice_conversion_batch as vc
 
 
+def clone_voice(batch, source_batch, voice):
+    if batch.exists():
+        raise ValueError('Refuse to overwrite an existing voice batch')
+    if voice not in ('news-female', 'news-male'):
+        raise ValueError('Unsupported target voice')
+    original = json.loads((source_batch / 'queue.json').read_text())['jobs']
+    jobs = []
+    for job in original:
+        if job['kind'] == 'repair':
+            continue
+        if vc.digest(Path(job['source'])) != job['source_sha256']:
+            raise ValueError('Original changed before second voice: ' + job['id'])
+        copy = {**job, 'voice': voice,
+                'export_name': job['export_name'].rsplit('__', 1)[0] + '__' + voice + '.wav'}
+        jobs.append(copy)
+    if not jobs:
+        raise ValueError('No original jobs to convert')
+    vc.write_json(batch / 'queue.json', {'version': 1, 'jobs': jobs})
+    for name in ('inputs', 'exports', 'reports'):
+        (batch / name).mkdir(exist_ok=True)
+    print('Prepared independent voice batch:', voice, len(jobs), 'jobs;',
+          sum(len(j['clips']) for j in jobs), 'clips')
+
+
 def prepare(batch, size=30):
     root = batch / 'groups'
     plan = root / 'plan.json'
@@ -23,6 +47,9 @@ def prepare(batch, size=30):
                and not (batch / 'exports' / j['export_name']).exists()]
     groups = []
     for i in range(0, len(pending), size):
+        voice = pending[i].get('voice', 'news-female')
+        if any(j.get('voice', 'news-female') != voice for j in pending[i:i + size]):
+            raise ValueError('A group must use one voice')
         gid = f'group-{i // size + 2:03}'
         rows, cursor = [], 0
         for j in pending[i:i + size]:
@@ -33,10 +60,10 @@ def prepare(batch, size=30):
             rows.append({'job': j['id'], 'source': j['source'],
                 'source_sha256': j['source_sha256'], 'duration': duration,
                 'start_sample': cursor, 'samples': samples,
-                'file': f"{len(rows)+1:03}__{j['id'].split('-',2)[0]}-{j['id'].split('-',2)[1]}.wav"})
+                'file': f"{voice}__{len(rows)+1:03}__{j['id'].split('-',2)[0]}-{j['id'].split('-',2)[1]}.wav"})
             cursor += samples
         groups.append({'id': gid, 'duration': cursor / 16000, 'jobs': rows,
-                       'export_name': gid + '__news-female.wav'})
+                       'voice': voice, 'export_name': gid + '__' + voice + '.wav'})
     result={'version': 1, 'sample_rate':16000, 'groups':groups}
     vc.write_json(plan, result)
     return result
@@ -181,7 +208,8 @@ def repair_plan(batch):
                 'file':gid+'__'+j['id']+'.wav'})
             cursor+=round(duration*16000)
         existing.append({'id':gid,'duration':cursor/16000,'jobs':rows,
-            'export_name':gid+'__news-female.wav','kind':'repair'})
+            'voice': new[i]['voice'],
+            'export_name':gid+'__'+new[i]['voice']+'.wav','kind':'repair'})
     vc.write_json(batch/'groups/plan.json',plan)
     print('Prepared local repairs:',len(new),'; new groups:',[g['id'] for g in existing if g.get('kind')=='repair'])
 
@@ -255,7 +283,7 @@ def release(batch):
     print('Release ready:',len(jobs),'jobs;',len(mapping),'clips;',target.resolve())
 
 
-def activate(batch, data_root):
+def validated_release(batch, data_root):
     data_root=data_root.resolve()
     manifest=(batch/'release-preserved-v1.json').resolve()
     manifest_relative=str(manifest.relative_to(data_root))
@@ -276,28 +304,71 @@ def activate(batch, data_root):
             raise ValueError('Candidate manifest changed: '+j['id'])
     for key,entry in release_data['clips'].items():
         job,clip=expected[key]
-        if entry['kind']!=job['kind'] or entry['original_relative_path']!=clip['relative_path']:
+        if (entry['kind']!=job['kind'] or entry['voice']!=job['voice']
+                or entry['original_relative_path']!=clip['relative_path']):
             raise ValueError('Release mapping mismatch: '+key)
         path=vc.safe_path(data_root,entry['replacement'])
         if vc.digest(path)!=entry['sha256']:
             raise ValueError('Release audio changed: '+key)
-    active=data_root/'derived/voice-conversion/active.json'
+    return manifest_relative, release_data
+
+
+def write_active(data_root, pointer):
+    active=data_root.resolve()/'derived/voice-conversion/active.json'
     if active.exists():
         backup=active.with_name('active-before-'+vc.digest(active)[:16]+'.json')
         if not backup.exists():
             backup.write_bytes(active.read_bytes())
-    vc.write_json(active,{'version':1,'manifest':manifest_relative,'sha256':vc.digest(manifest)})
-    print('Activated complete library:',len(expected),'clips;',active)
+    vc.write_json(active,pointer)
+    print('Activated complete library:',active)
+
+
+def activate(batch, data_root):
+    relative, release_data = validated_release(batch, data_root)
+    voices = {entry['voice'] for entry in release_data['clips'].values()}
+    if len(voices) != 1:
+        raise ValueError('A release must contain exactly one voice')
+    write_active(data_root, {'version':1,'manifest':relative,'voice':next(iter(voices)),
+                            'sha256':vc.digest(data_root.resolve()/relative)})
+
+
+def activate_pair(batch, other_batch, data_root):
+    voices = {}
+    mapping = None
+    for folder in (batch, other_batch):
+        relative, release_data = validated_release(folder, data_root)
+        entries = release_data['clips']
+        voice_set = {entry['voice'] for entry in entries.values()}
+        if len(voice_set) != 1:
+            raise ValueError('A release must contain exactly one voice')
+        voice = next(iter(voice_set))
+        if voice in voices:
+            raise ValueError('Duplicate voice release')
+        current = {key: (entry['kind'],entry['original_relative_path'])
+                   for key, entry in entries.items()}
+        if mapping is not None and current != mapping:
+            raise ValueError('Voice releases cover different original clips')
+        mapping = current
+        voices[voice] = {'manifest':relative,
+                        'sha256':vc.digest(data_root.resolve()/relative)}
+    if set(voices) != {'news-female','news-male'}:
+        raise ValueError('Complete news female and male releases are required')
+    write_active(data_root, {'version':2,'default_voice':'news-female','voices':voices})
 
 
 if __name__ == '__main__':
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--batch',type=Path,required=True)
-    p.add_argument('command',choices=['plan','inputs','split','review','repairs','assemble','release','activate'])
+    p.add_argument('command',choices=['plan','inputs','split','review','repairs','assemble','release','activate','activate-pair','clone-voice'])
     p.add_argument('--group')
     p.add_argument('--data-root',type=Path)
+    p.add_argument('--other-batch',type=Path)
+    p.add_argument('--voice',choices=['news-female','news-male'])
     a=p.parse_args()
-    if a.command=='plan': print(json.dumps(prepare(a.batch),ensure_ascii=False))
+    if a.command=='clone-voice':
+        if a.other_batch is None or a.voice is None:p.error('clone-voice requires --other-batch and --voice')
+        clone_voice(a.batch,a.other_batch,a.voice)
+    elif a.command=='plan': print(json.dumps(prepare(a.batch),ensure_ascii=False))
     elif a.command=='inputs':inputs(a.batch,a.group)
     elif a.command=='split':split(a.batch,a.group)
     elif a.command=='review':review(a.batch,a.group)
@@ -305,4 +376,7 @@ if __name__ == '__main__':
     elif a.command=='assemble':assemble(a.batch)
     elif a.command=='release':release(a.batch)
     elif a.data_root is None:p.error('activate requires --data-root')
+    elif a.command=='activate-pair':
+        if a.other_batch is None:p.error('activate-pair requires --other-batch')
+        activate_pair(a.batch,a.other_batch,a.data_root)
     else:activate(a.batch,a.data_root)

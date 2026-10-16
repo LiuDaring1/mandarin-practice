@@ -7,6 +7,7 @@
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="/assets/styles.css">
   <link rel="stylesheet" href="/assets/ui-theme.css?v=2026-09-16-sound-default">
+  <link rel="stylesheet" href="/assets/demo-voice.css?v=2026-10-16">
   <meta name="theme-color" content="#fff9ef">
 </head>
 <body>
@@ -17,6 +18,9 @@
       <header class="home-top">
         <div class="home-toolbar">
           <span class="brand-sign"><span data-icon="words"></span>每日练习</span>
+          <div id="demo-voice-picker" class="demo-voice-picker" hidden>
+            <div class="demo-voice-options" role="group" aria-label="示范音色"></div>
+          </div>
           <div class="home-links">
             <button id="wall-link" class="chip-btn" type="button"><span data-icon="gallery"></span>作品</button>
             <button id="history-link" class="chip-btn" type="button"><span data-icon="clock"></span>历史</button>
@@ -397,6 +401,7 @@
   </script>
   <script src="/assets/ui.js"></script>
   <script src="/assets/sfx.js?v=2026-09-16-sound-default"></script>
-  <script src="/assets/app.js?v=2026-09-12-sound-v4"></script>
+  <script src="/assets/demo-voice.js?v=2026-10-16"></script>
+  <script src="/assets/app.js?v=2026-10-16-demo-voice"></script>
 </body>
 </html>

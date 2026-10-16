@@ -1404,7 +1404,7 @@ function playSentence(index) {
   updateDebug();
   setSentenceMode("playing");
   setSentenceStatus("正在播放示范音");
-  els.sentencePlayer.src = item.clip_url;
+  els.sentencePlayer.src = window.demoVoice.url(item.clip_url);
   els.sentencePlayer.play().catch(() => {
     /* 'error' 事件处理失败 */
   });
@@ -2456,7 +2456,7 @@ function playItem(index) {
   updateDebug();
   setMode("playing_reference");
   setStatus("正在播放");
-  els.player.src = `/api/clips/${item.item_id}`;
+  els.player.src = window.demoVoice.url(`/api/clips/${item.item_id}`);
   els.player.play().catch(() => {
     /* 'error' event handles failures */
   });
