@@ -22,7 +22,7 @@
 
 双库扩展：`clone-voice --other-batch <female> --voice news-male` 生成独立任务，`inputs`／`split`／`review`／`repairs`／`assemble`／`release` 分别执行。每套完整 release 后，以女声目录为 `--batch`，执行 `activate-pair --other-batch <male> --data-root data`，两套须完整审核、相同原 ID／kind／原相对路径，且音色不同。v2 active 指针绑定两份 release 的 SHA；任一清单损坏均禁用该双库，不把部分库当成完整。
 
-`GET /api/voice-library` 返回音色列表和默认音色；字词／句子 WAV 路由接受 `?voice=news-female|news-male`。指定音色不可用时返回 404，不能静默播原声／其他性别。首页可切换，偏好单独存 `pth-demo-voice-v1`，不改训练进度。代码已实现，正式服务尚未重启／双库尚未激活。全量 353 通过／1 预期跳过；新增路由等补验 35 通过。独立合成夹具通过选择、刷新记忆及字词／句子 URL 检查；截图接口超时，最终界面视觉验收仍待完成。
+`GET /api/voice-library` 返回音色列表和默认音色；字词／句子 WAV 路由接受 `?voice=news-female|news-male`。指定音色不可用时返回 404，不能静默播原声／其他性别。首页可切换，偏好单独存 `pth-demo-voice-v1`，不改训练进度。代码已实现，正式服务已启动当前代码，双库尚未激活。全量 353 通过／1 预期跳过；新增路由等补验 35 通过。独立合成夹具通过选择、刷新记忆及字词／句子 URL 检查；2026-10-17 补齐 360／390／430 px 无横向溢出、44 px 触控目标、刷新保留男声和辨音页隐藏切换的界面检查，并实看 360 px 截图。正式音库激活后的播放与界面仍需验收。
 
 新增 `src/pth_corpus/voice_library.py`，字词和句子原播放路由按原 ID／原相对路径查新音库；数据库与源切片不改。新库清单及每个音频校验 SHA256，路径必须在安全 data_root 内；无清单、文件缺失或校验失败时回到原音。仍遵守字词 `excluded_items` 排除，已有全局 `Cache-Control: no-store` 防止复用旧音缓存。`GET /api/voice-library` 可读当前启用状态，无进度写入。
 
