@@ -42,7 +42,6 @@ from .sentence_reading import (
     FILTER_MODES,
     apply_filter,
     apply_final_filter,
-    build_session as build_sentence_session,
     final_distribution,
     is_hanzi,
     load_sentence_pool,
@@ -54,6 +53,8 @@ from .training.v2.generator import _universe_from_items, generate_session_v2
 from .training.v2.history import HistoryStore
 from .training.v2.schema import V2Profile, load_v2_profiles
 from .voice_library import VoiceLibrary
+from .assessment import AssessmentError, AssessmentService
+from .news_sentences import NEWS_ID, load_news_pool, mixed_session
 
 
 DEFAULT_DURATION_MINUTES = 10
@@ -437,6 +438,8 @@ class PrototypeRuntime:
                 self._sentence_pool = load_sentence_pool(
                     self.data_root, out_subdir="derived/sentence-practice-v1"
                 )
+                self._sentence_pool = [{**row, "genre": "literature"} for row in self._sentence_pool]
+                self._sentence_pool.extend(load_news_pool(self.data_root, self.voice_library))
             except (OSError, ValueError):
                 self._sentence_pool = []
         return self._sentence_pool or []
@@ -452,6 +455,7 @@ class PrototypeRuntime:
             "available": bool(pool),
             "total_clips": len(pool),
             "articles": len({r["article_id"] for r in pool}),
+            "source_counts": {genre: sum(r.get("genre") == genre for r in pool) for genre in ("literature", "news")},
             "filter_counts": filters,
             "final_stats": final_distribution(pool),
             "avg_nasal_density": (
@@ -480,6 +484,8 @@ class PrototypeRuntime:
         return {
             "sentence_id": row["sentence_id"],
             "article_title": row["article_title"],
+            "genre": row.get("genre", "literature"),
+            "source_url": row.get("source_url"),
             "page": row["page"],
             "text": row["text"],
             "units": units,
@@ -510,7 +516,7 @@ class PrototypeRuntime:
             raise PrototypeAppError(
                 "句子库尚未就绪（data/derived/sentence-practice-v1 无已切片句子）"
             )
-        items = build_sentence_session(
+        items = mixed_session(
             pool,
             count=count,
             filter_mode=filter_mode,
@@ -526,6 +532,16 @@ class PrototypeRuntime:
         }
 
     def sentence_clip_path(self, sentence_id: str, voice: str | None = None) -> Path | None:
+        if NEWS_ID.fullmatch(sentence_id):
+            row = next((r for r in self.sentence_pool() if r["sentence_id"] == sentence_id), None)
+            if row is None:
+                return None
+            original = (self.data_root / row["original_relative_path"]).resolve()
+            try:
+                original.relative_to(self.data_root)
+            except ValueError:
+                return None
+            return self.voice_library.replacement(sentence_id, "sentence", original, voice)
         if not SENTENCE_ID_RE.fullmatch(sentence_id):
             return None
         candidate = (
@@ -1287,6 +1303,8 @@ def create_app(
         lifespan=lifespan,
     )
     app.state.runtime = runtime
+    assessment = AssessmentService(runtime.data_root)
+    app.state.assessment = assessment
     app.mount("/assets", StaticFiles(directory=str(static_dir)), name="prototype-assets")
 
     @app.middleware("http")
@@ -1343,6 +1361,32 @@ def create_app(
     @app.get("/api/voice-library")
     def voice_library_status() -> dict[str, Any]:
         return runtime.voice_library.status()
+
+    @app.get("/api/assessment/status")
+    def assessment_status() -> dict[str, Any]:
+        return assessment.status()
+
+    @app.post("/api/assessment/{kind}/{reference_id}")
+    async def assess_reading(kind: str, reference_id: str, request: Request, attempt_id: str) -> dict:
+        if kind not in ("word", "sentence") or not re.fullmatch(r"[a-zA-Z0-9-]{8,100}", attempt_id):
+            raise HTTPException(400, "invalid assessment request")
+        if kind == "sentence":
+            row = next((r for r in runtime.sentence_pool() if r["sentence_id"] == reference_id), None)
+            text = row.get("spoken_text", row["text"]) if row else None
+        else:
+            item = next((r for r in runtime.items() if r.item_id == reference_id), None)
+            text = item.word_raw if item else None
+        if not text:
+            raise HTTPException(404, "reference not found")
+        audio = bytearray()
+        async for chunk in request.stream():
+            audio.extend(chunk)
+            if len(audio) > 1_920_100:
+                raise HTTPException(413, "recording too large")
+        try:
+            return await assessment.assess(attempt_id, text, bytes(audio))
+        except AssessmentError as exc:
+            return {"status": exc.status, "message": str(exc)}
 
     @app.post("/api/sessions", status_code=201)
     def create_session(request: SessionRequest) -> dict[str, Any]:

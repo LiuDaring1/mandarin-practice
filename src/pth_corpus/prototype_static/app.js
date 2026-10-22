@@ -7,6 +7,10 @@ const TIMING_KEY = "pth-prototype-timing-v1";
 const PROGRESS_KEY = "pth-nasal-progress-v1";
 const SENTENCE_PINYIN_KEY = "pth-sentence-pinyin-v1";
 const WRONG_BOOK_KEY = "pth-discrim-wrongbook-v1";
+const reading = window.readingAssessment;
+const discrimAudio = new Audio();
+let discrimAudioRelease = null;
+let discrimAudioToken = 0;
 
 const TONES = {
   teal: { main: "#149e91", deep: "#077d73", soft: "#e1f4ed" },
@@ -1042,6 +1046,8 @@ async function renderSentenceFilterOptions() {
       '<p class="pane-empty">句子库准备中，稍后再试</p>';
     return;
   }
+  const sourceHint = document.querySelector("#pane-sentence > .section-head .section-hint");
+  if (sourceHint) sourceHint.textContent = info.source_counts?.news ? "散文与新闻 · 整句跟读" : "整句跟读 · 三档可选";
   els.sentenceFilterOptions.textContent = "";
   SENTENCE_FILTERS.forEach((f) => {
     const selected = state.sentenceFilter === f.id;
@@ -1294,6 +1300,10 @@ function sentenceTick() {
 }
 
 async function startSentenceSession(filterId, count) {
+  if (state.sentenceMode === "preparing") return;
+  state.sentenceMode = "preparing"; els.sentenceStartBtn.disabled = true;
+  await reading.prepare();
+  els.sentenceStartBtn.disabled = false;
   sfx.unlock();
   stopSentenceTick();
   clearTimeout(state.sentenceFollowTimeout);
@@ -1344,7 +1354,7 @@ function renderSentenceProgress() {
 }
 
 function renderSentenceItem(item) {
-  els.sentenceSource.textContent = `选自《${item.article_title}》`;
+  els.sentenceSource.textContent = `${item.genre === "news" ? "新闻 · " : ""}选自《${item.article_title}》`;
   // 整句每个字都带悬浮小字拼音（白字不加色，均衡；前鼻青 / 后鼻橙标色），
   // 标点直接排入句流，自然折行
   const wrap = document.createElement("p");
@@ -1392,12 +1402,14 @@ function toggleSentencePinyin() {
 }
 
 function playSentence(index) {
+  reading.cancel();
   const session = state.sentenceSession;
   if (!session || !session.items || index >= session.items.length) return;
   state.sentenceIndex = index;
   const item = session.items[index];
   // 两遍对比读：第 1 遍拼音开，第 2 遍拼音关（前后鼻颜色两遍都保留）
   state.sentencePass = 1;
+  state.sentenceReadValid = false;
   state.sentencePinyin = true;
   renderSentenceItem(item);
   renderSentenceProgress();
@@ -1422,10 +1434,17 @@ function enterSentenceFollow() {
   state.uiSentenceFollowTotalMs = followMs;
   state.sentenceFollowDeadline = performance.now() + followMs;
   clearTimeout(state.sentenceFollowTimeout);
+  reading.start("sentence");
   state.sentenceFollowTimeout = setTimeout(sentenceFollowDone, followMs);
 }
 
-function sentenceFollowDone() {
+async function sentenceFollowDone() {
+  const id = currentSentenceItem()?.sentence_id;
+  setSentenceMode("assessing"); stopSentenceTick();
+  const result = await reading.grade("sentence", id, replaySentence);
+  if (!result.advance || currentSentenceItem()?.sentence_id !== id || state.sentenceMode !== "assessing") return;
+  state.sentenceReadValid = Boolean(state.sentenceReadValid || result.complete);
+  startSentenceTick();
   if (state.sentencePass === 1) {
     // 第 1 遍读完 → 自动关拼音，再放一遍示范音读第 2 遍
     state.sentencePass = 2;
@@ -1438,7 +1457,8 @@ function sentenceFollowDone() {
     return;  // 'ended' 事件会进入第 2 遍跟读
   }
   state.sentencePass = 1;
-  state.sentenceCompleted = state.sentenceIndex + 1;
+  state.sentenceCompleted += state.sentenceReadValid ? 1 : 0;
+  state.sentenceReadValid = false;
   if (
     state.sentenceSession &&
     state.sentenceIndex + 1 < state.sentenceSession.items.length
@@ -1450,12 +1470,13 @@ function sentenceFollowDone() {
 }
 
 function skipSentence() {
+  reading.cancel();
   if (!state.sentenceSession || !state.sentenceSession.items) return;
   clearTimeout(state.sentenceFollowTimeout);
   state.sentencePass = 1;
   state.sentencePinyin = true;
   applySentencePinyin();
-  state.sentenceCompleted = state.sentenceIndex + 1;
+  state.sentenceReadValid = false;
   if (state.sentenceIndex + 1 < state.sentenceSession.items.length) {
     playSentence(state.sentenceIndex + 1);
   } else {
@@ -1470,6 +1491,7 @@ function toggleSentencePause() {
     return;
   }
   if (state.sentenceMode !== "playing" && state.sentenceMode !== "following") return;
+  reading.cancel();
   state.sentencePauseCount += 1;
   state.sentenceResumeFrom = state.sentenceMode;
   clearTimeout(state.sentenceFollowTimeout);
@@ -1499,17 +1521,12 @@ function resumeSentence() {
     setSentenceStatus("正在播放示范音");
     els.sentencePlayer.play().catch(() => {});
   } else {
-    setSentenceMode("following");
-    setSentenceStatus("请跟读");
-    state.sentenceFollowDeadline = performance.now() + state.sentenceFollowRemainingMs;
-    state.sentenceFollowTimeout = setTimeout(
-      sentenceFollowDone,
-      state.sentenceFollowRemainingMs
-    );
+    enterSentenceFollow();
   }
 }
 
 function replaySentence() {
+  reading.cancel();
   if (!state.sentenceSession && state.sentenceMode === "error") {
     startSentenceSession(state.sentenceFilter, state.sentenceCount);
     return;
@@ -1531,6 +1548,7 @@ function replaySentence() {
 }
 
 async function finishSentenceSession(exitEarly) {
+  reading.close();
   clearTimeout(state.sentenceFollowTimeout);
   stopSentenceTick();
   stopAudio(els.sentencePlayer);
@@ -1978,7 +1996,7 @@ function applyDiscrimFeedback(payload) {
   const allCorrect = Boolean(payload.all_correct);
   const wordCorrectCount = results.filter((r) => r.correct).length;
   const item = currentDiscrimItem();
-  sfx.play(allCorrect ? "answer.correct" : "answer.retry", {
+  if (allCorrect) sfx.play("answer.correct", {
     eventKey: `answer:${state.discrimSession?.session_id}:${state.discrimKind}:${state.discrimIndex}`,
   });
   state.discrimPointCount += results.length;
@@ -2075,7 +2093,8 @@ function applyDiscrimFeedback(payload) {
   state.discrimMode = "feedback";
   els.discrimSkip.classList.remove("hidden");
   clearTimeout(state.discrimFeedbackTimeout);
-  state.discrimFeedbackTimeout = setTimeout(nextDiscrimWord, DISCRIM_FEEDBACK_MS);
+  if (allCorrect) state.discrimFeedbackTimeout = setTimeout(nextDiscrimWord, DISCRIM_FEEDBACK_MS);
+  else playDiscrimVoice(item);
 }
 
 function markDiscrimFeedback(results, allCorrect) {
@@ -2115,7 +2134,36 @@ function markDiscrimFeedback(results, allCorrect) {
   }
 }
 
+function stopDiscrimVoice() {
+  discrimAudioToken++;
+  clearTimeout(state.discrimFeedbackTimeout);
+  discrimAudio.onended = null; discrimAudio.onerror = null;
+  discrimAudio.pause(); discrimAudio.removeAttribute("src"); discrimAudio.load();
+  if (discrimAudioRelease) discrimAudioRelease();
+  discrimAudioRelease = null;
+}
+
+function playDiscrimVoice(item) {
+  stopDiscrimVoice();
+  if (!item) return;
+  const token = discrimAudioToken;
+  discrimAudioRelease = sfx.beginTeaching();
+  const done = () => {
+    if (token !== discrimAudioToken || state.discrimMode !== "feedback") return;
+    clearTimeout(state.discrimFeedbackTimeout);
+    if (discrimAudioRelease) discrimAudioRelease();
+    discrimAudioRelease = null;
+    state.discrimFeedbackTimeout = setTimeout(nextDiscrimWord, 300);
+  };
+  discrimAudio.onended = done; discrimAudio.onerror = done;
+  discrimAudio.src = window.demoVoice.url(`/api/clips/${item.item_id}`);
+  state.discrimFeedbackTimeout = setTimeout(done, 12000);
+  discrimAudio.play().catch(done);
+}
+
 async function nextDiscrimWord() {
+  if (state.discrimMode !== "feedback") return;
+  stopDiscrimVoice();
   state.discrimFeedbackTimeout = null;
   els.discrimSkip.classList.add("hidden");
   const total = state.discrimKind === "library"
@@ -2235,6 +2283,7 @@ async function finishLibrarySession(exitEarly) {
 }
 
 async function finishDiscrimSessionEarly() {
+  stopDiscrimVoice();
   // 复习：进度已存服务端、无逐次结算，直接回首页；
   // 词库/趁热：按已完成情况结算（趁热巩固中途退出按完整批次结算）
   if (state.discrimKind === "review") {
@@ -2381,6 +2430,10 @@ function renderReviewComplete(result) {
 /* ---------- 训练流 ---------- */
 
 async function startSession(profileId, duration, entryId, seed) {
+  if (els.startBtn.disabled && state.mode === "preparing") return;
+  els.startBtn.disabled = true; state.mode = "preparing";
+  await reading.prepare();
+  els.startBtn.disabled = false;
   sfx.unlock();
   state.profileId = profileId;
   state.duration = duration;
@@ -2445,6 +2498,7 @@ function renderProgress(index, total) {
 }
 
 function playItem(index) {
+  reading.cancel();
   const session = state.session;
   if (!session || !session.items || index >= session.items.length) return;
   state.index = index;
@@ -2476,11 +2530,17 @@ function enterFollow() {
   state.uiFollowTotalMs = followMs + transitionMs;
   state.followDeadline = performance.now() + followMs + transitionMs;
   clearTimeout(state.followTimeout);
+  reading.start("word");
   state.followTimeout = setTimeout(followDone, followMs + transitionMs);
 }
 
-function followDone() {
-  state.completedItems = state.index + 1;
+async function followDone() {
+  const id = currentItem()?.item_id;
+  setMode("assessing"); stopTick();
+  const result = await reading.grade("word", id, replay);
+  if (!result.advance || currentItem()?.item_id !== id || state.mode !== "assessing") return;
+  state.completedItems += result.complete ? 1 : 0;
+  startTick();
   if (state.index + 1 < state.session.items.length) {
     playItem(state.index + 1);
   } else {
@@ -2495,6 +2555,7 @@ function togglePause() {
     return;
   }
   if (state.mode !== "playing_reference" && state.mode !== "waiting_follow") return;
+  reading.cancel();
   state.pauseCount += 1;
   state.resumeFrom = state.mode;
   clearTimeout(state.followTimeout);
@@ -2521,14 +2582,12 @@ function resume() {
     setStatus("正在播放");
     els.player.play().catch(() => {});
   } else {
-    setMode("waiting_follow");
-    setStatus("请跟读");
-    state.followDeadline = performance.now() + state.followRemainingMs;
-    state.followTimeout = setTimeout(followDone, state.followRemainingMs);
+    enterFollow();
   }
 }
 
 function replay() {
+  reading.cancel();
   if (!state.session && state.mode === "error") {
     startSession(state.profileId, state.duration, state.entryId);
     return;
@@ -2545,6 +2604,7 @@ function replay() {
 }
 
 function skipCurrent() {
+  reading.cancel();
   if (!state.session || !state.session.items) return;
   clearTimeout(state.followTimeout);
   if (state.index + 1 < state.session.items.length) {
@@ -2555,6 +2615,8 @@ function skipCurrent() {
 }
 
 async function finishSession(exitEarly) {
+  const measured = reading.required;
+  reading.close();
   clearTimeout(state.followTimeout);
   stopTick();
   stopAudio();
@@ -2562,7 +2624,9 @@ async function finishSession(exitEarly) {
   const plannedMs = state.duration * 60 * 1000;
   const remainingMs = Number.isFinite(state.timerRemainingMs) ? state.timerRemainingMs : plannedMs;
   const elapsedMs = Math.min(plannedMs, Math.max(0, plannedMs - remainingMs));
-  const ratio = exitEarly ? clamp01(elapsedMs / plannedMs) : 1.0;
+  const ratio = measured
+    ? clamp01(state.completedItems / Math.max(1, session?.items?.length || 0))
+    : exitEarly ? clamp01(elapsedMs / plannedMs) : 1.0;
   const actualSec = Math.round(elapsedMs / 1000);
   setMode("completed");
 
@@ -2779,6 +2843,8 @@ function pendingReadyHtml(result) {
 }
 
 function resetToHome() {
+  reading.close();
+  stopDiscrimVoice();
   clearTimeout(state.followTimeout);
   clearTimeout(state.sentenceFollowTimeout);
   clearTimeout(state.discrimFeedbackTimeout);
@@ -3855,11 +3921,18 @@ function bindEvents() {
     btn.addEventListener("click", () => setCalibrationSpeed(btn.dataset.calSpeed));
   });
   document.addEventListener("visibilitychange", () => {
-    if (document.hidden) { stopPlacement(); ironAudible = false; sfx.stop(); }
+    if (document.hidden) {
+      stopPlacement(); ironAudible = false; sfx.stop();
+      if (["playing_reference", "waiting_follow"].includes(state.mode)) togglePause();
+      if (["playing", "following"].includes(state.sentenceMode)) toggleSentencePause();
+      if (state.mode === "assessing") { reading.cancel(); setMode("error"); setStatus("已暂停，点重播继续"); }
+      if (state.sentenceMode === "assessing") { reading.cancel(); setSentenceMode("error"); setSentenceStatus("已暂停，点重播继续"); }
+      if (state.discrimMode === "feedback") {stopDiscrimVoice();state.discrimFeedbackTimeout=setTimeout(nextDiscrimWord,700);}
+    }
     if (document.hidden && document.body.dataset.view === "calibration") stopCalVideos("已停止，点音名或箭头重新播放");
   });
   window.addEventListener("blur", () => { stopPlacement(); ironAudible = false; sfx.stop(); });
-  window.addEventListener("pagehide", () => stopCalVideos());
+  window.addEventListener("pagehide", () => {stopCalVideos();reading.close();stopDiscrimVoice();});
   els.calLink.addEventListener("click", () => {
     setView("calibration");
     renderCalibration();
@@ -4046,6 +4119,14 @@ async function init() {
     updateRewardHint();
     updateStartBtn();
     pollReady();
+    fetchJson("/api/assessment/status").then(status => {
+      if (!status.available) return;
+      [els.startBtn, els.sentenceStartBtn].forEach(btn => {
+        if (btn.parentElement.querySelector(".assessment-notice")) return;
+        const notice = document.createElement("p"); notice.className = "assessment-notice";
+        notice.textContent = "跟读时录音评测 · 录音发送至腾讯云";btn.after(notice);
+      });
+    }).catch(() => {});
     await migrateOldWrongBook();
     await refreshDiscrimState();
     if (new URLSearchParams(location.search).get("view") === "calibration") {

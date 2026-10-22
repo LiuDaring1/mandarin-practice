@@ -1,0 +1,22 @@
+{
+  "checks": [
+    "disposable progress directory",
+    "home has no horizontal overflow",
+    "fake microphone audio contexts activated through native clicks",
+    "worklet microphone prepared",
+    "recorded PCM resampled and scored by Tencent",
+    "scored speech counts without a score threshold",
+    "fake microphone audio contexts activated through native clicks",
+    "silence waits for retry or skip",
+    "silence skipped without completion credit",
+    "denied microphone cannot earn reading credit",
+    "wrong answer plays whole word once and waits past 700ms",
+    "wrong-answer audio inherits female selection",
+    "advance once after reference ends",
+    "correct answer does not play reference",
+    "wrong-answer audio inherits male selection",
+    "skip cancels playback and stale callbacks"
+  ],
+  "isolated": true,
+  "recording": "reference audio used as fake microphone; no human recording"
+}
