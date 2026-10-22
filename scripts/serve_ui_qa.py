@@ -2,6 +2,7 @@
 from datetime import date, timedelta
 from pathlib import Path
 from tempfile import mkdtemp
+import sys
 
 import uvicorn
 from pth_corpus.prototype_app import create_app
@@ -9,6 +10,8 @@ from pth_corpus.prototype_app import create_app
 root = Path(__file__).resolve().parents[1]
 scratch = Path(mkdtemp(prefix="pth-ui-qa-"))
 app = create_app(root / "data", prototype_dir=scratch)
+# Normal UI walks never call a paid service or capture a real microphone.
+app.state.assessment.disabled = "--assessment" not in sys.argv
 
 
 @app.get("/__qa/info")
@@ -30,6 +33,7 @@ if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument("--port", type=int, default=8771)
+    parser.add_argument("--assessment", action="store_true", help="Enable explicit recording/assessment QA")
     args = parser.parse_args()
     print(f"Isolated UI QA progress: {scratch}", flush=True)
     uvicorn.run(app, host="127.0.0.1", port=args.port, log_level="warning")

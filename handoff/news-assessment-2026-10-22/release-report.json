@@ -1,0 +1,146 @@
+{
+  "health_ready": true,
+  "sentence_counts": {
+    "news": 450,
+    "literature": 582
+  },
+  "sampling": [
+    {
+      "filter": "all",
+      "count": 10,
+      "news": 5
+    },
+    {
+      "filter": "all",
+      "count": 10,
+      "news": 5
+    },
+    {
+      "filter": "all",
+      "count": 15,
+      "news": 8
+    },
+    {
+      "filter": "all",
+      "count": 15,
+      "news": 7
+    },
+    {
+      "filter": "front",
+      "count": 10,
+      "news": 5
+    },
+    {
+      "filter": "front",
+      "count": 10,
+      "news": 5
+    },
+    {
+      "filter": "front",
+      "count": 15,
+      "news": 8
+    },
+    {
+      "filter": "front",
+      "count": 15,
+      "news": 7
+    },
+    {
+      "filter": "back",
+      "count": 10,
+      "news": 5
+    },
+    {
+      "filter": "back",
+      "count": 10,
+      "news": 5
+    },
+    {
+      "filter": "back",
+      "count": 15,
+      "news": 8
+    },
+    {
+      "filter": "back",
+      "count": 15,
+      "news": 7
+    },
+    {
+      "filter": "mixed",
+      "count": 10,
+      "news": 5
+    },
+    {
+      "filter": "mixed",
+      "count": 10,
+      "news": 5
+    },
+    {
+      "filter": "mixed",
+      "count": 15,
+      "news": 8
+    },
+    {
+      "filter": "mixed",
+      "count": 15,
+      "news": 7
+    }
+  ],
+  "actual_voice_route_checks": [
+    {
+      "voice": "news-female",
+      "id": "news-2649370980-4-0004",
+      "sha256_matches": true
+    },
+    {
+      "voice": "news-female",
+      "id": "news-2649355575-2-0002",
+      "sha256_matches": true
+    },
+    {
+      "voice": "news-female",
+      "id": "news-2649366621-1-0002",
+      "sha256_matches": true
+    },
+    {
+      "voice": "news-female",
+      "id": "news-2649355137-2-0002",
+      "sha256_matches": true
+    },
+    {
+      "voice": "news-male",
+      "id": "news-2649370980-4-0004",
+      "sha256_matches": true
+    },
+    {
+      "voice": "news-male",
+      "id": "news-2649355575-2-0002",
+      "sha256_matches": true
+    },
+    {
+      "voice": "news-male",
+      "id": "news-2649366621-1-0002",
+      "sha256_matches": true
+    },
+    {
+      "voice": "news-male",
+      "id": "news-2649355137-2-0002",
+      "sha256_matches": true
+    }
+  ],
+  "progress_isolated": true,
+  "assessment_remaining_units": 993,
+  "progress_files": 72,
+  "progress_unchanged": true,
+  "native_news_ui": {
+    "male_voice_inherited": true,
+    "news_source_visible": true,
+    "news": 5,
+    "literature": 5,
+    "horizontal_overflow": false
+  },
+  "python_tests": {
+    "passed": 372,
+    "skipped": 1
+  }
+}

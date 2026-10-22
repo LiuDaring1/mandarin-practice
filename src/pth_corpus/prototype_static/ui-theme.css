@@ -503,3 +503,8 @@ button:not(:disabled):active { transform: translateY(2px) scale(.985); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; scroll-behavior: auto !important; transition: none !important; }
 }
+/* Reading assessment feedback: short, accessible and outside the reference text. */
+.assessment-panel { font-size: 14px; line-height: 1.55; color: #326b60; text-align: center; }
+.assessment-panel:empty { display: none; }
+.assessment-panel .ghost-btn { margin: 6px 4px; min-height: 36px; }
+.assessment-notice { margin: 4px 0 0; text-align: center; color: #6b7975; font-size: 11px; }

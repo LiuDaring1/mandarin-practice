@@ -18,3 +18,10 @@
 维护者原工作目录：`/Users/baiyanglin/Desktop/普通话语音系统/普通话语音系统-zcode`。其他机器以实际 clone 目录为准，文档中原绝对路径只是来源记录。
 
 没有本地语料的新 agent 仍可读取／修改代码、运行合成夹具单元测试、查看配置和任务说明。不要将缺少教学音频描述为完整应用已正常运行；也不要为了让测试通过而把用户原始数据加入仓库。
+
+
+## 2026-10-23 新增新闻与评测
+
+新闻私有数据还需要 `data/derived/news-sentence-v1/` 以及 active 指针所引用的 `news-sentences-female-v1/`、`news-sentences-male-v1/` 合并清单和 WAV；不要仅复制新指针而遗漏旧 16,718 条媒体。新新闻发布必须男女覆盖同一批 450 个 ID，缺失或哈希不符时不会当作完整新闻库加载。下载原包在 `data/raw/news-wechat-v1/`，仅续加工时需要，不上传 GitHub。
+
+腾讯录音评测是本机可选配置。按 `modules/assessment.md` 设置被忽略的 `data/derived/assessment/config.json` 或环境变量，在目标机另行准备凭证；Git 不含 CSV 或 SecretKey。`usage.json` 为本地测试单位预留计数，迁移时不能擅自归零。没有配置时沿用旧跟读方式；已配置但云服务不可用时保守检查发声，拒绝麦克风则仅听示范、不计朗读完成。常规 QA 默认禁用云评测与麦克风。
