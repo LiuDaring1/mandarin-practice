@@ -1,0 +1,272 @@
+{
+  "cells": [
+    {
+      "variant": "realtime-mp3",
+      "reference": "心",
+      "spoken_label": "心",
+      "parameters": {},
+      "status": "ok",
+      "overall": 74,
+      "finals": [
+        {
+          "phone": "in",
+          "phoneme": "IN",
+          "pronunciation": 40,
+          "span": {
+            "start": 27,
+            "end": 74
+          },
+          "tone_index": "1"
+        }
+      ]
+    },
+    {
+      "variant": "realtime-mp3",
+      "reference": "心",
+      "spoken_label": "星",
+      "parameters": {},
+      "status": "ok",
+      "overall": 100,
+      "finals": [
+        {
+          "phone": "in",
+          "phoneme": "IN",
+          "pronunciation": 100,
+          "span": {
+            "start": 31,
+            "end": 75
+          },
+          "tone_index": "1"
+        }
+      ]
+    },
+    {
+      "variant": "realtime-mp3",
+      "reference": "星",
+      "spoken_label": "星",
+      "parameters": {},
+      "status": "ok",
+      "overall": 100,
+      "finals": [
+        {
+          "phone": "ing",
+          "phoneme": "ING",
+          "pronunciation": 100,
+          "span": {
+            "start": 30,
+            "end": 81
+          },
+          "tone_index": "1"
+        }
+      ]
+    },
+    {
+      "variant": "realtime-mp3",
+      "reference": "林",
+      "spoken_label": "林",
+      "parameters": {},
+      "status": "ok",
+      "overall": 65,
+      "finals": [
+        {
+          "phone": "in",
+          "phoneme": "IN",
+          "pronunciation": 20,
+          "span": {
+            "start": 25,
+            "end": 77
+          },
+          "tone_index": "1"
+        }
+      ]
+    },
+    {
+      "variant": "strict-half",
+      "reference": "心",
+      "spoken_label": "心",
+      "parameters": {
+        "slack": -0.5,
+        "precision": 0.1
+      },
+      "status": "ok",
+      "overall": 74.2,
+      "finals": [
+        {
+          "phone": "in",
+          "phoneme": "IN",
+          "pronunciation": 40,
+          "span": {
+            "start": 27,
+            "end": 74
+          },
+          "tone_index": "1"
+        }
+      ]
+    },
+    {
+      "variant": "strict-half",
+      "reference": "心",
+      "spoken_label": "星",
+      "parameters": {
+        "slack": -0.5,
+        "precision": 0.1
+      },
+      "status": "ok",
+      "overall": 100,
+      "finals": [
+        {
+          "phone": "in",
+          "phoneme": "IN",
+          "pronunciation": 100,
+          "span": {
+            "start": 31,
+            "end": 75
+          },
+          "tone_index": "1"
+        }
+      ]
+    },
+    {
+      "variant": "strict-half",
+      "reference": "星",
+      "spoken_label": "星",
+      "parameters": {
+        "slack": -0.5,
+        "precision": 0.1
+      },
+      "status": "ok",
+      "overall": 100,
+      "finals": [
+        {
+          "phone": "ing",
+          "phoneme": "ING",
+          "pronunciation": 100,
+          "span": {
+            "start": 30,
+            "end": 81
+          },
+          "tone_index": "1"
+        }
+      ]
+    },
+    {
+      "variant": "strict-half",
+      "reference": "林",
+      "spoken_label": "林",
+      "parameters": {
+        "slack": -0.5,
+        "precision": 0.1
+      },
+      "status": "ok",
+      "overall": 64.8,
+      "finals": [
+        {
+          "phone": "in",
+          "phoneme": "IN",
+          "pronunciation": 20,
+          "span": {
+            "start": 25,
+            "end": 77
+          },
+          "tone_index": "1"
+        }
+      ]
+    },
+    {
+      "variant": "explicit-pinyin",
+      "reference": "心",
+      "spoken_label": "心",
+      "parameters": {
+        "refPinyin": "xin1",
+        "precision": 0.1,
+        "getParam": 1
+      },
+      "status": "ok",
+      "overall": 74.2,
+      "finals": [
+        {
+          "phone": "in",
+          "phoneme": "IN",
+          "pronunciation": 40,
+          "span": {
+            "start": 27,
+            "end": 74
+          },
+          "tone_index": "1"
+        }
+      ]
+    },
+    {
+      "variant": "explicit-pinyin",
+      "reference": "心",
+      "spoken_label": "星",
+      "parameters": {
+        "refPinyin": "xin1",
+        "precision": 0.1,
+        "getParam": 1
+      },
+      "status": "ok",
+      "overall": 100,
+      "finals": [
+        {
+          "phone": "in",
+          "phoneme": "IN",
+          "pronunciation": 100,
+          "span": {
+            "start": 31,
+            "end": 75
+          },
+          "tone_index": "1"
+        }
+      ]
+    },
+    {
+      "variant": "explicit-pinyin",
+      "reference": "星",
+      "spoken_label": "星",
+      "parameters": {
+        "refPinyin": "xing1",
+        "precision": 0.1,
+        "getParam": 1
+      },
+      "status": "ok",
+      "overall": 100,
+      "finals": [
+        {
+          "phone": "ing",
+          "phoneme": "ING",
+          "pronunciation": 100,
+          "span": {
+            "end": 81,
+            "start": 30
+          },
+          "tone_index": "1"
+        }
+      ]
+    },
+    {
+      "variant": "explicit-pinyin",
+      "reference": "林",
+      "spoken_label": "林",
+      "parameters": {
+        "refPinyin": "lin2",
+        "precision": 0.1,
+        "getParam": 1
+      },
+      "status": "ok",
+      "overall": 64.8,
+      "finals": [
+        {
+          "phone": "in",
+          "phoneme": "IN",
+          "pronunciation": 20,
+          "span": {
+            "start": 25,
+            "end": 77
+          },
+          "tone_index": "1"
+        }
+      ]
+    }
+  ]
+}
