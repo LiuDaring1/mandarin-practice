@@ -15,6 +15,8 @@ uv run pytest
 
 需要 Python 3.11–3.13，音频测试需要 FFmpeg。公开仓库不包含教学语料、示范录音／视频及个人练习进度；完整 APP 的本地运行准备见 [LOCAL_DATA.md](handoff/LOCAL_DATA.md)。已具备本地数据时运行 `uv run pth-corpus prototype --data-root data --port 8769`。
 
+**2026-10-23 换窗口继续优化：** 请读 [Astra 接手交接](handoff/HANDOFF-2026-10-23-astra.md)，当前最新工作在 `codex/nasal-mapping-validation`，未合并分支包含新闻／双声／连续朗读成果；鼻音自动诊断仍未启用。
+
 以下保留项目背景与历史节点；其中维护者本机路径不适用于其他机器，克隆后以本仓库根目录为准。
 
 

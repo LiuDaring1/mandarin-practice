@@ -3,6 +3,8 @@
 > 本文件解释「怎么交接」。任何新对话 / 新 agent（DSH、V4 flash、Cursor 等）**开工前先读本文件**，
 > 然后按下面的顺序读文档，30 秒内就能接上项目。
 
+**2026-10-23 最新接手说明**：[Astra 交接](HANDOFF-2026-10-23-astra.md)，含分支／PR 关系、已启用功能、尚未验证的鼻音诊断、数据保护与下一步边界。
+
 ## 目录结构与角色
 
 | 文件 | 角色 | 规则 |
@@ -34,16 +36,16 @@
 
 ## 用户话术模板（直接抄）
 
-**项目根目录（写死，换 agent 必给）**：`/Users/baiyanglin/Desktop/普通话语音系统/普通话语音系统-zcode`
+**维护者当前本机项目根目录（换 agent 时给出；其他机器用自己的 clone 路径）**：`/Volumes/语苗计划/桌面整理2026-10-01/01_语音项目/普通话语音系统/普通话语音系统-zcode`
 
 **开新窗口 / 换 agent 时，开头说**：
 
-> 项目在 /Users/baiyanglin/Desktop/普通话语音系统/普通话语音系统-zcode，先切到这个目录（cd /Users/baiyanglin/Desktop/普通话语音系统/普通话语音系统-zcode）。
+> 项目在 /Volumes/语苗计划/桌面整理2026-10-01/01_语音项目/普通话语音系统/普通话语音系统-zcode，先切到这个目录（cd /Volumes/语苗计划/桌面整理2026-10-01/01_语音项目/普通话语音系统/普通话语音系统-zcode）。
 > 然后读 README.md 和 handoff/README.md 了解交接规则，再读 handoff/STATUS.md 和
 > handoff/CHANGELOG.md。STATUS.md 里有「模块现状一览」表（模块名 → 文档路径索引），
 > 按表找到你要改的模块文档（在 handoff/modules/ 下）读它。之后我要做的是：……
 
-（agent 熟悉项目时可简化为：`项目在 /Users/baiyanglin/Desktop/普通话语音系统/普通话语音系统-zcode，先读 handoff/STATUS.md，然后……`）
+（agent 熟悉项目时可简化为：`项目在 /Volumes/语苗计划/桌面整理2026-10-01/01_语音项目/普通话语音系统/普通话语音系统-zcode，先读 handoff/STATUS.md，然后……`）
 
 **为什么这样写**：
 1. **位置必须给**——新窗口 agent 不知道项目在哪，相对路径没根，必须先 cd 到项目根。
