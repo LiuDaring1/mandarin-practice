@@ -89,6 +89,8 @@
           <span id="sentence-start-label">开始 · 句子练习</span>
           <span class="btn-arrow" aria-hidden="true" data-icon="arrow"></span>
         </button>
+        <div class="reading-speed" data-reading-speed-picker role="group" aria-label="句子示范语速"></div>
+        <button id="reading-review-btn" class="ghost-btn reading-review-entry" type="button">朗读回顾</button>
       </section>
 
       <!-- Tab 3：辨音 -->
@@ -172,6 +174,7 @@
           <span class="ctl-icon" aria-hidden="true" data-icon="pause"></span>
           <span class="ctl-label">暂停</span>
         </button>
+        <button id="reading-done-word" class="control-btn reading-done" type="button" disabled>读完了</button>
       </footer>
     </main>
 
@@ -251,6 +254,7 @@
           <span class="legend-dot teal"></span>前鼻音 n
           <span class="legend-dot orange"></span>后鼻音 ng
         </div>
+        <div class="reading-speed" data-reading-speed-picker role="group" aria-label="当前示范语速"></div>
       </section>
 
       <footer class="controls">
@@ -262,6 +266,7 @@
           <span class="ctl-icon" aria-hidden="true" data-icon="pause"></span>
           <span class="ctl-label">暂停</span>
         </button>
+        <button id="reading-done-sentence" class="control-btn reading-done" type="button" disabled>读完了</button>
       </footer>
     </main>
 
@@ -403,7 +408,7 @@
   <script src="/assets/sfx.js?v=2026-09-16-sound-default"></script>
   <script src="/assets/demo-voice.js?v=2026-10-16"></script>
   <script src="/assets/reading-pcm.js?v=2026-10-22"></script>
-  <script src="/assets/assessment.js?v=2026-10-22"></script>
-  <script src="/assets/app.js?v=2026-10-22-assessment"></script>
+  <script src="/assets/assessment.js?v=2026-10-23-background"></script>
+  <script src="/assets/app.js?v=2026-10-23-continuous"></script>
 </body>
 </html>

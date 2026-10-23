@@ -508,3 +508,15 @@ button:not(:disabled):active { transform: translateY(2px) scale(.985); }
 .assessment-panel:empty { display: none; }
 .assessment-panel .ghost-btn { margin: 6px 4px; min-height: 36px; }
 .assessment-notice { margin: 4px 0 0; text-align: center; color: #6b7975; font-size: 11px; }
+.reading-speed { display: flex; flex-wrap: wrap; justify-content: center; gap: 7px; margin: 12px 0; }
+.reading-speed button { border: 1px solid #d9e5dc; border-radius: 18px; background: #fffdf7; color: #52675f; padding: 7px 11px; font: inherit; font-size: 12px; min-height: 36px; }
+.reading-speed button[aria-pressed="true"] { color: #126950; background: #e1f4ed; border-color: #8ac3ab; }
+.reading-review-entry { display: block; margin: 8px auto; }
+.controls .reading-done { width: auto; min-width: 74px; min-height: 52px; border-radius: 20px; border: 1px solid #b8d6c5; background: #edf7ed; font-size: 14px; color: #24765f; }
+.controls .reading-done:disabled { opacity: .4; }
+.reading-summary { margin: 20px 0; padding: 18px; border: 1px solid #dce7db; border-radius: 22px; background: #f6faf0; text-align: left; }
+.reading-summary h2 { font-size: 18px; margin: 0 0 10px; }
+.reading-summary p, .reading-weak p { font-size: 13px; line-height: 1.7; color: #617466; overflow-wrap: anywhere; }
+.reading-weak { padding: 12px 0; border-top: 1px solid #dde7d8; }
+.reading-weak strong { font-size: 15px; color: #316855; }
+.reading-weak p { margin: 6px 0 0; }
