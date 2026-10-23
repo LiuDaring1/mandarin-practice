@@ -167,62 +167,60 @@ window.readingAssessment = (() => {
       card.append(title,context);root.append(card);
     }
   }
+  function renderRetry(root, items) {
+    if (!items.length) return;
+    const intro=document.createElement('p');intro.textContent='这几条可能没读完整，可以再慢慢读一遍：';root.append(intro);
+    for (const item of items) {
+      const line=document.createElement('p');line.className='reading-retry-text';line.textContent=item.text;root.append(line);
+    }
+  }
+  async function refreshReviewEntry() {
+    const button=document.getElementById('reading-review-btn');
+    try {
+      const response=await fetch('/api/reading/review');if(!response.ok)throw new Error('review');
+      const result=await response.json();
+      button.hidden=!(result.weak.length || result.retry_items?.length);
+    } catch { button.hidden=true; }
+  }
   function mountSummary(parent, startReview) {
-    const current = run;
+    const current=run;
     if (!current || !required) return;
-    const box=document.createElement('section');box.className='reading-summary';
-    box.innerHTML='<h2>本次朗读回顾</h2><p role="status">正在整理后台结果…</p><div class="reading-details"></div>';
+    const box=document.createElement('section');box.className='reading-summary';box.hidden=true;
+    box.innerHTML='<h2>本次朗读回顾</h2><div class="reading-details"></div>';
     parent.querySelector('.complete-actions').before(box);
-    const status=box.querySelector('[role=status]'), details=box.querySelector('.reading-details');
+    const details=box.querySelector('.reading-details');
     let timer;
     const update=async()=>{
-      if (!box.isConnected || run !== current) return;
+      if (!box.isConnected || run!==current) return;
       try {
         const response=await fetch(`/api/reading/session/${current.id}`);
         if(!response.ok)throw new Error('summary');
         const result=await response.json();
-        if(!box.isConnected || run !== current)return;
-        const uploading=current.uploads.size;
-        status.textContent=`已评测 ${result.assessed} 段${result.pending+uploading?` · ${result.pending+uploading} 段整理中`:''}`;
+        if(!box.isConnected || run!==current)return;
         details.replaceChildren();
-        const note=document.createElement('p');
-        note.textContent=!result.diagnostics_ready
-          ? '鼻音诊断仍在验证，本次不生成自动错音结论或复练建议。'
-          : result.target_observations
-          ? `获得 ${result.target_observations} 次目标鼻韵母反馈。低分仅提示复练，可能包含声调影响，不判定 n/ng 混淆。`
-          : '本次暂无可用的鼻韵母细节，不能据此判断已掌握或读错。';
-        details.append(note);
-        if(result.possible_incomplete){const p=document.createElement('p');p.textContent=`${result.possible_incomplete} 条内容可能未读完整，下次可以放慢重读；这不是鼻音错误结论。`;details.append(p);}
-        if(result.limited){const p=document.createElement('p');p.textContent=`${result.limited} 段未获得可用音素细节，未纳入薄弱项。`;details.append(p);}
-        if(result.unavailable+current.errors){const p=document.createElement('p');p.textContent=`${result.unavailable+current.errors} 段未能评测，不记零分，不影响本次练习奖励。`;details.append(p);}
-        if(result.no_speech){const p=document.createElement('p');p.textContent=`${result.no_speech} 段未识别到有效朗读，可在下次重读。`;details.append(p);}
+        renderRetry(details,result.retry_items || []);
         renderWeak(details,result.weak);
+        box.hidden=!(result.weak.length || result.retry_items?.length);
         if(result.weak.length){const button=document.createElement('button');button.className='ghost-btn';button.textContent='练这些音';button.onclick=startReview;details.append(button);}
-        if (result.pending || uploading) timer=setTimeout(update,1500);
-      }catch{status.textContent='暂时未能加载回顾，可重试；练习已结束。';
-        const button=document.createElement('button');button.className='ghost-btn';button.textContent='重试回顾';button.onclick=()=>{button.remove();update();};details.append(button);}
+        if(result.pending || current.uploads.size)timer=setTimeout(update,1500);
+        else refreshReviewEntry();
+      }catch{box.hidden=true;}
     };
-    update();
-    // Detached summaries never update a later session, and never cancel uploads.
-    return ()=>clearTimeout(timer);
+    update();return ()=>clearTimeout(timer);
   }
   async function mountReview(parent, startReview, home) {
     parent.replaceChildren();
     const title=document.createElement('h1');title.textContent='朗读回顾';parent.append(title);
-    const note=document.createElement('p');note.textContent='正在读取朗读记录…';parent.append(note);
+    const content=document.createElement('div');parent.append(content);
     const back=document.createElement('button');back.className='ghost-btn';back.textContent='返回首页';back.onclick=home;parent.append(back);
     try {
       const response=await fetch('/api/reading/review');if(!response.ok)throw new Error('review');
-      const result=await response.json();if(!note.isConnected)return;
-      note.textContent=!result.diagnostics_ready?'鼻音诊断仍在验证，暂不生成自动复练建议。已提交的录音评测记录会保留，录音文件不会保存。':result.weak.length?'从原句里的薄弱音出发，再换句子练。建议项来自鼻韵母评分，可能包含声调影响。':'暂时没有鼻韵母复练建议；这不代表所有发音都已掌握。';
-      const content=document.createElement('div');back.before(content);renderWeak(content,result.weak);
+      const result=await response.json();if(!content.isConnected)return;
+      renderRetry(content,result.retry_items || []);renderWeak(content,result.weak);
       if(result.weak.length){const button=document.createElement('button');button.className='primary-btn tone-green';button.textContent='开始专项复练';button.onclick=startReview;content.append(button);}
-      const heading=document.createElement('h2');heading.textContent='最近的朗读评测';content.append(heading);
-      for(const session of result.sessions){const p=document.createElement('p');
-        const date=session.created?new Date(session.created*1000).toLocaleString('zh-CN',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'}):'';
-        p.textContent=`${date} ${session.kind==='sentence'?'句子':'字词'} · ${session.submitted} 段录音 · 已评 ${session.assessed} 段${session.pending?` · ${session.pending} 段处理中`:''}${result.diagnostics_ready?` · 建议复练 ${session.weak.length} 项`:''}`;content.append(p);}
-    }catch{note.textContent='暂时未能读取朗读记录，请稍后再试。';}
+      if(!content.childElementCount){const note=document.createElement('p');note.textContent='暂无待复练内容。';content.append(note);}
+    }catch{const note=document.createElement('p');note.textContent='暂时无法打开回顾，请稍后再试。';content.append(note);}
   }
-  return {prepare,start,grade,cancel,close,mountSummary,mountReview,
+  return {prepare,start,grade,cancel,close,mountSummary,mountReview,refreshReviewEntry,
     get enabled(){return enabled;},get required(){return required;},get lastError(){return lastError;}};
 })();

@@ -1,0 +1,15 @@
+{
+  "checks": [
+    "isolated synthetic provider",
+    "empty report hidden after a complete reading",
+    "completion contains no engineering statuses",
+    "no empty review entry on home",
+    "incomplete reading names the actual content",
+    "actionable recap also hides engineering counts",
+    "history shows practice content instead of job list",
+    "later complete reading clears retry suggestion"
+  ],
+  "microphone": "generated tone",
+  "provider": "synthetic",
+  "origin": "isolated 8778"
+}

@@ -1,0 +1,314 @@
+{
+  "model": "Qwen3-ASR-1.7B-8bit",
+  "reference_text_prompt": false,
+  "scope": "labeled reference clips; coarse n/ng class only; not a validated human-error detector",
+  "count": 36,
+  "correct": 35,
+  "abstained": 0,
+  "wrong": 1,
+  "by_voice": {
+    "original": {
+      "count": 12,
+      "correct": 12
+    },
+    "news-female": {
+      "count": 12,
+      "correct": 12
+    },
+    "news-male": {
+      "count": 12,
+      "correct": 11
+    }
+  },
+  "mean_seconds": 0.3330751874923913,
+  "cells": [
+    {
+      "spoken_label": "心",
+      "voice": "original",
+      "expected_group": "front",
+      "transcription": "先。",
+      "predicted_group": "front",
+      "seconds": 1.1075802091509104
+    },
+    {
+      "spoken_label": "心",
+      "voice": "news-female",
+      "expected_group": "front",
+      "transcription": "心。",
+      "predicted_group": "front",
+      "seconds": 0.3339097499847412
+    },
+    {
+      "spoken_label": "心",
+      "voice": "news-male",
+      "expected_group": "front",
+      "transcription": "心。",
+      "predicted_group": "front",
+      "seconds": 0.2429192909039557
+    },
+    {
+      "spoken_label": "星",
+      "voice": "original",
+      "expected_group": "back",
+      "transcription": "星。",
+      "predicted_group": "back",
+      "seconds": 0.24543379107490182
+    },
+    {
+      "spoken_label": "星",
+      "voice": "news-female",
+      "expected_group": "back",
+      "transcription": "星。",
+      "predicted_group": "back",
+      "seconds": 0.31795050017535686
+    },
+    {
+      "spoken_label": "星",
+      "voice": "news-male",
+      "expected_group": "back",
+      "transcription": "心。",
+      "predicted_group": "front",
+      "seconds": 0.31303404085338116
+    },
+    {
+      "spoken_label": "林",
+      "voice": "original",
+      "expected_group": "front",
+      "transcription": "磷。",
+      "predicted_group": "front",
+      "seconds": 0.40254658414050937
+    },
+    {
+      "spoken_label": "林",
+      "voice": "news-female",
+      "expected_group": "front",
+      "transcription": "林。",
+      "predicted_group": "front",
+      "seconds": 0.40832870872691274
+    },
+    {
+      "spoken_label": "林",
+      "voice": "news-male",
+      "expected_group": "front",
+      "transcription": "林。",
+      "predicted_group": "front",
+      "seconds": 0.3400318752974272
+    },
+    {
+      "spoken_label": "零",
+      "voice": "original",
+      "expected_group": "back",
+      "transcription": "零。",
+      "predicted_group": "back",
+      "seconds": 0.4429016667418182
+    },
+    {
+      "spoken_label": "零",
+      "voice": "news-female",
+      "expected_group": "back",
+      "transcription": "零。",
+      "predicted_group": "back",
+      "seconds": 0.6392192905768752
+    },
+    {
+      "spoken_label": "零",
+      "voice": "news-male",
+      "expected_group": "back",
+      "transcription": "零。",
+      "predicted_group": "back",
+      "seconds": 0.3230237918905914
+    },
+    {
+      "spoken_label": "陈",
+      "voice": "original",
+      "expected_group": "front",
+      "transcription": "臣。",
+      "predicted_group": "front",
+      "seconds": 0.28622504184022546
+    },
+    {
+      "spoken_label": "陈",
+      "voice": "news-female",
+      "expected_group": "front",
+      "transcription": "陈。",
+      "predicted_group": "front",
+      "seconds": 0.2669024998322129
+    },
+    {
+      "spoken_label": "陈",
+      "voice": "news-male",
+      "expected_group": "front",
+      "transcription": "臣。",
+      "predicted_group": "front",
+      "seconds": 0.2784016248770058
+    },
+    {
+      "spoken_label": "成",
+      "voice": "original",
+      "expected_group": "back",
+      "transcription": "成。",
+      "predicted_group": "back",
+      "seconds": 0.3258032496087253
+    },
+    {
+      "spoken_label": "成",
+      "voice": "news-female",
+      "expected_group": "back",
+      "transcription": "成。",
+      "predicted_group": "back",
+      "seconds": 0.2885037502273917
+    },
+    {
+      "spoken_label": "成",
+      "voice": "news-male",
+      "expected_group": "back",
+      "transcription": "成。",
+      "predicted_group": "back",
+      "seconds": 0.3012234587222338
+    },
+    {
+      "spoken_label": "真",
+      "voice": "original",
+      "expected_group": "front",
+      "transcription": "真。",
+      "predicted_group": "front",
+      "seconds": 0.2968099173158407
+    },
+    {
+      "spoken_label": "真",
+      "voice": "news-female",
+      "expected_group": "front",
+      "transcription": "真。",
+      "predicted_group": "front",
+      "seconds": 0.2515590423718095
+    },
+    {
+      "spoken_label": "真",
+      "voice": "news-male",
+      "expected_group": "front",
+      "transcription": "真。",
+      "predicted_group": "front",
+      "seconds": 0.24281274992972612
+    },
+    {
+      "spoken_label": "争",
+      "voice": "original",
+      "expected_group": "back",
+      "transcription": "蒸。",
+      "predicted_group": "back",
+      "seconds": 0.25792487524449825
+    },
+    {
+      "spoken_label": "争",
+      "voice": "news-female",
+      "expected_group": "back",
+      "transcription": "蒸。",
+      "predicted_group": "back",
+      "seconds": 0.3074175831861794
+    },
+    {
+      "spoken_label": "争",
+      "voice": "news-male",
+      "expected_group": "back",
+      "transcription": "争。",
+      "predicted_group": "back",
+      "seconds": 0.26545679196715355
+    },
+    {
+      "spoken_label": "山",
+      "voice": "original",
+      "expected_group": "front",
+      "transcription": "山。",
+      "predicted_group": "front",
+      "seconds": 0.31352416705340147
+    },
+    {
+      "spoken_label": "山",
+      "voice": "news-female",
+      "expected_group": "front",
+      "transcription": "山。",
+      "predicted_group": "front",
+      "seconds": 0.3740759161300957
+    },
+    {
+      "spoken_label": "山",
+      "voice": "news-male",
+      "expected_group": "front",
+      "transcription": "山。",
+      "predicted_group": "front",
+      "seconds": 0.29626066610217094
+    },
+    {
+      "spoken_label": "商",
+      "voice": "original",
+      "expected_group": "back",
+      "transcription": "商。",
+      "predicted_group": "back",
+      "seconds": 0.27436737483367324
+    },
+    {
+      "spoken_label": "商",
+      "voice": "news-female",
+      "expected_group": "back",
+      "transcription": "商。",
+      "predicted_group": "back",
+      "seconds": 0.2754575000144541
+    },
+    {
+      "spoken_label": "商",
+      "voice": "news-male",
+      "expected_group": "back",
+      "transcription": "商。",
+      "predicted_group": "back",
+      "seconds": 0.29515941720455885
+    },
+    {
+      "spoken_label": "班",
+      "voice": "original",
+      "expected_group": "front",
+      "transcription": "班。",
+      "predicted_group": "front",
+      "seconds": 0.26291245874017477
+    },
+    {
+      "spoken_label": "班",
+      "voice": "news-female",
+      "expected_group": "front",
+      "transcription": "班。",
+      "predicted_group": "front",
+      "seconds": 0.2998654581606388
+    },
+    {
+      "spoken_label": "班",
+      "voice": "news-male",
+      "expected_group": "front",
+      "transcription": "班。",
+      "predicted_group": "front",
+      "seconds": 0.31075270799919963
+    },
+    {
+      "spoken_label": "帮",
+      "voice": "original",
+      "expected_group": "back",
+      "transcription": "帮。",
+      "predicted_group": "back",
+      "seconds": 0.2664221660234034
+    },
+    {
+      "spoken_label": "帮",
+      "voice": "news-female",
+      "expected_group": "back",
+      "transcription": "帮。",
+      "predicted_group": "back",
+      "seconds": 0.2607832499779761
+    },
+    {
+      "spoken_label": "帮",
+      "voice": "news-male",
+      "expected_group": "back",
+      "transcription": "帮。",
+      "predicted_group": "back",
+      "seconds": 0.2752055828459561
+    }
+  ]
+}

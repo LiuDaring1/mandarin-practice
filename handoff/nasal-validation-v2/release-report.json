@@ -1,0 +1,17 @@
+{
+  "pytest": {
+    "passed": 403,
+    "skipped": 1,
+    "seconds": 16.68
+  },
+  "native_browser_checks": 8,
+  "live_mapping_samples": 3,
+  "tencent_word_controls": 24,
+  "tencent_pinyin_controls": 24,
+  "local_asr_reference_clips": 36,
+  "local_asr_label_matches": 35,
+  "production_nasal_diagnosis_enabled": false,
+  "protected_progress_files": 171,
+  "changed_progress_files": 0,
+  "production_ready": true
+}

@@ -25,6 +25,7 @@ function initReadingControls() {
     }
   });
   update();
+  reading.refreshReviewEntry();
   document.getElementById('reading-done-sentence').onclick=sentenceFollowDone;
   document.getElementById('reading-done-word').onclick=followDone;
   document.getElementById('reading-review-btn').onclick=()=>{
@@ -2892,6 +2893,7 @@ function pendingReadyHtml(result) {
 
 function resetToHome() {
   reading.close();
+  reading.refreshReviewEntry();
   stopDiscrimVoice();
   clearTimeout(state.followTimeout);
   clearTimeout(state.sentenceFollowTimeout);

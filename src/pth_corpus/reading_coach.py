@@ -27,6 +27,32 @@ def final_key(value: str) -> str:
     return re.sub(r"[0-5]$", "", value.lower()).replace("v", "ü").replace("u:", "ü").replace("uen", "un")
 
 
+def nasal_final_evidence(phones: list[dict], expected: str) -> dict | None:
+    """Match one complete final, including Tencent's medial + rime output.
+
+    E.g. i4 + an -> ian, u1 + an -> uan, v2 + an -> üan. Tone marks
+    may occur on the medial, not the last component. Keep all component scores
+    instead of inventing an average; the nasal-containing last component is
+    the observation. It still isn't a diagnosis of an n/ng substitution.
+    """
+    matches = []
+    for start in range(len(phones)):
+        for end in range(start + 1, min(start + 3, len(phones)) + 1):
+            parts = phones[start:end]
+            combined = "".join(final_key(p.get("phone", "")) for p in parts)
+            if final_key(combined) != final_key(expected):
+                continue
+            if any(p.get("tag") != 0 or p.get("accuracy") is None for p in parts):
+                continue
+            matches.append(parts)
+    if len(matches) != 1:
+        return None
+    parts = matches[0]
+    return {"accuracy": parts[-1]["accuracy"],
+            "basis": "final_score" if len(parts) == 1 else "nasal_component_score",
+            "components": [{"phone": p["phone"], "accuracy": p["accuracy"]} for p in parts]}
+
+
 def nasal_feedback(text: str, targets: list[dict], result: dict) -> list[dict]:
     # Paragraph mode has no dependable phoneme detail. Do not invent a score.
     if result.get("status") != "ok" or evaluation_mode(text) == 2:
@@ -47,14 +73,11 @@ def nasal_feedback(text: str, targets: list[dict], result: dict) -> list[dict]:
     feedback = []
     for target in targets:
         word = aligned.get(target["position"], {})
-        matching = [p for p in word.get("phones", [])
-                    if final_key(p.get("phone", "")) == final_key(target["final"])
-                    and p.get("tag") == 0 and p.get("accuracy") is not None]
-        if len(matching) != 1:
+        evidence = nasal_final_evidence(word.get("phones", []), target["final"])
+        if evidence is None:
             continue
-        score = matching[0]["accuracy"]
-        feedback.append({**target, "accuracy": score, "practice": score < 70,
-                         "basis": "final_score", "diagnosis": None})
+        feedback.append({**target, **evidence, "practice": evidence["accuracy"] < 70,
+                         "diagnosis": None})
     return feedback
 
 
@@ -133,6 +156,9 @@ class ReadingCoach:
                     observation["practice"] = None  # store observations, not unvalidated labels
             # Keep only pedagogically used details; no audio or signed request URLs.
             row["completion"] = result.get("completion")
+            # Retain normalized phone observations locally, so mapping fixes can
+            # be audited without storing speech or paying to upload it again.
+            row["provider_words"] = result.get("words", [])
         except asyncio.CancelledError:
             row["status"] = "interrupted"
             raise
@@ -169,10 +195,17 @@ class ReadingCoach:
                        for key, value in latest.items() if value["practice"]],
                       key=lambda row: (-row["sessions"], -row["created"]))
 
+    def retry_items(self, rows: list[dict] | None = None) -> list[dict]:
+        latest = {(r["kind"], r["reference_id"]): r
+                  for r in (self.records() if rows is None else rows) if r["status"] == "ok"}
+        return [{"reference_id": r["reference_id"], "kind": r["kind"], "text": r["text"]}
+                for r in latest.values()
+                if r.get("completion") is not None and r["completion"] < 90]
+
     def summary(self, session_id: str) -> dict:
         rows = [r for r in self.records() if r["session_id"] == session_id]
         feedback = [f for r in rows for f in r.get("feedback", [])]
-        latest = {r["reference_id"]: r for r in rows if r["status"] == "ok"}
+        retry_items = self.retry_items(rows)
         return {"session_id": session_id, "submitted": len(rows),
                 "created": rows[0]["created"] if rows else None,
                 "kind": rows[0].get("kind") if rows else None,
@@ -182,5 +215,6 @@ class ReadingCoach:
                 "unavailable": sum(r["status"] not in ("ok", "pending", "no_speech") for r in rows),
                 "no_speech": sum(r["status"] == "no_speech" for r in rows),
                 "target_observations": len(feedback), "weak": self.weak_items(rows)[:8],
-                "possible_incomplete": sum(r.get("completion") is not None and r["completion"] < 90 for r in latest.values()),
+                "possible_incomplete": len(retry_items),
+                "retry_items": retry_items,
                 "limited": sum(r["status"] == "ok" and not r.get("feedback") for r in rows)}

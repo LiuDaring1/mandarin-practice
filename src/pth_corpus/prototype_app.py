@@ -1382,8 +1382,9 @@ def create_app(
     def reading_review() -> dict:
         weak = coach.weak_items()
         sessions = list(dict.fromkeys(r["session_id"] for r in reversed(coach.records())))[:12]
+        summaries = [coach.summary(s) for s in sessions]
         return {"weak": weak[:30], "diagnostics_ready": coach.nasal_review_enabled,
-                "sessions": [coach.summary(s) for s in sessions]}
+                "sessions": summaries, "retry_items": coach.retry_items()[-12:]}
 
     @app.post("/api/reading/attempts/{kind}/{reference_id}", status_code=202)
     async def submit_reading(kind: str, reference_id: str, request: Request,

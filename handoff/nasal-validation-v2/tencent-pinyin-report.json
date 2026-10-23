@@ -1,0 +1,446 @@
+{
+  "source": "original labeled corpus reference clips; not a new human-annotated clinical set",
+  "mode": 8,
+  "cells": [
+    {
+      "reference": "心",
+      "spoken_label": "心",
+      "pair": [
+        "心",
+        "星"
+      ],
+      "audio_id": "t1-05280",
+      "score_coeff": 4.0,
+      "status": "ok",
+      "target_score": 87.7,
+      "components": [
+        {
+          "phone": "in1",
+          "accuracy": 87.7
+        }
+      ]
+    },
+    {
+      "reference": "星",
+      "spoken_label": "心",
+      "pair": [
+        "心",
+        "星"
+      ],
+      "audio_id": "t1-05280",
+      "score_coeff": 4.0,
+      "status": "ok",
+      "target_score": 55.0,
+      "components": [
+        {
+          "phone": "ing1",
+          "accuracy": 55.0
+        }
+      ]
+    },
+    {
+      "reference": "心",
+      "spoken_label": "星",
+      "pair": [
+        "心",
+        "星"
+      ],
+      "audio_id": "t1-05320",
+      "score_coeff": 4.0,
+      "status": "ok",
+      "target_score": 86.3,
+      "components": [
+        {
+          "phone": "in1",
+          "accuracy": 86.3
+        }
+      ]
+    },
+    {
+      "reference": "星",
+      "spoken_label": "星",
+      "pair": [
+        "心",
+        "星"
+      ],
+      "audio_id": "t1-05320",
+      "score_coeff": 4.0,
+      "status": "ok",
+      "target_score": 83.4,
+      "components": [
+        {
+          "phone": "ing1",
+          "accuracy": 83.4
+        }
+      ]
+    },
+    {
+      "reference": "林",
+      "spoken_label": "林",
+      "pair": [
+        "林",
+        "零"
+      ],
+      "audio_id": "t1-03005",
+      "score_coeff": 4.0,
+      "status": "ok",
+      "target_score": 94.9,
+      "components": [
+        {
+          "phone": "in2",
+          "accuracy": 94.9
+        }
+      ]
+    },
+    {
+      "reference": "零",
+      "spoken_label": "林",
+      "pair": [
+        "林",
+        "零"
+      ],
+      "audio_id": "t1-03005",
+      "score_coeff": 4.0,
+      "status": "ok",
+      "target_score": 94.8,
+      "components": [
+        {
+          "phone": "ing2",
+          "accuracy": 94.8
+        }
+      ]
+    },
+    {
+      "reference": "林",
+      "spoken_label": "零",
+      "pair": [
+        "林",
+        "零"
+      ],
+      "audio_id": "t1-03020",
+      "score_coeff": 4.0,
+      "status": "ok",
+      "target_score": 90.6,
+      "components": [
+        {
+          "phone": "in2",
+          "accuracy": 90.6
+        }
+      ]
+    },
+    {
+      "reference": "零",
+      "spoken_label": "零",
+      "pair": [
+        "林",
+        "零"
+      ],
+      "audio_id": "t1-03020",
+      "score_coeff": 4.0,
+      "status": "ok",
+      "target_score": 95.9,
+      "components": [
+        {
+          "phone": "ing2",
+          "accuracy": 95.9
+        }
+      ]
+    },
+    {
+      "reference": "陈",
+      "spoken_label": "陈",
+      "pair": [
+        "陈",
+        "成"
+      ],
+      "audio_id": "t1-00523",
+      "score_coeff": 4.0,
+      "status": "ok",
+      "target_score": 68.0,
+      "components": [
+        {
+          "phone": "en2",
+          "accuracy": 68.0
+        }
+      ]
+    },
+    {
+      "reference": "成",
+      "spoken_label": "陈",
+      "pair": [
+        "陈",
+        "成"
+      ],
+      "audio_id": "t1-00523",
+      "score_coeff": 4.0,
+      "status": "ok",
+      "target_score": 40.3,
+      "components": [
+        {
+          "phone": "eng2",
+          "accuracy": 40.3
+        }
+      ]
+    },
+    {
+      "reference": "陈",
+      "spoken_label": "成",
+      "pair": [
+        "陈",
+        "成"
+      ],
+      "audio_id": "t1-00533",
+      "score_coeff": 4.0,
+      "status": "ok",
+      "target_score": 37.2,
+      "components": [
+        {
+          "phone": "en2",
+          "accuracy": 37.2
+        }
+      ]
+    },
+    {
+      "reference": "成",
+      "spoken_label": "成",
+      "pair": [
+        "陈",
+        "成"
+      ],
+      "audio_id": "t1-00533",
+      "score_coeff": 4.0,
+      "status": "ok",
+      "target_score": 50.8,
+      "components": [
+        {
+          "phone": "eng2",
+          "accuracy": 50.8
+        }
+      ]
+    },
+    {
+      "reference": "真",
+      "spoken_label": "真",
+      "pair": [
+        "真",
+        "争"
+      ],
+      "audio_id": "t1-06117",
+      "score_coeff": 4.0,
+      "status": "ok",
+      "target_score": 97.2,
+      "components": [
+        {
+          "phone": "en1",
+          "accuracy": 97.2
+        }
+      ]
+    },
+    {
+      "reference": "争",
+      "spoken_label": "真",
+      "pair": [
+        "真",
+        "争"
+      ],
+      "audio_id": "t1-06117",
+      "score_coeff": 4.0,
+      "status": "ok",
+      "target_score": 43.2,
+      "components": [
+        {
+          "phone": "eng1",
+          "accuracy": 43.2
+        }
+      ]
+    },
+    {
+      "reference": "真",
+      "spoken_label": "争",
+      "pair": [
+        "真",
+        "争"
+      ],
+      "audio_id": "t1-06137",
+      "score_coeff": 4.0,
+      "status": "ok",
+      "target_score": 84.6,
+      "components": [
+        {
+          "phone": "en1",
+          "accuracy": 84.6
+        }
+      ]
+    },
+    {
+      "reference": "争",
+      "spoken_label": "争",
+      "pair": [
+        "真",
+        "争"
+      ],
+      "audio_id": "t1-06137",
+      "score_coeff": 4.0,
+      "status": "ok",
+      "target_score": 88.1,
+      "components": [
+        {
+          "phone": "eng1",
+          "accuracy": 88.1
+        }
+      ]
+    },
+    {
+      "reference": "山",
+      "spoken_label": "山",
+      "pair": [
+        "山",
+        "商"
+      ],
+      "audio_id": "t1-04016",
+      "score_coeff": 4.0,
+      "status": "ok",
+      "target_score": 96.8,
+      "components": [
+        {
+          "phone": "an1",
+          "accuracy": 96.8
+        }
+      ]
+    },
+    {
+      "reference": "商",
+      "spoken_label": "山",
+      "pair": [
+        "山",
+        "商"
+      ],
+      "audio_id": "t1-04016",
+      "score_coeff": 4.0,
+      "status": "ok",
+      "target_score": 79.6,
+      "components": [
+        {
+          "phone": "ang1",
+          "accuracy": 79.6
+        }
+      ]
+    },
+    {
+      "reference": "山",
+      "spoken_label": "商",
+      "pair": [
+        "山",
+        "商"
+      ],
+      "audio_id": "t1-04041",
+      "score_coeff": 4.0,
+      "status": "ok",
+      "target_score": 86.5,
+      "components": [
+        {
+          "phone": "an1",
+          "accuracy": 86.5
+        }
+      ]
+    },
+    {
+      "reference": "商",
+      "spoken_label": "商",
+      "pair": [
+        "山",
+        "商"
+      ],
+      "audio_id": "t1-04041",
+      "score_coeff": 4.0,
+      "status": "ok",
+      "target_score": 95.9,
+      "components": [
+        {
+          "phone": "ang1",
+          "accuracy": 95.9
+        }
+      ]
+    },
+    {
+      "reference": "班",
+      "spoken_label": "班",
+      "pair": [
+        "班",
+        "帮"
+      ],
+      "audio_id": "t1-00059",
+      "score_coeff": 4.0,
+      "status": "ok",
+      "target_score": 61.6,
+      "components": [
+        {
+          "phone": "an1",
+          "accuracy": 61.6
+        }
+      ]
+    },
+    {
+      "reference": "帮",
+      "spoken_label": "班",
+      "pair": [
+        "班",
+        "帮"
+      ],
+      "audio_id": "t1-00059",
+      "score_coeff": 4.0,
+      "status": "ok",
+      "target_score": 22.5,
+      "components": [
+        {
+          "phone": "ang1",
+          "accuracy": 22.5
+        }
+      ]
+    },
+    {
+      "reference": "班",
+      "spoken_label": "帮",
+      "pair": [
+        "班",
+        "帮"
+      ],
+      "audio_id": "t1-00085",
+      "score_coeff": 4.0,
+      "status": "ok",
+      "target_score": 55.7,
+      "components": [
+        {
+          "phone": "an1",
+          "accuracy": 55.7
+        }
+      ]
+    },
+    {
+      "reference": "帮",
+      "spoken_label": "帮",
+      "pair": [
+        "班",
+        "帮"
+      ],
+      "audio_id": "t1-00085",
+      "score_coeff": 4.0,
+      "status": "ok",
+      "target_score": 86.8,
+      "components": [
+        {
+          "phone": "ang1",
+          "accuracy": 86.8
+        }
+      ]
+    }
+  ],
+  "available": 24,
+  "correct_mean": 83.925,
+  "cross_mean": 64.69166666666666,
+  "true_final_ranks_higher": 11,
+  "ranking_count": 12,
+  "cross_accepted_at_70": 6,
+  "correct_accepted_at_70": 9,
+  "auc": 0.7847222222222222
+}
