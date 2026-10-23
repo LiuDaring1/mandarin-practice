@@ -1,0 +1,13 @@
+{
+  "requests_reserved": 32,
+  "successful_unique_evaluations": 29,
+  "setup_failures": {
+    "http_401": 1,
+    "empty_final_frame_10163": 2
+  },
+  "offline_tests_passed": 10,
+  "original_progress_files_checked": 198,
+  "original_progress_files_changed": 0,
+  "production_code_changed": false,
+  "production_cloud_assessment_enabled": false
+}

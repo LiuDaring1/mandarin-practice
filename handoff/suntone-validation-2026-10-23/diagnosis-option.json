@@ -1,0 +1,62 @@
+{
+  "spoken_label": "星",
+  "reference": "心",
+  "phoneme_diagnosis": 1,
+  "result": {
+    "status": "ok",
+    "overall": 100,
+    "pronunciation": 100,
+    "tone": 100,
+    "duration": "0.867",
+    "kernel_version": "4.0.1",
+    "resource_version": "3.0.3",
+    "words": [
+      {
+        "word": "心",
+        "pinyin": "xin",
+        "tone": "tone1",
+        "readType": 0,
+        "span": {
+          "end": 75,
+          "start": 0
+        },
+        "scores": {
+          "overall": 100,
+          "tone_confidence": [
+            99,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pronunciation": 100,
+          "tone": 100
+        },
+        "charType": 0,
+        "phonemes": [
+          {
+            "phone": "x",
+            "phoneme": "X",
+            "pronunciation": 100,
+            "span": {
+              "end": 31,
+              "start": 0
+            },
+            "tone_index": "0"
+          },
+          {
+            "phone": "in",
+            "phoneme": "IN",
+            "pronunciation": 100,
+            "span": {
+              "end": 75,
+              "start": 31
+            },
+            "tone_index": "1"
+          }
+        ]
+      }
+    ]
+  },
+  "observation": "No explicit n/ng substitution field observed; expected in still scores 100."
+}
