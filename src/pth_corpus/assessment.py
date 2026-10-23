@@ -110,11 +110,20 @@ def normalize_result(result: dict) -> dict:
         value = result.get(key)
         return round(min(100, float(value) * scale), 1) if isinstance(value, (int, float)) and math.isfinite(value) and value >= 0 else None
     words = []
-    for row in result.get("Words", []):
+    for row in result.get("Words") or []:
         accuracy = row.get("PronAccuracy")
-        words.append({"text": row.get("ReferenceWord") or row.get("Word", ""),
+        word = {"text": row.get("ReferenceWord") or row.get("Word", ""),
                       "accuracy": round(accuracy, 1) if isinstance(accuracy, (int, float)) and math.isfinite(accuracy) and accuracy >= 0 else None,
-                      "tag": row.get("MatchTag", row.get("Tag", 0))})
+                      "tag": row.get("MatchTag", row.get("Tag", 0))}
+        phones = []
+        for phone in row.get("PhoneInfos") or []:
+            score = phone.get("PronAccuracy")
+            phones.append({"phone": phone.get("Phone", ""),
+                           "accuracy": round(score, 1) if isinstance(score, (int, float)) and math.isfinite(score) and score >= 0 else None,
+                           "tag": phone.get("MatchTag", 0)})
+        if phones:
+            word["phones"] = phones
+        words.append(word)
     if number("PronCompletion", 100) == 0 and (not words or all(w["tag"] in (2, 4) for w in words)):
         return {"status": "no_speech", "message": "没有检测到有效朗读，请再读一次"}
     return {"status": "ok", "score": number("SuggestedScore"),

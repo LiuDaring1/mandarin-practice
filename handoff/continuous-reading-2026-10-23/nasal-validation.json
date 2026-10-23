@@ -1,0 +1,120 @@
+{
+  "scope": "Exploratory reference-recording controls, not human pronunciation validation",
+  "decision": "Automatic nasal weak-item queue disabled by default; contrasts not reliably separated",
+  "controls": [
+    {
+      "reference": "心",
+      "spoken_source_label": "心",
+      "voice": "news-female",
+      "score_coeff": 2.0,
+      "score": 99.1,
+      "phones": [
+        {
+          "phone": "x",
+          "accuracy": 98.9,
+          "tag": 0
+        },
+        {
+          "phone": "in1",
+          "accuracy": 99.2,
+          "tag": 0
+        }
+      ]
+    },
+    {
+      "reference": "心",
+      "spoken_source_label": "星",
+      "voice": "news-female",
+      "score_coeff": 2.0,
+      "score": 98.9,
+      "phones": [
+        {
+          "phone": "x",
+          "accuracy": 99.1,
+          "tag": 0
+        },
+        {
+          "phone": "in1",
+          "accuracy": 98.9,
+          "tag": 0
+        }
+      ]
+    },
+    {
+      "reference": "心",
+      "spoken_source_label": "心",
+      "voice": "news-male",
+      "score_coeff": 4.0,
+      "score": 84.0,
+      "phones": [
+        {
+          "phone": "x",
+          "accuracy": 86.1,
+          "tag": 0
+        },
+        {
+          "phone": "in1",
+          "accuracy": 82.9,
+          "tag": 0
+        }
+      ]
+    },
+    {
+      "reference": "心",
+      "spoken_source_label": "星",
+      "voice": "news-male",
+      "score_coeff": 4.0,
+      "score": 81.9,
+      "phones": [
+        {
+          "phone": "x",
+          "accuracy": 86.6,
+          "tag": 0
+        },
+        {
+          "phone": "in1",
+          "accuracy": 79.5,
+          "tag": 0
+        }
+      ]
+    },
+    {
+      "reference": "林",
+      "spoken_source_label": "林",
+      "voice": "news-male",
+      "score_coeff": 4.0,
+      "score": 68.9,
+      "phones": [
+        {
+          "phone": "l",
+          "accuracy": 85.0,
+          "tag": 0
+        },
+        {
+          "phone": "in2",
+          "accuracy": 60.9,
+          "tag": 0
+        }
+      ]
+    },
+    {
+      "reference": "林",
+      "spoken_source_label": "零",
+      "voice": "news-male",
+      "score_coeff": 4.0,
+      "score": 70.9,
+      "phones": [
+        {
+          "phone": "l",
+          "accuracy": 89.9,
+          "tag": 0
+        },
+        {
+          "phone": "in2",
+          "accuracy": 61.4,
+          "tag": 0
+        }
+      ]
+    }
+  ]
+}

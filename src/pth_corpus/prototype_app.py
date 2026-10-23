@@ -45,6 +45,7 @@ from .sentence_reading import (
     final_distribution,
     is_hanzi,
     load_sentence_pool,
+    score_sentence,
 )
 from .training.candidates import load_items
 from .training.models import GeneratorConfig, load_config
@@ -54,6 +55,7 @@ from .training.v2.history import HistoryStore
 from .training.v2.schema import V2Profile, load_v2_profiles
 from .voice_library import VoiceLibrary
 from .assessment import AssessmentError, AssessmentService
+from .reading_coach import NASALS, SAFE_ID, ReadingCoach, plain
 from .news_sentences import NEWS_ID, load_news_pool, mixed_session
 
 
@@ -1134,6 +1136,7 @@ class SentenceSessionRequest(BaseModel):
     filter: str = Field(default="all")
     seed: int | None = Field(default=None, ge=0)
     include_finals: list[str] | None = Field(default=None)
+    review: bool = False
 
     @field_validator("filter")
     @classmethod
@@ -1295,6 +1298,7 @@ def create_app(
     async def lifespan(app: FastAPI):
         app.state.runtime.start_warmup()
         yield
+        await app.state.reading_coach.shutdown()
 
     app = FastAPI(
         title="pth-corpus Mandarin practice prototype",
@@ -1305,6 +1309,8 @@ def create_app(
     app.state.runtime = runtime
     assessment = AssessmentService(runtime.data_root)
     app.state.assessment = assessment
+    coach = ReadingCoach(assessment, runtime.prototype_dir)
+    app.state.reading_coach = coach
     app.mount("/assets", StaticFiles(directory=str(static_dir)), name="prototype-assets")
 
     @app.middleware("http")
@@ -1366,6 +1372,60 @@ def create_app(
     def assessment_status() -> dict[str, Any]:
         return assessment.status()
 
+    @app.get("/api/reading/session/{session_id}")
+    def reading_summary(session_id: str) -> dict:
+        if not SAFE_ID.fullmatch(session_id):
+            raise HTTPException(400, "invalid session")
+        return coach.summary(session_id)
+
+    @app.get("/api/reading/review")
+    def reading_review() -> dict:
+        weak = coach.weak_items()
+        sessions = list(dict.fromkeys(r["session_id"] for r in reversed(coach.records())))[:12]
+        return {"weak": weak[:30], "diagnostics_ready": coach.nasal_review_enabled,
+                "sessions": [coach.summary(s) for s in sessions]}
+
+    @app.post("/api/reading/attempts/{kind}/{reference_id}", status_code=202)
+    async def submit_reading(kind: str, reference_id: str, request: Request,
+                             attempt_id: str, session_id: str, pass_no: int = 1) -> dict:
+        if kind not in ("word", "sentence") or not SAFE_ID.fullmatch(attempt_id) or not SAFE_ID.fullmatch(session_id):
+            raise HTTPException(400, "invalid reading request")
+        if assessment.disabled:
+            raise HTTPException(503, "assessment disabled")
+        if kind == "sentence":
+            row = next((r for r in runtime.sentence_pool() if r["sentence_id"] == reference_id), None)
+            if not row:
+                raise HTTPException(404, "reference not found")
+            text = row.get("spoken_text", row["text"])
+            features = row if plain(text) == plain(row["text"]) else score_sentence(text)
+        else:
+            item = next((r for r in runtime.items() if r.item_id == reference_id), None)
+            if not item:
+                raise HTTPException(404, "reference not found")
+            text = item.word_raw
+            features = score_sentence(text)
+            if len(plain(text)) == len(item.syllables):
+                features["final_seq"] = " ".join(s.final_canonical for s in item.syllables)
+                syllables = re.split(r"[-\s]+", item.pinyin_nfc.strip())
+                if len(syllables) == len(item.syllables):
+                    features["pinyin_seq"] = " ".join(syllables)
+        targets = [{"position": i, "text": ch, "pinyin": py, "final": final}
+                   for i, (ch, py, final) in enumerate(zip(plain(text), features["pinyin_seq"].split(), features["final_seq"].split()))
+                   if final in NASALS]
+        if len(plain(text)) != len(features["final_seq"].split()):
+            targets = []  # mixed scripts/numerals need explicit alignment, never zip guesses
+        audio = bytearray()
+        async for chunk in request.stream():
+            audio.extend(chunk)
+            if len(audio) > 1_920_100:
+                raise HTTPException(413, "recording too large")
+        try:
+            return coach.submit(attempt_id=attempt_id, session_id=session_id, kind=kind,
+                                reference_id=reference_id, text=text, targets=targets,
+                                audio=bytes(audio), pass_no=pass_no)
+        except AssessmentError as exc:
+            return {"status": exc.status, "message": str(exc)}
+
     @app.post("/api/assessment/{kind}/{reference_id}")
     async def assess_reading(kind: str, reference_id: str, request: Request, attempt_id: str) -> dict:
         if kind not in ("word", "sentence") or not re.fullmatch(r"[a-zA-Z0-9-]{8,100}", attempt_id):
@@ -1421,12 +1481,29 @@ def create_app(
     @app.post("/api/sentence/session", status_code=201)
     def sentence_session(request: SentenceSessionRequest) -> dict[str, Any]:
         try:
-            return runtime.sentence_session(
+            weak = coach.weak_items() if request.review else []
+            if request.review and not weak:
+                raise HTTPException(409, "暂时没有需要复练的朗读记录")
+            session = runtime.sentence_session(
                 request.count,
-                request.filter,
+                "all" if request.review else request.filter,
                 seed=request.seed,
-                include_finals=request.include_finals,
+                include_finals=sorted({w["final"] for w in weak}) if request.review else request.include_finals,
             )
+            if request.review:
+                # Revisit the original sentence before transferring to other contexts.
+                references = {w["reference_id"] for w in weak if w["kind"] == "sentence"}
+                originals = [runtime.sentence_item_payload(r) for r in runtime.sentence_pool() if r["sentence_id"] in references]
+                seen = set()
+                items = []
+                for item in originals + session["items"]:
+                    if item["sentence_id"] not in seen:
+                        seen.add(item["sentence_id"])
+                        items.append(item)
+                session["items"] = items[:request.count]
+                session["count"] = len(session["items"])
+                session["review"] = True
+            return session
         except PrototypeAppError as exc:
             raise HTTPException(status_code=404, detail=str(exc)) from exc
         except ValueError as exc:

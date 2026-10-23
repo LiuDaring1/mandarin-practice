@@ -57,6 +57,10 @@ function uiRenderPhase(kind, info) {
     const remaining = Math.max(0, info.deadline - performance.now());
     pct = info.total > 0 ? 1 - remaining / info.total : 0;
     caption = `跟读计时 · 剩余 ${(remaining / 1000).toFixed(1)} 秒`;
+  } else if (phase === "previewing") {
+    caption = "先看一下句子，再听示范";
+  } else if (phase === "finishing") {
+    caption = "正在收好这一段录音…";
   } else if (phase === "paused") {
     caption = "已暂停 · 准备好后继续";
     pct = Number(box.dataset.progress || 0);

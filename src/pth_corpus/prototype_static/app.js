@@ -8,6 +8,30 @@ const PROGRESS_KEY = "pth-nasal-progress-v1";
 const SENTENCE_PINYIN_KEY = "pth-sentence-pinyin-v1";
 const WRONG_BOOK_KEY = "pth-discrim-wrongbook-v1";
 const reading = window.readingAssessment;
+const READING_SPEED_KEY = "pth-reading-speed-v1";
+let sentenceSpeed = .85;
+try { const saved=Number(localStorage.getItem(READING_SPEED_KEY)); if ([.75,.85,1].includes(saved)) sentenceSpeed=saved; } catch { /* optional preference */ }
+function initReadingControls() {
+  const update = () => document.querySelectorAll('[data-reading-speed-picker]').forEach(group => {
+    group.replaceChildren();
+    for (const speed of [.75,.85,1]) {
+      const button=document.createElement('button');button.type='button';
+      button.textContent=`${speed === 1 ? '原速' : speed === .85 ? '舒适' : '慢速'} ${speed}×`;
+      button.setAttribute('aria-pressed',String(sentenceSpeed===speed));
+      button.onclick=()=>{
+        sentenceSpeed=speed;try{localStorage.setItem(READING_SPEED_KEY,String(speed));}catch{}
+        els.sentencePlayer.preservesPitch=true;els.sentencePlayer.playbackRate=speed;update();
+      };group.append(button);
+    }
+  });
+  update();
+  document.getElementById('reading-done-sentence').onclick=sentenceFollowDone;
+  document.getElementById('reading-done-word').onclick=followDone;
+  document.getElementById('reading-review-btn').onclick=()=>{
+    resetToHome();setView('complete');
+    reading.mountReview(els.completeBody,()=>startSentenceSession('mixed',10,true),resetToHome);
+  };
+}
 const discrimAudio = new Audio();
 let discrimAudioRelease = null;
 let discrimAudioToken = 0;
@@ -829,6 +853,7 @@ function setStatus(text) {
 
 function setMode(mode) {
   state.mode = mode;
+  document.getElementById('reading-done-word').disabled = mode !== 'waiting_follow';
   const interactive =
     mode === "playing_reference" || mode === "waiting_follow" || mode === "paused";
   els.pauseBtn.disabled = !interactive;
@@ -1099,7 +1124,7 @@ function updateSentenceStart() {
   const option = SENTENCE_DURATIONS.find((d) => d.count === state.sentenceCount)
     || SENTENCE_DURATIONS[1];
   els.sentenceDurationHint.textContent =
-    `${option.hint} · +${sentenceBaseBeads(state.sentenceCount)} 拼点`;
+    `${option.count} 句 · 两遍跟读 · +${sentenceBaseBeads(state.sentenceCount)} 拼点`;
   const filter = SENTENCE_FILTERS.find((f) => f.id === state.sentenceFilter) || SENTENCE_FILTERS[0];
   els.sentenceStartLabel.textContent = `开始 · ${filter.label} ${state.sentenceCount} 句`;
 }
@@ -1270,7 +1295,8 @@ function setSentenceStatus(text) {
 
 function setSentenceMode(mode) {
   state.sentenceMode = mode;
-  const interactive = mode === "playing" || mode === "following" || mode === "paused";
+  document.getElementById('reading-done-sentence').disabled = mode !== 'following';
+  const interactive = mode === "previewing" || mode === "playing" || mode === "following" || mode === "paused";
   els.sentencePauseBtn.disabled = !interactive;
   els.sentenceReplayBtn.disabled = !(interactive || mode === "error");
   if (mode !== "paused") {
@@ -1299,7 +1325,7 @@ function sentenceTick() {
   state.sentenceLastTick = now;
 }
 
-async function startSentenceSession(filterId, count) {
+async function startSentenceSession(filterId, count, review = false) {
   if (state.sentenceMode === "preparing") return;
   state.sentenceMode = "preparing"; els.sentenceStartBtn.disabled = true;
   await reading.prepare();
@@ -1330,9 +1356,11 @@ async function startSentenceSession(filterId, count) {
       body: JSON.stringify({
         count: count || SENTENCE_COUNT_DEFAULT,
         filter: state.sentenceFilter,
+        review,
       }),
     });
     state.sentenceSession = session;
+    if(review)els.sentenceFilterTag.textContent='鼻音专项复练';
     sfx.play("training.start");
     state.sentenceStartTime = new Date().toISOString();
     startSentenceTick();
@@ -1414,19 +1442,33 @@ function playSentence(index) {
   renderSentenceItem(item);
   renderSentenceProgress();
   updateDebug();
-  setSentenceMode("playing");
-  setSentenceStatus("正在播放示范音");
+  setSentenceMode("previewing");
+  setSentenceStatus("先看一下句子，再听示范");
   els.sentencePlayer.src = window.demoVoice.url(item.clip_url);
-  els.sentencePlayer.play().catch(() => {
-    /* 'error' 事件处理失败 */
+  els.sentencePlayer.preservesPitch = true;
+  els.sentencePlayer.playbackRate = sentenceSpeed;
+  clearTimeout(state.sentenceFollowTimeout);
+  state.sentenceFollowTimeout=setTimeout(()=>{
+    if(state.sentenceMode!=='previewing'||currentSentenceItem()!==item)return;
+    setSentenceMode('playing');setSentenceStatus('正在播放示范音');
+    playSentenceAudio();
+  },1600);
+}
+
+function playSentenceAudio() {
+  const item=currentSentenceItem();
+  els.sentencePlayer.play().catch(()=>{
+    if(currentSentenceItem()!==item || state.sentenceMode!=='playing')return;
+    setSentenceMode('error');setSentenceStatus('示范音暂时无法播放，请点重播');
   });
 }
 
 function enterSentenceFollow() {
   const item = currentSentenceItem();
   if (!item) return;
-  // 跟读窗口：1.2× 音频时长（人耳反馈 2.5× 等太久），至少 2s
-  const followMs = Math.max(2000, Number(item.clip_duration || 3) * 1200);
+  // Independent learner time: generous window at the selected demo speed.
+  // "读完了" ends early; never exceed the recording API's 59s local cap.
+  const followMs = Math.min(59000, Math.max(7000, Number(item.clip_duration || 3) / sentenceSpeed * 1700 + 2000));
   setSentenceMode("following");
   state.sentencePinyin = state.sentencePass === 1;
   applySentencePinyin();
@@ -1439,10 +1481,12 @@ function enterSentenceFollow() {
 }
 
 async function sentenceFollowDone() {
+  if(state.sentenceMode!=='following')return;
+  clearTimeout(state.sentenceFollowTimeout);
   const id = currentSentenceItem()?.sentence_id;
-  setSentenceMode("assessing"); stopSentenceTick();
-  const result = await reading.grade("sentence", id, replaySentence);
-  if (!result.advance || currentSentenceItem()?.sentence_id !== id || state.sentenceMode !== "assessing") return;
+  setSentenceMode("finishing"); stopSentenceTick();
+  const result = await reading.grade("sentence", id, replaySentence, state.sentencePass);
+  if (!result.advance || currentSentenceItem()?.sentence_id !== id || state.sentenceMode !== "finishing") return;
   state.sentenceReadValid = Boolean(state.sentenceReadValid || result.complete);
   startSentenceTick();
   if (state.sentencePass === 1) {
@@ -1453,7 +1497,7 @@ async function sentenceFollowDone() {
     setSentenceMode("playing");
     setSentenceStatus("正在播放示范音");
     els.sentencePlayer.currentTime = 0;
-    els.sentencePlayer.play().catch(() => {});
+    playSentenceAudio();
     return;  // 'ended' 事件会进入第 2 遍跟读
   }
   state.sentencePass = 1;
@@ -1490,7 +1534,7 @@ function toggleSentencePause() {
     resumeSentence();
     return;
   }
-  if (state.sentenceMode !== "playing" && state.sentenceMode !== "following") return;
+  if (!["previewing", "playing", "following"].includes(state.sentenceMode)) return;
   reading.cancel();
   state.sentencePauseCount += 1;
   state.sentenceResumeFrom = state.sentenceMode;
@@ -1516,10 +1560,10 @@ function resumeSentence() {
   const from = state.sentenceResumeFrom;
   state.sentenceResumeFrom = null;
   startSentenceTick();
-  if (from === "playing") {
+  if (from === "playing" || from === "previewing") {
     setSentenceMode("playing");
     setSentenceStatus("正在播放示范音");
-    els.sentencePlayer.play().catch(() => {});
+    playSentenceAudio();
   } else {
     enterSentenceFollow();
   }
@@ -1544,7 +1588,7 @@ function replaySentence() {
   setSentenceMode("playing");
   setSentenceStatus("正在播放示范音");
   els.sentencePlayer.currentTime = 0;
-  els.sentencePlayer.play().catch(() => {});
+  playSentenceAudio();
 }
 
 async function finishSentenceSession(exitEarly) {
@@ -1651,6 +1695,7 @@ function renderSentenceComplete(result) {
   });
   els.completeBody.querySelector("#sentence-home-btn").addEventListener("click", resetToHome);
   setView("complete");
+  reading.mountSummary(els.completeBody,()=>startSentenceSession('mixed',10,true));
 }
 
 /* ---------- 听辨练习（前后鼻音逐字判断，无示范音） ---------- */
@@ -2535,10 +2580,12 @@ function enterFollow() {
 }
 
 async function followDone() {
+  if(state.mode!=='waiting_follow')return;
+  clearTimeout(state.followTimeout);
   const id = currentItem()?.item_id;
-  setMode("assessing"); stopTick();
+  setMode("finishing"); stopTick();
   const result = await reading.grade("word", id, replay);
-  if (!result.advance || currentItem()?.item_id !== id || state.mode !== "assessing") return;
+  if (!result.advance || currentItem()?.item_id !== id || state.mode !== "finishing") return;
   state.completedItems += result.complete ? 1 : 0;
   startTick();
   if (state.index + 1 < state.session.items.length) {
@@ -2821,6 +2868,7 @@ function renderComplete(result) {
   });
   els.completeBody.querySelector("#complete-home-btn").addEventListener("click", resetToHome);
   setView("complete");
+  reading.mountSummary(els.completeBody,()=>startSentenceSession('mixed',10,true));
 }
 
 // 结算后的「待拼」轻提示：作品保持训练前状态，等用户进详情亲手拼入
@@ -3924,9 +3972,9 @@ function bindEvents() {
     if (document.hidden) {
       stopPlacement(); ironAudible = false; sfx.stop();
       if (["playing_reference", "waiting_follow"].includes(state.mode)) togglePause();
-      if (["playing", "following"].includes(state.sentenceMode)) toggleSentencePause();
-      if (state.mode === "assessing") { reading.cancel(); setMode("error"); setStatus("已暂停，点重播继续"); }
-      if (state.sentenceMode === "assessing") { reading.cancel(); setSentenceMode("error"); setSentenceStatus("已暂停，点重播继续"); }
+      if (["previewing", "playing", "following"].includes(state.sentenceMode)) toggleSentencePause();
+      if (state.mode === "finishing") { reading.cancel(); setMode("error"); setStatus("已暂停，点重播继续"); }
+      if (state.sentenceMode === "finishing") { reading.cancel(); setSentenceMode("error"); setSentenceStatus("已暂停，点重播继续"); }
       if (state.discrimMode === "feedback") {stopDiscrimVoice();state.discrimFeedbackTimeout=setTimeout(nextDiscrimWord,700);}
     }
     if (document.hidden && document.body.dataset.view === "calibration") stopCalVideos("已停止，点音名或箭头重新播放");
@@ -3977,7 +4025,8 @@ function bindEvents() {
     if (state.sentenceMode === "playing") enterSentenceFollow();
   });
   els.sentencePlayer.addEventListener("error", () => {
-    if (state.sentenceMode === "playing" || state.sentenceMode === "paused") {
+    if (["previewing", "playing", "paused"].includes(state.sentenceMode)) {
+      clearTimeout(state.sentenceFollowTimeout);
       setSentenceMode("error");
       setSentenceStatus("无法播放，点重播重试");
     }
@@ -4163,4 +4212,5 @@ els.completeBody.addEventListener("click", (event) => {
   const button = event.target.closest("[data-place-art]");
   if (button) openDetail(button.dataset.placeArt);
 });
+initReadingControls();
 init();

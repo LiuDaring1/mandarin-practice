@@ -1,0 +1,14 @@
+{
+  "pytest": {
+    "passed": 385,
+    "skipped": 1,
+    "seconds": 16.32
+  },
+  "native_browser_checks": 32,
+  "real_api_control_calls": 6,
+  "real_background_submission": true,
+  "nasal_review_enabled": false,
+  "protected_progress_files": 73,
+  "changed_progress_files": 0,
+  "production_ready": true
+}

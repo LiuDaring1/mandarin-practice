@@ -25,3 +25,6 @@
 新闻私有数据还需要 `data/derived/news-sentence-v1/` 以及 active 指针所引用的 `news-sentences-female-v1/`、`news-sentences-male-v1/` 合并清单和 WAV；不要仅复制新指针而遗漏旧 16,718 条媒体。新新闻发布必须男女覆盖同一批 450 个 ID，缺失或哈希不符时不会当作完整新闻库加载。下载原包在 `data/raw/news-wechat-v1/`，仅续加工时需要，不上传 GitHub。
 
 腾讯录音评测是本机可选配置。按 `modules/assessment.md` 设置被忽略的 `data/derived/assessment/config.json` 或环境变量，在目标机另行准备凭证；Git 不含 CSV 或 SecretKey。`usage.json` 为本地测试单位预留计数，迁移时不能擅自归零。没有配置时沿用旧跟读方式；已配置但云服务不可用时保守检查发声，拒绝麦克风则仅听示范、不计朗读完成。常规 QA 默认禁用云评测与麦克风。
+
+
+连续评测的本地历史在各自 `prototype_dir/reading/attempts/`，包含参考文本、上下文目标位置和评测观察，不含用户录音；与其他真实进度一样不入 Git，也不从 QA 复制。服务重启不重发中断录音，避免重复收费。正式鼻音自动复练门禁当前关闭，详情见 `modules/assessment.md`。
