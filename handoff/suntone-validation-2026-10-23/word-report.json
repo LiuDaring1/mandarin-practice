@@ -1,0 +1,1577 @@
+{
+  "source": "Original labeled reference clips, not learner errors",
+  "cells": [
+    {
+      "reference": "心",
+      "spoken_label": "心",
+      "pair": [
+        "心",
+        "星"
+      ],
+      "audio_id": "t1-05280",
+      "result": {
+        "status": "ok",
+        "overall": 74,
+        "pronunciation": 70,
+        "tone": 100,
+        "duration": "0.795",
+        "kernel_version": "4.0.1",
+        "resource_version": "3.0.3",
+        "words": [
+          {
+            "word": "心",
+            "pinyin": "xin",
+            "tone": "tone1",
+            "readType": 0,
+            "span": {
+              "start": 0,
+              "end": 74
+            },
+            "scores": {
+              "tone_confidence": [
+                99,
+                0,
+                0,
+                0,
+                0
+              ],
+              "tone": 100,
+              "overall": 74,
+              "pronunciation": 70
+            },
+            "charType": 0,
+            "phonemes": [
+              {
+                "phone": "x",
+                "phoneme": "X",
+                "pronunciation": 100,
+                "span": {
+                  "start": 0,
+                  "end": 27
+                },
+                "tone_index": "0"
+              },
+              {
+                "phone": "in",
+                "phoneme": "IN",
+                "pronunciation": 40,
+                "span": {
+                  "start": 27,
+                  "end": 74
+                },
+                "tone_index": "1"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "reference": "星",
+      "spoken_label": "心",
+      "pair": [
+        "心",
+        "星"
+      ],
+      "audio_id": "t1-05280",
+      "result": {
+        "status": "ok",
+        "overall": 59,
+        "pronunciation": 54,
+        "tone": 100,
+        "duration": "0.795",
+        "kernel_version": "4.0.1",
+        "resource_version": "3.0.3",
+        "words": [
+          {
+            "word": "星",
+            "pinyin": "xing",
+            "tone": "tone1",
+            "readType": 1,
+            "span": {
+              "start": 0,
+              "end": 74
+            },
+            "scores": {
+              "pronunciation": 54,
+              "overall": 59,
+              "tone_confidence": [
+                99,
+                0,
+                0,
+                0,
+                0
+              ],
+              "tone": 100
+            },
+            "charType": 0,
+            "phonemes": [
+              {
+                "phone": "x",
+                "phoneme": "X",
+                "pronunciation": 100,
+                "span": {
+                  "start": 0,
+                  "end": 26
+                },
+                "tone_index": "0"
+              },
+              {
+                "phone": "ing",
+                "phoneme": "ING",
+                "pronunciation": 8,
+                "span": {
+                  "start": 26,
+                  "end": 74
+                },
+                "tone_index": "1"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "reference": "心",
+      "spoken_label": "星",
+      "pair": [
+        "心",
+        "星"
+      ],
+      "audio_id": "t1-05320",
+      "result": {
+        "status": "ok",
+        "overall": 100,
+        "pronunciation": 100,
+        "tone": 100,
+        "duration": "0.867",
+        "kernel_version": "4.0.1",
+        "resource_version": "3.0.3",
+        "words": [
+          {
+            "word": "心",
+            "pinyin": "xin",
+            "tone": "tone1",
+            "readType": 0,
+            "span": {
+              "start": 0,
+              "end": 75
+            },
+            "scores": {
+              "tone": 100,
+              "pronunciation": 100,
+              "tone_confidence": [
+                99,
+                0,
+                0,
+                0,
+                0
+              ],
+              "overall": 100
+            },
+            "charType": 0,
+            "phonemes": [
+              {
+                "phone": "x",
+                "phoneme": "X",
+                "pronunciation": 100,
+                "span": {
+                  "start": 0,
+                  "end": 31
+                },
+                "tone_index": "0"
+              },
+              {
+                "phone": "in",
+                "phoneme": "IN",
+                "pronunciation": 100,
+                "span": {
+                  "start": 31,
+                  "end": 75
+                },
+                "tone_index": "1"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "reference": "星",
+      "spoken_label": "星",
+      "pair": [
+        "心",
+        "星"
+      ],
+      "audio_id": "t1-05320",
+      "result": {
+        "status": "ok",
+        "overall": 100,
+        "pronunciation": 100,
+        "tone": 100,
+        "duration": "0.867",
+        "kernel_version": "4.0.1",
+        "resource_version": "3.0.3",
+        "words": [
+          {
+            "word": "星",
+            "pinyin": "xing",
+            "tone": "tone1",
+            "readType": 0,
+            "span": {
+              "start": 0,
+              "end": 81
+            },
+            "scores": {
+              "tone_confidence": [
+                99,
+                0,
+                0,
+                0,
+                0
+              ],
+              "tone": 100,
+              "pronunciation": 100,
+              "overall": 100
+            },
+            "charType": 0,
+            "phonemes": [
+              {
+                "phone": "x",
+                "phoneme": "X",
+                "pronunciation": 100,
+                "span": {
+                  "start": 0,
+                  "end": 30
+                },
+                "tone_index": "0"
+              },
+              {
+                "phone": "ing",
+                "phoneme": "ING",
+                "pronunciation": 100,
+                "span": {
+                  "start": 30,
+                  "end": 81
+                },
+                "tone_index": "1"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "reference": "林",
+      "spoken_label": "林",
+      "pair": [
+        "林",
+        "零"
+      ],
+      "audio_id": "t1-03005",
+      "result": {
+        "status": "ok",
+        "overall": 65,
+        "pronunciation": 60,
+        "tone": 100,
+        "duration": "0.795",
+        "kernel_version": "4.0.1",
+        "resource_version": "3.0.3",
+        "words": [
+          {
+            "word": "林",
+            "pinyin": "lin",
+            "tone": "tone2",
+            "readType": 0,
+            "span": {
+              "start": 0,
+              "end": 77
+            },
+            "scores": {
+              "pronunciation": 60,
+              "tone_confidence": [
+                0,
+                99,
+                0,
+                0,
+                0
+              ],
+              "overall": 65,
+              "tone": 100
+            },
+            "charType": 0,
+            "phonemes": [
+              {
+                "phone": "l",
+                "phoneme": "L",
+                "pronunciation": 100,
+                "span": {
+                  "start": 0,
+                  "end": 25
+                },
+                "tone_index": "0"
+              },
+              {
+                "phone": "in",
+                "phoneme": "IN",
+                "pronunciation": 20,
+                "span": {
+                  "start": 25,
+                  "end": 77
+                },
+                "tone_index": "1"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "reference": "零",
+      "spoken_label": "林",
+      "pair": [
+        "林",
+        "零"
+      ],
+      "audio_id": "t1-03005",
+      "result": {
+        "status": "ok",
+        "overall": 72,
+        "pronunciation": 68,
+        "tone": 100,
+        "duration": "0.795",
+        "kernel_version": "4.0.1",
+        "resource_version": "3.0.3",
+        "words": [
+          {
+            "word": "零",
+            "pinyin": "ling",
+            "tone": "tone2",
+            "readType": 0,
+            "span": {
+              "start": 0,
+              "end": 77
+            },
+            "scores": {
+              "tone": 100,
+              "overall": 72,
+              "tone_confidence": [
+                0,
+                99,
+                0,
+                0,
+                0
+              ],
+              "pronunciation": 68
+            },
+            "charType": 0,
+            "phonemes": [
+              {
+                "phone": "l",
+                "phoneme": "L",
+                "pronunciation": 100,
+                "span": {
+                  "start": 0,
+                  "end": 44
+                },
+                "tone_index": "0"
+              },
+              {
+                "phone": "ing",
+                "phoneme": "ING",
+                "pronunciation": 35,
+                "span": {
+                  "start": 44,
+                  "end": 77
+                },
+                "tone_index": "1"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "reference": "林",
+      "spoken_label": "零",
+      "pair": [
+        "林",
+        "零"
+      ],
+      "audio_id": "t1-03020",
+      "result": {
+        "status": "ok",
+        "overall": 100,
+        "pronunciation": 100,
+        "tone": 100,
+        "duration": "0.831",
+        "kernel_version": "4.0.1",
+        "resource_version": "3.0.3",
+        "words": [
+          {
+            "word": "林",
+            "pinyin": "lin",
+            "tone": "tone2",
+            "readType": 0,
+            "span": {
+              "start": 0,
+              "end": 81
+            },
+            "scores": {
+              "overall": 100,
+              "tone": 100,
+              "pronunciation": 100,
+              "tone_confidence": [
+                0,
+                99,
+                0,
+                0,
+                0
+              ]
+            },
+            "charType": 0,
+            "phonemes": [
+              {
+                "phone": "l",
+                "phoneme": "L",
+                "pronunciation": 100,
+                "span": {
+                  "start": 0,
+                  "end": 25
+                },
+                "tone_index": "0"
+              },
+              {
+                "phone": "in",
+                "phoneme": "IN",
+                "pronunciation": 100,
+                "span": {
+                  "start": 25,
+                  "end": 81
+                },
+                "tone_index": "1"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "reference": "零",
+      "spoken_label": "零",
+      "pair": [
+        "林",
+        "零"
+      ],
+      "audio_id": "t1-03020",
+      "result": {
+        "status": "ok",
+        "overall": 100,
+        "pronunciation": 100,
+        "tone": 100,
+        "duration": "0.831",
+        "kernel_version": "4.0.1",
+        "resource_version": "3.0.3",
+        "words": [
+          {
+            "word": "零",
+            "pinyin": "ling",
+            "tone": "tone2",
+            "readType": 0,
+            "span": {
+              "start": 0,
+              "end": 81
+            },
+            "scores": {
+              "overall": 100,
+              "tone_confidence": [
+                0,
+                99,
+                0,
+                0,
+                0
+              ],
+              "tone": 100,
+              "pronunciation": 100
+            },
+            "charType": 0,
+            "phonemes": [
+              {
+                "phone": "l",
+                "phoneme": "L",
+                "pronunciation": 100,
+                "span": {
+                  "start": 0,
+                  "end": 25
+                },
+                "tone_index": "0"
+              },
+              {
+                "phone": "ing",
+                "phoneme": "ING",
+                "pronunciation": 100,
+                "span": {
+                  "start": 25,
+                  "end": 81
+                },
+                "tone_index": "1"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "reference": "陈",
+      "spoken_label": "陈",
+      "pair": [
+        "陈",
+        "成"
+      ],
+      "audio_id": "t1-00523",
+      "result": {
+        "status": "ok",
+        "overall": 100,
+        "pronunciation": 100,
+        "tone": 100,
+        "duration": "0.867",
+        "kernel_version": "4.0.1",
+        "resource_version": "3.0.3",
+        "words": [
+          {
+            "word": "陈",
+            "pinyin": "chen",
+            "tone": "tone2",
+            "readType": 0,
+            "span": {
+              "start": 6,
+              "end": 85
+            },
+            "scores": {
+              "tone": 100,
+              "tone_confidence": [
+                0,
+                99,
+                0,
+                0,
+                0
+              ],
+              "pronunciation": 100,
+              "overall": 100
+            },
+            "charType": 0,
+            "phonemes": [
+              {
+                "phone": "ch",
+                "phoneme": "CH",
+                "pronunciation": 100,
+                "span": {
+                  "start": 6,
+                  "end": 26
+                },
+                "tone_index": "0"
+              },
+              {
+                "phone": "en",
+                "phoneme": "EN",
+                "pronunciation": 100,
+                "span": {
+                  "start": 26,
+                  "end": 85
+                },
+                "tone_index": "1"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "reference": "成",
+      "spoken_label": "陈",
+      "pair": [
+        "陈",
+        "成"
+      ],
+      "audio_id": "t1-00523",
+      "result": {
+        "status": "ok",
+        "overall": 73,
+        "pronunciation": 69,
+        "tone": 100,
+        "duration": "0.867",
+        "kernel_version": "4.0.1",
+        "resource_version": "3.0.3",
+        "words": [
+          {
+            "word": "成",
+            "pinyin": "cheng",
+            "tone": "tone2",
+            "readType": 0,
+            "span": {
+              "end": 85,
+              "start": 6
+            },
+            "scores": {
+              "pronunciation": 69,
+              "tone_confidence": [
+                0,
+                99,
+                0,
+                0,
+                0
+              ],
+              "overall": 73,
+              "tone": 100
+            },
+            "charType": 0,
+            "phonemes": [
+              {
+                "phone": "ch",
+                "phoneme": "CH",
+                "pronunciation": 100,
+                "span": {
+                  "end": 26,
+                  "start": 6
+                },
+                "tone_index": "0"
+              },
+              {
+                "phone": "eng",
+                "phoneme": "ENG",
+                "pronunciation": 38,
+                "span": {
+                  "end": 85,
+                  "start": 26
+                },
+                "tone_index": "1"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "reference": "陈",
+      "spoken_label": "成",
+      "pair": [
+        "陈",
+        "成"
+      ],
+      "audio_id": "t1-00533",
+      "result": {
+        "status": "ok",
+        "overall": 13,
+        "pronunciation": 13,
+        "tone": 13,
+        "duration": "0.939",
+        "kernel_version": "4.0.1",
+        "resource_version": "3.0.3",
+        "words": [
+          {
+            "word": "陈",
+            "pinyin": "chen",
+            "tone": "tone2",
+            "readType": 0,
+            "span": {
+              "start": 9,
+              "end": 89
+            },
+            "scores": {
+              "overall": 13,
+              "tone_confidence": [
+                0,
+                99,
+                0,
+                0,
+                0
+              ],
+              "pronunciation": 13,
+              "tone": 13
+            },
+            "charType": 0,
+            "phonemes": [
+              {
+                "phone": "ch",
+                "phoneme": "CH",
+                "pronunciation": 7,
+                "span": {
+                  "start": 9,
+                  "end": 27
+                },
+                "tone_index": "0"
+              },
+              {
+                "phone": "en",
+                "phoneme": "EN",
+                "pronunciation": 20,
+                "span": {
+                  "start": 27,
+                  "end": 89
+                },
+                "tone_index": "1"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "reference": "成",
+      "spoken_label": "成",
+      "pair": [
+        "陈",
+        "成"
+      ],
+      "audio_id": "t1-00533",
+      "result": {
+        "status": "ok",
+        "overall": 58,
+        "pronunciation": 53,
+        "tone": 100,
+        "duration": "0.939",
+        "kernel_version": "4.0.1",
+        "resource_version": "3.0.3",
+        "words": [
+          {
+            "word": "成",
+            "pinyin": "cheng",
+            "tone": "tone2",
+            "readType": 0,
+            "span": {
+              "start": 9,
+              "end": 89
+            },
+            "scores": {
+              "overall": 58,
+              "tone_confidence": [
+                0,
+                99,
+                0,
+                0,
+                0
+              ],
+              "pronunciation": 53,
+              "tone": 100
+            },
+            "charType": 0,
+            "phonemes": [
+              {
+                "phone": "ch",
+                "phoneme": "CH",
+                "pronunciation": 7,
+                "span": {
+                  "start": 9,
+                  "end": 27
+                },
+                "tone_index": "0"
+              },
+              {
+                "phone": "eng",
+                "phoneme": "ENG",
+                "pronunciation": 100,
+                "span": {
+                  "start": 27,
+                  "end": 89
+                },
+                "tone_index": "1"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "reference": "真",
+      "spoken_label": "真",
+      "pair": [
+        "真",
+        "争"
+      ],
+      "audio_id": "t1-06117",
+      "result": {
+        "status": "ok",
+        "overall": 100,
+        "pronunciation": 100,
+        "tone": 100,
+        "duration": "0.687",
+        "kernel_version": "4.0.1",
+        "resource_version": "3.0.3",
+        "words": [
+          {
+            "word": "真",
+            "pinyin": "zhen",
+            "tone": "tone1",
+            "readType": 0,
+            "span": {
+              "start": 0,
+              "end": 67
+            },
+            "scores": {
+              "tone": 100,
+              "pronunciation": 100,
+              "tone_confidence": [
+                99,
+                0,
+                0,
+                0,
+                0
+              ],
+              "overall": 100
+            },
+            "charType": 0,
+            "phonemes": [
+              {
+                "phone": "zh",
+                "phoneme": "ZH",
+                "pronunciation": 100,
+                "span": {
+                  "start": 0,
+                  "end": 16
+                },
+                "tone_index": "0"
+              },
+              {
+                "phone": "en",
+                "phoneme": "EN",
+                "pronunciation": 100,
+                "span": {
+                  "start": 16,
+                  "end": 67
+                },
+                "tone_index": "1"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "reference": "争",
+      "spoken_label": "真",
+      "pair": [
+        "真",
+        "争"
+      ],
+      "audio_id": "t1-06117",
+      "result": {
+        "status": "ok",
+        "overall": 92,
+        "pronunciation": 90,
+        "tone": 100,
+        "duration": "0.687",
+        "kernel_version": "4.0.1",
+        "resource_version": "3.0.3",
+        "words": [
+          {
+            "word": "争",
+            "pinyin": "zheng",
+            "tone": "tone1",
+            "readType": 0,
+            "span": {
+              "end": 67,
+              "start": 0
+            },
+            "scores": {
+              "tone": 100,
+              "pronunciation": 90,
+              "overall": 92,
+              "tone_confidence": [
+                99,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            "charType": 0,
+            "phonemes": [
+              {
+                "phone": "zh",
+                "phoneme": "ZH",
+                "pronunciation": 100,
+                "span": {
+                  "end": 16,
+                  "start": 0
+                },
+                "tone_index": "0"
+              },
+              {
+                "phone": "eng",
+                "phoneme": "ENG",
+                "pronunciation": 80,
+                "span": {
+                  "end": 67,
+                  "start": 16
+                },
+                "tone_index": "1"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "reference": "真",
+      "spoken_label": "争",
+      "pair": [
+        "真",
+        "争"
+      ],
+      "audio_id": "t1-06137",
+      "result": {
+        "status": "ok",
+        "overall": 73,
+        "pronunciation": 69,
+        "tone": 100,
+        "duration": "0.687",
+        "kernel_version": "4.0.1",
+        "resource_version": "3.0.3",
+        "words": [
+          {
+            "word": "真",
+            "pinyin": "zhen",
+            "tone": "tone1",
+            "readType": 0,
+            "span": {
+              "start": 0,
+              "end": 64
+            },
+            "scores": {
+              "overall": 73,
+              "tone": 100,
+              "pronunciation": 69,
+              "tone_confidence": [
+                99,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            "charType": 0,
+            "phonemes": [
+              {
+                "phone": "zh",
+                "phoneme": "ZH",
+                "pronunciation": 100,
+                "span": {
+                  "start": 0,
+                  "end": 17
+                },
+                "tone_index": "0"
+              },
+              {
+                "phone": "en",
+                "phoneme": "EN",
+                "pronunciation": 38,
+                "span": {
+                  "start": 17,
+                  "end": 64
+                },
+                "tone_index": "1"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "reference": "争",
+      "spoken_label": "争",
+      "pair": [
+        "真",
+        "争"
+      ],
+      "audio_id": "t1-06137",
+      "result": {
+        "status": "ok",
+        "overall": 100,
+        "pronunciation": 100,
+        "tone": 100,
+        "duration": "0.687",
+        "kernel_version": "4.0.1",
+        "resource_version": "3.0.3",
+        "words": [
+          {
+            "word": "争",
+            "pinyin": "zheng",
+            "tone": "tone1",
+            "readType": 0,
+            "span": {
+              "end": 64,
+              "start": 0
+            },
+            "scores": {
+              "pronunciation": 100,
+              "overall": 100,
+              "tone": 100,
+              "tone_confidence": [
+                99,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            "charType": 0,
+            "phonemes": [
+              {
+                "phone": "zh",
+                "phoneme": "ZH",
+                "pronunciation": 100,
+                "span": {
+                  "end": 17,
+                  "start": 0
+                },
+                "tone_index": "0"
+              },
+              {
+                "phone": "eng",
+                "phoneme": "ENG",
+                "pronunciation": 100,
+                "span": {
+                  "end": 64,
+                  "start": 17
+                },
+                "tone_index": "1"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "reference": "山",
+      "spoken_label": "山",
+      "pair": [
+        "山",
+        "商"
+      ],
+      "audio_id": "t1-04016",
+      "result": {
+        "status": "ok",
+        "overall": 100,
+        "pronunciation": 100,
+        "tone": 100,
+        "duration": "0.759",
+        "kernel_version": "4.0.1",
+        "resource_version": "3.0.3",
+        "words": [
+          {
+            "word": "山",
+            "pinyin": "shan",
+            "tone": "tone1",
+            "readType": 0,
+            "span": {
+              "start": 0,
+              "end": 71
+            },
+            "scores": {
+              "overall": 100,
+              "pronunciation": 100,
+              "tone": 100,
+              "tone_confidence": [
+                99,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            "charType": 0,
+            "phonemes": [
+              {
+                "phone": "sh",
+                "phoneme": "SH",
+                "pronunciation": 100,
+                "span": {
+                  "start": 0,
+                  "end": 29
+                },
+                "tone_index": "0"
+              },
+              {
+                "phone": "an",
+                "phoneme": "AN",
+                "pronunciation": 100,
+                "span": {
+                  "start": 29,
+                  "end": 71
+                },
+                "tone_index": "1"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "reference": "商",
+      "spoken_label": "山",
+      "pair": [
+        "山",
+        "商"
+      ],
+      "audio_id": "t1-04016",
+      "result": {
+        "status": "ok",
+        "overall": 59,
+        "pronunciation": 54,
+        "tone": 100,
+        "duration": "0.759",
+        "kernel_version": "4.0.1",
+        "resource_version": "3.0.3",
+        "words": [
+          {
+            "word": "商",
+            "pinyin": "shang",
+            "tone": "tone1",
+            "readType": 0,
+            "span": {
+              "start": 0,
+              "end": 74
+            },
+            "scores": {
+              "tone_confidence": [
+                99,
+                0,
+                0,
+                0,
+                0
+              ],
+              "pronunciation": 54,
+              "overall": 59,
+              "tone": 100
+            },
+            "charType": 0,
+            "phonemes": [
+              {
+                "phone": "sh",
+                "phoneme": "SH",
+                "pronunciation": 100,
+                "span": {
+                  "start": 0,
+                  "end": 29
+                },
+                "tone_index": "0"
+              },
+              {
+                "phone": "ang",
+                "phoneme": "ANG",
+                "pronunciation": 7,
+                "span": {
+                  "start": 29,
+                  "end": 74
+                },
+                "tone_index": "1"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "reference": "山",
+      "spoken_label": "商",
+      "pair": [
+        "山",
+        "商"
+      ],
+      "audio_id": "t1-04041",
+      "result": {
+        "status": "ok",
+        "overall": 80,
+        "pronunciation": 76,
+        "tone": 100,
+        "duration": "0.795",
+        "kernel_version": "4.0.1",
+        "resource_version": "3.0.3",
+        "words": [
+          {
+            "word": "山",
+            "pinyin": "shan",
+            "tone": "tone1",
+            "readType": 0,
+            "span": {
+              "end": 73,
+              "start": 0
+            },
+            "scores": {
+              "tone": 100,
+              "pronunciation": 76,
+              "tone_confidence": [
+                99,
+                0,
+                0,
+                0,
+                0
+              ],
+              "overall": 80
+            },
+            "charType": 0,
+            "phonemes": [
+              {
+                "phone": "sh",
+                "phoneme": "SH",
+                "pronunciation": 100,
+                "span": {
+                  "end": 31,
+                  "start": 0
+                },
+                "tone_index": "0"
+              },
+              {
+                "phone": "an",
+                "phoneme": "AN",
+                "pronunciation": 53,
+                "span": {
+                  "end": 73,
+                  "start": 31
+                },
+                "tone_index": "1"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "reference": "商",
+      "spoken_label": "商",
+      "pair": [
+        "山",
+        "商"
+      ],
+      "audio_id": "t1-04041",
+      "result": {
+        "status": "ok",
+        "overall": 100,
+        "pronunciation": 100,
+        "tone": 100,
+        "duration": "0.795",
+        "kernel_version": "4.0.1",
+        "resource_version": "3.0.3",
+        "words": [
+          {
+            "word": "商",
+            "pinyin": "shang",
+            "tone": "tone1",
+            "readType": 0,
+            "span": {
+              "start": 0,
+              "end": 73
+            },
+            "scores": {
+              "tone_confidence": [
+                99,
+                0,
+                0,
+                0,
+                0
+              ],
+              "pronunciation": 100,
+              "overall": 100,
+              "tone": 100
+            },
+            "charType": 0,
+            "phonemes": [
+              {
+                "phone": "sh",
+                "phoneme": "SH",
+                "pronunciation": 100,
+                "span": {
+                  "start": 0,
+                  "end": 32
+                },
+                "tone_index": "0"
+              },
+              {
+                "phone": "ang",
+                "phoneme": "ANG",
+                "pronunciation": 100,
+                "span": {
+                  "start": 32,
+                  "end": 73
+                },
+                "tone_index": "1"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "reference": "班",
+      "spoken_label": "班",
+      "pair": [
+        "班",
+        "帮"
+      ],
+      "audio_id": "t1-00059",
+      "result": {
+        "status": "ok",
+        "overall": 100,
+        "pronunciation": 100,
+        "tone": 100,
+        "duration": "0.651",
+        "kernel_version": "4.0.1",
+        "resource_version": "3.0.3",
+        "words": [
+          {
+            "word": "班",
+            "pinyin": "ban",
+            "tone": "tone1",
+            "readType": 0,
+            "span": {
+              "end": 63,
+              "start": 6
+            },
+            "scores": {
+              "overall": 100,
+              "tone": 100,
+              "pronunciation": 100,
+              "tone_confidence": [
+                99,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            "charType": 0,
+            "phonemes": [
+              {
+                "phone": "b",
+                "phoneme": "B",
+                "pronunciation": 100,
+                "span": {
+                  "end": 18,
+                  "start": 6
+                },
+                "tone_index": "0"
+              },
+              {
+                "phone": "an",
+                "phoneme": "AN",
+                "pronunciation": 100,
+                "span": {
+                  "end": 63,
+                  "start": 18
+                },
+                "tone_index": "1"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "reference": "帮",
+      "spoken_label": "班",
+      "pair": [
+        "班",
+        "帮"
+      ],
+      "audio_id": "t1-00059",
+      "result": {
+        "status": "ok",
+        "overall": 58,
+        "pronunciation": 53,
+        "tone": 100,
+        "duration": "0.651",
+        "kernel_version": "4.0.1",
+        "resource_version": "3.0.3",
+        "words": [
+          {
+            "word": "帮",
+            "pinyin": "bang",
+            "tone": "tone1",
+            "readType": 4,
+            "span": {
+              "start": 6,
+              "end": 63
+            },
+            "scores": {
+              "overall": 58,
+              "tone": 100,
+              "pronunciation": 53,
+              "tone_confidence": [
+                99,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            "charType": 0,
+            "phonemes": [
+              {
+                "phone": "b",
+                "phoneme": "B",
+                "pronunciation": 100,
+                "span": {
+                  "start": 6,
+                  "end": 15
+                },
+                "tone_index": "0"
+              },
+              {
+                "phone": "ang",
+                "phoneme": "ANG",
+                "pronunciation": 7,
+                "span": {
+                  "start": 15,
+                  "end": 63
+                },
+                "tone_index": "1"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "reference": "班",
+      "spoken_label": "帮",
+      "pair": [
+        "班",
+        "帮"
+      ],
+      "audio_id": "t1-00085",
+      "result": {
+        "status": "ok",
+        "overall": 59,
+        "pronunciation": 54,
+        "tone": 100,
+        "duration": "0.651",
+        "kernel_version": "4.0.1",
+        "resource_version": "3.0.3",
+        "words": [
+          {
+            "word": "班",
+            "pinyin": "ban",
+            "tone": "tone1",
+            "readType": 0,
+            "span": {
+              "start": 6,
+              "end": 63
+            },
+            "scores": {
+              "tone": 100,
+              "tone_confidence": [
+                99,
+                0,
+                0,
+                0,
+                0
+              ],
+              "pronunciation": 54,
+              "overall": 59
+            },
+            "charType": 0,
+            "phonemes": [
+              {
+                "phone": "b",
+                "phoneme": "B",
+                "pronunciation": 100,
+                "span": {
+                  "start": 6,
+                  "end": 16
+                },
+                "tone_index": "0"
+              },
+              {
+                "phone": "an",
+                "phoneme": "AN",
+                "pronunciation": 7,
+                "span": {
+                  "start": 16,
+                  "end": 63
+                },
+                "tone_index": "1"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "reference": "帮",
+      "spoken_label": "帮",
+      "pair": [
+        "班",
+        "帮"
+      ],
+      "audio_id": "t1-00085",
+      "result": {
+        "status": "ok",
+        "overall": 100,
+        "pronunciation": 100,
+        "tone": 100,
+        "duration": "0.651",
+        "kernel_version": "4.0.1",
+        "resource_version": "3.0.3",
+        "words": [
+          {
+            "word": "帮",
+            "pinyin": "bang",
+            "tone": "tone1",
+            "readType": 0,
+            "span": {
+              "start": 6,
+              "end": 59
+            },
+            "scores": {
+              "pronunciation": 100,
+              "overall": 100,
+              "tone_confidence": [
+                99,
+                0,
+                0,
+                0,
+                0
+              ],
+              "tone": 100
+            },
+            "charType": 0,
+            "phonemes": [
+              {
+                "phone": "b",
+                "phoneme": "B",
+                "pronunciation": 100,
+                "span": {
+                  "start": 6,
+                  "end": 15
+                },
+                "tone_index": "0"
+              },
+              {
+                "phone": "ang",
+                "phoneme": "ANG",
+                "pronunciation": 100,
+                "span": {
+                  "start": 15,
+                  "end": 59
+                },
+                "tone_index": "1"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "summary": {
+    "successful_cells": 24,
+    "source_recordings": 12,
+    "correct_final_mean": 88.33333333333333,
+    "cross_final_mean": 41.083333333333336,
+    "correct_reference_higher": 9,
+    "tied": 2,
+    "correct_reference_lower": 1,
+    "illustrative_threshold_not_validated": 70,
+    "correct_ge70": 10,
+    "cross_ge70": 3
+  }
+}

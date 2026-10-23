@@ -1,0 +1,197 @@
+{
+  "source": "Same original reference audio with normal or altered expected pronunciation, not learner error recordings",
+  "cells": [
+    {
+      "audio_id": "28-我喜欢出发-0011",
+      "target": "山",
+      "counterfactual_reference": false,
+      "status": "ok",
+      "target_words": [
+        {
+          "word": "山",
+          "pinyin": "shan",
+          "tone": "tone1",
+          "readType": 0,
+          "span": {
+            "end": 316,
+            "start": 271
+          },
+          "scores": {
+            "overall_pron": 100,
+            "pronunciation": 100,
+            "tone": 100,
+            "overall": 100,
+            "prominence": 0
+          },
+          "charType": 0,
+          "phonemes": [
+            {
+              "phone": "sh",
+              "phoneme": "SH",
+              "pronunciation": 100,
+              "span": {
+                "end": 286,
+                "start": 271
+              },
+              "tone_index": "0"
+            },
+            {
+              "phone": "an",
+              "phoneme": "AN",
+              "pronunciation": 100,
+              "span": {
+                "end": 316,
+                "start": 286
+              },
+              "tone_index": "1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "audio_id": "28-我喜欢出发-0011",
+      "target": "山",
+      "counterfactual_reference": true,
+      "status": "ok",
+      "target_words": [
+        {
+          "word": "山",
+          "pinyin": "shang",
+          "tone": "tone1",
+          "readType": 2,
+          "span": {
+            "start": 271,
+            "end": 316
+          },
+          "scores": {
+            "prominence": 0,
+            "overall_pron": 1,
+            "pronunciation": 1,
+            "overall": 1,
+            "tone": 1
+          },
+          "charType": 0,
+          "phonemes": [
+            {
+              "phone": "sh",
+              "phoneme": "SH",
+              "pronunciation": 2,
+              "span": {
+                "start": 271,
+                "end": 286
+              },
+              "tone_index": "0"
+            },
+            {
+              "phone": "ang",
+              "phoneme": "ANG",
+              "pronunciation": 1,
+              "span": {
+                "start": 286,
+                "end": 316
+              },
+              "tone_index": "1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "audio_id": "12-晋祠-0023",
+      "target": "清",
+      "counterfactual_reference": false,
+      "status": "ok",
+      "target_words": [
+        {
+          "word": "清",
+          "pinyin": "qing",
+          "tone": "tone1",
+          "readType": 0,
+          "span": {
+            "start": 86,
+            "end": 115
+          },
+          "scores": {
+            "overall": 100,
+            "prominence": 1,
+            "pronunciation": 100,
+            "overall_pron": 100,
+            "tone": 100
+          },
+          "charType": 0,
+          "phonemes": [
+            {
+              "phone": "q",
+              "phoneme": "Q",
+              "pronunciation": 100,
+              "span": {
+                "start": 86,
+                "end": 103
+              },
+              "tone_index": "0"
+            },
+            {
+              "phone": "ing",
+              "phoneme": "ING",
+              "pronunciation": 100,
+              "span": {
+                "start": 103,
+                "end": 115
+              },
+              "tone_index": "1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "audio_id": "12-晋祠-0023",
+      "target": "清",
+      "counterfactual_reference": true,
+      "status": "ok",
+      "target_words": [
+        {
+          "word": "清",
+          "pinyin": "qin",
+          "tone": "tone1",
+          "readType": 0,
+          "span": {
+            "start": 86,
+            "end": 114
+          },
+          "scores": {
+            "pronunciation": 100,
+            "overall": 100,
+            "overall_pron": 100,
+            "prominence": 1,
+            "tone": 100
+          },
+          "charType": 0,
+          "phonemes": [
+            {
+              "phone": "q",
+              "phoneme": "Q",
+              "pronunciation": 100,
+              "span": {
+                "start": 86,
+                "end": 103
+              },
+              "tone_index": "0"
+            },
+            {
+              "phone": "in",
+              "phoneme": "IN",
+              "pronunciation": 100,
+              "span": {
+                "start": 103,
+                "end": 114
+              },
+              "tone_index": "1"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
