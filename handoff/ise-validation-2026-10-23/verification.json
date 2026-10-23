@@ -1,0 +1,10 @@
+{
+  "ise_requests_total": 32,
+  "suntone_requests_before": 32,
+  "suntone_requests_after": 46,
+  "offline_tests_passed": 19,
+  "original_progress_files_checked": 198,
+  "original_progress_files_changed": 0,
+  "production_changed": false,
+  "full_app_tests_rerun": false
+}

@@ -1,0 +1,92 @@
+{
+  "cells": [
+    {
+      "audio_id": "28-我喜欢出发-0011",
+      "target": "山",
+      "required": "山",
+      "counterfactual_reference": false,
+      "status": "ok",
+      "target_finals": [
+        {
+          "tag": "phone",
+          "beg_pos": "288",
+          "content": "an",
+          "dp_message": "0",
+          "end_pos": "322",
+          "is_yun": "1",
+          "mono_tone": "TONE1",
+          "perr_level_msg": "1",
+          "perr_msg": "0",
+          "rec_node_type": "paper",
+          "word_content": "山"
+        }
+      ]
+    },
+    {
+      "audio_id": "28-我喜欢出发-0011",
+      "target": "山",
+      "required": "商",
+      "counterfactual_reference": true,
+      "status": "ok",
+      "target_finals": [
+        {
+          "tag": "phone",
+          "beg_pos": "290",
+          "content": "ang",
+          "dp_message": "0",
+          "end_pos": "314",
+          "is_yun": "1",
+          "mono_tone": "TONE1",
+          "perr_level_msg": "3",
+          "perr_msg": "1",
+          "rec_node_type": "paper",
+          "word_content": "商"
+        }
+      ]
+    },
+    {
+      "audio_id": "12-晋祠-0023",
+      "target": "清",
+      "required": "清",
+      "counterfactual_reference": false,
+      "status": "ok",
+      "target_finals": [
+        {
+          "tag": "phone",
+          "beg_pos": "104",
+          "content": "ing",
+          "dp_message": "0",
+          "end_pos": "118",
+          "is_yun": "1",
+          "mono_tone": "TONE1",
+          "perr_level_msg": "1",
+          "perr_msg": "0",
+          "rec_node_type": "paper",
+          "word_content": "清"
+        }
+      ]
+    },
+    {
+      "audio_id": "12-晋祠-0023",
+      "target": "清",
+      "required": "亲",
+      "counterfactual_reference": true,
+      "status": "ok",
+      "target_finals": [
+        {
+          "tag": "phone",
+          "beg_pos": "104",
+          "content": "in",
+          "dp_message": "0",
+          "end_pos": "118",
+          "is_yun": "1",
+          "mono_tone": "TONE1",
+          "perr_level_msg": "1",
+          "perr_msg": "0",
+          "rec_node_type": "paper",
+          "word_content": "亲"
+        }
+      ]
+    }
+  ]
+}

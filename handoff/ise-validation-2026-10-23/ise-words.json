@@ -1,0 +1,528 @@
+{
+  "source": "Original labeled reference clips, not human-validated learner errors",
+  "parameters": {
+    "category": "read_syllable",
+    "check_type": "common",
+    "ise_unite": "1",
+    "rst": "entirety",
+    "extra_ability": "syll_phone_err_msg;multi_dimension"
+  },
+  "cells": [
+    {
+      "reference": "心",
+      "spoken_label": "心",
+      "audio_id": "t1-05280",
+      "status": "ok",
+      "finals": [
+        {
+          "tag": "phone",
+          "beg_pos": "28",
+          "content": "in",
+          "dp_message": "0",
+          "end_pos": "63",
+          "is_yun": "1",
+          "mono_tone": "TONE1",
+          "perr_level_msg": "0",
+          "perr_msg": "1",
+          "rec_node_type": "paper",
+          "word_content": "心"
+        }
+      ]
+    },
+    {
+      "reference": "星",
+      "spoken_label": "心",
+      "audio_id": "t1-05280",
+      "status": "ok",
+      "finals": [
+        {
+          "tag": "phone",
+          "beg_pos": "28",
+          "content": "ing",
+          "dp_message": "128",
+          "end_pos": "50",
+          "is_yun": "1",
+          "mono_tone": "TONE1",
+          "perr_level_msg": "0",
+          "perr_msg": "1",
+          "rec_node_type": "paper",
+          "word_content": "星"
+        }
+      ]
+    },
+    {
+      "reference": "心",
+      "spoken_label": "星",
+      "audio_id": "t1-05320",
+      "status": "ok",
+      "finals": [
+        {
+          "tag": "phone",
+          "beg_pos": "32",
+          "content": "in",
+          "dp_message": "128",
+          "end_pos": "66",
+          "is_yun": "1",
+          "mono_tone": "TONE1",
+          "perr_level_msg": "0",
+          "perr_msg": "1",
+          "rec_node_type": "paper",
+          "word_content": "心"
+        }
+      ]
+    },
+    {
+      "reference": "星",
+      "spoken_label": "星",
+      "audio_id": "t1-05320",
+      "status": "ok",
+      "finals": [
+        {
+          "tag": "phone",
+          "beg_pos": "32",
+          "content": "ing",
+          "dp_message": "0",
+          "end_pos": "66",
+          "is_yun": "1",
+          "mono_tone": "TONE1",
+          "perr_level_msg": "0",
+          "perr_msg": "0",
+          "rec_node_type": "paper",
+          "word_content": "星"
+        }
+      ]
+    },
+    {
+      "reference": "林",
+      "spoken_label": "林",
+      "audio_id": "t1-03005",
+      "status": "ok",
+      "finals": [
+        {
+          "tag": "phone",
+          "beg_pos": "24",
+          "content": "in",
+          "dp_message": "0",
+          "end_pos": "64",
+          "is_yun": "1",
+          "mono_tone": "TONE2",
+          "perr_level_msg": "0",
+          "perr_msg": "0",
+          "rec_node_type": "paper",
+          "word_content": "林"
+        }
+      ]
+    },
+    {
+      "reference": "零",
+      "spoken_label": "林",
+      "audio_id": "t1-03005",
+      "status": "ok",
+      "finals": [
+        {
+          "tag": "phone",
+          "beg_pos": "25",
+          "content": "ing",
+          "dp_message": "0",
+          "end_pos": "66",
+          "is_yun": "1",
+          "mono_tone": "TONE2",
+          "perr_level_msg": "0",
+          "perr_msg": "1",
+          "rec_node_type": "paper",
+          "word_content": "零"
+        }
+      ]
+    },
+    {
+      "reference": "林",
+      "spoken_label": "零",
+      "audio_id": "t1-03020",
+      "status": "ok",
+      "finals": [
+        {
+          "tag": "phone",
+          "beg_pos": "29",
+          "content": "in",
+          "dp_message": "0",
+          "end_pos": "68",
+          "is_yun": "1",
+          "mono_tone": "TONE2",
+          "perr_level_msg": "0",
+          "perr_msg": "0",
+          "rec_node_type": "paper",
+          "word_content": "林"
+        }
+      ]
+    },
+    {
+      "reference": "零",
+      "spoken_label": "零",
+      "audio_id": "t1-03020",
+      "status": "ok",
+      "finals": [
+        {
+          "tag": "phone",
+          "beg_pos": "30",
+          "content": "ing",
+          "dp_message": "0",
+          "end_pos": "70",
+          "is_yun": "1",
+          "mono_tone": "TONE2",
+          "perr_level_msg": "0",
+          "perr_msg": "1",
+          "rec_node_type": "paper",
+          "word_content": "零"
+        }
+      ]
+    },
+    {
+      "reference": "陈",
+      "spoken_label": "陈",
+      "audio_id": "t1-00523",
+      "status": "ok",
+      "finals": [
+        {
+          "tag": "phone",
+          "beg_pos": "25",
+          "content": "en",
+          "dp_message": "0",
+          "end_pos": "74",
+          "is_yun": "1",
+          "mono_tone": "TONE2",
+          "perr_level_msg": "0",
+          "perr_msg": "0",
+          "rec_node_type": "paper",
+          "word_content": "陈"
+        }
+      ]
+    },
+    {
+      "reference": "成",
+      "spoken_label": "陈",
+      "audio_id": "t1-00523",
+      "status": "ok",
+      "finals": [
+        {
+          "tag": "phone",
+          "beg_pos": "25",
+          "content": "eng",
+          "dp_message": "128",
+          "end_pos": "73",
+          "is_yun": "1",
+          "mono_tone": "TONE2",
+          "perr_level_msg": "0",
+          "perr_msg": "1",
+          "rec_node_type": "paper",
+          "word_content": "成"
+        }
+      ]
+    },
+    {
+      "reference": "陈",
+      "spoken_label": "成",
+      "audio_id": "t1-00533",
+      "status": "ok",
+      "finals": [
+        {
+          "tag": "phone",
+          "beg_pos": "28",
+          "content": "en",
+          "dp_message": "0",
+          "end_pos": "79",
+          "is_yun": "1",
+          "mono_tone": "TONE2",
+          "perr_level_msg": "0",
+          "perr_msg": "1",
+          "rec_node_type": "paper",
+          "word_content": "陈"
+        }
+      ]
+    },
+    {
+      "reference": "成",
+      "spoken_label": "成",
+      "audio_id": "t1-00533",
+      "status": "ok",
+      "finals": [
+        {
+          "tag": "phone",
+          "beg_pos": "28",
+          "content": "eng",
+          "dp_message": "0",
+          "end_pos": "82",
+          "is_yun": "1",
+          "mono_tone": "TONE2",
+          "perr_level_msg": "0",
+          "perr_msg": "0",
+          "rec_node_type": "paper",
+          "word_content": "成"
+        }
+      ]
+    },
+    {
+      "reference": "真",
+      "spoken_label": "真",
+      "audio_id": "t1-06117",
+      "status": "ok",
+      "finals": [
+        {
+          "tag": "phone",
+          "beg_pos": "18",
+          "content": "en",
+          "dp_message": "0",
+          "end_pos": "56",
+          "is_yun": "1",
+          "mono_tone": "TONE1",
+          "perr_level_msg": "0",
+          "perr_msg": "0",
+          "rec_node_type": "paper",
+          "word_content": "真"
+        }
+      ]
+    },
+    {
+      "reference": "争",
+      "spoken_label": "真",
+      "audio_id": "t1-06117",
+      "status": "ok",
+      "finals": [
+        {
+          "tag": "phone",
+          "beg_pos": "18",
+          "content": "eng",
+          "dp_message": "128",
+          "end_pos": "54",
+          "is_yun": "1",
+          "mono_tone": "TONE1",
+          "perr_level_msg": "0",
+          "perr_msg": "1",
+          "rec_node_type": "paper",
+          "word_content": "争"
+        }
+      ]
+    },
+    {
+      "reference": "真",
+      "spoken_label": "争",
+      "audio_id": "t1-06137",
+      "status": "ok",
+      "finals": [
+        {
+          "tag": "phone",
+          "beg_pos": "20",
+          "content": "en",
+          "dp_message": "128",
+          "end_pos": "53",
+          "is_yun": "1",
+          "mono_tone": "TONE1",
+          "perr_level_msg": "0",
+          "perr_msg": "1",
+          "rec_node_type": "paper",
+          "word_content": "真"
+        }
+      ]
+    },
+    {
+      "reference": "争",
+      "spoken_label": "争",
+      "audio_id": "t1-06137",
+      "status": "ok",
+      "finals": [
+        {
+          "tag": "phone",
+          "beg_pos": "20",
+          "content": "eng",
+          "dp_message": "0",
+          "end_pos": "56",
+          "is_yun": "1",
+          "mono_tone": "TONE1",
+          "perr_level_msg": "0",
+          "perr_msg": "0",
+          "rec_node_type": "paper",
+          "word_content": "争"
+        }
+      ]
+    },
+    {
+      "reference": "山",
+      "spoken_label": "山",
+      "audio_id": "t1-04016",
+      "status": "ok",
+      "finals": [
+        {
+          "tag": "phone",
+          "beg_pos": "31",
+          "content": "an",
+          "dp_message": "0",
+          "end_pos": "65",
+          "is_yun": "1",
+          "mono_tone": "TONE1",
+          "perr_level_msg": "0",
+          "perr_msg": "0",
+          "rec_node_type": "paper",
+          "word_content": "山"
+        }
+      ]
+    },
+    {
+      "reference": "商",
+      "spoken_label": "山",
+      "audio_id": "t1-04016",
+      "status": "ok",
+      "finals": [
+        {
+          "tag": "phone",
+          "beg_pos": "31",
+          "content": "ang",
+          "dp_message": "128",
+          "end_pos": "53",
+          "is_yun": "1",
+          "mono_tone": "TONE1",
+          "perr_level_msg": "0",
+          "perr_msg": "1",
+          "rec_node_type": "paper",
+          "word_content": "商"
+        }
+      ]
+    },
+    {
+      "reference": "山",
+      "spoken_label": "商",
+      "audio_id": "t1-04041",
+      "status": "ok",
+      "finals": [
+        {
+          "tag": "phone",
+          "beg_pos": "34",
+          "content": "an",
+          "dp_message": "128",
+          "end_pos": "63",
+          "is_yun": "1",
+          "mono_tone": "TONE1",
+          "perr_level_msg": "0",
+          "perr_msg": "0",
+          "rec_node_type": "paper",
+          "word_content": "山"
+        }
+      ]
+    },
+    {
+      "reference": "商",
+      "spoken_label": "商",
+      "audio_id": "t1-04041",
+      "status": "ok",
+      "finals": [
+        {
+          "tag": "phone",
+          "beg_pos": "34",
+          "content": "ang",
+          "dp_message": "0",
+          "end_pos": "67",
+          "is_yun": "1",
+          "mono_tone": "TONE1",
+          "perr_level_msg": "0",
+          "perr_msg": "0",
+          "rec_node_type": "paper",
+          "word_content": "商"
+        }
+      ]
+    },
+    {
+      "reference": "班",
+      "spoken_label": "班",
+      "audio_id": "t1-00059",
+      "status": "ok",
+      "finals": [
+        {
+          "tag": "phone",
+          "beg_pos": "20",
+          "content": "an",
+          "dp_message": "0",
+          "end_pos": "54",
+          "is_yun": "1",
+          "mono_tone": "TONE1",
+          "perr_level_msg": "0",
+          "perr_msg": "0",
+          "rec_node_type": "paper",
+          "word_content": "班"
+        }
+      ]
+    },
+    {
+      "reference": "帮",
+      "spoken_label": "班",
+      "audio_id": "t1-00059",
+      "status": "ok",
+      "finals": [
+        {
+          "tag": "phone",
+          "beg_pos": "20",
+          "content": "ang",
+          "dp_message": "128",
+          "end_pos": "36",
+          "is_yun": "1",
+          "mono_tone": "TONE1",
+          "perr_level_msg": "0",
+          "perr_msg": "1",
+          "rec_node_type": "paper",
+          "word_content": "帮"
+        }
+      ]
+    },
+    {
+      "reference": "班",
+      "spoken_label": "帮",
+      "audio_id": "t1-00085",
+      "status": "ok",
+      "finals": [
+        {
+          "tag": "phone",
+          "beg_pos": "20",
+          "content": "an",
+          "dp_message": "0",
+          "end_pos": "49",
+          "is_yun": "1",
+          "mono_tone": "TONE1",
+          "perr_level_msg": "0",
+          "perr_msg": "0",
+          "rec_node_type": "paper",
+          "word_content": "班"
+        }
+      ]
+    },
+    {
+      "reference": "帮",
+      "spoken_label": "帮",
+      "audio_id": "t1-00085",
+      "status": "ok",
+      "finals": [
+        {
+          "tag": "phone",
+          "beg_pos": "19",
+          "content": "ang",
+          "dp_message": "0",
+          "end_pos": "53",
+          "is_yun": "1",
+          "mono_tone": "TONE1",
+          "perr_level_msg": "0",
+          "perr_msg": "0",
+          "rec_node_type": "paper",
+          "word_content": "帮"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "matched_reference": 12,
+    "matched_reference_with_vowel_error": 2,
+    "cross_reference": 12,
+    "cross_reference_with_vowel_error": 9,
+    "cross_reference_with_vowel_error_or_replacement": 10,
+    "cross_reference_without_either": [
+      "零 audio / 林 required",
+      "帮 audio / 班 required"
+    ],
+    "note": "These are observed flags, not a calibrated diagnostic classifier or learner accuracy."
+  }
+}

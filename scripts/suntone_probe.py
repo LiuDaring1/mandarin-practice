@@ -18,12 +18,12 @@ HOST = 'cn-east-1.ws-api.xf-yun.com'
 PATH = '/v1/private/s8e098720'
 
 
-def signed_url(config, date=None):
+def signed_url(config, date=None, *, host=HOST, path=PATH):
     date = date or format_datetime(datetime.now(timezone.utc), usegmt=True)
-    origin = f'host: {HOST}\ndate: {date}\nGET {PATH} HTTP/1.1'
+    origin = f'host: {host}\ndate: {date}\nGET {path} HTTP/1.1'
     signature = base64.b64encode(hmac.new(config['api_secret'].encode(), origin.encode(), hashlib.sha256).digest()).decode()
     authorization = f'api_key="{config["api_key"]}", algorithm="hmac-sha256", headers="host date request-line", signature="{signature}"'
-    return f'wss://{HOST}{PATH}?' + urlencode({'host': HOST, 'date': date, 'authorization': base64.b64encode(authorization.encode()).decode()})
+    return f'wss://{host}{path}?' + urlencode({'host': host, 'date': date, 'authorization': base64.b64encode(authorization.encode()).decode()})
 
 
 def parameters(reference, core='word', **extra):
@@ -33,11 +33,11 @@ def parameters(reference, core='word', **extra):
             'result': {'encoding': 'utf8', 'compress': 'raw', 'format': 'plain'}, **extra}
 
 
-def frames(config, params, audio):
+def frames(config, params, audio, *, frame_bytes=1280):
     # The service rejects an empty final audio packet.
     if len(audio) < 2:
         raise ValueError('Audio must contain at least two bytes')
-    parts = [audio[i:i+1280] for i in range(0, len(audio), 1280)]
+    parts = [audio[i:i+frame_bytes] for i in range(0, len(audio), frame_bytes)]
     if len(parts) == 1:
         midpoint = len(audio) // 2
         parts = [audio[:midpoint], audio[midpoint:]]
@@ -60,11 +60,11 @@ def private_json(path, value):
     temporary.replace(path)
 
 
-async def evaluate(config, params, audio):
+async def evaluate(config, params, audio, *, frame_bytes=1280):
     async with asyncio.timeout(45):
         async with websockets.connect(signed_url(config), open_timeout=15, max_size=8_000_000) as ws:
             async def send():
-                for packet in frames(config, params, audio):
+                for packet in frames(config, params, audio, frame_bytes=frame_bytes):
                     await ws.send(json.dumps(packet, ensure_ascii=False))
                     await asyncio.sleep(.04)
             sender = asyncio.create_task(send())
@@ -95,6 +95,15 @@ async def evaluate(config, params, audio):
 
 
 class Probe:
+    cache_namespace = b'nonempty-final-v1'
+
+    @staticmethod
+    def parameters(reference, core, **extra):
+        return parameters(reference, core, **extra)
+
+    async def evaluate(self, config, params, audio):
+        return await evaluate(config, params, audio)
+
     def __init__(self, directory, *, allow_paid=False, max_calls=64):
         self.directory = Path(directory)
         self.allow_paid, self.max_calls = allow_paid, max_calls
@@ -113,8 +122,8 @@ class Probe:
 
     async def _call_locked(self, audio_path, reference, core='word', **extra):
         audio = Path(audio_path).read_bytes()
-        params = parameters(reference, core, **extra)
-        key = hashlib.sha256(b'nonempty-final-v1' + json.dumps(params, sort_keys=True, ensure_ascii=False).encode() + audio).hexdigest()
+        params = self.parameters(reference, core, **extra)
+        key = hashlib.sha256(self.cache_namespace + json.dumps(params, sort_keys=True, ensure_ascii=False).encode() + audio).hexdigest()
         cache = self.directory / 'cache' / f'{key}.json'
         if cache.exists():
             return json.loads(cache.read_text())
@@ -129,7 +138,7 @@ class Probe:
         config = json.loads((self.directory / 'config.json').read_text())
         ledger.append(key); private_json(ledger_path, ledger)
         try:
-            result = await evaluate(config, params, audio)
+            result = await self.evaluate(config, params, audio)
         except Exception as exc:
             # Exception text may contain the signed URL. Keep only a safe class/status.
             result = {'status': 'transport_error', 'error_type': type(exc).__name__}

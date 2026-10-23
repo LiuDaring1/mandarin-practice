@@ -1,5 +1,9 @@
 # 字词／句子朗读评测
 
+## 2026-10-23 ISE 与用法复核
+
+ISE通过现有凭据实际调用32次，按文档同时开启 `ise_unite=1/rst=entirety/extra_ability=syll_phone_err_msg;multi_dimension`，读取 `is_yun/perr_msg/dp_message/perr_level_msg`。具备更贴近专项反馈的字段，但仍有漏判，目标字的一般韵母错不能直接写成n/ng替换。Suntone追加14次复核，指定拼音／发送速率／松紧度未消除已发现反例。正式门禁保持关闭；19项相关离线测试通过，详见 [ISE记录](../MEMORY-2026-10-23-ise-api-validation.md)。
+
 ## 2026-10-23 Suntone 独立验证
 
 声通接口已实测，不是 ISE。能输出逐字／韵母分和时间段，但最小对照存在满分漏判，句内 qing/qin 也未区分，正式鼻音门禁及云评测继续关闭。独立脚本、29次成功评测、10项离线测试与证据见 [本轮记录](../MEMORY-2026-10-23-suntone-validation.md)。不把一般低分当成鼻音错误。
