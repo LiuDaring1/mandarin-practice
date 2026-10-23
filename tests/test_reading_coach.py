@@ -5,10 +5,37 @@ import json
 import pytest
 
 from pth_corpus.assessment import AssessmentError, AssessmentService, normalize_result
-from pth_corpus.reading_coach import ReadingCoach, nasal_feedback
+from pth_corpus.reading_coach import ReadingCoach, nasal_feedback, nasal_final_evidence
 from test_assessment import wav, settings
 
 TARGET = {"position": 1, "text": "民", "pinyin": "mín", "final": "in"}
+
+
+@pytest.mark.parametrize("final,phones", [
+    ("ian", ["x", "i4", "an"]), ("uan", ["ch", "u1", "an"]),
+    ("üan", ["y", "v2", "an"]), ("üan", ["y", "u:2", "an"]),
+    ("iang", ["j", "i1", "ang"]), ("uang", ["w", "u1", "ang"]),
+    ("uen", ["u1", "en"]), ("un", ["u1", "en"]),
+    ("ueng", ["u1", "eng"]), ("iong", ["i1", "ong"]),
+    ("ian", ["ian4"]), ("in", ["in1"]),
+])
+def test_medial_and_nasal_components_match_without_inventing_a_mean(final, phones):
+    rows=[{"phone":p,"accuracy":5 if i<len(phones)-1 else 94,"tag":0} for i,p in enumerate(phones)]
+    evidence=nasal_final_evidence(rows,final)
+    assert evidence is not None and evidence["accuracy"]==94
+    assert evidence["components"][-1]["phone"]==phones[-1]
+
+
+@pytest.mark.parametrize("phones", [
+    ["i1", "ang"], ["i1", "x", "an"], ["i1", "an", "ian"], ["i1"],
+])
+def test_mapping_does_not_guess_through_wrong_tails_gaps_or_duplicates(phones):
+    assert nasal_final_evidence([{"phone":p,"accuracy":99,"tag":0} for p in phones],"ian") is None
+
+
+def test_missing_medial_does_not_become_a_complete_final():
+    phones=[{"phone":"i4","accuracy":None,"tag":2},{"phone":"an","accuracy":95,"tag":0}]
+    assert nasal_final_evidence(phones,"ian") is None
 
 def result(score=40, onset=99):
     return normalize_result({"PronCompletion": 1, "Words": [
@@ -146,3 +173,12 @@ def test_api_accepts_without_waiting_persists_and_validates_reference(tmp_path,m
         assert client.get('/api/reading/session/session-one').json()['submitted']==1
     files=list(client.app.state.runtime.prototype_dir.rglob('reading/attempts/*.json'))
     assert len(files)==1 and files[0].stat().st_mode & 0o777==0o600
+
+
+def test_incomplete_content_resolves_when_a_later_reading_is_complete(tmp_path):
+    coach=ReadingCoach(AssessmentService(tmp_path),tmp_path)
+    base={"session_id":"session-one","kind":"word","reference_id":"w1","text":"人民","status":"ok","feedback":[]}
+    coach.save({**base,"attempt_id":"attempt-one","created":1,"completion":40})
+    assert coach.summary('session-one')['retry_items']==[{'reference_id':'w1','kind':'word','text':'人民'}]
+    coach.save({**base,"session_id":"session-two","attempt_id":"attempt-two","created":2,"completion":100})
+    assert coach.retry_items()==[]

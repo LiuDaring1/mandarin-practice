@@ -1,0 +1,80 @@
+[
+  {
+    "text": "陷",
+    "status": "ok",
+    "feedback": [
+      {
+        "position": 0,
+        "text": "陷",
+        "pinyin": "xiàn",
+        "final": "ian",
+        "accuracy": 99.2,
+        "basis": "nasal_component_score",
+        "components": [
+          {
+            "phone": "i4",
+            "accuracy": 94.7
+          },
+          {
+            "phone": "an",
+            "accuracy": 99.2
+          }
+        ],
+        "practice": false,
+        "diagnosis": null
+      }
+    ]
+  },
+  {
+    "text": "篆",
+    "status": "ok",
+    "feedback": [
+      {
+        "position": 0,
+        "text": "篆",
+        "pinyin": "zhuàn",
+        "final": "uan",
+        "accuracy": 88.4,
+        "basis": "nasal_component_score",
+        "components": [
+          {
+            "phone": "u4",
+            "accuracy": 92.1
+          },
+          {
+            "phone": "an",
+            "accuracy": 88.4
+          }
+        ],
+        "practice": false,
+        "diagnosis": null
+      }
+    ]
+  },
+  {
+    "text": "袁",
+    "status": "ok",
+    "feedback": [
+      {
+        "position": 0,
+        "text": "袁",
+        "pinyin": "yuán",
+        "final": "üan",
+        "accuracy": 99.1,
+        "basis": "nasal_component_score",
+        "components": [
+          {
+            "phone": "v2",
+            "accuracy": 96.8
+          },
+          {
+            "phone": "an",
+            "accuracy": 99.1
+          }
+        ],
+        "practice": false,
+        "diagnosis": null
+      }
+    ]
+  }
+]
