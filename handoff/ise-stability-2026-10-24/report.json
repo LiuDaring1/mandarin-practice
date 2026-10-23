@@ -1,0 +1,1915 @@
+{
+  "summary": {
+    "scope": "Labeled reference clips and their existing voice conversions, not independent speakers or verified learner errors.",
+    "interpretation": "flagged means vowel error or replacement at the target, not a confirmed n/ng direction; not_flagged does not mean correct.",
+    "count": 56,
+    "groups": [
+      {
+        "kind": "sentence",
+        "voice": "news-female",
+        "matching_reference": {
+          "not_flagged": 2
+        },
+        "cross_reference": {
+          "not_flagged": 2
+        }
+      },
+      {
+        "kind": "sentence",
+        "voice": "news-male",
+        "matching_reference": {
+          "not_flagged": 2
+        },
+        "cross_reference": {
+          "flagged": 1,
+          "not_flagged": 1
+        }
+      },
+      {
+        "kind": "sentence",
+        "voice": "original",
+        "matching_reference": {
+          "not_flagged": 2
+        },
+        "cross_reference": {
+          "flagged": 1,
+          "not_flagged": 1
+        }
+      },
+      {
+        "kind": "single",
+        "voice": "news-female",
+        "matching_reference": {
+          "flagged": 2,
+          "not_flagged": 4
+        },
+        "cross_reference": {
+          "flagged": 5,
+          "not_flagged": 1
+        }
+      },
+      {
+        "kind": "single",
+        "voice": "news-male",
+        "matching_reference": {
+          "flagged": 3,
+          "not_flagged": 3
+        },
+        "cross_reference": {
+          "flagged": 5,
+          "not_flagged": 1
+        }
+      },
+      {
+        "kind": "single",
+        "voice": "original",
+        "matching_reference": {
+          "flagged": 2,
+          "not_flagged": 4
+        },
+        "cross_reference": {
+          "flagged": 4,
+          "not_flagged": 2
+        }
+      },
+      {
+        "kind": "word_context",
+        "voice": "original",
+        "matching_reference": {
+          "flagged": 1,
+          "not_flagged": 3
+        },
+        "cross_reference": {
+          "not_flagged": 1,
+          "flagged": 3
+        }
+      }
+    ]
+  },
+  "cells": [
+    {
+      "kind": "word_context",
+      "voice": "original",
+      "audio_id": "t1-03021",
+      "target": "零",
+      "required": "零",
+      "cross_reference": false,
+      "core": "read_word",
+      "status": "ok",
+      "observation": {
+        "state": "flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "35",
+            "content": "ing",
+            "dp_message": "0",
+            "end_pos": "63",
+            "is_yun": "1",
+            "mono_tone": "TONE2",
+            "perr_level_msg": "0",
+            "perr_msg": "1",
+            "rec_node_type": "paper",
+            "word_content": "零件",
+            "syll_content": "零",
+            "syll_symbol": "ling2"
+          }
+        ]
+      },
+      "audio_sha256": "708ec77dedd75782d5fc5984b932ed1efba5bb6dd6f751947dd74039ab65145d",
+      "source_text": "零件",
+      "reference": "零件"
+    },
+    {
+      "kind": "word_context",
+      "voice": "original",
+      "audio_id": "t1-03021",
+      "target": "零",
+      "required": "林",
+      "cross_reference": true,
+      "core": "read_word",
+      "status": "ok",
+      "observation": {
+        "state": "not_flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "29",
+            "content": "in",
+            "dp_message": "0",
+            "end_pos": "63",
+            "is_yun": "1",
+            "mono_tone": "TONE2",
+            "perr_level_msg": "0",
+            "perr_msg": "0",
+            "rec_node_type": "paper",
+            "word_content": "林件",
+            "syll_content": "林",
+            "syll_symbol": "lin2"
+          }
+        ]
+      },
+      "audio_sha256": "708ec77dedd75782d5fc5984b932ed1efba5bb6dd6f751947dd74039ab65145d",
+      "source_text": "零件",
+      "reference": "林件"
+    },
+    {
+      "kind": "word_context",
+      "voice": "original",
+      "audio_id": "t1-03007",
+      "target": "林",
+      "required": "林",
+      "cross_reference": false,
+      "core": "read_word",
+      "status": "ok",
+      "observation": {
+        "state": "not_flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "27",
+            "content": "in",
+            "dp_message": "0",
+            "end_pos": "52",
+            "is_yun": "1",
+            "mono_tone": "TONE2",
+            "perr_level_msg": "0",
+            "perr_msg": "0",
+            "rec_node_type": "paper",
+            "word_content": "林业",
+            "syll_content": "林",
+            "syll_symbol": "lin2"
+          }
+        ]
+      },
+      "audio_sha256": "260bfc988d4eb3f9685791e566ba48626ca91765c155db1c882f6748773ec350",
+      "source_text": "林业",
+      "reference": "林业"
+    },
+    {
+      "kind": "word_context",
+      "voice": "original",
+      "audio_id": "t1-03007",
+      "target": "林",
+      "required": "零",
+      "cross_reference": true,
+      "core": "read_word",
+      "status": "ok",
+      "observation": {
+        "state": "flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "28",
+            "content": "ing",
+            "dp_message": "0",
+            "end_pos": "52",
+            "is_yun": "1",
+            "mono_tone": "TONE2",
+            "perr_level_msg": "0",
+            "perr_msg": "1",
+            "rec_node_type": "paper",
+            "word_content": "零业",
+            "syll_content": "零",
+            "syll_symbol": "ling2"
+          }
+        ]
+      },
+      "audio_sha256": "260bfc988d4eb3f9685791e566ba48626ca91765c155db1c882f6748773ec350",
+      "source_text": "林业",
+      "reference": "零业"
+    },
+    {
+      "kind": "word_context",
+      "voice": "original",
+      "audio_id": "t2-00144",
+      "target": "班",
+      "required": "班",
+      "cross_reference": false,
+      "core": "read_word",
+      "status": "ok",
+      "observation": {
+        "state": "not_flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "16",
+            "content": "an",
+            "dp_message": "0",
+            "end_pos": "44",
+            "is_yun": "1",
+            "mono_tone": "TONE1",
+            "perr_level_msg": "0",
+            "perr_msg": "0",
+            "rec_node_type": "paper",
+            "word_content": "班级",
+            "syll_content": "班",
+            "syll_symbol": "ban1"
+          }
+        ]
+      },
+      "audio_sha256": "44077be813e1a4759e9c8b876301027bebc71ea04434b66c73e5a773ce1f6a94",
+      "source_text": "班级",
+      "reference": "班级"
+    },
+    {
+      "kind": "word_context",
+      "voice": "original",
+      "audio_id": "t2-00144",
+      "target": "班",
+      "required": "帮",
+      "cross_reference": true,
+      "core": "read_word",
+      "status": "ok",
+      "observation": {
+        "state": "flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "16",
+            "content": "ang",
+            "dp_message": "128",
+            "end_pos": "35",
+            "is_yun": "1",
+            "mono_tone": "TONE1",
+            "perr_level_msg": "0",
+            "perr_msg": "1",
+            "rec_node_type": "paper",
+            "word_content": "帮级",
+            "syll_content": "帮",
+            "syll_symbol": "bang1"
+          }
+        ]
+      },
+      "audio_sha256": "44077be813e1a4759e9c8b876301027bebc71ea04434b66c73e5a773ce1f6a94",
+      "source_text": "班级",
+      "reference": "帮级"
+    },
+    {
+      "kind": "word_context",
+      "voice": "original",
+      "audio_id": "t1-00087",
+      "target": "帮",
+      "required": "帮",
+      "cross_reference": false,
+      "core": "read_word",
+      "status": "ok",
+      "observation": {
+        "state": "not_flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "17",
+            "content": "ang",
+            "dp_message": "0",
+            "end_pos": "50",
+            "is_yun": "1",
+            "mono_tone": "TONE1",
+            "perr_level_msg": "0",
+            "perr_msg": "0",
+            "rec_node_type": "paper",
+            "word_content": "帮助",
+            "syll_content": "帮",
+            "syll_symbol": "bang1"
+          }
+        ]
+      },
+      "audio_sha256": "aca926c86c77781ab7577907728a358571c6cacea43516c7536267680a690a73",
+      "source_text": "帮助",
+      "reference": "帮助"
+    },
+    {
+      "kind": "word_context",
+      "voice": "original",
+      "audio_id": "t1-00087",
+      "target": "帮",
+      "required": "班",
+      "cross_reference": true,
+      "core": "read_word",
+      "status": "ok",
+      "observation": {
+        "state": "flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "17",
+            "content": "an",
+            "dp_message": "128",
+            "end_pos": "49",
+            "is_yun": "1",
+            "mono_tone": "TONE1",
+            "perr_level_msg": "0",
+            "perr_msg": "1",
+            "rec_node_type": "paper",
+            "word_content": "班助",
+            "syll_content": "班",
+            "syll_symbol": "ban1"
+          }
+        ]
+      },
+      "audio_sha256": "aca926c86c77781ab7577907728a358571c6cacea43516c7536267680a690a73",
+      "source_text": "帮助",
+      "reference": "班助"
+    },
+    {
+      "kind": "single",
+      "voice": "original",
+      "audio_id": "t1-05280",
+      "target": "心",
+      "required": "心",
+      "cross_reference": false,
+      "core": "read_syllable",
+      "status": "ok",
+      "observation": {
+        "state": "flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "28",
+            "content": "in",
+            "dp_message": "0",
+            "end_pos": "63",
+            "is_yun": "1",
+            "mono_tone": "TONE1",
+            "perr_level_msg": "0",
+            "perr_msg": "1",
+            "rec_node_type": "paper",
+            "word_content": "心",
+            "syll_content": "心",
+            "syll_symbol": "xin1"
+          }
+        ]
+      },
+      "audio_sha256": "12e13ca90d53f3ad14123009df48bd649af4433ea9ccd727f73aeee451904d4c",
+      "source_text": "心",
+      "reference": "心"
+    },
+    {
+      "kind": "single",
+      "voice": "news-female",
+      "audio_id": "t1-05280",
+      "target": "心",
+      "required": "心",
+      "cross_reference": false,
+      "core": "read_syllable",
+      "status": "ok",
+      "observation": {
+        "state": "flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "26",
+            "content": "in",
+            "dp_message": "0",
+            "end_pos": "63",
+            "is_yun": "1",
+            "mono_tone": "TONE1",
+            "perr_level_msg": "0",
+            "perr_msg": "1",
+            "rec_node_type": "paper",
+            "word_content": "心",
+            "syll_content": "心",
+            "syll_symbol": "xin1"
+          }
+        ]
+      },
+      "audio_sha256": "4cf28ffc79271cb71e0cf11c78e8e2819c4d9236c777c63ed7bbdddd63e24e47",
+      "source_text": "心",
+      "reference": "心"
+    },
+    {
+      "kind": "single",
+      "voice": "news-male",
+      "audio_id": "t1-05280",
+      "target": "心",
+      "required": "心",
+      "cross_reference": false,
+      "core": "read_syllable",
+      "status": "ok",
+      "observation": {
+        "state": "flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "29",
+            "content": "in",
+            "dp_message": "0",
+            "end_pos": "41",
+            "is_yun": "1",
+            "mono_tone": "TONE1",
+            "perr_level_msg": "0",
+            "perr_msg": "1",
+            "rec_node_type": "paper",
+            "word_content": "心",
+            "syll_content": "心",
+            "syll_symbol": "xin1"
+          }
+        ]
+      },
+      "audio_sha256": "f133f74c30cd490e0f896e2855ef249c4dec3dfd64f38288ad393c9962a4648b",
+      "source_text": "心",
+      "reference": "心"
+    },
+    {
+      "kind": "single",
+      "voice": "original",
+      "audio_id": "t1-05280",
+      "target": "心",
+      "required": "星",
+      "cross_reference": true,
+      "core": "read_syllable",
+      "status": "ok",
+      "observation": {
+        "state": "flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "28",
+            "content": "ing",
+            "dp_message": "128",
+            "end_pos": "50",
+            "is_yun": "1",
+            "mono_tone": "TONE1",
+            "perr_level_msg": "0",
+            "perr_msg": "1",
+            "rec_node_type": "paper",
+            "word_content": "星",
+            "syll_content": "星",
+            "syll_symbol": "xing1"
+          }
+        ]
+      },
+      "audio_sha256": "12e13ca90d53f3ad14123009df48bd649af4433ea9ccd727f73aeee451904d4c",
+      "source_text": "心",
+      "reference": "星"
+    },
+    {
+      "kind": "single",
+      "voice": "news-female",
+      "audio_id": "t1-05280",
+      "target": "心",
+      "required": "星",
+      "cross_reference": true,
+      "core": "read_syllable",
+      "status": "ok",
+      "observation": {
+        "state": "flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "28",
+            "content": "ing",
+            "dp_message": "0",
+            "end_pos": "65",
+            "is_yun": "1",
+            "mono_tone": "TONE1",
+            "perr_level_msg": "0",
+            "perr_msg": "1",
+            "rec_node_type": "paper",
+            "word_content": "星",
+            "syll_content": "星",
+            "syll_symbol": "xing1"
+          }
+        ]
+      },
+      "audio_sha256": "4cf28ffc79271cb71e0cf11c78e8e2819c4d9236c777c63ed7bbdddd63e24e47",
+      "source_text": "心",
+      "reference": "星"
+    },
+    {
+      "kind": "single",
+      "voice": "news-male",
+      "audio_id": "t1-05280",
+      "target": "心",
+      "required": "星",
+      "cross_reference": true,
+      "core": "read_syllable",
+      "status": "ok",
+      "observation": {
+        "state": "flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "29",
+            "content": "ing",
+            "dp_message": "0",
+            "end_pos": "42",
+            "is_yun": "1",
+            "mono_tone": "TONE1",
+            "perr_level_msg": "0",
+            "perr_msg": "1",
+            "rec_node_type": "paper",
+            "word_content": "星",
+            "syll_content": "星",
+            "syll_symbol": "xing1"
+          }
+        ]
+      },
+      "audio_sha256": "f133f74c30cd490e0f896e2855ef249c4dec3dfd64f38288ad393c9962a4648b",
+      "source_text": "心",
+      "reference": "星"
+    },
+    {
+      "kind": "single",
+      "voice": "original",
+      "audio_id": "t1-05320",
+      "target": "星",
+      "required": "心",
+      "cross_reference": true,
+      "core": "read_syllable",
+      "status": "ok",
+      "observation": {
+        "state": "flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "32",
+            "content": "in",
+            "dp_message": "128",
+            "end_pos": "66",
+            "is_yun": "1",
+            "mono_tone": "TONE1",
+            "perr_level_msg": "0",
+            "perr_msg": "1",
+            "rec_node_type": "paper",
+            "word_content": "心",
+            "syll_content": "心",
+            "syll_symbol": "xin1"
+          }
+        ]
+      },
+      "audio_sha256": "3217fb191910f3a6ab61f9110137fd53156dbc07477e6a324ef6032176eb5f6e",
+      "source_text": "星",
+      "reference": "心"
+    },
+    {
+      "kind": "single",
+      "voice": "news-female",
+      "audio_id": "t1-05320",
+      "target": "星",
+      "required": "心",
+      "cross_reference": true,
+      "core": "read_syllable",
+      "status": "ok",
+      "observation": {
+        "state": "not_flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "32",
+            "content": "in",
+            "dp_message": "0",
+            "end_pos": "71",
+            "is_yun": "1",
+            "mono_tone": "TONE1",
+            "perr_level_msg": "0",
+            "perr_msg": "0",
+            "rec_node_type": "paper",
+            "word_content": "心",
+            "syll_content": "心",
+            "syll_symbol": "xin1"
+          }
+        ]
+      },
+      "audio_sha256": "14335ff46803d12fc34754b2b68b4b334cf9cd00df7bfbfeb9b918d4ef9a1c79",
+      "source_text": "星",
+      "reference": "心"
+    },
+    {
+      "kind": "single",
+      "voice": "news-male",
+      "audio_id": "t1-05320",
+      "target": "星",
+      "required": "心",
+      "cross_reference": true,
+      "core": "read_syllable",
+      "status": "ok",
+      "observation": {
+        "state": "flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "31",
+            "content": "in",
+            "dp_message": "128",
+            "end_pos": "70",
+            "is_yun": "1",
+            "mono_tone": "TONE1",
+            "perr_level_msg": "0",
+            "perr_msg": "1",
+            "rec_node_type": "paper",
+            "word_content": "心",
+            "syll_content": "心",
+            "syll_symbol": "xin1"
+          }
+        ]
+      },
+      "audio_sha256": "d5050e90f5cd09203dfdc879fe68520bcbec78e8497cf4b38371cda47fa15490",
+      "source_text": "星",
+      "reference": "心"
+    },
+    {
+      "kind": "single",
+      "voice": "original",
+      "audio_id": "t1-05320",
+      "target": "星",
+      "required": "星",
+      "cross_reference": false,
+      "core": "read_syllable",
+      "status": "ok",
+      "observation": {
+        "state": "not_flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "32",
+            "content": "ing",
+            "dp_message": "0",
+            "end_pos": "66",
+            "is_yun": "1",
+            "mono_tone": "TONE1",
+            "perr_level_msg": "0",
+            "perr_msg": "0",
+            "rec_node_type": "paper",
+            "word_content": "星",
+            "syll_content": "星",
+            "syll_symbol": "xing1"
+          }
+        ]
+      },
+      "audio_sha256": "3217fb191910f3a6ab61f9110137fd53156dbc07477e6a324ef6032176eb5f6e",
+      "source_text": "星",
+      "reference": "星"
+    },
+    {
+      "kind": "single",
+      "voice": "news-female",
+      "audio_id": "t1-05320",
+      "target": "星",
+      "required": "星",
+      "cross_reference": false,
+      "core": "read_syllable",
+      "status": "ok",
+      "observation": {
+        "state": "flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "32",
+            "content": "ing",
+            "dp_message": "0",
+            "end_pos": "71",
+            "is_yun": "1",
+            "mono_tone": "TONE1",
+            "perr_level_msg": "0",
+            "perr_msg": "1",
+            "rec_node_type": "paper",
+            "word_content": "星",
+            "syll_content": "星",
+            "syll_symbol": "xing1"
+          }
+        ]
+      },
+      "audio_sha256": "14335ff46803d12fc34754b2b68b4b334cf9cd00df7bfbfeb9b918d4ef9a1c79",
+      "source_text": "星",
+      "reference": "星"
+    },
+    {
+      "kind": "single",
+      "voice": "news-male",
+      "audio_id": "t1-05320",
+      "target": "星",
+      "required": "星",
+      "cross_reference": false,
+      "core": "read_syllable",
+      "status": "ok",
+      "observation": {
+        "state": "not_flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "31",
+            "content": "ing",
+            "dp_message": "0",
+            "end_pos": "70",
+            "is_yun": "1",
+            "mono_tone": "TONE1",
+            "perr_level_msg": "0",
+            "perr_msg": "0",
+            "rec_node_type": "paper",
+            "word_content": "星",
+            "syll_content": "星",
+            "syll_symbol": "xing1"
+          }
+        ]
+      },
+      "audio_sha256": "d5050e90f5cd09203dfdc879fe68520bcbec78e8497cf4b38371cda47fa15490",
+      "source_text": "星",
+      "reference": "星"
+    },
+    {
+      "kind": "single",
+      "voice": "original",
+      "audio_id": "t1-03005",
+      "target": "林",
+      "required": "林",
+      "cross_reference": false,
+      "core": "read_syllable",
+      "status": "ok",
+      "observation": {
+        "state": "not_flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "24",
+            "content": "in",
+            "dp_message": "0",
+            "end_pos": "64",
+            "is_yun": "1",
+            "mono_tone": "TONE2",
+            "perr_level_msg": "0",
+            "perr_msg": "0",
+            "rec_node_type": "paper",
+            "word_content": "林",
+            "syll_content": "林",
+            "syll_symbol": "lin2"
+          }
+        ]
+      },
+      "audio_sha256": "be53ea05e836bbb7c48bbe2a9570d6dc9f90a12b12b4f87c9c779a9be2b559a8",
+      "source_text": "林",
+      "reference": "林"
+    },
+    {
+      "kind": "single",
+      "voice": "news-female",
+      "audio_id": "t1-03005",
+      "target": "林",
+      "required": "林",
+      "cross_reference": false,
+      "core": "read_syllable",
+      "status": "ok",
+      "observation": {
+        "state": "not_flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "23",
+            "content": "in",
+            "dp_message": "0",
+            "end_pos": "66",
+            "is_yun": "1",
+            "mono_tone": "TONE2",
+            "perr_level_msg": "0",
+            "perr_msg": "0",
+            "rec_node_type": "paper",
+            "word_content": "林",
+            "syll_content": "林",
+            "syll_symbol": "lin2"
+          }
+        ]
+      },
+      "audio_sha256": "78524cf3c69ef03d46e20f217d4c9eaf8faa4db1680ede59e62f5b135bb7a39e",
+      "source_text": "林",
+      "reference": "林"
+    },
+    {
+      "kind": "single",
+      "voice": "news-male",
+      "audio_id": "t1-03005",
+      "target": "林",
+      "required": "林",
+      "cross_reference": false,
+      "core": "read_syllable",
+      "status": "ok",
+      "observation": {
+        "state": "not_flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "20",
+            "content": "in",
+            "dp_message": "0",
+            "end_pos": "62",
+            "is_yun": "1",
+            "mono_tone": "TONE2",
+            "perr_level_msg": "0",
+            "perr_msg": "0",
+            "rec_node_type": "paper",
+            "word_content": "林",
+            "syll_content": "林",
+            "syll_symbol": "lin2"
+          }
+        ]
+      },
+      "audio_sha256": "7b629be9e876b6fa2549b04255409000ff5f8cea20fcab7e7260cf34b8b08145",
+      "source_text": "林",
+      "reference": "林"
+    },
+    {
+      "kind": "single",
+      "voice": "original",
+      "audio_id": "t1-03005",
+      "target": "林",
+      "required": "零",
+      "cross_reference": true,
+      "core": "read_syllable",
+      "status": "ok",
+      "observation": {
+        "state": "flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "25",
+            "content": "ing",
+            "dp_message": "0",
+            "end_pos": "66",
+            "is_yun": "1",
+            "mono_tone": "TONE2",
+            "perr_level_msg": "0",
+            "perr_msg": "1",
+            "rec_node_type": "paper",
+            "word_content": "零",
+            "syll_content": "零",
+            "syll_symbol": "ling2"
+          }
+        ]
+      },
+      "audio_sha256": "be53ea05e836bbb7c48bbe2a9570d6dc9f90a12b12b4f87c9c779a9be2b559a8",
+      "source_text": "林",
+      "reference": "零"
+    },
+    {
+      "kind": "single",
+      "voice": "news-female",
+      "audio_id": "t1-03005",
+      "target": "林",
+      "required": "零",
+      "cross_reference": true,
+      "core": "read_syllable",
+      "status": "ok",
+      "observation": {
+        "state": "flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "25",
+            "content": "ing",
+            "dp_message": "0",
+            "end_pos": "67",
+            "is_yun": "1",
+            "mono_tone": "TONE2",
+            "perr_level_msg": "0",
+            "perr_msg": "1",
+            "rec_node_type": "paper",
+            "word_content": "零",
+            "syll_content": "零",
+            "syll_symbol": "ling2"
+          }
+        ]
+      },
+      "audio_sha256": "78524cf3c69ef03d46e20f217d4c9eaf8faa4db1680ede59e62f5b135bb7a39e",
+      "source_text": "林",
+      "reference": "零"
+    },
+    {
+      "kind": "single",
+      "voice": "news-male",
+      "audio_id": "t1-03005",
+      "target": "林",
+      "required": "零",
+      "cross_reference": true,
+      "core": "read_syllable",
+      "status": "ok",
+      "observation": {
+        "state": "flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "20",
+            "content": "ing",
+            "dp_message": "0",
+            "end_pos": "65",
+            "is_yun": "1",
+            "mono_tone": "TONE2",
+            "perr_level_msg": "0",
+            "perr_msg": "1",
+            "rec_node_type": "paper",
+            "word_content": "零",
+            "syll_content": "零",
+            "syll_symbol": "ling2"
+          }
+        ]
+      },
+      "audio_sha256": "7b629be9e876b6fa2549b04255409000ff5f8cea20fcab7e7260cf34b8b08145",
+      "source_text": "林",
+      "reference": "零"
+    },
+    {
+      "kind": "single",
+      "voice": "original",
+      "audio_id": "t1-03020",
+      "target": "零",
+      "required": "林",
+      "cross_reference": true,
+      "core": "read_syllable",
+      "status": "ok",
+      "observation": {
+        "state": "not_flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "29",
+            "content": "in",
+            "dp_message": "0",
+            "end_pos": "68",
+            "is_yun": "1",
+            "mono_tone": "TONE2",
+            "perr_level_msg": "0",
+            "perr_msg": "0",
+            "rec_node_type": "paper",
+            "word_content": "林",
+            "syll_content": "林",
+            "syll_symbol": "lin2"
+          }
+        ]
+      },
+      "audio_sha256": "17b24741caaf11b197cb1d8519305cfe668402ca2c856217cea9a474da940471",
+      "source_text": "零",
+      "reference": "林"
+    },
+    {
+      "kind": "single",
+      "voice": "news-female",
+      "audio_id": "t1-03020",
+      "target": "零",
+      "required": "林",
+      "cross_reference": true,
+      "core": "read_syllable",
+      "status": "ok",
+      "observation": {
+        "state": "flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "28",
+            "content": "in",
+            "dp_message": "128",
+            "end_pos": "75",
+            "is_yun": "1",
+            "mono_tone": "TONE2",
+            "perr_level_msg": "0",
+            "perr_msg": "1",
+            "rec_node_type": "paper",
+            "word_content": "林",
+            "syll_content": "林",
+            "syll_symbol": "lin2"
+          }
+        ]
+      },
+      "audio_sha256": "c5a2242286348264adab763edd53d82baa2f1367fe121d2d382cacdafc8295a7",
+      "source_text": "零",
+      "reference": "林"
+    },
+    {
+      "kind": "single",
+      "voice": "news-male",
+      "audio_id": "t1-03020",
+      "target": "零",
+      "required": "林",
+      "cross_reference": true,
+      "core": "read_syllable",
+      "status": "ok",
+      "observation": {
+        "state": "not_flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "27",
+            "content": "in",
+            "dp_message": "0",
+            "end_pos": "70",
+            "is_yun": "1",
+            "mono_tone": "TONE2",
+            "perr_level_msg": "0",
+            "perr_msg": "0",
+            "rec_node_type": "paper",
+            "word_content": "林",
+            "syll_content": "林",
+            "syll_symbol": "lin2"
+          }
+        ]
+      },
+      "audio_sha256": "08d40660dbab8998b33f420dbcff5c4f25ac62857faec312543af0bd0dc1fde3",
+      "source_text": "零",
+      "reference": "林"
+    },
+    {
+      "kind": "single",
+      "voice": "original",
+      "audio_id": "t1-03020",
+      "target": "零",
+      "required": "零",
+      "cross_reference": false,
+      "core": "read_syllable",
+      "status": "ok",
+      "observation": {
+        "state": "flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "30",
+            "content": "ing",
+            "dp_message": "0",
+            "end_pos": "70",
+            "is_yun": "1",
+            "mono_tone": "TONE2",
+            "perr_level_msg": "0",
+            "perr_msg": "1",
+            "rec_node_type": "paper",
+            "word_content": "零",
+            "syll_content": "零",
+            "syll_symbol": "ling2"
+          }
+        ]
+      },
+      "audio_sha256": "17b24741caaf11b197cb1d8519305cfe668402ca2c856217cea9a474da940471",
+      "source_text": "零",
+      "reference": "零"
+    },
+    {
+      "kind": "single",
+      "voice": "news-female",
+      "audio_id": "t1-03020",
+      "target": "零",
+      "required": "零",
+      "cross_reference": false,
+      "core": "read_syllable",
+      "status": "ok",
+      "observation": {
+        "state": "not_flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "28",
+            "content": "ing",
+            "dp_message": "0",
+            "end_pos": "77",
+            "is_yun": "1",
+            "mono_tone": "TONE2",
+            "perr_level_msg": "0",
+            "perr_msg": "0",
+            "rec_node_type": "paper",
+            "word_content": "零",
+            "syll_content": "零",
+            "syll_symbol": "ling2"
+          }
+        ]
+      },
+      "audio_sha256": "c5a2242286348264adab763edd53d82baa2f1367fe121d2d382cacdafc8295a7",
+      "source_text": "零",
+      "reference": "零"
+    },
+    {
+      "kind": "single",
+      "voice": "news-male",
+      "audio_id": "t1-03020",
+      "target": "零",
+      "required": "零",
+      "cross_reference": false,
+      "core": "read_syllable",
+      "status": "ok",
+      "observation": {
+        "state": "flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "27",
+            "content": "ing",
+            "dp_message": "0",
+            "end_pos": "70",
+            "is_yun": "1",
+            "mono_tone": "TONE2",
+            "perr_level_msg": "0",
+            "perr_msg": "1",
+            "rec_node_type": "paper",
+            "word_content": "零",
+            "syll_content": "零",
+            "syll_symbol": "ling2"
+          }
+        ]
+      },
+      "audio_sha256": "08d40660dbab8998b33f420dbcff5c4f25ac62857faec312543af0bd0dc1fde3",
+      "source_text": "零",
+      "reference": "零"
+    },
+    {
+      "kind": "single",
+      "voice": "original",
+      "audio_id": "t1-00059",
+      "target": "班",
+      "required": "班",
+      "cross_reference": false,
+      "core": "read_syllable",
+      "status": "ok",
+      "observation": {
+        "state": "not_flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "20",
+            "content": "an",
+            "dp_message": "0",
+            "end_pos": "54",
+            "is_yun": "1",
+            "mono_tone": "TONE1",
+            "perr_level_msg": "0",
+            "perr_msg": "0",
+            "rec_node_type": "paper",
+            "word_content": "班",
+            "syll_content": "班",
+            "syll_symbol": "ban1"
+          }
+        ]
+      },
+      "audio_sha256": "4cfe87e990b33a183f65009827a825762d8f52104451dab017067fc3e18c9e06",
+      "source_text": "班",
+      "reference": "班"
+    },
+    {
+      "kind": "single",
+      "voice": "news-female",
+      "audio_id": "t1-00059",
+      "target": "班",
+      "required": "班",
+      "cross_reference": false,
+      "core": "read_syllable",
+      "status": "ok",
+      "observation": {
+        "state": "not_flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "17",
+            "content": "an",
+            "dp_message": "0",
+            "end_pos": "51",
+            "is_yun": "1",
+            "mono_tone": "TONE1",
+            "perr_level_msg": "0",
+            "perr_msg": "0",
+            "rec_node_type": "paper",
+            "word_content": "班",
+            "syll_content": "班",
+            "syll_symbol": "ban1"
+          }
+        ]
+      },
+      "audio_sha256": "726f81868ee664cef46d8800cb8e67edd04ea464493627f44cbaf580018a6206",
+      "source_text": "班",
+      "reference": "班"
+    },
+    {
+      "kind": "single",
+      "voice": "news-male",
+      "audio_id": "t1-00059",
+      "target": "班",
+      "required": "班",
+      "cross_reference": false,
+      "core": "read_syllable",
+      "status": "ok",
+      "observation": {
+        "state": "not_flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "19",
+            "content": "an",
+            "dp_message": "0",
+            "end_pos": "53",
+            "is_yun": "1",
+            "mono_tone": "TONE1",
+            "perr_level_msg": "0",
+            "perr_msg": "0",
+            "rec_node_type": "paper",
+            "word_content": "班",
+            "syll_content": "班",
+            "syll_symbol": "ban1"
+          }
+        ]
+      },
+      "audio_sha256": "f13b17362f57106c15c297dce1a8f4c6f15d86382ce6e20bd3ca460c5bc3b7ab",
+      "source_text": "班",
+      "reference": "班"
+    },
+    {
+      "kind": "single",
+      "voice": "original",
+      "audio_id": "t1-00059",
+      "target": "班",
+      "required": "帮",
+      "cross_reference": true,
+      "core": "read_syllable",
+      "status": "ok",
+      "observation": {
+        "state": "flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "20",
+            "content": "ang",
+            "dp_message": "128",
+            "end_pos": "36",
+            "is_yun": "1",
+            "mono_tone": "TONE1",
+            "perr_level_msg": "0",
+            "perr_msg": "1",
+            "rec_node_type": "paper",
+            "word_content": "帮",
+            "syll_content": "帮",
+            "syll_symbol": "bang1"
+          }
+        ]
+      },
+      "audio_sha256": "4cfe87e990b33a183f65009827a825762d8f52104451dab017067fc3e18c9e06",
+      "source_text": "班",
+      "reference": "帮"
+    },
+    {
+      "kind": "single",
+      "voice": "news-female",
+      "audio_id": "t1-00059",
+      "target": "班",
+      "required": "帮",
+      "cross_reference": true,
+      "core": "read_syllable",
+      "status": "ok",
+      "observation": {
+        "state": "flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "17",
+            "content": "ang",
+            "dp_message": "128",
+            "end_pos": "47",
+            "is_yun": "1",
+            "mono_tone": "TONE1",
+            "perr_level_msg": "0",
+            "perr_msg": "1",
+            "rec_node_type": "paper",
+            "word_content": "帮",
+            "syll_content": "帮",
+            "syll_symbol": "bang1"
+          }
+        ]
+      },
+      "audio_sha256": "726f81868ee664cef46d8800cb8e67edd04ea464493627f44cbaf580018a6206",
+      "source_text": "班",
+      "reference": "帮"
+    },
+    {
+      "kind": "single",
+      "voice": "news-male",
+      "audio_id": "t1-00059",
+      "target": "班",
+      "required": "帮",
+      "cross_reference": true,
+      "core": "read_syllable",
+      "status": "ok",
+      "observation": {
+        "state": "flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "19",
+            "content": "ang",
+            "dp_message": "128",
+            "end_pos": "39",
+            "is_yun": "1",
+            "mono_tone": "TONE1",
+            "perr_level_msg": "0",
+            "perr_msg": "1",
+            "rec_node_type": "paper",
+            "word_content": "帮",
+            "syll_content": "帮",
+            "syll_symbol": "bang1"
+          }
+        ]
+      },
+      "audio_sha256": "f13b17362f57106c15c297dce1a8f4c6f15d86382ce6e20bd3ca460c5bc3b7ab",
+      "source_text": "班",
+      "reference": "帮"
+    },
+    {
+      "kind": "single",
+      "voice": "original",
+      "audio_id": "t1-00085",
+      "target": "帮",
+      "required": "班",
+      "cross_reference": true,
+      "core": "read_syllable",
+      "status": "ok",
+      "observation": {
+        "state": "not_flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "20",
+            "content": "an",
+            "dp_message": "0",
+            "end_pos": "49",
+            "is_yun": "1",
+            "mono_tone": "TONE1",
+            "perr_level_msg": "0",
+            "perr_msg": "0",
+            "rec_node_type": "paper",
+            "word_content": "班",
+            "syll_content": "班",
+            "syll_symbol": "ban1"
+          }
+        ]
+      },
+      "audio_sha256": "42cd94f3cda946d8717fd124fd8dc946a7953125b084462e55062d28d111650f",
+      "source_text": "帮",
+      "reference": "班"
+    },
+    {
+      "kind": "single",
+      "voice": "news-female",
+      "audio_id": "t1-00085",
+      "target": "帮",
+      "required": "班",
+      "cross_reference": true,
+      "core": "read_syllable",
+      "status": "ok",
+      "observation": {
+        "state": "flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "20",
+            "content": "an",
+            "dp_message": "128",
+            "end_pos": "48",
+            "is_yun": "1",
+            "mono_tone": "TONE1",
+            "perr_level_msg": "0",
+            "perr_msg": "1",
+            "rec_node_type": "paper",
+            "word_content": "班",
+            "syll_content": "班",
+            "syll_symbol": "ban1"
+          }
+        ]
+      },
+      "audio_sha256": "c84d2990ecd8ebbf63c3f84c51b49558e719673eb78998442ed7615de317066a",
+      "source_text": "帮",
+      "reference": "班"
+    },
+    {
+      "kind": "single",
+      "voice": "news-male",
+      "audio_id": "t1-00085",
+      "target": "帮",
+      "required": "班",
+      "cross_reference": true,
+      "core": "read_syllable",
+      "status": "ok",
+      "observation": {
+        "state": "flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "18",
+            "content": "an",
+            "dp_message": "128",
+            "end_pos": "51",
+            "is_yun": "1",
+            "mono_tone": "TONE1",
+            "perr_level_msg": "0",
+            "perr_msg": "1",
+            "rec_node_type": "paper",
+            "word_content": "班",
+            "syll_content": "班",
+            "syll_symbol": "ban1"
+          }
+        ]
+      },
+      "audio_sha256": "e231328be9c0ffb4bb524ec319b2fa269f1588feaed34f894665344446caf2b2",
+      "source_text": "帮",
+      "reference": "班"
+    },
+    {
+      "kind": "single",
+      "voice": "original",
+      "audio_id": "t1-00085",
+      "target": "帮",
+      "required": "帮",
+      "cross_reference": false,
+      "core": "read_syllable",
+      "status": "ok",
+      "observation": {
+        "state": "not_flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "19",
+            "content": "ang",
+            "dp_message": "0",
+            "end_pos": "53",
+            "is_yun": "1",
+            "mono_tone": "TONE1",
+            "perr_level_msg": "0",
+            "perr_msg": "0",
+            "rec_node_type": "paper",
+            "word_content": "帮",
+            "syll_content": "帮",
+            "syll_symbol": "bang1"
+          }
+        ]
+      },
+      "audio_sha256": "42cd94f3cda946d8717fd124fd8dc946a7953125b084462e55062d28d111650f",
+      "source_text": "帮",
+      "reference": "帮"
+    },
+    {
+      "kind": "single",
+      "voice": "news-female",
+      "audio_id": "t1-00085",
+      "target": "帮",
+      "required": "帮",
+      "cross_reference": false,
+      "core": "read_syllable",
+      "status": "ok",
+      "observation": {
+        "state": "not_flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "20",
+            "content": "ang",
+            "dp_message": "0",
+            "end_pos": "53",
+            "is_yun": "1",
+            "mono_tone": "TONE1",
+            "perr_level_msg": "0",
+            "perr_msg": "0",
+            "rec_node_type": "paper",
+            "word_content": "帮",
+            "syll_content": "帮",
+            "syll_symbol": "bang1"
+          }
+        ]
+      },
+      "audio_sha256": "c84d2990ecd8ebbf63c3f84c51b49558e719673eb78998442ed7615de317066a",
+      "source_text": "帮",
+      "reference": "帮"
+    },
+    {
+      "kind": "single",
+      "voice": "news-male",
+      "audio_id": "t1-00085",
+      "target": "帮",
+      "required": "帮",
+      "cross_reference": false,
+      "core": "read_syllable",
+      "status": "ok",
+      "observation": {
+        "state": "flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "18",
+            "content": "ang",
+            "dp_message": "128",
+            "end_pos": "50",
+            "is_yun": "1",
+            "mono_tone": "TONE1",
+            "perr_level_msg": "0",
+            "perr_msg": "0",
+            "rec_node_type": "paper",
+            "word_content": "帮",
+            "syll_content": "帮",
+            "syll_symbol": "bang1"
+          }
+        ]
+      },
+      "audio_sha256": "e231328be9c0ffb4bb524ec319b2fa269f1588feaed34f894665344446caf2b2",
+      "source_text": "帮",
+      "reference": "帮"
+    },
+    {
+      "kind": "sentence",
+      "voice": "original",
+      "audio_id": "28-我喜欢出发-0011",
+      "target": "山",
+      "required": "山",
+      "cross_reference": false,
+      "core": "read_sentence",
+      "status": "ok",
+      "observation": {
+        "state": "not_flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "288",
+            "content": "an",
+            "dp_message": "0",
+            "end_pos": "322",
+            "is_yun": "1",
+            "mono_tone": "TONE1",
+            "perr_level_msg": "1",
+            "perr_msg": "0",
+            "rec_node_type": "paper",
+            "word_content": "山",
+            "syll_content": "山",
+            "syll_symbol": "shan1"
+          }
+        ]
+      },
+      "audio_sha256": "7c5dcc88d1cb35603558ac767ed57ea79a751327aa647c4e86722e26f0c0077f"
+    },
+    {
+      "kind": "sentence",
+      "voice": "original",
+      "audio_id": "28-我喜欢出发-0011",
+      "target": "山",
+      "required": "商",
+      "cross_reference": true,
+      "core": "read_sentence",
+      "status": "ok",
+      "observation": {
+        "state": "flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "290",
+            "content": "ang",
+            "dp_message": "0",
+            "end_pos": "314",
+            "is_yun": "1",
+            "mono_tone": "TONE1",
+            "perr_level_msg": "3",
+            "perr_msg": "1",
+            "rec_node_type": "paper",
+            "word_content": "商",
+            "syll_content": "商",
+            "syll_symbol": "shang1"
+          }
+        ]
+      },
+      "audio_sha256": "7c5dcc88d1cb35603558ac767ed57ea79a751327aa647c4e86722e26f0c0077f"
+    },
+    {
+      "kind": "sentence",
+      "voice": "news-female",
+      "audio_id": "28-我喜欢出发-0011",
+      "target": "山",
+      "required": "山",
+      "cross_reference": false,
+      "core": "read_sentence",
+      "status": "ok",
+      "observation": {
+        "state": "not_flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "288",
+            "content": "an",
+            "dp_message": "0",
+            "end_pos": "320",
+            "is_yun": "1",
+            "mono_tone": "TONE1",
+            "perr_level_msg": "1",
+            "perr_msg": "0",
+            "rec_node_type": "paper",
+            "word_content": "山",
+            "syll_content": "山",
+            "syll_symbol": "shan1"
+          }
+        ]
+      },
+      "audio_sha256": "82426ce003aee16e217debc8359cf7cb087fc2b0f34586ebafd546ded5001712"
+    },
+    {
+      "kind": "sentence",
+      "voice": "news-female",
+      "audio_id": "28-我喜欢出发-0011",
+      "target": "山",
+      "required": "商",
+      "cross_reference": true,
+      "core": "read_sentence",
+      "status": "ok",
+      "observation": {
+        "state": "not_flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "288",
+            "content": "ang",
+            "dp_message": "0",
+            "end_pos": "294",
+            "is_yun": "1",
+            "mono_tone": "TONE1",
+            "perr_level_msg": "2",
+            "perr_msg": "0",
+            "rec_node_type": "paper",
+            "word_content": "商",
+            "syll_content": "商",
+            "syll_symbol": "shang1"
+          }
+        ]
+      },
+      "audio_sha256": "82426ce003aee16e217debc8359cf7cb087fc2b0f34586ebafd546ded5001712"
+    },
+    {
+      "kind": "sentence",
+      "voice": "news-male",
+      "audio_id": "28-我喜欢出发-0011",
+      "target": "山",
+      "required": "山",
+      "cross_reference": false,
+      "core": "read_sentence",
+      "status": "ok",
+      "observation": {
+        "state": "not_flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "288",
+            "content": "an",
+            "dp_message": "0",
+            "end_pos": "310",
+            "is_yun": "1",
+            "mono_tone": "TONE1",
+            "perr_level_msg": "1",
+            "perr_msg": "0",
+            "rec_node_type": "paper",
+            "word_content": "山",
+            "syll_content": "山",
+            "syll_symbol": "shan1"
+          }
+        ]
+      },
+      "audio_sha256": "61835438b53416c50bc22dbaf5444f6832c839d8b69cf042e8e61b0182b9157a"
+    },
+    {
+      "kind": "sentence",
+      "voice": "news-male",
+      "audio_id": "28-我喜欢出发-0011",
+      "target": "山",
+      "required": "商",
+      "cross_reference": true,
+      "core": "read_sentence",
+      "status": "ok",
+      "observation": {
+        "state": "flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "290",
+            "content": "ang",
+            "dp_message": "0",
+            "end_pos": "295",
+            "is_yun": "1",
+            "mono_tone": "TONE1",
+            "perr_level_msg": "3",
+            "perr_msg": "1",
+            "rec_node_type": "paper",
+            "word_content": "商",
+            "syll_content": "商",
+            "syll_symbol": "shang1"
+          }
+        ]
+      },
+      "audio_sha256": "61835438b53416c50bc22dbaf5444f6832c839d8b69cf042e8e61b0182b9157a"
+    },
+    {
+      "kind": "sentence",
+      "voice": "original",
+      "audio_id": "12-晋祠-0023",
+      "target": "清",
+      "required": "清",
+      "cross_reference": false,
+      "core": "read_sentence",
+      "status": "ok",
+      "observation": {
+        "state": "not_flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "104",
+            "content": "ing",
+            "dp_message": "0",
+            "end_pos": "118",
+            "is_yun": "1",
+            "mono_tone": "TONE1",
+            "perr_level_msg": "1",
+            "perr_msg": "0",
+            "rec_node_type": "paper",
+            "word_content": "清",
+            "syll_content": "清",
+            "syll_symbol": "qing1"
+          }
+        ]
+      },
+      "audio_sha256": "3e8a171ed817402c16929ee04b4dc98355977ec08acac26e001675fed7b89835"
+    },
+    {
+      "kind": "sentence",
+      "voice": "original",
+      "audio_id": "12-晋祠-0023",
+      "target": "清",
+      "required": "亲",
+      "cross_reference": true,
+      "core": "read_sentence",
+      "status": "ok",
+      "observation": {
+        "state": "not_flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "104",
+            "content": "in",
+            "dp_message": "0",
+            "end_pos": "118",
+            "is_yun": "1",
+            "mono_tone": "TONE1",
+            "perr_level_msg": "1",
+            "perr_msg": "0",
+            "rec_node_type": "paper",
+            "word_content": "亲",
+            "syll_content": "亲",
+            "syll_symbol": "qin1"
+          }
+        ]
+      },
+      "audio_sha256": "3e8a171ed817402c16929ee04b4dc98355977ec08acac26e001675fed7b89835"
+    },
+    {
+      "kind": "sentence",
+      "voice": "news-female",
+      "audio_id": "12-晋祠-0023",
+      "target": "清",
+      "required": "清",
+      "cross_reference": false,
+      "core": "read_sentence",
+      "status": "ok",
+      "observation": {
+        "state": "not_flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "102",
+            "content": "ing",
+            "dp_message": "0",
+            "end_pos": "116",
+            "is_yun": "1",
+            "mono_tone": "TONE1",
+            "perr_level_msg": "1",
+            "perr_msg": "0",
+            "rec_node_type": "paper",
+            "word_content": "清",
+            "syll_content": "清",
+            "syll_symbol": "qing1"
+          }
+        ]
+      },
+      "audio_sha256": "7de675604d2fbd7e77fb47089609c883ce7b98496976c21d6aaaecc5211cdc53"
+    },
+    {
+      "kind": "sentence",
+      "voice": "news-female",
+      "audio_id": "12-晋祠-0023",
+      "target": "清",
+      "required": "亲",
+      "cross_reference": true,
+      "core": "read_sentence",
+      "status": "ok",
+      "observation": {
+        "state": "not_flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "102",
+            "content": "in",
+            "dp_message": "0",
+            "end_pos": "116",
+            "is_yun": "1",
+            "mono_tone": "TONE1",
+            "perr_level_msg": "2",
+            "perr_msg": "0",
+            "rec_node_type": "paper",
+            "word_content": "亲",
+            "syll_content": "亲",
+            "syll_symbol": "qin1"
+          }
+        ]
+      },
+      "audio_sha256": "7de675604d2fbd7e77fb47089609c883ce7b98496976c21d6aaaecc5211cdc53"
+    },
+    {
+      "kind": "sentence",
+      "voice": "news-male",
+      "audio_id": "12-晋祠-0023",
+      "target": "清",
+      "required": "清",
+      "cross_reference": false,
+      "core": "read_sentence",
+      "status": "ok",
+      "observation": {
+        "state": "not_flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "102",
+            "content": "ing",
+            "dp_message": "0",
+            "end_pos": "118",
+            "is_yun": "1",
+            "mono_tone": "TONE1",
+            "perr_level_msg": "1",
+            "perr_msg": "0",
+            "rec_node_type": "paper",
+            "word_content": "清",
+            "syll_content": "清",
+            "syll_symbol": "qing1"
+          }
+        ]
+      },
+      "audio_sha256": "0c22b13295b15c30bc8f9f0e0ab40c6391e890bf1cacb3bda75dbc184ccdf989"
+    },
+    {
+      "kind": "sentence",
+      "voice": "news-male",
+      "audio_id": "12-晋祠-0023",
+      "target": "清",
+      "required": "亲",
+      "cross_reference": true,
+      "core": "read_sentence",
+      "status": "ok",
+      "observation": {
+        "state": "not_flagged",
+        "finals": [
+          {
+            "tag": "phone",
+            "beg_pos": "104",
+            "content": "in",
+            "dp_message": "0",
+            "end_pos": "118",
+            "is_yun": "1",
+            "mono_tone": "TONE1",
+            "perr_level_msg": "1",
+            "perr_msg": "0",
+            "rec_node_type": "paper",
+            "word_content": "亲",
+            "syll_content": "亲",
+            "syll_symbol": "qin1"
+          }
+        ]
+      },
+      "audio_sha256": "0c22b13295b15c30bc8f9f0e0ab40c6391e890bf1cacb3bda75dbc184ccdf989"
+    }
+  ]
+}
