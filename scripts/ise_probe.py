@@ -87,5 +87,9 @@ def public_result(response):
             word=next((a for a in node.iterancestors() if a.tag=='word'),None)
             if word is not None:
                 row['word_content']=word.get('content','')
+            syll=next((a for a in node.iterancestors() if a.tag=='syll'),None)
+            if syll is not None:
+                row['syll_content']=syll.get('content','')
+                row['syll_symbol']=syll.get('symbol','')
         nodes.append(row)
     return {'status':'ok','nodes':nodes}
