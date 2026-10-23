@@ -209,8 +209,8 @@ button:not(:disabled):active { transform: translateY(2px) scale(.985); }
 #view-training .practice-companion { width: 86px; height: 86px; object-fit: contain; margin: 18px 0 -9px; pointer-events: none; }
 .controls { flex: none; display: flex; justify-content: center; align-items: center; gap: 24px; margin: 0; padding: 18px 0 max(28px, env(safe-area-inset-bottom)); }
 .control-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; width: 85px; height: 85px; padding: 13px; border: 1px solid #fff; border-radius: 31px; background: #fffefa; color: var(--entry-deep); box-shadow: var(--shadow-card); }
-.control-btn .ctl-icon { display: block; width: 29px; height: 29px; border: 0; background: transparent; box-shadow: none; color: inherit; font-size: 25px; }
-.control-btn .ctl-icon .ui-icon { width: 29px; height: 29px; stroke-width: 2; }
+.control-btn .ctl-icon { display: flex; align-items: center; justify-content: center; flex-shrink: 0; width: 29px; height: 29px; border: 0; background: transparent; box-shadow: none; color: inherit; font-size: 25px; }
+.control-btn .ctl-icon .ui-icon { display: block; width: 29px; height: 29px; stroke-width: 2; }
 .control-btn .ctl-label { color: inherit; font-size: 12px; line-height: 1.3; font-weight: 600; }
 .control-main { width: 97px; height: 97px; border-radius: 36px; color: #fff; background: linear-gradient(145deg, var(--entry), var(--entry-deep)); box-shadow: inset 0 2px 4px #ffffff70, 0 8px 15px color-mix(in srgb, var(--entry) 20%, transparent); }
 .control-btn:disabled { opacity: .45; }
@@ -228,9 +228,9 @@ button:not(:disabled):active { transform: translateY(2px) scale(.985); }
 .sentence-text.no-pinyin .sc-inline .py { visibility: hidden; }
 .sentence-legend { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px; padding: 6px 10px; margin: 10px 0 0; background: #fffefa; border: 1px solid #fff; border-radius: 20px; font-size: 10px; }
 .hl-toggle { min-height: 44px; padding: 5px 10px; border-radius: 12px; font-size: 11px; }
-#view-sentence .controls { position: sticky; bottom: 0; background: linear-gradient(transparent, #fffcf6 20%); padding-top: 22px; gap: 15px; }
-#view-sentence .control-btn { width: 135px; height: 58px; border-radius: 22px; flex-direction: row; gap: 10px; }
-#view-sentence .control-btn .ctl-label { font-size: 14px; }
+#view-sentence .controls { position: sticky; bottom: 0; background: linear-gradient(transparent, #fffcf6 20%); padding-top: 22px; gap: 8px; }
+#view-sentence .control-btn { flex: 1 1 0; min-width: 0; width: auto; height: 62px; border-radius: 20px; flex-direction: column; gap: 4px; padding: 6px; }
+#view-sentence .control-btn .ctl-label { font-size: 12px; letter-spacing: 0; white-space: nowrap; }
 
 /* Discrimination: focus board + explicit feedback, same underlying quiz. */
 #view-discrim { --entry: var(--violet); --entry-deep: var(--violet-deep); --entry-soft: var(--violet-soft); }
@@ -508,9 +508,6 @@ button:not(:disabled):active { transform: translateY(2px) scale(.985); }
 .assessment-panel:empty { display: none; }
 .assessment-panel .ghost-btn { margin: 6px 4px; min-height: 36px; }
 .assessment-notice { margin: 4px 0 0; text-align: center; color: #6b7975; font-size: 11px; }
-.reading-speed { display: flex; flex-wrap: wrap; justify-content: center; gap: 7px; margin: 12px 0; }
-.reading-speed button { border: 1px solid #d9e5dc; border-radius: 18px; background: #fffdf7; color: #52675f; padding: 7px 11px; font: inherit; font-size: 12px; min-height: 36px; }
-.reading-speed button[aria-pressed="true"] { color: #126950; background: #e1f4ed; border-color: #8ac3ab; }
 .reading-review-entry { display: block; margin: 8px auto; }
 .reading-review-entry[hidden], .reading-summary[hidden] { display: none; }
 .controls .reading-done { width: auto; min-width: 74px; min-height: 52px; border-radius: 20px; border: 1px solid #b8d6c5; background: #edf7ed; font-size: 14px; color: #24765f; }
@@ -521,3 +518,10 @@ button:not(:disabled):active { transform: translateY(2px) scale(.985); }
 .reading-weak { padding: 12px 0; border-top: 1px solid #dde7d8; }
 .reading-weak strong { font-size: 15px; color: #316855; }
 .reading-weak p { margin: 6px 0 0; }
+
+/* Sentence reading keeps a continuous text rhythm in both passes. */
+#sentence-text .sc-inline { margin: 0; padding: 0 2px; background: transparent; }
+#sentence-text .sc-inline .ch { color: var(--ink); font-weight: 500; }
+#sentence-text .sc-inline .py { color: var(--muted); font-weight: 400; }
+#sentence-text.no-pinyin .sentence-chars { line-height: 1.85; padding-top: 0; }
+#sentence-text.no-pinyin .sc-inline { padding: 0; }

@@ -60,7 +60,7 @@ class GeneratorConfig:
     history_window_days: int = 7
     history_window_sessions: int = 7
     history_penalty: float = 0.6
-    allowed_duration_minutes: tuple[int, ...] = (5, 10)
+    allowed_duration_minutes: tuple[int, ...] = (3, 5, 10)
     allowed_practice_repetitions: tuple[int, ...] = (1, 2)
     benchmark_seeds_5m: tuple[int, ...] = (20260801, 20260802, 20260803)
     benchmark_seeds_10m: tuple[int, ...] = (20260804, 20260805, 20260806)
@@ -69,7 +69,7 @@ class GeneratorConfig:
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> "GeneratorConfig":
-        allowed = data.get("allowed_duration_minutes", (5, 10))
+        allowed = data.get("allowed_duration_minutes", (3, 5, 10))
         return cls(
             version=data["version"],
             top_k=int(data.get("top_k", 50)),

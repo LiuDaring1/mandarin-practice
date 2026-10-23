@@ -38,8 +38,8 @@ def test_shipped_config_pins_new_baseline() -> None:
     """锁死 100×100 基线数值：600/1200、600/900、300/600/900、三练 100、复习 100。"""
     config = _shipped_config()
     assert config.tiers == {
-        "word": {5: 600.0, 10: 1200.0},
-        "sentence": {10: 600.0, 15: 900.0},
+        "word": {3: 360.0, 5: 600.0, 10: 1200.0},
+        "sentence": {5: 300.0, 10: 600.0, 15: 900.0},
         "discrim": {50: 300.0, 100: 600.0, 150: 900.0},
     }
     assert config.minimum_completion_ratio == 0.2
@@ -137,7 +137,7 @@ def test_unknown_tier_is_rejected() -> None:
     with pytest.raises(ValueError):
         compute_activity_reward(config, "word", 15, 1.0)
     with pytest.raises(ValueError):
-        compute_activity_reward(config, "sentence", 5, 1.0)
+        compute_activity_reward(config, "sentence", 6, 1.0)
     with pytest.raises(ValueError):
         compute_activity_reward(config, "discrim", 200, 1.0)
 

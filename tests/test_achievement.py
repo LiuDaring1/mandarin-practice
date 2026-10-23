@@ -42,7 +42,8 @@ def test_duration_rewards_are_config_driven():
     assert compute_activity_reward(config, "word", 5, 1.0).total_beads == 600
     # 旧档位不存在
     assert config.tier_value("word", 15) is None
-    assert config.tier_value("sentence", 5) is None
+    assert config.tier_value("sentence", 5) == 300
+    assert config.tier_value("word", 3) == 360
 
 
 def test_partial_completion_scales_the_base_reward():
@@ -62,7 +63,7 @@ def test_below_threshold_earns_nothing():
 
 def test_unknown_tier_is_rejected():
     with pytest.raises(ValueError):
-        compute_activity_reward(_config(), "word", 3, 1.0)
+        compute_activity_reward(_config(), "word", 4, 1.0)
 
 
 def test_artwork_catalog_is_valid_mic_plus_series():

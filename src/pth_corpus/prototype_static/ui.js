@@ -62,7 +62,8 @@ function uiRenderPhase(kind, info) {
   } else if (phase === "finishing") {
     caption = "正在收好这一段录音…";
   } else if (phase === "paused") {
-    caption = "已暂停 · 准备好后继续";
+    caption = ["following", "waiting_follow"].includes(info.resumeFrom)
+      ? "已暂停 · 这一遍将重新跟读" : "已暂停 · 准备好后继续";
     pct = Number(box.dataset.progress || 0);
   } else if (phase === "error") caption = info.errorMessage || "音频暂时无法播放，请点重播再试";
   else if (phase === "loading_session" || phase === "loading") caption = "正在准备本次练习…";
