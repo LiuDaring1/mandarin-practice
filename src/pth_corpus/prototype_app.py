@@ -56,10 +56,10 @@ from .training.v2.schema import V2Profile, load_v2_profiles
 from .voice_library import VoiceLibrary
 from .assessment import AssessmentError, AssessmentService
 from .reading_coach import NASALS, SAFE_ID, ReadingCoach, plain
-from .news_sentences import NEWS_ID, load_news_pool, mixed_session
+from .news_sentences import NEWS_ID, mixed_session
 
 
-DEFAULT_DURATION_MINUTES = 10
+DEFAULT_DURATION_MINUTES = 3
 STATIC_DIR = Path(__file__).with_name("prototype_static")
 PROTOTYPE_DATA_DIR = Path(__file__).with_name("prototype_data")
 
@@ -441,7 +441,7 @@ class PrototypeRuntime:
                     self.data_root, out_subdir="derived/sentence-practice-v1"
                 )
                 self._sentence_pool = [{**row, "genre": "literature"} for row in self._sentence_pool]
-                self._sentence_pool.extend(load_news_pool(self.data_root, self.voice_library))
+                # News candidates remain on disk for listening QA; not released for practice.
             except (OSError, ValueError):
                 self._sentence_pool = []
         return self._sentence_pool or []
@@ -850,7 +850,7 @@ class PrototypeRuntime:
                 "filter_counts": sentence["filter_counts"],
             },
             "discrim": discrim,
-            "durations": list(self.config().allowed_duration_minutes),
+            "durations": [n for n in (3, 5) if n in self.config().allowed_duration_minutes],
             "default_duration_minutes": DEFAULT_DURATION_MINUTES,
         }
 
@@ -1132,7 +1132,7 @@ class RewardRequest(BaseModel):
 class SentenceSessionRequest(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    count: int = Field(default=10, ge=1, le=50)
+    count: int = Field(default=5, ge=1, le=50)
     filter: str = Field(default="all")
     seed: int | None = Field(default=None, ge=0)
     include_finals: list[str] | None = Field(default=None)
@@ -1276,6 +1276,7 @@ def create_app(
     profiles: list[V2Profile] | None = None,
     config: GeneratorConfig | None = None,
     discrim_config: dict[str, Any] | None = None,
+    cloud_assessment: bool = False,
 ) -> FastAPI:
     """Create the local prototype app (loopback-only usage)."""
 
@@ -1308,6 +1309,7 @@ def create_app(
     )
     app.state.runtime = runtime
     assessment = AssessmentService(runtime.data_root)
+    assessment.cloud_enabled = cloud_assessment
     app.state.assessment = assessment
     coach = ReadingCoach(assessment, runtime.prototype_dir)
     app.state.reading_coach = coach
@@ -1391,7 +1393,7 @@ def create_app(
                              attempt_id: str, session_id: str, pass_no: int = 1) -> dict:
         if kind not in ("word", "sentence") or not SAFE_ID.fullmatch(attempt_id) or not SAFE_ID.fullmatch(session_id):
             raise HTTPException(400, "invalid reading request")
-        if assessment.disabled:
+        if assessment.disabled or not assessment.cloud_enabled:
             raise HTTPException(503, "assessment disabled")
         if kind == "sentence":
             row = next((r for r in runtime.sentence_pool() if r["sentence_id"] == reference_id), None)
@@ -1429,6 +1431,8 @@ def create_app(
 
     @app.post("/api/assessment/{kind}/{reference_id}")
     async def assess_reading(kind: str, reference_id: str, request: Request, attempt_id: str) -> dict:
+        if assessment.disabled or not assessment.cloud_enabled:
+            raise HTTPException(503, "assessment disabled")
         if kind not in ("word", "sentence") or not re.fullmatch(r"[a-zA-Z0-9-]{8,100}", attempt_id):
             raise HTTPException(400, "invalid assessment request")
         if kind == "sentence":

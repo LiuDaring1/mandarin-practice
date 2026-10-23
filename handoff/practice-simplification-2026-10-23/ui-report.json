@@ -1,0 +1,29 @@
+{
+  "checks": [
+    "disposable local-only backend",
+    "word 3/5-minute choices default to 3",
+    "sentence 5/10 choices, two filters, no speed/review controls",
+    "formal sentence pool contains only 582 literature clips",
+    "original-speed literature round ignores old slow preference",
+    "paused recording clearly offers restart, done is disabled",
+    "centered controls fit 320px",
+    "centered controls fit 390px",
+    "centered controls fit 430px",
+    "restart opens a fresh recording window",
+    "five voiced sentences settle 300 beads without recap",
+    "no audio upload requests during practice",
+    "silence requires retry or skip",
+    "skipping silence earns no completed item",
+    "denied microphone does not complete reading or daily trio",
+    "explicit zero is not an effective training day; old missing ratios remain compatible",
+    "600 beads placed with real Space hold; exact pending/placed conservation"
+  ],
+  "microphone": "generated tone / silence / simulated denial",
+  "provider": "local_only",
+  "referencePlayback": "seeked for flow QA; not listening acceptance",
+  "beads": {
+    "seconds": 6.424900000095367,
+    "placed": 600,
+    "pending": 0
+  }
+}

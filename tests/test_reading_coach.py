@@ -145,6 +145,7 @@ def test_api_accepts_without_waiting_persists_and_validates_reference(tmp_path,m
     import time
     from test_prototype_app import _make_fixture, _build_item
     _,client,_=_make_fixture(tmp_path,items=[_build_item('t1-00001',['r','m'],word='人民',finals=['en','in'])])
+    client.app.state.assessment.cloud_enabled = True  # Explicit synthetic provider test.
     monkeypatch.setattr(client.app.state.assessment,'settings',settings)
     async def provider(*args):await asyncio.sleep(.15);return result()
     monkeypatch.setattr('pth_corpus.assessment.evaluate',provider)

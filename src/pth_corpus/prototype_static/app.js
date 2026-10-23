@@ -8,23 +8,7 @@ const PROGRESS_KEY = "pth-nasal-progress-v1";
 const SENTENCE_PINYIN_KEY = "pth-sentence-pinyin-v1";
 const WRONG_BOOK_KEY = "pth-discrim-wrongbook-v1";
 const reading = window.readingAssessment;
-const READING_SPEED_KEY = "pth-reading-speed-v1";
-let sentenceSpeed = .85;
-try { const saved=Number(localStorage.getItem(READING_SPEED_KEY)); if ([.75,.85,1].includes(saved)) sentenceSpeed=saved; } catch { /* optional preference */ }
 function initReadingControls() {
-  const update = () => document.querySelectorAll('[data-reading-speed-picker]').forEach(group => {
-    group.replaceChildren();
-    for (const speed of [.75,.85,1]) {
-      const button=document.createElement('button');button.type='button';
-      button.textContent=`${speed === 1 ? '原速' : speed === .85 ? '舒适' : '慢速'} ${speed}×`;
-      button.setAttribute('aria-pressed',String(sentenceSpeed===speed));
-      button.onclick=()=>{
-        sentenceSpeed=speed;try{localStorage.setItem(READING_SPEED_KEY,String(speed));}catch{}
-        els.sentencePlayer.preservesPitch=true;els.sentencePlayer.playbackRate=speed;update();
-      };group.append(button);
-    }
-  });
-  update();
   reading.refreshReviewEntry();
   document.getElementById('reading-done-sentence').onclick=sentenceFollowDone;
   document.getElementById('reading-done-word').onclick=followDone;
@@ -47,13 +31,12 @@ const TONES = {
 const SENTENCE_FILTERS = [
   { id: "front", label: "前鼻为主", desc: "前鼻音节多 · 侧重 en · in" },
   { id: "back", label: "后鼻为主", desc: "后鼻音节多 · 侧重 eng · ing" },
-  { id: "mixed", label: "前后都有", desc: "同句前后鼻对比 · 侧重 en / in / eng / ing" },
 ];
 
 const SENTENCE_FILTER_LABELS = {
   front: "前鼻为主", back: "后鼻为主", mixed: "前后都有",
 };
-const SENTENCE_COUNT_DEFAULT = 10;
+const SENTENCE_COUNT_DEFAULT = 5;
 
 // 听辨练习：整词答完统一反馈后 1.6s 自动下一词
 const DISCRIM_FEEDBACK_MS = 700;
@@ -202,7 +185,7 @@ const state = {
   entryId: null,
   profileId: null,
   profileLabel: null,
-  duration: 10,
+  duration: 3,
   pickerMode: null,
   pickerChoice: null,
   filterDraft: [],
@@ -442,26 +425,21 @@ function todayKey(date) {
 /* ---------- 连续训练天数（streak，只记有效训练日，不发拼点） ---------- */
 
 // 有效训练：任一正式训练（字词/句子/辨音）达到 ≥20% 有效门槛
+function sessionCompletionRatio(session) {
+  if (session.type === "word" && session.ratio != null) return Number(session.ratio);
+  if (session.type === "sentence" && Number(session.sentenceTotal) > 0) {
+    return Number(session.sentenceCount || 0) / Number(session.sentenceTotal);
+  }
+  if (session.type === "discrim" && Number(session.discrimTotal) > 0) {
+    return Number(session.discrimPoints || 0) / Number(session.discrimTotal);
+  }
+  return null; // Only genuinely old records without completion fields use the fallback.
+}
+
 function isValidSession(session) {
-  if (!session || !session.dayKey) return false;
-  if (session.type === "word") {
-    const ratio = Number(session.ratio || 0);
-    if (ratio > 0) return ratio >= 0.2;
-    return !session.exitEarly; // 旧记录兜底：完整完成即有效
-  }
-  if (session.type === "sentence") {
-    if (Number(session.sentenceTotal || 0) > 0) {
-      return Number(session.sentenceCount || 0) / Number(session.sentenceTotal) >= 0.2;
-    }
-    return !session.exitEarly;
-  }
-  if (session.type === "discrim") {
-    if (Number(session.discrimTotal || 0) > 0) {
-      return Number(session.discrimPoints || 0) / Number(session.discrimTotal) >= 0.2;
-    }
-    return !session.exitEarly;
-  }
-  return false; // 错题复习不计入 streak / 累计训练日
+  if (!session?.dayKey || !["word", "sentence", "discrim"].includes(session.type)) return false;
+  const ratio = sessionCompletionRatio(session);
+  return ratio === null ? !session.exitEarly : ratio >= 0.2;
 }
 
 function validSessionDayKeys() {
@@ -507,6 +485,7 @@ function completedToday(type) {
   const key = todayKey();
   return (state.progress.sessions || []).some(
     (session) => session.dayKey === key && session.type === type && !session.exitEarly
+      && (sessionCompletionRatio(session) === null || sessionCompletionRatio(session) >= 1)
   );
 }
 
@@ -1073,7 +1052,7 @@ async function renderSentenceFilterOptions() {
     return;
   }
   const sourceHint = document.querySelector("#pane-sentence > .section-head .section-hint");
-  if (sourceHint) sourceHint.textContent = info.source_counts?.news ? "散文与新闻 · 整句跟读" : "整句跟读 · 三档可选";
+  if (sourceHint) sourceHint.textContent = info.source_counts?.news ? "散文与新闻 · 整句跟读" : "散文选句 · 整句跟读";
   els.sentenceFilterOptions.textContent = "";
   SENTENCE_FILTERS.forEach((f) => {
     const selected = state.sentenceFilter === f.id;
@@ -1099,8 +1078,8 @@ async function renderSentenceFilterOptions() {
 }
 
 const SENTENCE_DURATIONS = [
-  { count: 10, hint: "10 句 · 约 4 分钟" },
-  { count: 15, hint: "15 句 · 约 6 分钟" },
+  { count: 5 },
+  { count: 10 },
 ];
 
 function renderSentenceDurations() {
@@ -1132,7 +1111,7 @@ function updateSentenceStart() {
 
 function renderDurations() {
   els.durationOptions.textContent = "";
-  (state.home.durations || [5, 10]).forEach((minutes) => {
+  (state.home.durations || [3, 5]).forEach((minutes) => {
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = "duration-btn";
@@ -1436,7 +1415,7 @@ function playSentence(index) {
   if (!session || !session.items || index >= session.items.length) return;
   state.sentenceIndex = index;
   const item = session.items[index];
-  // 两遍对比读：第 1 遍拼音开，第 2 遍拼音关（前后鼻颜色两遍都保留）
+  // 两遍跟读：第 1 遍拼音开，第 2 遍拼音关，正文均为统一颜色。
   state.sentencePass = 1;
   state.sentenceReadValid = false;
   state.sentencePinyin = true;
@@ -1447,7 +1426,7 @@ function playSentence(index) {
   setSentenceStatus("先看一下句子，再听示范");
   els.sentencePlayer.src = window.demoVoice.url(item.clip_url);
   els.sentencePlayer.preservesPitch = true;
-  els.sentencePlayer.playbackRate = sentenceSpeed;
+  els.sentencePlayer.playbackRate = 1;
   clearTimeout(state.sentenceFollowTimeout);
   state.sentenceFollowTimeout=setTimeout(()=>{
     if(state.sentenceMode!=='previewing'||currentSentenceItem()!==item)return;
@@ -1467,9 +1446,9 @@ function playSentenceAudio() {
 function enterSentenceFollow() {
   const item = currentSentenceItem();
   if (!item) return;
-  // Independent learner time: generous window at the selected demo speed.
+  // Give slower readers time; fast readers can finish the turn explicitly.
   // "读完了" ends early; never exceed the recording API's 59s local cap.
-  const followMs = Math.min(59000, Math.max(7000, Number(item.clip_duration || 3) / sentenceSpeed * 1700 + 2000));
+  const followMs = Math.min(59000, Math.max(7000, Number(item.clip_duration || 3) * 1700 + 2000));
   setSentenceMode("following");
   state.sentencePinyin = state.sentencePass === 1;
   applySentencePinyin();
@@ -1552,8 +1531,9 @@ function toggleSentencePause() {
   setSentenceMode("paused");
   setSentenceStatus("已暂停");
   els.sentencePauseIcon.innerHTML = uiIcon("play");
-  els.sentencePauseLabel.textContent = "继续";
-  els.sentencePauseBtn.setAttribute("aria-label", "继续");
+  const label = state.sentenceResumeFrom === "following" ? "重新跟读" : "继续";
+  els.sentencePauseLabel.textContent = label;
+  els.sentencePauseBtn.setAttribute("aria-label", label);
 }
 
 function resumeSentence() {
@@ -2616,8 +2596,9 @@ function togglePause() {
   setMode("paused");
   setStatus("已暂停");
   els.pauseIcon.innerHTML = uiIcon("play");
-  els.pauseLabel.textContent = "继续";
-  els.pauseBtn.setAttribute("aria-label", "继续");
+  const label = state.resumeFrom === "waiting_follow" ? "重新跟读" : "继续";
+  els.pauseLabel.textContent = label;
+  els.pauseBtn.setAttribute("aria-label", label);
 }
 
 function resume() {
@@ -2753,7 +2734,7 @@ function applyReward(reward, meta) {
     plannedMinutes: type === "word" ? state.duration : null,
     actualMinutes: Math.round(minutes * 10) / 10,
     dayKey: todayKey(),
-    ratio: type === "word" ? Math.round(meta.ratio * 100) / 100 : null,
+    ratio: type === "word" ? meta.ratio : null,
     beads,
     exitEarly: meta.exitEarly,
     streakDays: meta.streakDays,
@@ -3552,14 +3533,14 @@ function startHold() {
     const dt = Math.min(0.1, (now - placement.last) / 1000);
     placement.last = now;
     const t = (now - placement.holdStart) / 1000;
-    // 起步 8 颗/秒、2.5 秒升到 ~52 颗/秒（小堆保持颗粒感）；
+    // 基础曲线起步 8 颗/秒、2.5 秒升到 ~52；试用版整体乘 2。
     // 待拼越多自动越快（大堆可到 ~240 颗/秒），快拼完时自动减速收尾。
     const remaining = Number(placement.record.pendingBeads || 0);
     const rate =
       8 +
       44 * Math.min(1, t / 2.5) +
       Math.min(220, Math.max(0, (remaining - 200) / 12));
-    placement.acc += dt * rate;
+    placement.acc += dt * rate * 2;
     const n = Math.floor(placement.acc);
     if (n > 0) {
       placement.acc -= n;
@@ -4151,7 +4132,7 @@ async function init() {
     state.achievement = achievement;
     state.artworks = achievement.artworks || [];
     state.calibration = calibration;
-    state.duration = home.default_duration_minutes || 10;
+    state.duration = home.default_duration_minutes || 3;
     const firstEntry = home.entries?.[0];
     if (!state.entryId && firstEntry) {
       state.entryId = firstEntry.id;
@@ -4171,11 +4152,13 @@ async function init() {
     updateStartBtn();
     pollReady();
     fetchJson("/api/assessment/status").then(status => {
-      if (!status.available) return;
+      if (!status.recording_required) return;
       [els.startBtn, els.sentenceStartBtn].forEach(btn => {
         if (btn.parentElement.querySelector(".assessment-notice")) return;
         const notice = document.createElement("p"); notice.className = "assessment-notice";
-        notice.textContent = "跟读时录音评测 · 录音发送至腾讯云";btn.after(notice);
+        notice.textContent = status.cloud_enabled
+          ? "跟读时录音评测 · 录音发送至腾讯云"
+          : "麦克风仅检查是否发声 · 录音不上传";btn.after(notice);
       });
     }).catch(() => {});
     await migrateOldWrongBook();
@@ -4202,11 +4185,13 @@ uiInit(() => {
     kind: "word", mode: state.mode, audio: els.player,
     errorMessage: state.session ? "示范音暂时无法播放，请点重播再试" : "练习暂时没准备好，请点重播再试",
     deadline: state.followDeadline, total: state.uiFollowTotalMs,
+    resumeFrom: state.resumeFrom,
   };
   if (!els.viewSentence.classList.contains("hidden")) return {
     kind: "sentence", mode: state.sentenceMode, audio: els.sentencePlayer,
     errorMessage: state.sentenceSession ? "示范音暂时无法播放，请点重播再试" : "练习暂时没准备好，请点重播再试",
     deadline: state.sentenceFollowDeadline, total: state.uiSentenceFollowTotalMs, pass: state.sentencePass,
+    resumeFrom: state.sentenceResumeFrom,
   };
   return null;
 });

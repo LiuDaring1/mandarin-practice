@@ -6,7 +6,7 @@
   <title>前后鼻音专项训练</title>
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="/assets/styles.css">
-  <link rel="stylesheet" href="/assets/ui-theme.css?v=2026-09-16-sound-default">
+  <link rel="stylesheet" href="/assets/ui-theme.css?v=2026-10-23-short-practice">
   <link rel="stylesheet" href="/assets/demo-voice.css?v=2026-10-16">
   <meta name="theme-color" content="#fff9ef">
 </head>
@@ -58,7 +58,7 @@
         <section class="duration-block">
           <div class="section-head">
             <span class="section-label">练多久</span>
-            <span id="reward-hint" class="section-hint">10 分钟 · +1200 拼点</span>
+            <span id="reward-hint" class="section-hint">3 分钟 · +360 拼点</span>
           </div>
           <div class="duration-options" id="duration-options"></div>
         </section>
@@ -80,7 +80,7 @@
         <section class="duration-block">
           <div class="section-head">
             <span class="section-label">练多久</span>
-            <span id="sentence-duration-hint" class="section-hint">10 句 · 约 4 分钟</span>
+            <span id="sentence-duration-hint" class="section-hint">5 句 · 两遍跟读</span>
           </div>
           <div class="duration-options" id="sentence-duration-options"></div>
         </section>
@@ -89,7 +89,6 @@
           <span id="sentence-start-label">开始 · 句子练习</span>
           <span class="btn-arrow" aria-hidden="true" data-icon="arrow"></span>
         </button>
-        <div class="reading-speed" data-reading-speed-picker role="group" aria-label="句子示范语速"></div>
         <button id="reading-review-btn" class="ghost-btn reading-review-entry" type="button" hidden>朗读回顾</button>
       </section>
 
@@ -249,12 +248,9 @@
         <p id="sentence-source" class="sentence-source"></p>
         <div id="sentence-text" class="sentence-text"></div>
         <div id="sentence-status" class="status" aria-live="polite"></div>
-        <div class="sentence-legend" id="sentence-legend" aria-label="拼音和鼻音标记">
+        <div class="sentence-legend" id="sentence-legend" aria-label="拼音提示">
           <button id="sentence-pinyin-toggle" class="hl-toggle" type="button">拼音：开</button>
-          <span class="legend-dot teal"></span>前鼻音 n
-          <span class="legend-dot orange"></span>后鼻音 ng
         </div>
-        <div class="reading-speed" data-reading-speed-picker role="group" aria-label="当前示范语速"></div>
       </section>
 
       <footer class="controls">
@@ -404,11 +400,11 @@
         '</div></div>';
     })();
   </script>
-  <script src="/assets/ui.js"></script>
+  <script src="/assets/ui.js?v=2026-10-23-short-practice"></script>
   <script src="/assets/sfx.js?v=2026-09-16-sound-default"></script>
   <script src="/assets/demo-voice.js?v=2026-10-16"></script>
   <script src="/assets/reading-pcm.js?v=2026-10-22"></script>
-  <script src="/assets/assessment.js?v=2026-10-23-useful-review"></script>
-  <script src="/assets/app.js?v=2026-10-23-nasal-mapping"></script>
+  <script src="/assets/assessment.js?v=2026-10-23-local-only"></script>
+  <script src="/assets/app.js?v=2026-10-23-short-practice"></script>
 </body>
 </html>

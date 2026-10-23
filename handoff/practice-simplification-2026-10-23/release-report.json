@@ -1,0 +1,32 @@
+{
+  "health": {
+    "status": "ok",
+    "ready": true,
+    "profile_count": 34,
+    "warm_error": null
+  },
+  "assessment": {
+    "available": false,
+    "configured": false,
+    "cloud_enabled": false,
+    "recording_required": true,
+    "max_audio_sec": 59
+  },
+  "word_durations": [
+    3,
+    5
+  ],
+  "default_duration": 3,
+  "sentence_sources": {
+    "literature": 582,
+    "news": 0
+  },
+  "protected_existing_files": 197,
+  "changed_existing_files": 0,
+  "new_progress_files": 0,
+  "tests": {
+    "passed": 406,
+    "skipped": 1
+  },
+  "paid_api_calls_this_run": 0
+}

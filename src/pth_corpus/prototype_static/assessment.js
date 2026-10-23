@@ -2,7 +2,7 @@
 // Record only the learner's turn. WAV encoding is explicit; no WebM is sent as WAV.
 window.readingAssessment = (() => {
   let stream, context, node, source, sink, enabled = false, chunks = [], frames = 0;
-  let required = false, lastError = null;
+  let required = false, cloudEnabled = false, lastError = null;
   let serial = 0, active = false, flush, dismiss, captureTimer, locallyVoiced = false;
   let run = null;
   const panels = {};
@@ -35,12 +35,13 @@ window.readingAssessment = (() => {
     // Safari and embedded browsers otherwise keep a later-created context suspended.
     let candidate;
     try { candidate = new AudioContext(); candidate.resume().catch(()=>{}); } catch { /* unsupported browser */ }
-    await close(); required = false; lastError = null;
+    await close(); required = true; cloudEnabled = false; lastError = null;
     run = {id: crypto.randomUUID(), uploads: new Set(), errors: 0};
     try {
       const response = await fetch('/api/assessment/status');
       const status = await response.json();
       required = Boolean(status.recording_required ?? status.configured);
+      cloudEnabled = Boolean(status.cloud_enabled);
       if (!required || !navigator.mediaDevices?.getUserMedia || !candidate) {
         candidate?.close().catch(()=>{});return false;
       }
@@ -143,7 +144,7 @@ window.readingAssessment = (() => {
     if(token !== serial) return {advance:false,complete:false};
     el.replaceChildren();
     if (audio && locallyVoiced) {
-      upload(current, kind, id, audio, passNo);
+      if (cloudEnabled) upload(current, kind, id, audio, passNo);
       return {advance:true,complete:true};
     }
     const summary=document.createElement('div');
@@ -177,6 +178,9 @@ window.readingAssessment = (() => {
   async function refreshReviewEntry() {
     const button=document.getElementById('reading-review-btn');
     try {
+      const status=await (await fetch("/api/assessment/status")).json();
+      cloudEnabled=Boolean(status.cloud_enabled);
+      if (!cloudEnabled) { button.hidden=true; return; }
       const response=await fetch('/api/reading/review');if(!response.ok)throw new Error('review');
       const result=await response.json();
       button.hidden=!(result.weak.length || result.retry_items?.length);
@@ -184,7 +188,7 @@ window.readingAssessment = (() => {
   }
   function mountSummary(parent, startReview) {
     const current=run;
-    if (!current || !required) return;
+    if (!current || !required || !cloudEnabled) return;
     const box=document.createElement('section');box.className='reading-summary';box.hidden=true;
     box.innerHTML='<h2>本次朗读回顾</h2><div class="reading-details"></div>';
     parent.querySelector('.complete-actions').before(box);

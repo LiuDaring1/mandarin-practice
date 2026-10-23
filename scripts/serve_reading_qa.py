@@ -10,7 +10,7 @@ from pth_corpus.sentence_reading import score_sentence
 
 root=Path(__file__).resolve().parents[1]
 scratch=Path(mkdtemp(prefix='pth-reading-qa-'))
-app=create_app(root/'data',prototype_dir=scratch)
+app=create_app(root/'data',prototype_dir=scratch,cloud_assessment=True)
 service=app.state.assessment
 # Explicit synthetic scorer exercises the future review pipeline, never production.
 app.state.reading_coach.nasal_review_enabled=True

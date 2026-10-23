@@ -130,7 +130,7 @@ def _make_config() -> GeneratorConfig:
         extra_follow_sec=0.8,
         min_follow_sec=1.8,
         transition_sec=0.3,
-        allowed_duration_minutes=(5, 10),
+        allowed_duration_minutes=(3, 5, 10),
         allowed_practice_repetitions=(1, 2),
         benchmark_seeds_5m=(1,),
         benchmark_seeds_10m=(2,),
@@ -279,8 +279,8 @@ def test_focus_home_exposes_three_nasal_entries(tmp_path):
         assert entries["front_nasal"]["profile_id"] == "front_nasal_all"
         assert entries["back_nasal"]["profile_id"] == "back_nasal_all"
         assert entries["contrast"]["profile_id"] == "front_back_nasal_contrast"
-        assert payload["durations"] == [5, 10]
-        assert payload["default_duration_minutes"] == 10
+        assert payload["durations"] == [3, 5]
+        assert payload["default_duration_minutes"] == 3
         # Contrast entry only offers the 5 natural pairs: the unpaired
         # finals (uen/üan/ün, ueng/iong/ong) are trained solo via the
         # front/back entries, never as forced pairs.
@@ -335,8 +335,8 @@ def test_achievement_endpoint_and_settle(tmp_path):
         payload = achievement.json()
         cfg = payload["achievement_config"]
         assert cfg["tiers"] == {
-            "word": {"5": 600.0, "10": 1200.0},
-            "sentence": {"10": 600.0, "15": 900.0},
+            "word": {"3": 360.0, "5": 600.0, "10": 1200.0},
+            "sentence": {"5": 300.0, "10": 600.0, "15": 900.0},
             "discrim": {"50": 300.0, "100": 600.0, "150": 900.0},
         }
         assert cfg["trio_bonus"] == 100
@@ -416,8 +416,8 @@ def test_profiles_menu_filters_unknown_profiles(tmp_path):
         payload = menu.json()
         categories = {c["id"]: c for c in payload["categories"]}
         assert categories["initial"]["items"][0]["profile_id"] == "bilabial_focus"
-        assert payload["durations"] == [5, 10]
-        assert payload["default_duration_minutes"] == 10
+        assert payload["durations"] == [3, 5, 10]
+        assert payload["default_duration_minutes"] == 3
         # Unknown profiles are filtered out of the menu.
         assert "general" not in categories
 

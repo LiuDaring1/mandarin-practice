@@ -1,5 +1,7 @@
 # 普通话训练系统 · 现行状态总览（STATUS）
 
+> **2026-10-23 试用精简版（当前）**：用户确认先收回新闻和无效评测。正式句库仅用原 582 句散文，新闻文件保留待试听；撤掉句子变速，以 1× 播放，去掉“前后都有”入口和彩色字块。字词 3／5 分钟、默认 3；句子 5／10 句、默认 5，两遍跟读保留。拼点暂按原比例为 360／600、300／600，历史档位兼容。长按拼入速度 ×2。录音中暂停后明确“重新跟读”；腾讯自动调用关闭、回顾隐藏，仅本地发声检查。修复零完成朗读误计三练／有效训练日。406 项通过、1 预期跳过，浏览器隔离验收见 [本轮记录](MEMORY-2026-10-23-practice-simplification.md)。最新分支 `codex/practice-simplification`，基于 `codex/nasal-mapping-validation`，以下同日较早记录为历史。
+
 > **2026-10-23 Astra 窗口交接**：用户决定先暂停优化、整理现状，新窗口将补充试用问题。请先读 [接手总说明](HANDOFF-2026-10-23-astra.md)。当前最新分支 `codex/nasal-mapping-validation`，#1→#4 为尚未合并的叠加成果；正式鼻音诊断仍关闭，参考音实验不是学习者诊断验收。本次仅更新交接文档；8769 已重新启动，健康接口实测 `ready=true`。
 
 > **2026-10-23 映射／判别验证更新**：修复 i+an／u+an／ü+an 等拆分返回的韵母映射，三个真实接口样例与回归通过。回顾页撤下工程状态，没有具体待复练内容时不显示空卡或入口。腾讯普通／拼音模式共 48 个对照仍不适合直接阈值判错；本地 Qwen ASR 36 份参考音中 35 份鼻音类别与标注一致，仅作候选验证，正式自动诊断仍关闭。403 项测试通过／1 预期跳过，原生浏览器 8 项检查，171 个原有进度文件未改；正式 8769 已重启本轮代码。详见 [本轮交接](MEMORY-2026-10-23-nasal-mapping-validation.md)。
@@ -29,13 +31,13 @@
 | 模块 | 一句话现状 | 模块文档 |
 |---|---|---|
 | 语料管线 | 全量 16,156 条已收口，异常 919 条已排除，机器 QA 门可用 | `modules/corpus-pipeline.md` |
-| 训练生成器 | v2 平衡随机生成器 + 音筛选 include_finals；字词前台档位 5/10 分钟 | `modules/training-generator.md` |
-| 句子练习 | 原 582 句散文 + 新增 450 句新闻，双声、约 50:50 抽题；10/15 句。97.1% 人耳验收仅指历史散文库 | `modules/sentence-practice.md` |
+| 训练生成器 | v2 平衡随机生成器 + 音筛选 include_finals；字词前台档位 3/5 分钟 | `modules/training-generator.md` |
+| 句子练习 | 仅 582 句散文；男女声原速；前鼻／后鼻两入口，5/10 句、两遍；新闻退出正式抽题 | `modules/sentence-practice.md` |
 | 听辨练习 | v3 持续覆盖／错题复习；整词答错后播对应男／女声一次，结束后前进 | `modules/discrimination.md` |
 | 奖励与作品 | **拼点→待拼→用户在详情「按住拼入」（placedBeads/pendingBeads 模型）；fill_order 区域成块浮现；详情页只留作品/进度/待拼/拼入；猫猫系列 6 件 100×100（4343/4232/3739/3871/4100/4119，合计 24404）+ 新手麦克风；档位制 600/600/600 + 三练/复习各 100** | `modules/rewards-achievement.md` |
 | 应用外壳/UI | 奶油底 + 青／橙／紫小精灵；全页换新；真实示范音／跟读计时；新版六音分组单画面、正常／半速均有声；弹层焦点管理；去掉库存数 | `modules/app-shell-ui.md` |
 | 音效设计 | 用户选回 A，日常保留、四种奖励优化，已接入；11 个插槽／16 WAV，默认开启、设置入口待系统设置页统一提供、教学优先 | `modules/sound-design.md` |
-| 朗读评测 | 连续录音练习、后台任务与练后回顾；鼻音对照未过，自动薄弱项关闭；低分不影响奖励 | `modules/assessment.md` |
+| 朗读评测 | 正式仅本地发声检查；腾讯自动调用关闭、回顾隐藏，诊断与历史代码保留 | `modules/assessment.md` |
 
 ## 运行与测试
 
@@ -46,7 +48,7 @@ PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src ../.venv/bin/python -m pth_corpus proto
 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src ../.venv/bin/python -m pytest
 ```
 
-现有测试 **403 通过、1 预期跳过**（旧 pilot 夹具缺失）；此前记载的 6 个环境失败已不再出现。
+现有测试 **406 通过、1 预期跳过**（旧 pilot 夹具缺失）；此前记载的 6 个环境失败已不再出现。
 浏览器验收脚本：`scripts/qa_ui_refresh.cjs`；先启动 `scripts/serve_ui_qa.py`（8771，临时进度目录）。
 音效接入浏览器验收：`scripts/qa_sound_integration.cjs`（12 项／84 张截图）与 `scripts/qa_sound_contract.cjs`（09-16 已适配隐藏入口与默认开启，最新报告在 `sound-settings-2026-09-16/`），只连接临时进度的 8773；运行方法见接入交接。
 UI 首轮截图及检查结果见 `handoff/ui-refresh-2026-09-12/`；标准音接入检查见 `handoff/calibration-refresh-2026-09-12/`，新增脚本 `scripts/qa_calibration_refresh.cjs`、`scripts/qa_calibration_failures.cjs`。

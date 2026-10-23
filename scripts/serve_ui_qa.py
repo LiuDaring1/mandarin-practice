@@ -9,7 +9,7 @@ from pth_corpus.prototype_app import create_app
 
 root = Path(__file__).resolve().parents[1]
 scratch = Path(mkdtemp(prefix="pth-ui-qa-"))
-app = create_app(root / "data", prototype_dir=scratch)
+app = create_app(root / "data", prototype_dir=scratch, cloud_assessment="--assessment" in sys.argv)
 # Normal UI walks never call a paid service or capture a real microphone.
 app.state.assessment.disabled = "--assessment" not in sys.argv
 

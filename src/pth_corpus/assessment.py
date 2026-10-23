@@ -168,6 +168,7 @@ class AssessmentService:
     def __init__(self, data_root: Path):
         self.data_root = data_root
         self.disabled = False
+        self.cloud_enabled = True
         self.lock = asyncio.Lock()
         self.cache: dict[str, tuple[str, dict]] = {}
 
@@ -188,11 +189,15 @@ class AssessmentService:
             return 10**9  # damaged accounting must not silently reset the allowance
 
     def status(self) -> dict:
+        if not self.cloud_enabled:
+            return {"available": False, "configured": False, "cloud_enabled": False,
+                    "recording_required": not self.disabled, "max_audio_sec": 59}
         settings = self.settings()
         configured = not self.disabled and all(settings.get(k) for k in ("appid", "secret_id", "secret_key"))
         required = not self.disabled and bool(configured or (self.data_root / "derived/assessment/config.json").exists())
         remaining = max(0, settings.get("limit_units", 0) - self.units_used())
         return {"available": bool(configured and remaining), "configured": bool(configured),
+                "cloud_enabled": not self.disabled,
                 "recording_required": required, "remaining_test_units": remaining, "max_audio_sec": 59}
 
     def reserve(self, units: int, limit: int) -> None:
