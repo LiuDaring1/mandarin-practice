@@ -6,7 +6,7 @@ import pytest
 
 sys.path.insert(0,str(Path(__file__).parents[1]/'scripts'))
 from nasal_feature_probe import (assert_speaker_partition,fit_ridge,pool_regions,
-                                 predict_ridge,select_on_development,acoustic_window)
+                                 predict_ridge,select_on_development,acoustic_window,local_context_window)
 from prepare_nasal_feature_data import speaker_split
 from train_nasal_feature_probe import observe,select_margin,select_matching_margin,summarize
 
@@ -40,6 +40,20 @@ def test_classifier_standardization_does_not_use_evaluation_batch():
     single=predict_ridge(model,x[:1])[0]
     mixed=predict_ridge(model,np.vstack([x[:1],[10000.,-10000.]]))[0]
     np.testing.assert_allclose(single,mixed)
+
+
+def test_local_context_keeps_target_and_original_frame_grid_at_waveform_edges():
+    for bounds in [[0.,.2],[.296426,.520509],[39.9,40.4],[44.8,45.2],[99.8,100.]]:
+        count=16000*100
+        parent_start,parent_end=acoustic_window({'syllable':bounds},count)
+        start,end=local_context_window({'syllable':bounds},count,150)
+        assert parent_start<=start<end<=parent_end
+        assert start/16000<=bounds[0]<bounds[1]<=end/16000
+        assert (start-parent_start)%320==0
+        assert start/16000<=max(parent_start/16000,bounds[0]-.150)
+        assert end/16000>=min(parent_end/16000,bounds[1]+.150)
+    with pytest.raises(ValueError,match='context margin'):
+        local_context_window({'syllable':[.2,.4]},16000,-1)
 
 
 def test_test_and_transfer_rows_cannot_tune_selection():
