@@ -30,7 +30,16 @@ def edit_distance(left, right):
     return previous[-1]
 
 
-def find_word(syllables, row):
+def spoken_list_start(text):
+    """Exclude an explicit introductory instruction from lexical matching."""
+    for marker in ("朗读单音节", "朗讀單音節", "朗读多音节", "朗讀多音節"):
+        position = text.find(marker)
+        if 0 <= position <= 3:
+            return position + len(marker)
+    return 0
+
+
+def find_word(syllables, row, start_at=0):
     """Find a unique phonetic match in a free transcript, regardless of page order.
 
     Used only for locating this labelled research audio, never pronunciation
@@ -45,7 +54,7 @@ def find_word(syllables, row):
             actual[positions[0]] = error["actual_plain"]
     variants.append(actual)
     candidates = []
-    for start in range(len(syllables) - len(expected) + 1):
+    for start in range(start_at, len(syllables) - len(expected) + 1):
         sample = syllables[start:start + len(expected)]
         cost = min(sum(edit_distance(a, b) for a, b in zip(sample, variant)) for variant in variants)
         candidates.append((cost, start))
@@ -110,7 +119,8 @@ def main(args):
         raw = subprocess.check_output(["ffmpeg", "-v", "error", "-nostdin", "-i", str(source), "-ac", "1", "-ar", "16000", "-f", "s16le", "pipe:1"])
         samples = np.frombuffer(raw, dtype="<i2")
         transcript_syllables = lazy_pinyin(text, style=Style.NORMAL)
-        matches = {r["word_index"]: find_word(transcript_syllables, r) for r in group}
+        search_start = spoken_list_start(text)
+        matches = {r["word_index"]: find_word(transcript_syllables, r, search_start) for r in group}
         claims = Counter((m["start"], m["length"]) for m in matches.values() if m is not None)
         for row in group:
             count = len(row["word"])
@@ -136,6 +146,7 @@ def main(args):
             output.append({**row, "pinyin": syllables, "audio": str(clip), "source_audio": source.name,
                            "crop_start": start, "crop_end": end, "alignment": times,
                            "alignment_key": key, "alignment_reviewed_by_human": False,
+                           "transcript_search_start": search_start,
                            "transcript_match": match, "matched_transcript": "".join(t["text"] for t in times)})
         print(source.name, "aligned characters", len(timestamps), "retained words", len(output), flush=True)
     report = folder / "crops.json"

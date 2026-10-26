@@ -1,0 +1,24 @@
+{
+  "checked_at_utc": "2026-10-26T17:03:34.444246+00:00",
+  "tests": {
+    "passed": 75,
+    "scope": "10 related offline test modules; no new browser/microphone or full-suite run"
+  },
+  "progress": {
+    "baseline_files": 198,
+    "current_files": 198,
+    "changed": [],
+    "new": []
+  },
+  "health": {
+    "status": "ok",
+    "ready": true,
+    "profile_count": 34,
+    "warm_error": null
+  },
+  "cloud_enabled": false,
+  "recording_required": true,
+  "changed_python_ast": "passed",
+  "credential_scan": "no credential values in changed files",
+  "production_source_changed": false
+}

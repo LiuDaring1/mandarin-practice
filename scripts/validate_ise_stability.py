@@ -10,7 +10,7 @@ import json
 from pathlib import Path
 import subprocess
 import wave
-from ise_probe import IseProbe, public_result
+from ise_probe import IseProbe, public_result, final_observation
 from suntone_probe import private_json
 from pth_corpus.prototype_app import PrototypeRuntime
 from validate_nasal_provider import prepare
@@ -32,12 +32,7 @@ def target_observation(result, required):
     if any(n.get('is_rejected')=='true' or n.get('except_info','0')!='0' for n in nodes):
         return {'state':'rejected','finals':[]}
     finals=[n for n in nodes if n.get('is_yun')=='1' and n.get('syll_content',n.get('word_content'))==required]
-    if len(finals)!=1:return {'state':'ambiguous_target','finals':finals}
-    n=finals[0]
-    if n.get('dp_message') not in ('0','128') or (n.get('dp_message')!='128' and n.get('perr_msg') not in ('0','1','2','3')):
-        return {'state':'unusable_alignment','finals':finals}
-    flagged=n['perr_msg'] in ('1','3') or n['dp_message']=='128'
-    return {'state':'flagged' if flagged else 'not_flagged','finals':finals}
+    return final_observation(finals)
 
 
 def prepare_cells(folder):
