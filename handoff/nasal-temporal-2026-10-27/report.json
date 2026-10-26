@@ -1,0 +1,2184 @@
+{
+  "scope": "Offline temporal representation and ZIPA evidence probes; not production feedback.",
+  "evaluation_previously_explored": true,
+  "experiments": {
+    "temporal-training-v9": {
+      "selected": {
+        "view": "trajectory2",
+        "regularization": 0.1,
+        "review_margin": 0.5317703869146952,
+        "matching_margin": 0.048818565287228506,
+        "development": {
+          "targets": 429,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              75,
+              11,
+              6
+            ],
+            [
+              5,
+              55,
+              1
+            ],
+            [
+              8,
+              3,
+              265
+            ]
+          ],
+          "balanced_label_accuracy": 0.8923338877009582,
+          "known_nasal_errors": 22,
+          "correct_error_directions": 12,
+          "missed_error_directions": 10,
+          "raw_expected_label_on_error": 4,
+          "correct_nasal_targets": 131,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 0,
+          "correct_nasal_matches": 109,
+          "uncertain_nasal_targets": 32,
+          "selected_targets": 432,
+          "scored_targets": 429,
+          "unavailable_targets": 3,
+          "selected_errors": 25,
+          "selected_normal": 407,
+          "unavailable_errors": 3,
+          "unavailable_normal": 0,
+          "missed_selected_errors": 13,
+          "unknown_selected_targets": 35
+        },
+        "directions_by_expected": {
+          "front": 3,
+          "back": 9
+        },
+        "api_positive_veto": true
+      },
+      "candidates": [
+        {
+          "view": "trajectory2",
+          "regularization": 0.1,
+          "review_margin": 0.5317703869146952,
+          "matching_margin": 0.048818565287228506,
+          "development": {
+            "targets": 429,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                75,
+                11,
+                6
+              ],
+              [
+                5,
+                55,
+                1
+              ],
+              [
+                8,
+                3,
+                265
+              ]
+            ],
+            "balanced_label_accuracy": 0.8923338877009582,
+            "known_nasal_errors": 22,
+            "correct_error_directions": 12,
+            "missed_error_directions": 10,
+            "raw_expected_label_on_error": 4,
+            "correct_nasal_targets": 131,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 109,
+            "uncertain_nasal_targets": 32,
+            "selected_targets": 432,
+            "scored_targets": 429,
+            "unavailable_targets": 3,
+            "selected_errors": 25,
+            "selected_normal": 407,
+            "unavailable_errors": 3,
+            "unavailable_normal": 0,
+            "missed_selected_errors": 13,
+            "unknown_selected_targets": 35
+          },
+          "directions_by_expected": {
+            "front": 3,
+            "back": 9
+          },
+          "api_positive_veto": true
+        },
+        {
+          "view": "trajectory2",
+          "regularization": 0.01,
+          "review_margin": 0.5491460562530576,
+          "matching_margin": 0.035575560265997404,
+          "development": {
+            "targets": 429,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                76,
+                10,
+                6
+              ],
+              [
+                5,
+                54,
+                2
+              ],
+              [
+                10,
+                3,
+                263
+              ]
+            ],
+            "balanced_label_accuracy": 0.8880771362952403,
+            "known_nasal_errors": 22,
+            "correct_error_directions": 11,
+            "missed_error_directions": 11,
+            "raw_expected_label_on_error": 2,
+            "correct_nasal_targets": 131,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 108,
+            "uncertain_nasal_targets": 34,
+            "selected_targets": 432,
+            "scored_targets": 429,
+            "unavailable_targets": 3,
+            "selected_errors": 25,
+            "selected_normal": 407,
+            "unavailable_errors": 3,
+            "unavailable_normal": 0,
+            "missed_selected_errors": 14,
+            "unknown_selected_targets": 37
+          },
+          "directions_by_expected": {
+            "front": 2,
+            "back": 9
+          },
+          "api_positive_veto": true
+        },
+        {
+          "view": "trajectory2",
+          "regularization": 0.001,
+          "review_margin": 0.5604443476934956,
+          "matching_margin": 0.07436913015141179,
+          "development": {
+            "targets": 429,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                76,
+                9,
+                7
+              ],
+              [
+                5,
+                53,
+                3
+              ],
+              [
+                13,
+                3,
+                260
+              ]
+            ],
+            "balanced_label_accuracy": 0.8789894670151263,
+            "known_nasal_errors": 22,
+            "correct_error_directions": 10,
+            "missed_error_directions": 12,
+            "raw_expected_label_on_error": 1,
+            "correct_nasal_targets": 131,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 107,
+            "uncertain_nasal_targets": 36,
+            "selected_targets": 432,
+            "scored_targets": 429,
+            "unavailable_targets": 3,
+            "selected_errors": 25,
+            "selected_normal": 407,
+            "unavailable_errors": 3,
+            "unavailable_normal": 0,
+            "missed_selected_errors": 15,
+            "unknown_selected_targets": 39
+          },
+          "directions_by_expected": {
+            "front": 1,
+            "back": 9
+          },
+          "api_positive_veto": true
+        },
+        {
+          "view": "resampled8",
+          "regularization": 0.01,
+          "review_margin": 0.5122382394949784,
+          "matching_margin": 0.21932447823878395,
+          "development": {
+            "targets": 429,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                79,
+                7,
+                6
+              ],
+              [
+                5,
+                55,
+                1
+              ],
+              [
+                3,
+                2,
+                271
+              ]
+            ],
+            "balanced_label_accuracy": 0.9140730181357409,
+            "known_nasal_errors": 22,
+            "correct_error_directions": 9,
+            "missed_error_directions": 13,
+            "raw_expected_label_on_error": 2,
+            "correct_nasal_targets": 131,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 102,
+            "uncertain_nasal_targets": 42,
+            "selected_targets": 432,
+            "scored_targets": 429,
+            "unavailable_targets": 3,
+            "selected_errors": 25,
+            "selected_normal": 407,
+            "unavailable_errors": 3,
+            "unavailable_normal": 0,
+            "missed_selected_errors": 16,
+            "unknown_selected_targets": 45
+          },
+          "directions_by_expected": {
+            "front": 2,
+            "back": 7
+          },
+          "api_positive_veto": true
+        },
+        {
+          "view": "resampled8",
+          "regularization": 0.001,
+          "review_margin": 0.506849958614428,
+          "matching_margin": 0.21775725166677515,
+          "development": {
+            "targets": 429,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                79,
+                7,
+                6
+              ],
+              [
+                5,
+                55,
+                1
+              ],
+              [
+                3,
+                2,
+                271
+              ]
+            ],
+            "balanced_label_accuracy": 0.9140730181357409,
+            "known_nasal_errors": 22,
+            "correct_error_directions": 9,
+            "missed_error_directions": 13,
+            "raw_expected_label_on_error": 2,
+            "correct_nasal_targets": 131,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 102,
+            "uncertain_nasal_targets": 42,
+            "selected_targets": 432,
+            "scored_targets": 429,
+            "unavailable_targets": 3,
+            "selected_errors": 25,
+            "selected_normal": 407,
+            "unavailable_errors": 3,
+            "unavailable_normal": 0,
+            "missed_selected_errors": 16,
+            "unknown_selected_targets": 45
+          },
+          "directions_by_expected": {
+            "front": 2,
+            "back": 7
+          },
+          "api_positive_veto": true
+        },
+        {
+          "view": "resampled8",
+          "regularization": 0.1,
+          "review_margin": 0.5701118840012458,
+          "matching_margin": 0.2426046495865626,
+          "development": {
+            "targets": 429,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                79,
+                7,
+                6
+              ],
+              [
+                5,
+                55,
+                1
+              ],
+              [
+                3,
+                2,
+                271
+              ]
+            ],
+            "balanced_label_accuracy": 0.9140730181357409,
+            "known_nasal_errors": 22,
+            "correct_error_directions": 6,
+            "missed_error_directions": 16,
+            "raw_expected_label_on_error": 2,
+            "correct_nasal_targets": 131,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 102,
+            "uncertain_nasal_targets": 45,
+            "selected_targets": 432,
+            "scored_targets": 429,
+            "unavailable_targets": 3,
+            "selected_errors": 25,
+            "selected_normal": 407,
+            "unavailable_errors": 3,
+            "unavailable_normal": 0,
+            "missed_selected_errors": 19,
+            "unknown_selected_targets": 48
+          },
+          "directions_by_expected": {
+            "front": 1,
+            "back": 5
+          },
+          "api_positive_veto": true
+        },
+        {
+          "view": "resampled4",
+          "regularization": 0.001,
+          "review_margin": 0.6259579436396734,
+          "matching_margin": 0.43066080313409644,
+          "development": {
+            "targets": 429,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                81,
+                8,
+                3
+              ],
+              [
+                4,
+                56,
+                1
+              ],
+              [
+                4,
+                1,
+                271
+              ]
+            ],
+            "balanced_label_accuracy": 0.926783875821652,
+            "known_nasal_errors": 22,
+            "correct_error_directions": 5,
+            "missed_error_directions": 17,
+            "raw_expected_label_on_error": 3,
+            "correct_nasal_targets": 131,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 93,
+            "uncertain_nasal_targets": 55,
+            "selected_targets": 432,
+            "scored_targets": 429,
+            "unavailable_targets": 3,
+            "selected_errors": 25,
+            "selected_normal": 407,
+            "unavailable_errors": 3,
+            "unavailable_normal": 0,
+            "missed_selected_errors": 20,
+            "unknown_selected_targets": 58
+          },
+          "directions_by_expected": {
+            "front": 1,
+            "back": 4
+          },
+          "api_positive_veto": true
+        },
+        {
+          "view": "resampled4",
+          "regularization": 0.01,
+          "review_margin": 0.6367474952033536,
+          "matching_margin": 0.432035505324104,
+          "development": {
+            "targets": 429,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                82,
+                7,
+                3
+              ],
+              [
+                4,
+                56,
+                1
+              ],
+              [
+                4,
+                2,
+                270
+              ]
+            ],
+            "balanced_label_accuracy": 0.9291993347588501,
+            "known_nasal_errors": 22,
+            "correct_error_directions": 5,
+            "missed_error_directions": 17,
+            "raw_expected_label_on_error": 2,
+            "correct_nasal_targets": 131,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 91,
+            "uncertain_nasal_targets": 57,
+            "selected_targets": 432,
+            "scored_targets": 429,
+            "unavailable_targets": 3,
+            "selected_errors": 25,
+            "selected_normal": 407,
+            "unavailable_errors": 3,
+            "unavailable_normal": 0,
+            "missed_selected_errors": 20,
+            "unknown_selected_targets": 60
+          },
+          "directions_by_expected": {
+            "front": 1,
+            "back": 4
+          },
+          "api_positive_veto": true
+        },
+        {
+          "view": "resampled4",
+          "regularization": 0.1,
+          "review_margin": 0.7137830938815755,
+          "matching_margin": 0.43185609419888926,
+          "development": {
+            "targets": 429,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                81,
+                8,
+                3
+              ],
+              [
+                5,
+                55,
+                1
+              ],
+              [
+                3,
+                2,
+                271
+              ]
+            ],
+            "balanced_label_accuracy": 0.9213193949473352,
+            "known_nasal_errors": 22,
+            "correct_error_directions": 5,
+            "missed_error_directions": 17,
+            "raw_expected_label_on_error": 2,
+            "correct_nasal_targets": 131,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 87,
+            "uncertain_nasal_targets": 61,
+            "selected_targets": 432,
+            "scored_targets": 429,
+            "unavailable_targets": 3,
+            "selected_errors": 25,
+            "selected_normal": 407,
+            "unavailable_errors": 3,
+            "unavailable_normal": 0,
+            "missed_selected_errors": 20,
+            "unknown_selected_targets": 64
+          },
+          "directions_by_expected": {
+            "front": 1,
+            "back": 4
+          },
+          "api_positive_veto": true
+        },
+        {
+          "view": "tail_stats",
+          "regularization": 0.01,
+          "review_margin": 0.8093459889716337,
+          "matching_margin": 0.11043170402116355,
+          "development": {
+            "targets": 429,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                77,
+                9,
+                6
+              ],
+              [
+                5,
+                53,
+                3
+              ],
+              [
+                7,
+                2,
+                267
+              ]
+            ],
+            "balanced_label_accuracy": 0.8910667617011166,
+            "known_nasal_errors": 22,
+            "correct_error_directions": 4,
+            "missed_error_directions": 18,
+            "raw_expected_label_on_error": 1,
+            "correct_nasal_targets": 131,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 103,
+            "uncertain_nasal_targets": 46,
+            "selected_targets": 432,
+            "scored_targets": 429,
+            "unavailable_targets": 3,
+            "selected_errors": 25,
+            "selected_normal": 407,
+            "unavailable_errors": 3,
+            "unavailable_normal": 0,
+            "missed_selected_errors": 21,
+            "unknown_selected_targets": 49
+          },
+          "directions_by_expected": {
+            "front": 1,
+            "back": 3
+          },
+          "api_positive_veto": true
+        },
+        {
+          "view": "tail_stats",
+          "regularization": 0.001,
+          "review_margin": 0.8085557739962559,
+          "matching_margin": 0.09982192786592937,
+          "development": {
+            "targets": 429,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                77,
+                9,
+                6
+              ],
+              [
+                5,
+                53,
+                3
+              ],
+              [
+                8,
+                2,
+                266
+              ]
+            ],
+            "balanced_label_accuracy": 0.8898590322325176,
+            "known_nasal_errors": 22,
+            "correct_error_directions": 4,
+            "missed_error_directions": 18,
+            "raw_expected_label_on_error": 1,
+            "correct_nasal_targets": 131,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 103,
+            "uncertain_nasal_targets": 46,
+            "selected_targets": 432,
+            "scored_targets": 429,
+            "unavailable_targets": 3,
+            "selected_errors": 25,
+            "selected_normal": 407,
+            "unavailable_errors": 3,
+            "unavailable_normal": 0,
+            "missed_selected_errors": 21,
+            "unknown_selected_targets": 49
+          },
+          "directions_by_expected": {
+            "front": 1,
+            "back": 3
+          },
+          "api_positive_veto": true
+        },
+        {
+          "view": "tail_stats",
+          "regularization": 0.1,
+          "review_margin": 0.7713140278626304,
+          "matching_margin": 0.11651189444256983,
+          "development": {
+            "targets": 429,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                78,
+                9,
+                5
+              ],
+              [
+                4,
+                56,
+                1
+              ],
+              [
+                6,
+                3,
+                267
+              ]
+            ],
+            "balanced_label_accuracy": 0.9110833927298646,
+            "known_nasal_errors": 22,
+            "correct_error_directions": 3,
+            "missed_error_directions": 19,
+            "raw_expected_label_on_error": 1,
+            "correct_nasal_targets": 131,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 103,
+            "uncertain_nasal_targets": 47,
+            "selected_targets": 432,
+            "scored_targets": 429,
+            "unavailable_targets": 3,
+            "selected_errors": 25,
+            "selected_normal": 407,
+            "unavailable_errors": 3,
+            "unavailable_normal": 0,
+            "missed_selected_errors": 22,
+            "unknown_selected_targets": 50
+          },
+          "directions_by_expected": {
+            "front": 1,
+            "back": 2
+          },
+          "api_positive_veto": true
+        },
+        {
+          "view": "tail_stats",
+          "regularization": 1.0,
+          "review_margin": 0.6659746064087373,
+          "matching_margin": 0.34173891010063595,
+          "development": {
+            "targets": 429,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                80,
+                7,
+                5
+              ],
+              [
+                5,
+                54,
+                2
+              ],
+              [
+                3,
+                3,
+                270
+              ]
+            ],
+            "balanced_label_accuracy": 0.911023996198622,
+            "known_nasal_errors": 22,
+            "correct_error_directions": 3,
+            "missed_error_directions": 19,
+            "raw_expected_label_on_error": 2,
+            "correct_nasal_targets": 131,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 93,
+            "uncertain_nasal_targets": 57,
+            "selected_targets": 432,
+            "scored_targets": 429,
+            "unavailable_targets": 3,
+            "selected_errors": 25,
+            "selected_normal": 407,
+            "unavailable_errors": 3,
+            "unavailable_normal": 0,
+            "missed_selected_errors": 22,
+            "unknown_selected_targets": 60
+          },
+          "directions_by_expected": {
+            "front": 1,
+            "back": 2
+          },
+          "api_positive_veto": true
+        },
+        {
+          "view": "trajectory2",
+          "regularization": 1.0,
+          "review_margin": null,
+          "matching_margin": 0.22019256037279913,
+          "development": {
+            "targets": 429,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                78,
+                9,
+                5
+              ],
+              [
+                5,
+                55,
+                1
+              ],
+              [
+                7,
+                3,
+                266
+              ]
+            ],
+            "balanced_label_accuracy": 0.9044111823869486,
+            "known_nasal_errors": 22,
+            "correct_error_directions": 0,
+            "missed_error_directions": 22,
+            "raw_expected_label_on_error": 2,
+            "correct_nasal_targets": 131,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 102,
+            "uncertain_nasal_targets": 51,
+            "selected_targets": 432,
+            "scored_targets": 429,
+            "unavailable_targets": 3,
+            "selected_errors": 25,
+            "selected_normal": 407,
+            "unavailable_errors": 3,
+            "unavailable_normal": 0,
+            "missed_selected_errors": 25,
+            "unknown_selected_targets": 54
+          },
+          "directions_by_expected": {},
+          "api_positive_veto": true
+        },
+        {
+          "view": "resampled8",
+          "regularization": 1.0,
+          "review_margin": null,
+          "matching_margin": 0.35155237671091194,
+          "development": {
+            "targets": 429,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                77,
+                10,
+                5
+              ],
+              [
+                5,
+                55,
+                1
+              ],
+              [
+                4,
+                3,
+                269
+              ]
+            ],
+            "balanced_label_accuracy": 0.9044111823869486,
+            "known_nasal_errors": 22,
+            "correct_error_directions": 0,
+            "missed_error_directions": 22,
+            "raw_expected_label_on_error": 2,
+            "correct_nasal_targets": 131,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 93,
+            "uncertain_nasal_targets": 60,
+            "selected_targets": 432,
+            "scored_targets": 429,
+            "unavailable_targets": 3,
+            "selected_errors": 25,
+            "selected_normal": 407,
+            "unavailable_errors": 3,
+            "unavailable_normal": 0,
+            "missed_selected_errors": 25,
+            "unknown_selected_targets": 63
+          },
+          "directions_by_expected": {},
+          "api_positive_veto": true
+        },
+        {
+          "view": "resampled4",
+          "regularization": 1.0,
+          "review_margin": null,
+          "matching_margin": 0.4310201314591325,
+          "development": {
+            "targets": 429,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                77,
+                10,
+                5
+              ],
+              [
+                5,
+                55,
+                1
+              ],
+              [
+                4,
+                2,
+                270
+              ]
+            ],
+            "balanced_label_accuracy": 0.9056189118555477,
+            "known_nasal_errors": 22,
+            "correct_error_directions": 0,
+            "missed_error_directions": 22,
+            "raw_expected_label_on_error": 2,
+            "correct_nasal_targets": 131,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 85,
+            "uncertain_nasal_targets": 68,
+            "selected_targets": 432,
+            "scored_targets": 429,
+            "unavailable_targets": 3,
+            "selected_errors": 25,
+            "selected_normal": 407,
+            "unavailable_errors": 3,
+            "unavailable_normal": 0,
+            "missed_selected_errors": 25,
+            "unknown_selected_targets": 71
+          },
+          "directions_by_expected": {},
+          "api_positive_veto": true
+        }
+      ],
+      "cohorts": {
+        "existing": {
+          "nasal_targets_only": {
+            "targets": 113,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                67,
+                3,
+                3
+              ],
+              [
+                2,
+                37,
+                1
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "balanced_label_accuracy": 0.9214041095890411,
+            "known_nasal_errors": 41,
+            "correct_error_directions": 18,
+            "missed_error_directions": 23,
+            "raw_expected_label_on_error": 4,
+            "correct_nasal_targets": 72,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 2,
+            "correct_nasal_matches": 61,
+            "uncertain_nasal_targets": 32,
+            "selected_targets": 118,
+            "scored_targets": 113,
+            "unavailable_targets": 5,
+            "selected_errors": 43,
+            "selected_normal": 75,
+            "unavailable_errors": 2,
+            "unavailable_normal": 3,
+            "missed_selected_errors": 25,
+            "unknown_selected_targets": 37
+          },
+          "pure_nasal_pairs": {
+            "targets": 0,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "balanced_label_accuracy": null,
+            "known_nasal_errors": 0,
+            "correct_error_directions": 0,
+            "missed_error_directions": 0,
+            "raw_expected_label_on_error": 0,
+            "correct_nasal_targets": 0,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 0,
+            "uncertain_nasal_targets": 0,
+            "selected_targets": 0,
+            "scored_targets": 0,
+            "unavailable_targets": 0,
+            "selected_errors": 0,
+            "selected_normal": 0,
+            "unavailable_errors": 0,
+            "unavailable_normal": 0,
+            "missed_selected_errors": 0,
+            "unknown_selected_targets": 0
+          }
+        },
+        "griffith": {
+          "nasal_targets_only": {
+            "targets": 128,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                63,
+                7,
+                4
+              ],
+              [
+                6,
+                48,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "balanced_label_accuracy": 0.8701201201201201,
+            "known_nasal_errors": 13,
+            "correct_error_directions": 6,
+            "missed_error_directions": 7,
+            "raw_expected_label_on_error": 5,
+            "correct_nasal_targets": 115,
+            "false_nasal_accusations": 1,
+            "false_reassurances": 1,
+            "correct_nasal_matches": 94,
+            "uncertain_nasal_targets": 26,
+            "selected_targets": 140,
+            "scored_targets": 128,
+            "unavailable_targets": 12,
+            "selected_errors": 13,
+            "selected_normal": 127,
+            "unavailable_errors": 0,
+            "unavailable_normal": 12,
+            "missed_selected_errors": 7,
+            "unknown_selected_targets": 38
+          },
+          "pure_nasal_pairs": {
+            "targets": 6,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                1,
+                3,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "balanced_label_accuracy": 0.625,
+            "known_nasal_errors": 6,
+            "correct_error_directions": 4,
+            "missed_error_directions": 2,
+            "raw_expected_label_on_error": 2,
+            "correct_nasal_targets": 0,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 0,
+            "uncertain_nasal_targets": 2,
+            "selected_targets": 6,
+            "scored_targets": 6,
+            "unavailable_targets": 0,
+            "selected_errors": 6,
+            "selected_normal": 0,
+            "unavailable_errors": 0,
+            "unavailable_normal": 0,
+            "missed_selected_errors": 2,
+            "unknown_selected_targets": 2
+          }
+        }
+      },
+      "limits": [
+        "No new blind test; selected only on existing development speakers.",
+        "Interpolated positions are not independent acoustic observations.",
+        "No deployment, live microphone or noise validation."
+      ],
+      "private_evaluation_sha256": "d83b1ce62e172b1ec7421b6b5aca9fb96286ecd8a8977803785ca04cb3c002ae",
+      "baseline_score_max_difference": 0.0,
+      "baseline_feature_replay": {
+        "existing": {
+          "baseline_replayed": 1278,
+          "max_baseline_feature_difference": 0.0
+        },
+        "griffith": {
+          "baseline_replayed": 128,
+          "max_baseline_feature_difference": 0.0
+        }
+      }
+    },
+    "zipa-v1": {
+      "selected": {
+        "padding_ms": 50,
+        "review_margin": null,
+        "matching_margin": 0.8407026122796635,
+        "development": {
+          "targets": 153,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              39,
+              7,
+              46
+            ],
+            [
+              5,
+              30,
+              26
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "balanced_label_accuracy": 0.4578581610833927,
+          "known_nasal_errors": 22,
+          "correct_error_directions": 0,
+          "missed_error_directions": 22,
+          "raw_expected_label_on_error": 4,
+          "correct_nasal_targets": 131,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 0,
+          "correct_nasal_matches": 30,
+          "uncertain_nasal_targets": 123,
+          "selected_targets": 156,
+          "scored_targets": 153,
+          "unavailable_targets": 3,
+          "selected_errors": 25,
+          "selected_normal": 131,
+          "unavailable_errors": 3,
+          "unavailable_normal": 0,
+          "missed_selected_errors": 25,
+          "unknown_selected_targets": 126
+        },
+        "directions_by_expected": {}
+      },
+      "candidates": [
+        {
+          "padding_ms": 50,
+          "review_margin": null,
+          "matching_margin": 0.8407026122796635,
+          "development": {
+            "targets": 153,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                39,
+                7,
+                46
+              ],
+              [
+                5,
+                30,
+                26
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "balanced_label_accuracy": 0.4578581610833927,
+            "known_nasal_errors": 22,
+            "correct_error_directions": 0,
+            "missed_error_directions": 22,
+            "raw_expected_label_on_error": 4,
+            "correct_nasal_targets": 131,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 30,
+            "uncertain_nasal_targets": 123,
+            "selected_targets": 156,
+            "scored_targets": 153,
+            "unavailable_targets": 3,
+            "selected_errors": 25,
+            "selected_normal": 131,
+            "unavailable_errors": 3,
+            "unavailable_normal": 0,
+            "missed_selected_errors": 25,
+            "unknown_selected_targets": 126
+          },
+          "directions_by_expected": {}
+        },
+        {
+          "padding_ms": 0,
+          "review_margin": null,
+          "matching_margin": 0.9577164051410577,
+          "development": {
+            "targets": 152,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                49,
+                13,
+                29
+              ],
+              [
+                7,
+                38,
+                16
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "balanced_label_accuracy": 0.5807061790668349,
+            "known_nasal_errors": 22,
+            "correct_error_directions": 0,
+            "missed_error_directions": 22,
+            "raw_expected_label_on_error": 5,
+            "correct_nasal_targets": 130,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 6,
+            "uncertain_nasal_targets": 146,
+            "selected_targets": 156,
+            "scored_targets": 152,
+            "unavailable_targets": 4,
+            "selected_errors": 25,
+            "selected_normal": 131,
+            "unavailable_errors": 3,
+            "unavailable_normal": 1,
+            "missed_selected_errors": 25,
+            "unknown_selected_targets": 150
+          },
+          "directions_by_expected": {}
+        }
+      ],
+      "cohorts": {
+        "existing": {
+          "nasal_targets_only": {
+            "targets": 113,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                25,
+                9,
+                39
+              ],
+              [
+                6,
+                20,
+                14
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "balanced_label_accuracy": 0.4212328767123288,
+            "known_nasal_errors": 41,
+            "correct_error_directions": 0,
+            "missed_error_directions": 41,
+            "raw_expected_label_on_error": 9,
+            "correct_nasal_targets": 72,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 1,
+            "correct_nasal_matches": 9,
+            "uncertain_nasal_targets": 103,
+            "selected_targets": 118,
+            "scored_targets": 113,
+            "unavailable_targets": 5,
+            "selected_errors": 43,
+            "selected_normal": 75,
+            "unavailable_errors": 2,
+            "unavailable_normal": 3,
+            "missed_selected_errors": 43,
+            "unknown_selected_targets": 108
+          },
+          "pure_nasal_pairs": {
+            "targets": 0,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "balanced_label_accuracy": null,
+            "known_nasal_errors": 0,
+            "correct_error_directions": 0,
+            "missed_error_directions": 0,
+            "raw_expected_label_on_error": 0,
+            "correct_nasal_targets": 0,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 0,
+            "uncertain_nasal_targets": 0,
+            "selected_targets": 0,
+            "scored_targets": 0,
+            "unavailable_targets": 0,
+            "selected_errors": 0,
+            "selected_normal": 0,
+            "unavailable_errors": 0,
+            "unavailable_normal": 0,
+            "missed_selected_errors": 0,
+            "unknown_selected_targets": 0
+          }
+        },
+        "griffith": {
+          "nasal_targets_only": {
+            "targets": 128,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                41,
+                2,
+                31
+              ],
+              [
+                6,
+                21,
+                27
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "balanced_label_accuracy": 0.4714714714714715,
+            "known_nasal_errors": 13,
+            "correct_error_directions": 0,
+            "missed_error_directions": 13,
+            "raw_expected_label_on_error": 3,
+            "correct_nasal_targets": 115,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 36,
+            "uncertain_nasal_targets": 92,
+            "selected_targets": 140,
+            "scored_targets": 128,
+            "unavailable_targets": 12,
+            "selected_errors": 13,
+            "selected_normal": 127,
+            "unavailable_errors": 0,
+            "unavailable_normal": 12,
+            "missed_selected_errors": 13,
+            "unknown_selected_targets": 104
+          },
+          "pure_nasal_pairs": {
+            "targets": 6,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                0,
+                1,
+                1
+              ],
+              [
+                0,
+                1,
+                3
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "balanced_label_accuracy": 0.125,
+            "known_nasal_errors": 6,
+            "correct_error_directions": 0,
+            "missed_error_directions": 6,
+            "raw_expected_label_on_error": 1,
+            "correct_nasal_targets": 0,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 0,
+            "uncertain_nasal_targets": 6,
+            "selected_targets": 6,
+            "scored_targets": 6,
+            "unavailable_targets": 0,
+            "selected_errors": 6,
+            "selected_normal": 0,
+            "unavailable_errors": 0,
+            "unavailable_normal": 0,
+            "missed_selected_errors": 6,
+            "unknown_selected_targets": 6
+          }
+        }
+      },
+      "limits": [
+        "Terminal-phone posterior is only a ranking signal, not a calibrated correctness probability.",
+        "No nasal terminal is unknown, never evidence of a correct production.",
+        "API crop may omit a nasal or include the next phone.",
+        "No production, live microphone, noise or new blind test."
+      ],
+      "private_evaluation_sha256": "33fb6f0a3af3b4a2c6275859c9212609b051f2673264431b22d48b3568e38f6f",
+      "reference_controls": {
+        "count": 36,
+        "agreed": 31,
+        "unknown": 2,
+        "wrong": 3
+      }
+    },
+    "zipa-context-v2": {
+      "selected": {
+        "policy": {
+          "region": "syllable",
+          "extension_ms": 0,
+          "method": "terminal"
+        },
+        "review_margin": null,
+        "matching_margin": 0.8677126649522982,
+        "development": {
+          "targets": 153,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              50,
+              8,
+              34
+            ],
+            [
+              0,
+              47,
+              14
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "balanced_label_accuracy": 0.6569850320741268,
+          "known_nasal_errors": 22,
+          "correct_error_directions": 0,
+          "missed_error_directions": 22,
+          "raw_expected_label_on_error": 3,
+          "correct_nasal_targets": 131,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 0,
+          "correct_nasal_matches": 81,
+          "uncertain_nasal_targets": 72,
+          "selected_targets": 156,
+          "scored_targets": 153,
+          "unavailable_targets": 3,
+          "selected_errors": 25,
+          "selected_normal": 131,
+          "unavailable_errors": 3,
+          "unavailable_normal": 0,
+          "missed_selected_errors": 25,
+          "unknown_selected_targets": 75
+        }
+      },
+      "candidates": [
+        {
+          "policy": {
+            "region": "syllable",
+            "extension_ms": 0,
+            "method": "terminal"
+          },
+          "review_margin": null,
+          "matching_margin": 0.8677126649522982,
+          "development": {
+            "targets": 153,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                50,
+                8,
+                34
+              ],
+              [
+                0,
+                47,
+                14
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "balanced_label_accuracy": 0.6569850320741268,
+            "known_nasal_errors": 22,
+            "correct_error_directions": 0,
+            "missed_error_directions": 22,
+            "raw_expected_label_on_error": 3,
+            "correct_nasal_targets": 131,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 81,
+            "uncertain_nasal_targets": 72,
+            "selected_targets": 156,
+            "scored_targets": 153,
+            "unavailable_targets": 3,
+            "selected_errors": 25,
+            "selected_normal": 131,
+            "unavailable_errors": 3,
+            "unavailable_normal": 0,
+            "missed_selected_errors": 25,
+            "unknown_selected_targets": 75
+          }
+        },
+        {
+          "policy": {
+            "region": "vowel",
+            "extension_ms": 0,
+            "method": "terminal"
+          },
+          "review_margin": null,
+          "matching_margin": 0.9376877768587111,
+          "development": {
+            "targets": 153,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                51,
+                14,
+                27
+              ],
+              [
+                0,
+                47,
+                14
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "balanced_label_accuracy": 0.6624198146828225,
+            "known_nasal_errors": 22,
+            "correct_error_directions": 0,
+            "missed_error_directions": 22,
+            "raw_expected_label_on_error": 9,
+            "correct_nasal_targets": 131,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 76,
+            "uncertain_nasal_targets": 77,
+            "selected_targets": 156,
+            "scored_targets": 153,
+            "unavailable_targets": 3,
+            "selected_errors": 25,
+            "selected_normal": 131,
+            "unavailable_errors": 3,
+            "unavailable_normal": 0,
+            "missed_selected_errors": 25,
+            "unknown_selected_targets": 80
+          }
+        },
+        {
+          "policy": {
+            "region": "vowel",
+            "extension_ms": 80,
+            "method": "terminal"
+          },
+          "review_margin": null,
+          "matching_margin": 0.8602739816772645,
+          "development": {
+            "targets": 153,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                25,
+                6,
+                61
+              ],
+              [
+                0,
+                28,
+                33
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "balanced_label_accuracy": 0.36537776193870275,
+            "known_nasal_errors": 22,
+            "correct_error_directions": 0,
+            "missed_error_directions": 22,
+            "raw_expected_label_on_error": 4,
+            "correct_nasal_targets": 131,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 44,
+            "uncertain_nasal_targets": 109,
+            "selected_targets": 156,
+            "scored_targets": 153,
+            "unavailable_targets": 3,
+            "selected_errors": 25,
+            "selected_normal": 131,
+            "unavailable_errors": 3,
+            "unavailable_normal": 0,
+            "missed_selected_errors": 25,
+            "unknown_selected_targets": 112
+          }
+        },
+        {
+          "policy": {
+            "region": "syllable",
+            "extension_ms": 80,
+            "method": "terminal"
+          },
+          "review_margin": null,
+          "matching_margin": 0.8602739816772645,
+          "development": {
+            "targets": 153,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                24,
+                4,
+                64
+              ],
+              [
+                0,
+                28,
+                33
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "balanced_label_accuracy": 0.35994297933000713,
+            "known_nasal_errors": 22,
+            "correct_error_directions": 0,
+            "missed_error_directions": 22,
+            "raw_expected_label_on_error": 2,
+            "correct_nasal_targets": 131,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 43,
+            "uncertain_nasal_targets": 110,
+            "selected_targets": 156,
+            "scored_targets": 153,
+            "unavailable_targets": 3,
+            "selected_errors": 25,
+            "selected_normal": 131,
+            "unavailable_errors": 3,
+            "unavailable_normal": 0,
+            "missed_selected_errors": 25,
+            "unknown_selected_targets": 113
+          }
+        },
+        {
+          "policy": {
+            "region": "vowel",
+            "extension_ms": 0,
+            "method": "peak"
+          },
+          "review_margin": null,
+          "matching_margin": 0.9929791200118402,
+          "development": {
+            "targets": 153,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                70,
+                17,
+                5
+              ],
+              [
+                2,
+                57,
+                2
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "balanced_label_accuracy": 0.8476478973627941,
+            "known_nasal_errors": 22,
+            "correct_error_directions": 0,
+            "missed_error_directions": 22,
+            "raw_expected_label_on_error": 12,
+            "correct_nasal_targets": 131,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 23,
+            "uncertain_nasal_targets": 130,
+            "selected_targets": 156,
+            "scored_targets": 153,
+            "unavailable_targets": 3,
+            "selected_errors": 25,
+            "selected_normal": 131,
+            "unavailable_errors": 3,
+            "unavailable_normal": 0,
+            "missed_selected_errors": 25,
+            "unknown_selected_targets": 133
+          }
+        },
+        {
+          "policy": {
+            "region": "vowel",
+            "extension_ms": 80,
+            "method": "peak"
+          },
+          "review_margin": null,
+          "matching_margin": 0.9929791200118402,
+          "development": {
+            "targets": 153,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                71,
+                16,
+                5
+              ],
+              [
+                2,
+                58,
+                1
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "balanced_label_accuracy": 0.861279401282965,
+            "known_nasal_errors": 22,
+            "correct_error_directions": 0,
+            "missed_error_directions": 22,
+            "raw_expected_label_on_error": 11,
+            "correct_nasal_targets": 131,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 23,
+            "uncertain_nasal_targets": 130,
+            "selected_targets": 156,
+            "scored_targets": 153,
+            "unavailable_targets": 3,
+            "selected_errors": 25,
+            "selected_normal": 131,
+            "unavailable_errors": 3,
+            "unavailable_normal": 0,
+            "missed_selected_errors": 25,
+            "unknown_selected_targets": 133
+          }
+        },
+        {
+          "policy": {
+            "region": "syllable",
+            "extension_ms": 0,
+            "method": "peak"
+          },
+          "review_margin": null,
+          "matching_margin": 0.9929791200118402,
+          "development": {
+            "targets": 153,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                69,
+                11,
+                12
+              ],
+              [
+                2,
+                57,
+                2
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "balanced_label_accuracy": 0.8422131147540983,
+            "known_nasal_errors": 22,
+            "correct_error_directions": 0,
+            "missed_error_directions": 22,
+            "raw_expected_label_on_error": 6,
+            "correct_nasal_targets": 131,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 23,
+            "uncertain_nasal_targets": 130,
+            "selected_targets": 156,
+            "scored_targets": 153,
+            "unavailable_targets": 3,
+            "selected_errors": 25,
+            "selected_normal": 131,
+            "unavailable_errors": 3,
+            "unavailable_normal": 0,
+            "missed_selected_errors": 25,
+            "unknown_selected_targets": 133
+          }
+        },
+        {
+          "policy": {
+            "region": "syllable",
+            "extension_ms": 80,
+            "method": "peak"
+          },
+          "review_margin": null,
+          "matching_margin": 0.9929791200118402,
+          "development": {
+            "targets": 153,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                70,
+                11,
+                11
+              ],
+              [
+                2,
+                58,
+                1
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "balanced_label_accuracy": 0.8558446186742694,
+            "known_nasal_errors": 22,
+            "correct_error_directions": 0,
+            "missed_error_directions": 22,
+            "raw_expected_label_on_error": 6,
+            "correct_nasal_targets": 131,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 23,
+            "uncertain_nasal_targets": 130,
+            "selected_targets": 156,
+            "scored_targets": 153,
+            "unavailable_targets": 3,
+            "selected_errors": 25,
+            "selected_normal": 131,
+            "unavailable_errors": 3,
+            "unavailable_normal": 0,
+            "missed_selected_errors": 25,
+            "unknown_selected_targets": 133
+          }
+        }
+      ],
+      "cohorts": {
+        "existing": {
+          "nasal_targets_only": {
+            "targets": 113,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                42,
+                14,
+                17
+              ],
+              [
+                0,
+                33,
+                7
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "balanced_label_accuracy": 0.7001712328767122,
+            "known_nasal_errors": 41,
+            "correct_error_directions": 0,
+            "missed_error_directions": 41,
+            "raw_expected_label_on_error": 12,
+            "correct_nasal_targets": 72,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 7,
+            "correct_nasal_matches": 46,
+            "uncertain_nasal_targets": 60,
+            "selected_targets": 118,
+            "scored_targets": 113,
+            "unavailable_targets": 5,
+            "selected_errors": 43,
+            "selected_normal": 75,
+            "unavailable_errors": 2,
+            "unavailable_normal": 3,
+            "missed_selected_errors": 43,
+            "unknown_selected_targets": 65
+          },
+          "pure_nasal_pairs": {
+            "targets": 0,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "balanced_label_accuracy": null,
+            "known_nasal_errors": 0,
+            "correct_error_directions": 0,
+            "missed_error_directions": 0,
+            "raw_expected_label_on_error": 0,
+            "correct_nasal_targets": 0,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 0,
+            "uncertain_nasal_targets": 0,
+            "selected_targets": 0,
+            "scored_targets": 0,
+            "unavailable_targets": 0,
+            "selected_errors": 0,
+            "selected_normal": 0,
+            "unavailable_errors": 0,
+            "unavailable_normal": 0,
+            "missed_selected_errors": 0,
+            "unknown_selected_targets": 0
+          }
+        },
+        "griffith": {
+          "nasal_targets_only": {
+            "targets": 128,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                54,
+                3,
+                17
+              ],
+              [
+                1,
+                33,
+                20
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "balanced_label_accuracy": 0.6704204204204205,
+            "known_nasal_errors": 13,
+            "correct_error_directions": 0,
+            "missed_error_directions": 13,
+            "raw_expected_label_on_error": 2,
+            "correct_nasal_targets": 115,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 59,
+            "uncertain_nasal_targets": 69,
+            "selected_targets": 140,
+            "scored_targets": 128,
+            "unavailable_targets": 12,
+            "selected_errors": 13,
+            "selected_normal": 127,
+            "unavailable_errors": 0,
+            "unavailable_normal": 12,
+            "missed_selected_errors": 13,
+            "unknown_selected_targets": 81
+          },
+          "pure_nasal_pairs": {
+            "targets": 6,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                3,
+                1
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "balanced_label_accuracy": 0.375,
+            "known_nasal_errors": 6,
+            "correct_error_directions": 0,
+            "missed_error_directions": 6,
+            "raw_expected_label_on_error": 0,
+            "correct_nasal_targets": 0,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 0,
+            "uncertain_nasal_targets": 6,
+            "selected_targets": 6,
+            "scored_targets": 6,
+            "unavailable_targets": 0,
+            "selected_errors": 6,
+            "selected_normal": 0,
+            "unavailable_errors": 0,
+            "unavailable_normal": 0,
+            "missed_selected_errors": 6,
+            "unknown_selected_targets": 6
+          }
+        }
+      },
+      "limits": [
+        "Approximate output grid and API target geometry, not human phone boundaries.",
+        "No new blind data, live device or noise validation.",
+        "Peaks are acoustic ranking signals, not pronunciation correctness probabilities."
+      ],
+      "private_evaluation_sha256": "fe675a5ec9b50836b7728fa8302fd71379e9779dbebe535ac77183addbae4665",
+      "inference_windows": 291,
+      "preflight_correction": {
+        "initial_wrong_stride_ms": 40,
+        "verified_stride_ms": 20,
+        "verified_nominal_first_center_ms": 45,
+        "fbank_output_lengths": [
+          [
+            100,
+            46
+          ],
+          [
+            200,
+            96
+          ],
+          [
+            500,
+            246
+          ]
+        ],
+        "failed_run_preserved": true,
+        "no_evaluation_before_correction": true
+      }
+    }
+  },
+  "validation": {
+    "related_tests_passed": 123,
+    "warnings": 1,
+    "new_api_calls": 0,
+    "ise_ledger_count": 395,
+    "unchanged_progress_files": 198,
+    "service_ready": true,
+    "cloud_assessment_enabled": false
+  }
+}
