@@ -1,4 +1,4 @@
-"""Run a manifest of research targets with a cumulative 200-attempt ceiling.
+"""Run a manifest of research targets with an explicit cumulative ceiling.
 
 Continued research is authorized by the user's standing goal. This is a new
 bounded experiment, not a reset of the existing ledger. Each run may add at most
@@ -18,7 +18,10 @@ async def run(args):
     folder = Path('data/derived/ise-validation')
     ledger = folder / 'requests.json'
     before = len(json.loads(ledger.read_text()))
-    probe = IseProbe(folder, allow_paid=args.allow_paid, max_calls=min(200, before + 100))
+    ceiling = getattr(args, 'max_total_calls', 200)
+    if ceiling <= 0:
+        raise ValueError('Cumulative ceiling must be positive')
+    probe = IseProbe(folder, allow_paid=args.allow_paid, max_calls=min(ceiling, before + 100))
     rows = []
     output = Path(args.output)
     consecutive_failures = set()
@@ -49,6 +52,8 @@ if __name__ == '__main__':
     parser.add_argument('--input', required=True)
     parser.add_argument('--output', required=True)
     parser.add_argument('--allow-paid', action='store_true')
+    parser.add_argument('--max-total-calls', type=int, default=200,
+                        help='Explicit cumulative experiment ceiling; each run can still add at most 100 requests.')
     parser.add_argument('--continue-on-unavailable', action='store_true',
                         help='Keep cached failures as unknown and try other recordings; stop after 3 distinct consecutive failures. Never retry a failed request.')
     asyncio.run(run(parser.parse_args()))
