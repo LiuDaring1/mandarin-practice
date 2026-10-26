@@ -1,0 +1,1325 @@
+{
+  "scope": "Frozen acoustic features with speaker-separated ridge classification; research only",
+  "initial": {
+    "selected": {
+      "layer": 18,
+      "view": "last_half",
+      "regularization": 0.1,
+      "dev_balanced_accuracy": 0.9027210884353742
+    },
+    "review_margin": null,
+    "matching_margin": null,
+    "dataset_sha256": "a4926e665129d8b74d5dc0fc62b7e1b1589e9046c32b576b285e5c7b95b69ac1",
+    "weights_sha256": "0db6b1828a6a815177eaa37d58b5e138418cd7210206666764a8b48e89bad4c3",
+    "encoder_frozen": true,
+    "test_rows_used_for_selection": false,
+    "data": {
+      "train": {
+        "rows": 87,
+        "speakers": 22,
+        "actual_labels": {
+          "other": 42,
+          "back": 16,
+          "front": 29
+        }
+      },
+      "dev": {
+        "rows": 83,
+        "speakers": 11,
+        "actual_labels": {
+          "other": 49,
+          "front": 20,
+          "back": 14
+        }
+      },
+      "test": {
+        "rows": 41,
+        "speakers": 6,
+        "actual_labels": {
+          "other": 23,
+          "front": 7,
+          "back": 11
+        }
+      },
+      "transfer": {
+        "rows": 9,
+        "speakers": 7,
+        "actual_labels": {
+          "back": 2,
+          "front": 7
+        }
+      }
+    },
+    "results": {
+      "train": {
+        "selected_margin": {
+          "targets": 87,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              29,
+              0,
+              0
+            ],
+            [
+              0,
+              16,
+              0
+            ],
+            [
+              0,
+              0,
+              42
+            ]
+          ],
+          "balanced_label_accuracy": 1.0,
+          "known_nasal_errors": 31,
+          "correct_error_directions": 0,
+          "missed_error_directions": 31,
+          "raw_expected_label_on_error": 0,
+          "correct_nasal_targets": 14,
+          "false_nasal_accusations": 0
+        },
+        "without_margin": {
+          "targets": 87,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              29,
+              0,
+              0
+            ],
+            [
+              0,
+              16,
+              0
+            ],
+            [
+              0,
+              0,
+              42
+            ]
+          ],
+          "balanced_label_accuracy": 1.0,
+          "known_nasal_errors": 31,
+          "correct_error_directions": 31,
+          "missed_error_directions": 0,
+          "raw_expected_label_on_error": 0,
+          "correct_nasal_targets": 14,
+          "false_nasal_accusations": 0
+        },
+        "excluded_alignment": 12,
+        "excluded_pooling": 0
+      },
+      "dev": {
+        "selected_margin": {
+          "targets": 83,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              16,
+              3,
+              1
+            ],
+            [
+              1,
+              13,
+              0
+            ],
+            [
+              1,
+              0,
+              48
+            ]
+          ],
+          "balanced_label_accuracy": 0.9027210884353742,
+          "known_nasal_errors": 8,
+          "correct_error_directions": 0,
+          "missed_error_directions": 8,
+          "raw_expected_label_on_error": 0,
+          "correct_nasal_targets": 26,
+          "false_nasal_accusations": 0
+        },
+        "without_margin": {
+          "targets": 83,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              16,
+              3,
+              1
+            ],
+            [
+              1,
+              13,
+              0
+            ],
+            [
+              1,
+              0,
+              48
+            ]
+          ],
+          "balanced_label_accuracy": 0.9027210884353742,
+          "known_nasal_errors": 8,
+          "correct_error_directions": 7,
+          "missed_error_directions": 1,
+          "raw_expected_label_on_error": 0,
+          "correct_nasal_targets": 26,
+          "false_nasal_accusations": 4
+        },
+        "excluded_alignment": 3,
+        "excluded_pooling": 0
+      },
+      "test": {
+        "selected_margin": {
+          "targets": 41,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              6,
+              1,
+              0
+            ],
+            [
+              3,
+              8,
+              0
+            ],
+            [
+              0,
+              1,
+              22
+            ]
+          ],
+          "balanced_label_accuracy": 0.8469791078486729,
+          "known_nasal_errors": 6,
+          "correct_error_directions": 0,
+          "missed_error_directions": 6,
+          "raw_expected_label_on_error": 1,
+          "correct_nasal_targets": 12,
+          "false_nasal_accusations": 0
+        },
+        "without_margin": {
+          "targets": 41,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              6,
+              1,
+              0
+            ],
+            [
+              3,
+              8,
+              0
+            ],
+            [
+              0,
+              1,
+              22
+            ]
+          ],
+          "balanced_label_accuracy": 0.8469791078486729,
+          "known_nasal_errors": 6,
+          "correct_error_directions": 5,
+          "missed_error_directions": 1,
+          "raw_expected_label_on_error": 1,
+          "correct_nasal_targets": 12,
+          "false_nasal_accusations": 3
+        },
+        "excluded_alignment": 1,
+        "excluded_pooling": 0
+      },
+      "transfer": {
+        "selected_margin": {
+          "targets": 9,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              5,
+              1,
+              1
+            ],
+            [
+              0,
+              2,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "balanced_label_accuracy": 0.8571428571428572,
+          "known_nasal_errors": 9,
+          "correct_error_directions": 0,
+          "missed_error_directions": 9,
+          "raw_expected_label_on_error": 1,
+          "correct_nasal_targets": 0,
+          "false_nasal_accusations": 0
+        },
+        "without_margin": {
+          "targets": 9,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              5,
+              1,
+              1
+            ],
+            [
+              0,
+              2,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "balanced_label_accuracy": 0.8571428571428572,
+          "known_nasal_errors": 9,
+          "correct_error_directions": 7,
+          "missed_error_directions": 2,
+          "raw_expected_label_on_error": 1,
+          "correct_nasal_targets": 0,
+          "false_nasal_accusations": 0
+        },
+        "excluded_alignment": 0,
+        "excluded_pooling": 0
+      }
+    }
+  },
+  "expanded": {
+    "selected": {
+      "layer": 12,
+      "view": "trajectory",
+      "regularization": 1.0,
+      "dev_balanced_accuracy": 0.9502609923851634
+    },
+    "review_margin": null,
+    "matching_margin": 0.0,
+    "dataset_sha256": "54fc69466622bb178d34625388a93e3b06238d8b56004c2dd9bf8066df9b1553",
+    "weights_sha256": "4f20c6ac3dec24aaefc18216b744dc2928d80b103eefbccb54a20691f3dcb094",
+    "encoder_frozen": true,
+    "test_rows_used_for_selection": false,
+    "data": {
+      "train": {
+        "rows": 600,
+        "speakers": 42,
+        "actual_labels": {
+          "other": 396,
+          "back": 85,
+          "front": 119
+        }
+      },
+      "dev": {
+        "rows": 415,
+        "speakers": 21,
+        "actual_labels": {
+          "other": 276,
+          "front": 80,
+          "back": 59
+        }
+      },
+      "test": {
+        "rows": 143,
+        "speakers": 9,
+        "actual_labels": {
+          "other": 91,
+          "front": 32,
+          "back": 20
+        }
+      },
+      "transfer": {
+        "rows": 9,
+        "speakers": 7,
+        "actual_labels": {
+          "back": 2,
+          "front": 7
+        }
+      }
+    },
+    "results": {
+      "train": {
+        "selected_margin": {
+          "targets": 600,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              119,
+              0,
+              0
+            ],
+            [
+              0,
+              85,
+              0
+            ],
+            [
+              0,
+              0,
+              396
+            ]
+          ],
+          "balanced_label_accuracy": 1.0,
+          "known_nasal_errors": 31,
+          "correct_error_directions": 0,
+          "missed_error_directions": 31,
+          "raw_expected_label_on_error": 0,
+          "correct_nasal_targets": 173,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 0,
+          "correct_nasal_matches": 173,
+          "uncertain_nasal_targets": 31
+        },
+        "without_margin": {
+          "targets": 600,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              119,
+              0,
+              0
+            ],
+            [
+              0,
+              85,
+              0
+            ],
+            [
+              0,
+              0,
+              396
+            ]
+          ],
+          "balanced_label_accuracy": 1.0,
+          "known_nasal_errors": 31,
+          "correct_error_directions": 31,
+          "missed_error_directions": 0,
+          "raw_expected_label_on_error": 0,
+          "correct_nasal_targets": 173,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 0,
+          "correct_nasal_matches": 173,
+          "uncertain_nasal_targets": 0
+        },
+        "excluded_alignment": 49,
+        "excluded_pooling": 0
+      },
+      "dev": {
+        "selected_margin": {
+          "targets": 415,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              73,
+              7,
+              0
+            ],
+            [
+              3,
+              56,
+              0
+            ],
+            [
+              1,
+              2,
+              273
+            ]
+          ],
+          "balanced_label_accuracy": 0.9502609923851634,
+          "known_nasal_errors": 8,
+          "correct_error_directions": 0,
+          "missed_error_directions": 8,
+          "raw_expected_label_on_error": 0,
+          "correct_nasal_targets": 131,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 0,
+          "correct_nasal_matches": 121,
+          "uncertain_nasal_targets": 18
+        },
+        "without_margin": {
+          "targets": 415,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              73,
+              7,
+              0
+            ],
+            [
+              3,
+              56,
+              0
+            ],
+            [
+              1,
+              2,
+              273
+            ]
+          ],
+          "balanced_label_accuracy": 0.9502609923851634,
+          "known_nasal_errors": 8,
+          "correct_error_directions": 8,
+          "missed_error_directions": 0,
+          "raw_expected_label_on_error": 0,
+          "correct_nasal_targets": 131,
+          "false_nasal_accusations": 10,
+          "false_reassurances": 0,
+          "correct_nasal_matches": 121,
+          "uncertain_nasal_targets": 0
+        },
+        "excluded_alignment": 3,
+        "excluded_pooling": 0
+      },
+      "test": {
+        "selected_margin": {
+          "targets": 143,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              31,
+              1,
+              0
+            ],
+            [
+              2,
+              18,
+              0
+            ],
+            [
+              1,
+              1,
+              89
+            ]
+          ],
+          "balanced_label_accuracy": 0.9489239926739926,
+          "known_nasal_errors": 6,
+          "correct_error_directions": 0,
+          "missed_error_directions": 6,
+          "raw_expected_label_on_error": 1,
+          "correct_nasal_targets": 46,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 1,
+          "correct_nasal_matches": 44,
+          "uncertain_nasal_targets": 7
+        },
+        "without_margin": {
+          "targets": 143,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              31,
+              1,
+              0
+            ],
+            [
+              2,
+              18,
+              0
+            ],
+            [
+              1,
+              1,
+              89
+            ]
+          ],
+          "balanced_label_accuracy": 0.9489239926739926,
+          "known_nasal_errors": 6,
+          "correct_error_directions": 5,
+          "missed_error_directions": 1,
+          "raw_expected_label_on_error": 1,
+          "correct_nasal_targets": 46,
+          "false_nasal_accusations": 2,
+          "false_reassurances": 1,
+          "correct_nasal_matches": 44,
+          "uncertain_nasal_targets": 0
+        },
+        "excluded_alignment": 1,
+        "excluded_pooling": 0
+      },
+      "transfer": {
+        "selected_margin": {
+          "targets": 9,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              4,
+              3,
+              0
+            ],
+            [
+              0,
+              2,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "balanced_label_accuracy": 0.7857142857142857,
+          "known_nasal_errors": 9,
+          "correct_error_directions": 0,
+          "missed_error_directions": 9,
+          "raw_expected_label_on_error": 3,
+          "correct_nasal_targets": 0,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 3,
+          "correct_nasal_matches": 0,
+          "uncertain_nasal_targets": 6
+        },
+        "without_margin": {
+          "targets": 9,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              4,
+              3,
+              0
+            ],
+            [
+              0,
+              2,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "balanced_label_accuracy": 0.7857142857142857,
+          "known_nasal_errors": 9,
+          "correct_error_directions": 6,
+          "missed_error_directions": 3,
+          "raw_expected_label_on_error": 3,
+          "correct_nasal_targets": 0,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 3,
+          "correct_nasal_matches": 0,
+          "uncertain_nasal_targets": 0
+        },
+        "excluded_alignment": 0,
+        "excluded_pooling": 0
+      }
+    }
+  },
+  "encoder_choice": {
+    "selected_at_utc": "2026-10-26T17:38:49.557927+00:00",
+    "winner": "feature-classifier-v2-final",
+    "selection_rule": "development detected-error count with zero false nasal accusations; then balanced label accuracy",
+    "test_or_transfer_predictions_used": false,
+    "candidates": [
+      {
+        "directory": "feature-classifier-v2-final",
+        "development_safe_directions": 0,
+        "development_balanced_accuracy": 0.9502609923851634,
+        "review_margin": null,
+        "selected": {
+          "layer": 12,
+          "view": "trajectory",
+          "regularization": 1.0,
+          "dev_balanced_accuracy": 0.9502609923851634
+        }
+      },
+      {
+        "directory": "feature-classifier-v2-phoneme",
+        "development_safe_directions": 0,
+        "development_balanced_accuracy": 0.9453164660607549,
+        "review_margin": null,
+        "selected": {
+          "layer": 24,
+          "view": "vowel",
+          "regularization": 0.001,
+          "dev_balanced_accuracy": 0.9453164660607549
+        }
+      }
+    ]
+  },
+  "api_expansion": {
+    "ledger_before": 178,
+    "ledger_after": 268,
+    "new_calls": 90,
+    "statuses": {
+      "ok": 86,
+      "provider_error": 4
+    }
+  },
+  "limits": [
+    "Automatic word crops and API time intervals are not independently human-audited.",
+    "Previously explored public recordings do not constitute untouched product validation.",
+    "The nine continuous-reading error targets have no matched same-speaker normal controls.",
+    "Classifier scores/gaps are not correctness probabilities.",
+    "No live microphone/mobile/production feedback has been enabled."
+  ],
+  "sources": [
+    "https://lml-elearning.eduhk.hk/about_g.aspx",
+    "https://github.com/phantomhsieh/OMPAL-corpus/tree/c3aaa9e892e4b1c2a25b637401f52f6e35b53e74"
+  ],
+  "feedback_selection": {
+    "selected": {
+      "encoder": "feature-classifier-v2-phoneme",
+      "layer": 24,
+      "view": "trajectory",
+      "regularization": 0.001,
+      "review_margin": 0.75,
+      "matching_margin": 0.3
+    },
+    "weights_sha256": "58efd25df019e2ae6b087a403ca490ef873b958b8cc1a8e87d3a3713c9d53c88",
+    "selection_used_test_or_transfer": false,
+    "rule": "Development zero observed false accusations, >=3 detected errors and both directions; matching margin calibrated separately.",
+    "results": {
+      "dev": {
+        "selected_margin": {
+          "targets": 415,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              70,
+              10,
+              0
+            ],
+            [
+              2,
+              57,
+              0
+            ],
+            [
+              4,
+              3,
+              269
+            ]
+          ],
+          "balanced_label_accuracy": 0.9385797920248916,
+          "known_nasal_errors": 8,
+          "correct_error_directions": 3,
+          "missed_error_directions": 5,
+          "raw_expected_label_on_error": 1,
+          "correct_nasal_targets": 131,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 0,
+          "correct_nasal_matches": 116,
+          "uncertain_nasal_targets": 20
+        },
+        "without_margin": {
+          "targets": 415,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              70,
+              10,
+              0
+            ],
+            [
+              2,
+              57,
+              0
+            ],
+            [
+              4,
+              3,
+              269
+            ]
+          ],
+          "balanced_label_accuracy": 0.9385797920248916,
+          "known_nasal_errors": 8,
+          "correct_error_directions": 7,
+          "missed_error_directions": 1,
+          "raw_expected_label_on_error": 1,
+          "correct_nasal_targets": 131,
+          "false_nasal_accusations": 11,
+          "false_reassurances": 1,
+          "correct_nasal_matches": 120,
+          "uncertain_nasal_targets": 0
+        },
+        "excluded_alignment": 3,
+        "excluded_pooling": 0
+      },
+      "test": {
+        "selected_margin": {
+          "targets": 143,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              32,
+              0,
+              0
+            ],
+            [
+              2,
+              17,
+              1
+            ],
+            [
+              0,
+              0,
+              91
+            ]
+          ],
+          "balanced_label_accuracy": 0.9500000000000001,
+          "known_nasal_errors": 6,
+          "correct_error_directions": 1,
+          "missed_error_directions": 5,
+          "raw_expected_label_on_error": 2,
+          "correct_nasal_targets": 46,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 0,
+          "correct_nasal_matches": 45,
+          "uncertain_nasal_targets": 6
+        },
+        "without_margin": {
+          "targets": 143,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              32,
+              0,
+              0
+            ],
+            [
+              2,
+              17,
+              1
+            ],
+            [
+              0,
+              0,
+              91
+            ]
+          ],
+          "balanced_label_accuracy": 0.9500000000000001,
+          "known_nasal_errors": 6,
+          "correct_error_directions": 3,
+          "missed_error_directions": 3,
+          "raw_expected_label_on_error": 2,
+          "correct_nasal_targets": 46,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 2,
+          "correct_nasal_matches": 46,
+          "uncertain_nasal_targets": 1
+        },
+        "excluded_alignment": 1,
+        "excluded_pooling": 0
+      },
+      "train": {
+        "selected_margin": {
+          "targets": 600,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              119,
+              0,
+              0
+            ],
+            [
+              0,
+              85,
+              0
+            ],
+            [
+              0,
+              0,
+              396
+            ]
+          ],
+          "balanced_label_accuracy": 1.0,
+          "known_nasal_errors": 31,
+          "correct_error_directions": 31,
+          "missed_error_directions": 0,
+          "raw_expected_label_on_error": 0,
+          "correct_nasal_targets": 173,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 0,
+          "correct_nasal_matches": 173,
+          "uncertain_nasal_targets": 0
+        },
+        "without_margin": {
+          "targets": 600,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              119,
+              0,
+              0
+            ],
+            [
+              0,
+              85,
+              0
+            ],
+            [
+              0,
+              0,
+              396
+            ]
+          ],
+          "balanced_label_accuracy": 1.0,
+          "known_nasal_errors": 31,
+          "correct_error_directions": 31,
+          "missed_error_directions": 0,
+          "raw_expected_label_on_error": 0,
+          "correct_nasal_targets": 173,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 0,
+          "correct_nasal_matches": 173,
+          "uncertain_nasal_targets": 0
+        },
+        "excluded_alignment": 49,
+        "excluded_pooling": 0
+      },
+      "transfer": {
+        "selected_margin": {
+          "targets": 9,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              4,
+              3,
+              0
+            ],
+            [
+              0,
+              2,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "balanced_label_accuracy": 0.7857142857142857,
+          "known_nasal_errors": 9,
+          "correct_error_directions": 2,
+          "missed_error_directions": 7,
+          "raw_expected_label_on_error": 3,
+          "correct_nasal_targets": 0,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 0,
+          "correct_nasal_matches": 0,
+          "uncertain_nasal_targets": 7
+        },
+        "without_margin": {
+          "targets": 9,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              4,
+              3,
+              0
+            ],
+            [
+              0,
+              2,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "balanced_label_accuracy": 0.7857142857142857,
+          "known_nasal_errors": 9,
+          "correct_error_directions": 6,
+          "missed_error_directions": 3,
+          "raw_expected_label_on_error": 3,
+          "correct_nasal_targets": 0,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 3,
+          "correct_nasal_matches": 0,
+          "uncertain_nasal_targets": 0
+        },
+        "excluded_alignment": 0,
+        "excluded_pooling": 0
+      }
+    },
+    "fresh_recordings": {
+      "recordings": 11,
+      "speakers": 7,
+      "targets_before_alignment": 39,
+      "excluded_duration_targets": 1,
+      "excluded_total_targets": 4,
+      "dataset_sha256": "a5373340336e3ef16cb223f0181600443d797e60628be4f52e78acda8a0fbb80",
+      "api": {
+        "ledger_before": 268,
+        "ledger_after": 279,
+        "new_calls": 11,
+        "statuses": {
+          "ok": 10,
+          "provider_error": 1
+        }
+      },
+      "results": {
+        "holdout": {
+          "selected_margin": {
+            "targets": 36,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                21,
+                1,
+                2
+              ],
+              [
+                1,
+                11,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "balanced_label_accuracy": 0.8958333333333333,
+            "known_nasal_errors": 10,
+            "correct_error_directions": 2,
+            "missed_error_directions": 8,
+            "raw_expected_label_on_error": 2,
+            "correct_nasal_targets": 26,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 1,
+            "correct_nasal_matches": 24,
+            "uncertain_nasal_targets": 9
+          },
+          "without_margin": {
+            "targets": 36,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                21,
+                1,
+                2
+              ],
+              [
+                1,
+                11,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "balanced_label_accuracy": 0.8958333333333333,
+            "known_nasal_errors": 10,
+            "correct_error_directions": 8,
+            "missed_error_directions": 2,
+            "raw_expected_label_on_error": 2,
+            "correct_nasal_targets": 26,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 2,
+            "correct_nasal_matches": 24,
+            "uncertain_nasal_targets": 2
+          },
+          "excluded_alignment": 4,
+          "excluded_pooling": 0
+        }
+      }
+    },
+    "limits": [
+      "The same development data was reused for exploratory model selection.",
+      "New recordings are disjoint from fitting/development speakers but use previously explored public corpora.",
+      "Normal and error labels come from different corpora; no matched within-speaker correctness study.",
+      "No observed false accusation in a small sample is not a statistical guarantee."
+    ]
+  },
+  "post_hoc_api_contradiction_audit": {
+    "post_hoc": true,
+    "purpose": "Audit API contradictions after observing the new holdout false reassurance; not an independent validation of a new rule.",
+    "new_calls": 0,
+    "reports": {
+      "original": {
+        "dev": {
+          "targets": 415,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              70,
+              10,
+              0
+            ],
+            [
+              2,
+              57,
+              0
+            ],
+            [
+              4,
+              3,
+              269
+            ]
+          ],
+          "balanced_label_accuracy": 0.9385797920248916,
+          "known_nasal_errors": 8,
+          "correct_error_directions": 3,
+          "missed_error_directions": 5,
+          "raw_expected_label_on_error": 1,
+          "correct_nasal_targets": 131,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 0,
+          "correct_nasal_matches": 111,
+          "uncertain_nasal_targets": 25
+        },
+        "test": {
+          "targets": 143,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              32,
+              0,
+              0
+            ],
+            [
+              2,
+              17,
+              1
+            ],
+            [
+              0,
+              0,
+              91
+            ]
+          ],
+          "balanced_label_accuracy": 0.9500000000000001,
+          "known_nasal_errors": 6,
+          "correct_error_directions": 1,
+          "missed_error_directions": 5,
+          "raw_expected_label_on_error": 2,
+          "correct_nasal_targets": 46,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 0,
+          "correct_nasal_matches": 38,
+          "uncertain_nasal_targets": 13
+        },
+        "train": {
+          "targets": 600,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              119,
+              0,
+              0
+            ],
+            [
+              0,
+              85,
+              0
+            ],
+            [
+              0,
+              0,
+              396
+            ]
+          ],
+          "balanced_label_accuracy": 1.0,
+          "known_nasal_errors": 31,
+          "correct_error_directions": 31,
+          "missed_error_directions": 0,
+          "raw_expected_label_on_error": 0,
+          "correct_nasal_targets": 173,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 0,
+          "correct_nasal_matches": 160,
+          "uncertain_nasal_targets": 13
+        },
+        "transfer": {
+          "targets": 9,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              4,
+              3,
+              0
+            ],
+            [
+              0,
+              2,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "balanced_label_accuracy": 0.7857142857142857,
+          "known_nasal_errors": 9,
+          "correct_error_directions": 2,
+          "missed_error_directions": 7,
+          "raw_expected_label_on_error": 3,
+          "correct_nasal_targets": 0,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 0,
+          "correct_nasal_matches": 0,
+          "uncertain_nasal_targets": 7
+        }
+      },
+      "fresh": {
+        "holdout": {
+          "targets": 36,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              21,
+              1,
+              2
+            ],
+            [
+              1,
+              11,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "balanced_label_accuracy": 0.8958333333333333,
+          "known_nasal_errors": 10,
+          "correct_error_directions": 2,
+          "missed_error_directions": 8,
+          "raw_expected_label_on_error": 2,
+          "correct_nasal_targets": 26,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 0,
+          "correct_nasal_matches": 23,
+          "uncertain_nasal_targets": 11
+        }
+      }
+    }
+  }
+}

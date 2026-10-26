@@ -65,3 +65,17 @@ def test_cached_failure_does_not_delete_other_recordings(tmp_path, monkeypatch):
     assert report['complete']
     assert report['new_calls'] == 0
     assert [r['ise_observation']['state'] for r in report['cases']] == ['unavailable','not_flagged']
+
+
+@pytest.mark.parametrize('before,ceiling,expected',[(178,280,278),(178,200,200),(268,280,280)])
+def test_explicit_cumulative_ceiling_keeps_the_hundred_request_per_run_limit(tmp_path,monkeypatch,before,ceiling,expected):
+    args,_=setup_batch(tmp_path,monkeypatch,[],False)
+    Path('data/derived/ise-validation/requests.json').write_text(json.dumps([{}]*before))
+    observed=[]
+    class Probe:
+        def __init__(self,path,*,allow_paid,max_calls):
+            observed.append(max_calls)
+    monkeypatch.setattr(runner,'IseProbe',Probe)
+    args.max_total_calls=ceiling
+    asyncio.run(runner.run(args))
+    assert observed==[expected]
