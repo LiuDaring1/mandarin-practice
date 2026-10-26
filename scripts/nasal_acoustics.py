@@ -27,7 +27,7 @@ MODELS = {
 }
 
 
-def read_audio(path: Path) -> np.ndarray:
+def read_audio(path: Path, *, max_seconds=60) -> np.ndarray:
     """Decode locally to mono 16 kHz float PCM without altering the source."""
     result = subprocess.run(
         ["ffmpeg", "-v", "error", "-nostdin", "-i", str(path),
@@ -35,8 +35,8 @@ def read_audio(path: Path) -> np.ndarray:
         capture_output=True, check=True,
     )
     samples = np.frombuffer(result.stdout, dtype="<f4").copy()
-    if not 1600 <= len(samples) <= 16000 * 60:
-        raise ValueError("Research input must be 0.1–60 seconds")
+    if not 0 < max_seconds <= 180 or not 1600 <= len(samples) <= 16000 * max_seconds:
+        raise ValueError(f"Research input must be 0.1–{max_seconds} seconds (maximum 180)")
     if not np.isfinite(samples).all():
         raise ValueError("Non-finite waveform")
     return samples

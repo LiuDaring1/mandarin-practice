@@ -37,6 +37,28 @@ def test_reject_wrong_sample_rate():
     with pytest.raises(ValueError,match='16kHz'):
         list(m.frames({'app_id':'fake'},m.parameters('心'),wav_bytes(rate=8000)))
 
+
+def test_long_audio_deadline_covers_streaming_and_stays_bounded():
+    assert m.request_timeout(50)==45
+    assert 80<m.request_timeout(1601)<100  # 64 s upload, result overhead
+    assert 180<m.request_timeout(4501)<210
+    with pytest.raises(ValueError,match='packet count'):
+        m.request_timeout(4502)
+
+
+def test_oversized_audio_is_rejected_before_ledger_reservation(tmp_path):
+    audio=tmp_path/'too-long.wav';audio.write_bytes(wav_bytes(frames=16000*181))
+    probe=m.IseProbe(tmp_path/'probe',allow_paid=True,max_calls=1)
+    with pytest.raises(ValueError,match='180 seconds'):
+        asyncio.run(probe.call(audio,'心'))
+    assert not (tmp_path/'probe/requests.json').exists()
+
+
+def test_chapter_rejection_is_preserved_for_target_mapping():
+    result=m.public_result({'status':'ok','xml':'<xml><read_chapter is_rejected="true" except_info="28673"/></xml>'})
+    assert result['nodes'][0]['tag']=='read_chapter'
+    assert m.target_at(result,'心',0)['state']=='rejected'
+
 def test_xml_error_fields_and_privacy():
     raw={'status':'ok','xml':'<xml sid="private"><read_syllable total_score="75"><word content="心"><phone content="in" is_yun="1" perr_msg="1" dp_message="128" perr_level_msg="2"/></word></read_syllable></xml>'}
     r=m.public_result(raw)
