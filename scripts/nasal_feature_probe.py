@@ -34,6 +34,22 @@ def acoustic_window(bounds, sample_count):
     return max(containing,key=lambda window:(min(left-window[0]/16000,window[1]/16000-right),-window[0]))
 
 
+def local_context_window(bounds, sample_count, margin_ms, stride=320):
+    """Crop context while retaining the parent's convolution frame grid.
+
+    The original parent window still defines waveform normalization. Rounded
+    crop edges expand outward; neither the target nor its requested context
+    is shortened except at the parent waveform edge. No labels are consulted.
+    """
+    parent_start, parent_end = acoustic_window(bounds, sample_count)
+    if not np.isfinite(margin_ms) or margin_ms < 0 or stride <= 0:
+        raise ValueError('Invalid local context margin/grid')
+    left, right = bounds['syllable']
+    start = parent_start + int(np.floor((left*16000 - margin_ms*16 - parent_start)/stride))*stride
+    end = parent_start + int(np.ceil((right*16000 + margin_ms*16 - parent_start)/stride))*stride
+    return max(parent_start, start), min(parent_end, end)
+
+
 def pool_regions(hidden, bounds, *, sample_count, stride=320, receptive_field=400):
     values = np.asarray(hidden)
     if values.ndim != 2 or not np.isfinite(values).all():
