@@ -1,0 +1,2526 @@
+{
+  "complete": true,
+  "research_only": true,
+  "selected_primary": {
+    "feature_source": "xeus",
+    "regularization": 0.1,
+    "specialist_weight": 0.0,
+    "review_margins": {
+      "front": 0.42625767122181507,
+      "back": 0.26759752774690615
+    },
+    "matching_margins": {
+      "front": 0.12198613084419797,
+      "back": 0.07107390237093482
+    }
+  },
+  "specialist_support": {
+    "eligible_pairs": [
+      "an",
+      "en",
+      "ian",
+      "in"
+    ],
+    "support": {
+      "an": {
+        "normal_controls": {
+          "front": 15,
+          "back": 30
+        },
+        "normal_speakers": {
+          "front": 12,
+          "back": 19
+        }
+      },
+      "en": {
+        "normal_controls": {
+          "front": 33,
+          "back": 8
+        },
+        "normal_speakers": {
+          "front": 20,
+          "back": 8
+        }
+      },
+      "ian": {
+        "normal_controls": {
+          "front": 30,
+          "back": 8
+        },
+        "normal_speakers": {
+          "front": 17,
+          "back": 8
+        }
+      },
+      "in": {
+        "normal_controls": {
+          "front": 8,
+          "back": 8
+        },
+        "normal_speakers": {
+          "front": 8,
+          "back": 7
+        }
+      },
+      "ion": {
+        "normal_controls": {
+          "front": 0,
+          "back": 2
+        },
+        "normal_speakers": {
+          "front": 0,
+          "back": 2
+        }
+      },
+      "on": {
+        "normal_controls": {
+          "front": 0,
+          "back": 19
+        },
+        "normal_speakers": {
+          "front": 0,
+          "back": 12
+        }
+      },
+      "uan": {
+        "normal_controls": {
+          "front": 6,
+          "back": 1
+        },
+        "normal_speakers": {
+          "front": 6,
+          "back": 1
+        }
+      },
+      "uen": {
+        "normal_controls": {
+          "front": 2,
+          "back": 0
+        },
+        "normal_speakers": {
+          "front": 2,
+          "back": 0
+        }
+      },
+      "van": {
+        "normal_controls": {
+          "front": 3,
+          "back": 0
+        },
+        "normal_speakers": {
+          "front": 3,
+          "back": 0
+        }
+      }
+    },
+    "label_sources": {
+      "native_score": 7,
+      "unanimous_vowel_scores": 562,
+      "explicit_nasal_substitution": 76,
+      "explicit_nasal_substitution_at_html_highlight": 13
+    },
+    "minimum_controls_per_direction": 8,
+    "minimum_speakers_per_direction": 2
+  },
+  "candidate_count": 27,
+  "development_ranking": [
+    {
+      "settings": {
+        "feature_source": "xeus",
+        "regularization": 0.1,
+        "specialist_weight": 0.0,
+        "review_margins": {
+          "front": 0.42625767122181507,
+          "back": 0.26759752774690615
+        },
+        "matching_margins": {
+          "front": 0.12198613084419797,
+          "back": 0.07107390237093482
+        }
+      },
+      "development": {
+        "selected_targets": 435,
+        "scored_targets": 434,
+        "unavailable_targets": 1,
+        "selected_errors": 28,
+        "known_nasal_errors": 27,
+        "unavailable_errors": 1,
+        "selected_normal": 407,
+        "correct_nasal_targets": 131,
+        "unavailable_normal": 0,
+        "correct_error_directions": 21,
+        "missed_selected_errors": 7,
+        "false_nasal_accusations": 0,
+        "false_reassurances": 0,
+        "correct_nasal_matches": 116,
+        "uncertain_nasal_targets": 21,
+        "unknown_selected_targets": 22
+      }
+    },
+    {
+      "settings": {
+        "feature_source": "concatenated",
+        "regularization": 1.0,
+        "specialist_weight": 0.5,
+        "review_margins": {
+          "front": 0.4448702179641248,
+          "back": 0.09953859278812084
+        },
+        "matching_margins": {
+          "front": 0.2988189906825767,
+          "back": 0.0
+        }
+      },
+      "development": {
+        "selected_targets": 435,
+        "scored_targets": 434,
+        "unavailable_targets": 1,
+        "selected_errors": 28,
+        "known_nasal_errors": 27,
+        "unavailable_errors": 1,
+        "selected_normal": 407,
+        "correct_nasal_targets": 131,
+        "unavailable_normal": 0,
+        "correct_error_directions": 20,
+        "missed_selected_errors": 8,
+        "false_nasal_accusations": 0,
+        "false_reassurances": 0,
+        "correct_nasal_matches": 110,
+        "uncertain_nasal_targets": 28,
+        "unknown_selected_targets": 29
+      }
+    },
+    {
+      "settings": {
+        "feature_source": "xeus",
+        "regularization": 1.0,
+        "specialist_weight": 0.0,
+        "review_margins": {
+          "front": 0.3968967069714684,
+          "back": 0.16699684563191994
+        },
+        "matching_margins": {
+          "front": 0.4449219171003968,
+          "back": 0.0
+        }
+      },
+      "development": {
+        "selected_targets": 435,
+        "scored_targets": 434,
+        "unavailable_targets": 1,
+        "selected_errors": 28,
+        "known_nasal_errors": 27,
+        "unavailable_errors": 1,
+        "selected_normal": 407,
+        "correct_nasal_targets": 131,
+        "unavailable_normal": 0,
+        "correct_error_directions": 20,
+        "missed_selected_errors": 8,
+        "false_nasal_accusations": 0,
+        "false_reassurances": 0,
+        "correct_nasal_matches": 106,
+        "uncertain_nasal_targets": 32,
+        "unknown_selected_targets": 33
+      }
+    },
+    {
+      "settings": {
+        "feature_source": "xeus",
+        "regularization": 1.0,
+        "specialist_weight": 0.5,
+        "review_margins": {
+          "front": 0.3968967069714684,
+          "back": 0.09975455646946975
+        },
+        "matching_margins": {
+          "front": 0.4449219171003968,
+          "back": 0.0
+        }
+      },
+      "development": {
+        "selected_targets": 435,
+        "scored_targets": 434,
+        "unavailable_targets": 1,
+        "selected_errors": 28,
+        "known_nasal_errors": 27,
+        "unavailable_errors": 1,
+        "selected_normal": 407,
+        "correct_nasal_targets": 131,
+        "unavailable_normal": 0,
+        "correct_error_directions": 20,
+        "missed_selected_errors": 8,
+        "false_nasal_accusations": 0,
+        "false_reassurances": 0,
+        "correct_nasal_matches": 104,
+        "uncertain_nasal_targets": 34,
+        "unknown_selected_targets": 35
+      }
+    },
+    {
+      "settings": {
+        "feature_source": "concatenated",
+        "regularization": 0.1,
+        "specialist_weight": 0.5,
+        "review_margins": {
+          "front": 0.43030462126822233,
+          "back": 0.2249513278112009
+        },
+        "matching_margins": {
+          "front": 0.0,
+          "back": 0.0
+        }
+      },
+      "development": {
+        "selected_targets": 435,
+        "scored_targets": 434,
+        "unavailable_targets": 1,
+        "selected_errors": 28,
+        "known_nasal_errors": 27,
+        "unavailable_errors": 1,
+        "selected_normal": 407,
+        "correct_nasal_targets": 131,
+        "unavailable_normal": 0,
+        "correct_error_directions": 19,
+        "missed_selected_errors": 9,
+        "false_nasal_accusations": 0,
+        "false_reassurances": 0,
+        "correct_nasal_matches": 114,
+        "uncertain_nasal_targets": 25,
+        "unknown_selected_targets": 26
+      }
+    },
+    {
+      "settings": {
+        "feature_source": "concatenated",
+        "regularization": 0.01,
+        "specialist_weight": 0.5,
+        "review_margins": {
+          "front": 0.44808565767033465,
+          "back": 0.2723704266047015
+        },
+        "matching_margins": {
+          "front": 0.0,
+          "back": 0.0
+        }
+      },
+      "development": {
+        "selected_targets": 435,
+        "scored_targets": 434,
+        "unavailable_targets": 1,
+        "selected_errors": 28,
+        "known_nasal_errors": 27,
+        "unavailable_errors": 1,
+        "selected_normal": 407,
+        "correct_nasal_targets": 131,
+        "unavailable_normal": 0,
+        "correct_error_directions": 19,
+        "missed_selected_errors": 9,
+        "false_nasal_accusations": 0,
+        "false_reassurances": 0,
+        "correct_nasal_matches": 114,
+        "uncertain_nasal_targets": 25,
+        "unknown_selected_targets": 26
+      }
+    },
+    {
+      "settings": {
+        "feature_source": "concatenated",
+        "regularization": 1.0,
+        "specialist_weight": 0.0,
+        "review_margins": {
+          "front": 0.4695872319349844,
+          "back": 0.20817492794638695
+        },
+        "matching_margins": {
+          "front": 0.2988189906825767,
+          "back": 0.0
+        }
+      },
+      "development": {
+        "selected_targets": 435,
+        "scored_targets": 434,
+        "unavailable_targets": 1,
+        "selected_errors": 28,
+        "known_nasal_errors": 27,
+        "unavailable_errors": 1,
+        "selected_normal": 407,
+        "correct_nasal_targets": 131,
+        "unavailable_normal": 0,
+        "correct_error_directions": 19,
+        "missed_selected_errors": 9,
+        "false_nasal_accusations": 0,
+        "false_reassurances": 0,
+        "correct_nasal_matches": 113,
+        "uncertain_nasal_targets": 26,
+        "unknown_selected_targets": 27
+      }
+    },
+    {
+      "settings": {
+        "feature_source": "concatenated",
+        "regularization": 0.1,
+        "specialist_weight": 0.0,
+        "review_margins": {
+          "front": 0.43030462126822233,
+          "back": 0.3504084302520959
+        },
+        "matching_margins": {
+          "front": 0.0,
+          "back": 0.0
+        }
+      },
+      "development": {
+        "selected_targets": 435,
+        "scored_targets": 434,
+        "unavailable_targets": 1,
+        "selected_errors": 28,
+        "known_nasal_errors": 27,
+        "unavailable_errors": 1,
+        "selected_normal": 407,
+        "correct_nasal_targets": 131,
+        "unavailable_normal": 0,
+        "correct_error_directions": 18,
+        "missed_selected_errors": 10,
+        "false_nasal_accusations": 0,
+        "false_reassurances": 0,
+        "correct_nasal_matches": 118,
+        "uncertain_nasal_targets": 22,
+        "unknown_selected_targets": 23
+      }
+    },
+    {
+      "settings": {
+        "feature_source": "concatenated",
+        "regularization": 1.0,
+        "specialist_weight": 1.0,
+        "review_margins": {
+          "front": null,
+          "back": 0.0
+        },
+        "matching_margins": {
+          "front": 0.2988189906825767,
+          "back": 0.0
+        }
+      },
+      "development": {
+        "selected_targets": 435,
+        "scored_targets": 434,
+        "unavailable_targets": 1,
+        "selected_errors": 28,
+        "known_nasal_errors": 27,
+        "unavailable_errors": 1,
+        "selected_normal": 407,
+        "correct_nasal_targets": 131,
+        "unavailable_normal": 0,
+        "correct_error_directions": 18,
+        "missed_selected_errors": 10,
+        "false_nasal_accusations": 0,
+        "false_reassurances": 0,
+        "correct_nasal_matches": 103,
+        "uncertain_nasal_targets": 37,
+        "unknown_selected_targets": 38
+      }
+    },
+    {
+      "settings": {
+        "feature_source": "local_phoneme",
+        "regularization": 0.1,
+        "specialist_weight": 0.5,
+        "review_margins": {
+          "front": 0.413465050907236,
+          "back": 0.1625011613170694
+        },
+        "matching_margins": {
+          "front": 0.04261029981710885,
+          "back": 0.0
+        }
+      },
+      "development": {
+        "selected_targets": 435,
+        "scored_targets": 434,
+        "unavailable_targets": 1,
+        "selected_errors": 28,
+        "known_nasal_errors": 27,
+        "unavailable_errors": 1,
+        "selected_normal": 407,
+        "correct_nasal_targets": 131,
+        "unavailable_normal": 0,
+        "correct_error_directions": 18,
+        "missed_selected_errors": 10,
+        "false_nasal_accusations": 0,
+        "false_reassurances": 0,
+        "correct_nasal_matches": 103,
+        "uncertain_nasal_targets": 37,
+        "unknown_selected_targets": 38
+      }
+    },
+    {
+      "settings": {
+        "feature_source": "local_phoneme",
+        "regularization": 1.0,
+        "specialist_weight": 0.5,
+        "review_margins": {
+          "front": 0.39099455932622434,
+          "back": 0.23955930571673315
+        },
+        "matching_margins": {
+          "front": 0.21807119814151024,
+          "back": 0.0
+        }
+      },
+      "development": {
+        "selected_targets": 435,
+        "scored_targets": 434,
+        "unavailable_targets": 1,
+        "selected_errors": 28,
+        "known_nasal_errors": 27,
+        "unavailable_errors": 1,
+        "selected_normal": 407,
+        "correct_nasal_targets": 131,
+        "unavailable_normal": 0,
+        "correct_error_directions": 18,
+        "missed_selected_errors": 10,
+        "false_nasal_accusations": 0,
+        "false_reassurances": 0,
+        "correct_nasal_matches": 102,
+        "uncertain_nasal_targets": 38,
+        "unknown_selected_targets": 39
+      }
+    },
+    {
+      "settings": {
+        "feature_source": "xeus",
+        "regularization": 1.0,
+        "specialist_weight": 1.0,
+        "review_margins": {
+          "front": null,
+          "back": 0.0
+        },
+        "matching_margins": {
+          "front": 0.4449219171003968,
+          "back": 0.0
+        }
+      },
+      "development": {
+        "selected_targets": 435,
+        "scored_targets": 434,
+        "unavailable_targets": 1,
+        "selected_errors": 28,
+        "known_nasal_errors": 27,
+        "unavailable_errors": 1,
+        "selected_normal": 407,
+        "correct_nasal_targets": 131,
+        "unavailable_normal": 0,
+        "correct_error_directions": 18,
+        "missed_selected_errors": 10,
+        "false_nasal_accusations": 0,
+        "false_reassurances": 0,
+        "correct_nasal_matches": 97,
+        "uncertain_nasal_targets": 43,
+        "unknown_selected_targets": 44
+      }
+    },
+    {
+      "settings": {
+        "feature_source": "local_phoneme",
+        "regularization": 1.0,
+        "specialist_weight": 1.0,
+        "review_margins": {
+          "front": 0.2518300751501334,
+          "back": 0.19828574792985867
+        },
+        "matching_margins": {
+          "front": 0.21807119814151024,
+          "back": 0.0
+        }
+      },
+      "development": {
+        "selected_targets": 435,
+        "scored_targets": 434,
+        "unavailable_targets": 1,
+        "selected_errors": 28,
+        "known_nasal_errors": 27,
+        "unavailable_errors": 1,
+        "selected_normal": 407,
+        "correct_nasal_targets": 131,
+        "unavailable_normal": 0,
+        "correct_error_directions": 18,
+        "missed_selected_errors": 10,
+        "false_nasal_accusations": 0,
+        "false_reassurances": 0,
+        "correct_nasal_matches": 89,
+        "uncertain_nasal_targets": 51,
+        "unknown_selected_targets": 52
+      }
+    },
+    {
+      "settings": {
+        "feature_source": "local_phoneme",
+        "regularization": 0.1,
+        "specialist_weight": 1.0,
+        "review_margins": {
+          "front": 0.413465050907236,
+          "back": 0.15778789502105292
+        },
+        "matching_margins": {
+          "front": 0.11767701764915207,
+          "back": 0.0
+        }
+      },
+      "development": {
+        "selected_targets": 435,
+        "scored_targets": 434,
+        "unavailable_targets": 1,
+        "selected_errors": 28,
+        "known_nasal_errors": 27,
+        "unavailable_errors": 1,
+        "selected_normal": 407,
+        "correct_nasal_targets": 131,
+        "unavailable_normal": 0,
+        "correct_error_directions": 18,
+        "missed_selected_errors": 10,
+        "false_nasal_accusations": 0,
+        "false_reassurances": 0,
+        "correct_nasal_matches": 86,
+        "uncertain_nasal_targets": 54,
+        "unknown_selected_targets": 55
+      }
+    },
+    {
+      "settings": {
+        "feature_source": "xeus",
+        "regularization": 0.1,
+        "specialist_weight": 0.5,
+        "review_margins": {
+          "front": null,
+          "back": 0.17868977421761614
+        },
+        "matching_margins": {
+          "front": 0.12198613084419797,
+          "back": 0.05372939672221839
+        }
+      },
+      "development": {
+        "selected_targets": 435,
+        "scored_targets": 434,
+        "unavailable_targets": 1,
+        "selected_errors": 28,
+        "known_nasal_errors": 27,
+        "unavailable_errors": 1,
+        "selected_normal": 407,
+        "correct_nasal_targets": 131,
+        "unavailable_normal": 0,
+        "correct_error_directions": 17,
+        "missed_selected_errors": 11,
+        "false_nasal_accusations": 0,
+        "false_reassurances": 0,
+        "correct_nasal_matches": 115,
+        "uncertain_nasal_targets": 26,
+        "unknown_selected_targets": 27
+      }
+    },
+    {
+      "settings": {
+        "feature_source": "xeus",
+        "regularization": 0.01,
+        "specialist_weight": 0.5,
+        "review_margins": {
+          "front": null,
+          "back": 0.16391995410790797
+        },
+        "matching_margins": {
+          "front": 0.0,
+          "back": 0.13218704793457395
+        }
+      },
+      "development": {
+        "selected_targets": 435,
+        "scored_targets": 434,
+        "unavailable_targets": 1,
+        "selected_errors": 28,
+        "known_nasal_errors": 27,
+        "unavailable_errors": 1,
+        "selected_normal": 407,
+        "correct_nasal_targets": 131,
+        "unavailable_normal": 0,
+        "correct_error_directions": 17,
+        "missed_selected_errors": 11,
+        "false_nasal_accusations": 0,
+        "false_reassurances": 0,
+        "correct_nasal_matches": 113,
+        "uncertain_nasal_targets": 28,
+        "unknown_selected_targets": 29
+      }
+    },
+    {
+      "settings": {
+        "feature_source": "concatenated",
+        "regularization": 0.1,
+        "specialist_weight": 1.0,
+        "review_margins": {
+          "front": null,
+          "back": 0.09949422537030585
+        },
+        "matching_margins": {
+          "front": 0.0,
+          "back": 0.0
+        }
+      },
+      "development": {
+        "selected_targets": 435,
+        "scored_targets": 434,
+        "unavailable_targets": 1,
+        "selected_errors": 28,
+        "known_nasal_errors": 27,
+        "unavailable_errors": 1,
+        "selected_normal": 407,
+        "correct_nasal_targets": 131,
+        "unavailable_normal": 0,
+        "correct_error_directions": 17,
+        "missed_selected_errors": 11,
+        "false_nasal_accusations": 0,
+        "false_reassurances": 0,
+        "correct_nasal_matches": 104,
+        "uncertain_nasal_targets": 37,
+        "unknown_selected_targets": 38
+      }
+    },
+    {
+      "settings": {
+        "feature_source": "xeus",
+        "regularization": 0.01,
+        "specialist_weight": 0.0,
+        "review_margins": {
+          "front": null,
+          "back": 0.28526394983498343
+        },
+        "matching_margins": {
+          "front": 0.0,
+          "back": 0.06966916050656176
+        }
+      },
+      "development": {
+        "selected_targets": 435,
+        "scored_targets": 434,
+        "unavailable_targets": 1,
+        "selected_errors": 28,
+        "known_nasal_errors": 27,
+        "unavailable_errors": 1,
+        "selected_normal": 407,
+        "correct_nasal_targets": 131,
+        "unavailable_normal": 0,
+        "correct_error_directions": 16,
+        "missed_selected_errors": 12,
+        "false_nasal_accusations": 0,
+        "false_reassurances": 0,
+        "correct_nasal_matches": 117,
+        "uncertain_nasal_targets": 25,
+        "unknown_selected_targets": 26
+      }
+    },
+    {
+      "settings": {
+        "feature_source": "concatenated",
+        "regularization": 0.01,
+        "specialist_weight": 0.0,
+        "review_margins": {
+          "front": 0.44808565767033465,
+          "back": 0.3976887725867045
+        },
+        "matching_margins": {
+          "front": 0.031213579861838762,
+          "back": 0.0
+        }
+      },
+      "development": {
+        "selected_targets": 435,
+        "scored_targets": 434,
+        "unavailable_targets": 1,
+        "selected_errors": 28,
+        "known_nasal_errors": 27,
+        "unavailable_errors": 1,
+        "selected_normal": 407,
+        "correct_nasal_targets": 131,
+        "unavailable_normal": 0,
+        "correct_error_directions": 16,
+        "missed_selected_errors": 12,
+        "false_nasal_accusations": 0,
+        "false_reassurances": 0,
+        "correct_nasal_matches": 116,
+        "uncertain_nasal_targets": 26,
+        "unknown_selected_targets": 27
+      }
+    },
+    {
+      "settings": {
+        "feature_source": "xeus",
+        "regularization": 0.1,
+        "specialist_weight": 1.0,
+        "review_margins": {
+          "front": null,
+          "back": 0.08978202068832626
+        },
+        "matching_margins": {
+          "front": 0.12198613084419797,
+          "back": 0.0
+        }
+      },
+      "development": {
+        "selected_targets": 435,
+        "scored_targets": 434,
+        "unavailable_targets": 1,
+        "selected_errors": 28,
+        "known_nasal_errors": 27,
+        "unavailable_errors": 1,
+        "selected_normal": 407,
+        "correct_nasal_targets": 131,
+        "unavailable_normal": 0,
+        "correct_error_directions": 16,
+        "missed_selected_errors": 12,
+        "false_nasal_accusations": 0,
+        "false_reassurances": 0,
+        "correct_nasal_matches": 107,
+        "uncertain_nasal_targets": 35,
+        "unknown_selected_targets": 36
+      }
+    },
+    {
+      "settings": {
+        "feature_source": "xeus",
+        "regularization": 0.01,
+        "specialist_weight": 1.0,
+        "review_margins": {
+          "front": null,
+          "back": 0.1271443799821473
+        },
+        "matching_margins": {
+          "front": 0.0,
+          "back": 0.19470493536258607
+        }
+      },
+      "development": {
+        "selected_targets": 435,
+        "scored_targets": 434,
+        "unavailable_targets": 1,
+        "selected_errors": 28,
+        "known_nasal_errors": 27,
+        "unavailable_errors": 1,
+        "selected_normal": 407,
+        "correct_nasal_targets": 131,
+        "unavailable_normal": 0,
+        "correct_error_directions": 16,
+        "missed_selected_errors": 12,
+        "false_nasal_accusations": 0,
+        "false_reassurances": 0,
+        "correct_nasal_matches": 106,
+        "uncertain_nasal_targets": 36,
+        "unknown_selected_targets": 37
+      }
+    },
+    {
+      "settings": {
+        "feature_source": "concatenated",
+        "regularization": 0.01,
+        "specialist_weight": 1.0,
+        "review_margins": {
+          "front": null,
+          "back": 0.1470520806226985
+        },
+        "matching_margins": {
+          "front": 0.0,
+          "back": 0.0
+        }
+      },
+      "development": {
+        "selected_targets": 435,
+        "scored_targets": 434,
+        "unavailable_targets": 1,
+        "selected_errors": 28,
+        "known_nasal_errors": 27,
+        "unavailable_errors": 1,
+        "selected_normal": 407,
+        "correct_nasal_targets": 131,
+        "unavailable_normal": 0,
+        "correct_error_directions": 16,
+        "missed_selected_errors": 12,
+        "false_nasal_accusations": 0,
+        "false_reassurances": 0,
+        "correct_nasal_matches": 103,
+        "uncertain_nasal_targets": 39,
+        "unknown_selected_targets": 40
+      }
+    },
+    {
+      "settings": {
+        "feature_source": "local_phoneme",
+        "regularization": 0.01,
+        "specialist_weight": 0.5,
+        "review_margins": {
+          "front": null,
+          "back": 0.12564152581011886
+        },
+        "matching_margins": {
+          "front": 0.25536181480751835,
+          "back": 0.0
+        }
+      },
+      "development": {
+        "selected_targets": 435,
+        "scored_targets": 434,
+        "unavailable_targets": 1,
+        "selected_errors": 28,
+        "known_nasal_errors": 27,
+        "unavailable_errors": 1,
+        "selected_normal": 407,
+        "correct_nasal_targets": 131,
+        "unavailable_normal": 0,
+        "correct_error_directions": 16,
+        "missed_selected_errors": 12,
+        "false_nasal_accusations": 0,
+        "false_reassurances": 0,
+        "correct_nasal_matches": 93,
+        "uncertain_nasal_targets": 49,
+        "unknown_selected_targets": 50
+      }
+    },
+    {
+      "settings": {
+        "feature_source": "local_phoneme",
+        "regularization": 0.01,
+        "specialist_weight": 1.0,
+        "review_margins": {
+          "front": null,
+          "back": 0.21621318566734635
+        },
+        "matching_margins": {
+          "front": 0.3842540719410588,
+          "back": 0.0
+        }
+      },
+      "development": {
+        "selected_targets": 435,
+        "scored_targets": 434,
+        "unavailable_targets": 1,
+        "selected_errors": 28,
+        "known_nasal_errors": 27,
+        "unavailable_errors": 1,
+        "selected_normal": 407,
+        "correct_nasal_targets": 131,
+        "unavailable_normal": 0,
+        "correct_error_directions": 14,
+        "missed_selected_errors": 14,
+        "false_nasal_accusations": 0,
+        "false_reassurances": 0,
+        "correct_nasal_matches": 64,
+        "uncertain_nasal_targets": 80,
+        "unknown_selected_targets": 81
+      }
+    },
+    {
+      "settings": {
+        "feature_source": "local_phoneme",
+        "regularization": 0.1,
+        "specialist_weight": 0.0,
+        "review_margins": {
+          "front": 0.5371492649026806,
+          "back": 0.49523996348596694
+        },
+        "matching_margins": {
+          "front": 0.04261029981710885,
+          "back": 0.022045547343841235
+        }
+      },
+      "development": {
+        "selected_targets": 435,
+        "scored_targets": 434,
+        "unavailable_targets": 1,
+        "selected_errors": 28,
+        "known_nasal_errors": 27,
+        "unavailable_errors": 1,
+        "selected_normal": 407,
+        "correct_nasal_targets": 131,
+        "unavailable_normal": 0,
+        "correct_error_directions": 13,
+        "missed_selected_errors": 15,
+        "false_nasal_accusations": 0,
+        "false_reassurances": 0,
+        "correct_nasal_matches": 108,
+        "uncertain_nasal_targets": 37,
+        "unknown_selected_targets": 38
+      }
+    },
+    {
+      "settings": {
+        "feature_source": "local_phoneme",
+        "regularization": 0.01,
+        "specialist_weight": 0.0,
+        "review_margins": {
+          "front": null,
+          "back": 0.5363876192412159
+        },
+        "matching_margins": {
+          "front": 0.05173937459772227,
+          "back": 0.0
+        }
+      },
+      "development": {
+        "selected_targets": 435,
+        "scored_targets": 434,
+        "unavailable_targets": 1,
+        "selected_errors": 28,
+        "known_nasal_errors": 27,
+        "unavailable_errors": 1,
+        "selected_normal": 407,
+        "correct_nasal_targets": 131,
+        "unavailable_normal": 0,
+        "correct_error_directions": 11,
+        "missed_selected_errors": 17,
+        "false_nasal_accusations": 0,
+        "false_reassurances": 0,
+        "correct_nasal_matches": 108,
+        "uncertain_nasal_targets": 39,
+        "unknown_selected_targets": 40
+      }
+    },
+    {
+      "settings": {
+        "feature_source": "local_phoneme",
+        "regularization": 1.0,
+        "specialist_weight": 0.0,
+        "review_margins": {
+          "front": null,
+          "back": 0.3654948066873879
+        },
+        "matching_margins": {
+          "front": 0.21807119814151024,
+          "back": 0.10900451946359714
+        }
+      },
+      "development": {
+        "selected_targets": 435,
+        "scored_targets": 434,
+        "unavailable_targets": 1,
+        "selected_errors": 28,
+        "known_nasal_errors": 27,
+        "unavailable_errors": 1,
+        "selected_normal": 407,
+        "correct_nasal_targets": 131,
+        "unavailable_normal": 0,
+        "correct_error_directions": 9,
+        "missed_selected_errors": 19,
+        "false_nasal_accusations": 0,
+        "false_reassurances": 0,
+        "correct_nasal_matches": 102,
+        "uncertain_nasal_targets": 47,
+        "unknown_selected_targets": 48
+      }
+    }
+  ],
+  "comparison": {
+    "shared": {
+      "existing": {
+        "evaluation_only": {
+          "selected_targets": 125,
+          "scored_targets": 116,
+          "unavailable_targets": 9,
+          "selected_errors": 50,
+          "known_nasal_errors": 44,
+          "unavailable_errors": 6,
+          "selected_normal": 75,
+          "correct_nasal_targets": 72,
+          "unavailable_normal": 3,
+          "correct_error_directions": 33,
+          "missed_selected_errors": 17,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 1,
+          "correct_nasal_matches": 56,
+          "uncertain_nasal_targets": 26,
+          "unknown_selected_targets": 35
+        },
+        "directions": {
+          "front": {
+            "selected_targets": 65,
+            "scored_targets": 62,
+            "unavailable_targets": 3,
+            "selected_errors": 17,
+            "known_nasal_errors": 15,
+            "unavailable_errors": 2,
+            "selected_normal": 48,
+            "correct_nasal_targets": 47,
+            "unavailable_normal": 1,
+            "correct_error_directions": 11,
+            "missed_selected_errors": 6,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 1,
+            "correct_nasal_matches": 34,
+            "uncertain_nasal_targets": 16,
+            "unknown_selected_targets": 19
+          },
+          "back": {
+            "selected_targets": 60,
+            "scored_targets": 54,
+            "unavailable_targets": 6,
+            "selected_errors": 33,
+            "known_nasal_errors": 29,
+            "unavailable_errors": 4,
+            "selected_normal": 27,
+            "correct_nasal_targets": 25,
+            "unavailable_normal": 2,
+            "correct_error_directions": 22,
+            "missed_selected_errors": 11,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 22,
+            "uncertain_nasal_targets": 10,
+            "unknown_selected_targets": 16
+          }
+        },
+        "pure_nasal_pairs": {
+          "selected_targets": 0,
+          "scored_targets": 0,
+          "unavailable_targets": 0,
+          "selected_errors": 0,
+          "known_nasal_errors": 0,
+          "unavailable_errors": 0,
+          "selected_normal": 0,
+          "correct_nasal_targets": 0,
+          "unavailable_normal": 0,
+          "correct_error_directions": 0,
+          "missed_selected_errors": 0,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 0,
+          "correct_nasal_matches": 0,
+          "uncertain_nasal_targets": 0,
+          "unknown_selected_targets": 0
+        },
+        "pairs": {
+          "an": {
+            "route": "shared",
+            "selected_targets": 18,
+            "scored_targets": 18,
+            "unavailable_targets": 0,
+            "selected_errors": 1,
+            "known_nasal_errors": 1,
+            "unavailable_errors": 0,
+            "selected_normal": 17,
+            "correct_nasal_targets": 17,
+            "unavailable_normal": 0,
+            "correct_error_directions": 0,
+            "missed_selected_errors": 1,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 11,
+            "uncertain_nasal_targets": 7,
+            "unknown_selected_targets": 7
+          },
+          "en": {
+            "route": "shared",
+            "selected_targets": 41,
+            "scored_targets": 40,
+            "unavailable_targets": 1,
+            "selected_errors": 20,
+            "known_nasal_errors": 19,
+            "unavailable_errors": 1,
+            "selected_normal": 21,
+            "correct_nasal_targets": 21,
+            "unavailable_normal": 0,
+            "correct_error_directions": 14,
+            "missed_selected_errors": 6,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 19,
+            "uncertain_nasal_targets": 7,
+            "unknown_selected_targets": 8
+          },
+          "ian": {
+            "route": "shared",
+            "selected_targets": 13,
+            "scored_targets": 13,
+            "unavailable_targets": 0,
+            "selected_errors": 0,
+            "known_nasal_errors": 0,
+            "unavailable_errors": 0,
+            "selected_normal": 13,
+            "correct_nasal_targets": 13,
+            "unavailable_normal": 0,
+            "correct_error_directions": 0,
+            "missed_selected_errors": 0,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 7,
+            "uncertain_nasal_targets": 6,
+            "unknown_selected_targets": 6
+          },
+          "in": {
+            "route": "shared",
+            "selected_targets": 26,
+            "scored_targets": 26,
+            "unavailable_targets": 0,
+            "selected_errors": 19,
+            "known_nasal_errors": 19,
+            "unavailable_errors": 0,
+            "selected_normal": 7,
+            "correct_nasal_targets": 7,
+            "unavailable_normal": 0,
+            "correct_error_directions": 15,
+            "missed_selected_errors": 4,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 1,
+            "correct_nasal_matches": 6,
+            "uncertain_nasal_targets": 4,
+            "unknown_selected_targets": 4
+          },
+          "ion": {
+            "route": "shared",
+            "selected_targets": 1,
+            "scored_targets": 1,
+            "unavailable_targets": 0,
+            "selected_errors": 0,
+            "known_nasal_errors": 0,
+            "unavailable_errors": 0,
+            "selected_normal": 1,
+            "correct_nasal_targets": 1,
+            "unavailable_normal": 0,
+            "correct_error_directions": 0,
+            "missed_selected_errors": 0,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 1,
+            "uncertain_nasal_targets": 0,
+            "unknown_selected_targets": 0
+          },
+          "on": {
+            "route": "shared",
+            "selected_targets": 8,
+            "scored_targets": 8,
+            "unavailable_targets": 0,
+            "selected_errors": 0,
+            "known_nasal_errors": 0,
+            "unavailable_errors": 0,
+            "selected_normal": 8,
+            "correct_nasal_targets": 8,
+            "unavailable_normal": 0,
+            "correct_error_directions": 0,
+            "missed_selected_errors": 0,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 8,
+            "uncertain_nasal_targets": 0,
+            "unknown_selected_targets": 0
+          },
+          "uan": {
+            "route": "shared",
+            "selected_targets": 8,
+            "scored_targets": 8,
+            "unavailable_targets": 0,
+            "selected_errors": 5,
+            "known_nasal_errors": 5,
+            "unavailable_errors": 0,
+            "selected_normal": 3,
+            "correct_nasal_targets": 3,
+            "unavailable_normal": 0,
+            "correct_error_directions": 4,
+            "missed_selected_errors": 1,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 3,
+            "uncertain_nasal_targets": 1,
+            "unknown_selected_targets": 1
+          },
+          "uen": {
+            "route": "shared",
+            "selected_targets": 2,
+            "scored_targets": 2,
+            "unavailable_targets": 0,
+            "selected_errors": 0,
+            "known_nasal_errors": 0,
+            "unavailable_errors": 0,
+            "selected_normal": 2,
+            "correct_nasal_targets": 2,
+            "unavailable_normal": 0,
+            "correct_error_directions": 0,
+            "missed_selected_errors": 0,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 1,
+            "uncertain_nasal_targets": 1,
+            "unknown_selected_targets": 1
+          },
+          "unavailable_final": {
+            "route": "unknown",
+            "selected_targets": 8,
+            "scored_targets": 0,
+            "unavailable_targets": 8,
+            "selected_errors": 5,
+            "known_nasal_errors": 0,
+            "unavailable_errors": 5,
+            "selected_normal": 3,
+            "correct_nasal_targets": 0,
+            "unavailable_normal": 3,
+            "correct_error_directions": 0,
+            "missed_selected_errors": 5,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 0,
+            "uncertain_nasal_targets": 0,
+            "unknown_selected_targets": 8
+          }
+        }
+      },
+      "griffith": {
+        "evaluation_only": {
+          "selected_targets": 140,
+          "scored_targets": 128,
+          "unavailable_targets": 12,
+          "selected_errors": 13,
+          "known_nasal_errors": 13,
+          "unavailable_errors": 0,
+          "selected_normal": 127,
+          "correct_nasal_targets": 115,
+          "unavailable_normal": 12,
+          "correct_error_directions": 4,
+          "missed_selected_errors": 9,
+          "false_nasal_accusations": 4,
+          "false_reassurances": 2,
+          "correct_nasal_matches": 87,
+          "uncertain_nasal_targets": 31,
+          "unknown_selected_targets": 43
+        },
+        "directions": {
+          "front": {
+            "selected_targets": 87,
+            "scored_targets": 79,
+            "unavailable_targets": 8,
+            "selected_errors": 9,
+            "known_nasal_errors": 9,
+            "unavailable_errors": 0,
+            "selected_normal": 78,
+            "correct_nasal_targets": 70,
+            "unavailable_normal": 8,
+            "correct_error_directions": 4,
+            "missed_selected_errors": 5,
+            "false_nasal_accusations": 3,
+            "false_reassurances": 1,
+            "correct_nasal_matches": 49,
+            "uncertain_nasal_targets": 22,
+            "unknown_selected_targets": 30
+          },
+          "back": {
+            "selected_targets": 53,
+            "scored_targets": 49,
+            "unavailable_targets": 4,
+            "selected_errors": 4,
+            "known_nasal_errors": 4,
+            "unavailable_errors": 0,
+            "selected_normal": 49,
+            "correct_nasal_targets": 45,
+            "unavailable_normal": 4,
+            "correct_error_directions": 0,
+            "missed_selected_errors": 4,
+            "false_nasal_accusations": 1,
+            "false_reassurances": 1,
+            "correct_nasal_matches": 38,
+            "uncertain_nasal_targets": 9,
+            "unknown_selected_targets": 13
+          }
+        },
+        "pure_nasal_pairs": {
+          "selected_targets": 6,
+          "scored_targets": 6,
+          "unavailable_targets": 0,
+          "selected_errors": 6,
+          "known_nasal_errors": 6,
+          "unavailable_errors": 0,
+          "selected_normal": 0,
+          "correct_nasal_targets": 0,
+          "unavailable_normal": 0,
+          "correct_error_directions": 2,
+          "missed_selected_errors": 4,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 0,
+          "correct_nasal_matches": 0,
+          "uncertain_nasal_targets": 4,
+          "unknown_selected_targets": 4
+        },
+        "pairs": {
+          "an": {
+            "route": "shared",
+            "selected_targets": 21,
+            "scored_targets": 20,
+            "unavailable_targets": 1,
+            "selected_errors": 2,
+            "known_nasal_errors": 2,
+            "unavailable_errors": 0,
+            "selected_normal": 19,
+            "correct_nasal_targets": 18,
+            "unavailable_normal": 1,
+            "correct_error_directions": 0,
+            "missed_selected_errors": 2,
+            "false_nasal_accusations": 1,
+            "false_reassurances": 1,
+            "correct_nasal_matches": 10,
+            "uncertain_nasal_targets": 8,
+            "unknown_selected_targets": 9
+          },
+          "en": {
+            "route": "shared",
+            "selected_targets": 48,
+            "scored_targets": 41,
+            "unavailable_targets": 7,
+            "selected_errors": 4,
+            "known_nasal_errors": 4,
+            "unavailable_errors": 0,
+            "selected_normal": 44,
+            "correct_nasal_targets": 37,
+            "unavailable_normal": 7,
+            "correct_error_directions": 1,
+            "missed_selected_errors": 3,
+            "false_nasal_accusations": 1,
+            "false_reassurances": 1,
+            "correct_nasal_matches": 29,
+            "uncertain_nasal_targets": 9,
+            "unknown_selected_targets": 16
+          },
+          "ian": {
+            "route": "shared",
+            "selected_targets": 20,
+            "scored_targets": 19,
+            "unavailable_targets": 1,
+            "selected_errors": 3,
+            "known_nasal_errors": 3,
+            "unavailable_errors": 0,
+            "selected_normal": 17,
+            "correct_nasal_targets": 16,
+            "unavailable_normal": 1,
+            "correct_error_directions": 1,
+            "missed_selected_errors": 2,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 11,
+            "uncertain_nasal_targets": 7,
+            "unknown_selected_targets": 8
+          },
+          "in": {
+            "route": "shared",
+            "selected_targets": 11,
+            "scored_targets": 10,
+            "unavailable_targets": 1,
+            "selected_errors": 0,
+            "known_nasal_errors": 0,
+            "unavailable_errors": 0,
+            "selected_normal": 11,
+            "correct_nasal_targets": 10,
+            "unavailable_normal": 1,
+            "correct_error_directions": 0,
+            "missed_selected_errors": 0,
+            "false_nasal_accusations": 1,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 8,
+            "uncertain_nasal_targets": 1,
+            "unknown_selected_targets": 2
+          },
+          "on": {
+            "route": "shared",
+            "selected_targets": 20,
+            "scored_targets": 18,
+            "unavailable_targets": 2,
+            "selected_errors": 0,
+            "known_nasal_errors": 0,
+            "unavailable_errors": 0,
+            "selected_normal": 20,
+            "correct_nasal_targets": 18,
+            "unavailable_normal": 2,
+            "correct_error_directions": 0,
+            "missed_selected_errors": 0,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 17,
+            "uncertain_nasal_targets": 1,
+            "unknown_selected_targets": 3
+          },
+          "uan": {
+            "route": "shared",
+            "selected_targets": 8,
+            "scored_targets": 8,
+            "unavailable_targets": 0,
+            "selected_errors": 3,
+            "known_nasal_errors": 3,
+            "unavailable_errors": 0,
+            "selected_normal": 5,
+            "correct_nasal_targets": 5,
+            "unavailable_normal": 0,
+            "correct_error_directions": 2,
+            "missed_selected_errors": 1,
+            "false_nasal_accusations": 1,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 3,
+            "uncertain_nasal_targets": 2,
+            "unknown_selected_targets": 2
+          },
+          "uen": {
+            "route": "shared",
+            "selected_targets": 6,
+            "scored_targets": 6,
+            "unavailable_targets": 0,
+            "selected_errors": 1,
+            "known_nasal_errors": 1,
+            "unavailable_errors": 0,
+            "selected_normal": 5,
+            "correct_nasal_targets": 5,
+            "unavailable_normal": 0,
+            "correct_error_directions": 0,
+            "missed_selected_errors": 1,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 4,
+            "uncertain_nasal_targets": 2,
+            "unknown_selected_targets": 2
+          },
+          "van": {
+            "route": "shared",
+            "selected_targets": 6,
+            "scored_targets": 6,
+            "unavailable_targets": 0,
+            "selected_errors": 0,
+            "known_nasal_errors": 0,
+            "unavailable_errors": 0,
+            "selected_normal": 6,
+            "correct_nasal_targets": 6,
+            "unavailable_normal": 0,
+            "correct_error_directions": 0,
+            "missed_selected_errors": 0,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 5,
+            "uncertain_nasal_targets": 1,
+            "unknown_selected_targets": 1
+          }
+        }
+      }
+    },
+    "pair": {
+      "existing": {
+        "evaluation_only": {
+          "selected_targets": 125,
+          "scored_targets": 116,
+          "unavailable_targets": 9,
+          "selected_errors": 50,
+          "known_nasal_errors": 44,
+          "unavailable_errors": 6,
+          "selected_normal": 75,
+          "correct_nasal_targets": 72,
+          "unavailable_normal": 3,
+          "correct_error_directions": 33,
+          "missed_selected_errors": 17,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 1,
+          "correct_nasal_matches": 56,
+          "uncertain_nasal_targets": 26,
+          "unknown_selected_targets": 35
+        },
+        "directions": {
+          "front": {
+            "selected_targets": 65,
+            "scored_targets": 62,
+            "unavailable_targets": 3,
+            "selected_errors": 17,
+            "known_nasal_errors": 15,
+            "unavailable_errors": 2,
+            "selected_normal": 48,
+            "correct_nasal_targets": 47,
+            "unavailable_normal": 1,
+            "correct_error_directions": 8,
+            "missed_selected_errors": 9,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 1,
+            "correct_nasal_matches": 34,
+            "uncertain_nasal_targets": 19,
+            "unknown_selected_targets": 22
+          },
+          "back": {
+            "selected_targets": 60,
+            "scored_targets": 54,
+            "unavailable_targets": 6,
+            "selected_errors": 33,
+            "known_nasal_errors": 29,
+            "unavailable_errors": 4,
+            "selected_normal": 27,
+            "correct_nasal_targets": 25,
+            "unavailable_normal": 2,
+            "correct_error_directions": 25,
+            "missed_selected_errors": 8,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 22,
+            "uncertain_nasal_targets": 7,
+            "unknown_selected_targets": 13
+          }
+        },
+        "pure_nasal_pairs": {
+          "selected_targets": 0,
+          "scored_targets": 0,
+          "unavailable_targets": 0,
+          "selected_errors": 0,
+          "known_nasal_errors": 0,
+          "unavailable_errors": 0,
+          "selected_normal": 0,
+          "correct_nasal_targets": 0,
+          "unavailable_normal": 0,
+          "correct_error_directions": 0,
+          "missed_selected_errors": 0,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 0,
+          "correct_nasal_matches": 0,
+          "uncertain_nasal_targets": 0,
+          "unknown_selected_targets": 0
+        },
+        "pairs": {
+          "an": {
+            "route": "specialist",
+            "selected_targets": 18,
+            "scored_targets": 18,
+            "unavailable_targets": 0,
+            "selected_errors": 1,
+            "known_nasal_errors": 1,
+            "unavailable_errors": 0,
+            "selected_normal": 17,
+            "correct_nasal_targets": 17,
+            "unavailable_normal": 0,
+            "correct_error_directions": 0,
+            "missed_selected_errors": 1,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 11,
+            "uncertain_nasal_targets": 7,
+            "unknown_selected_targets": 7
+          },
+          "en": {
+            "route": "specialist",
+            "selected_targets": 41,
+            "scored_targets": 40,
+            "unavailable_targets": 1,
+            "selected_errors": 20,
+            "known_nasal_errors": 19,
+            "unavailable_errors": 1,
+            "selected_normal": 21,
+            "correct_nasal_targets": 21,
+            "unavailable_normal": 0,
+            "correct_error_directions": 16,
+            "missed_selected_errors": 4,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 19,
+            "uncertain_nasal_targets": 5,
+            "unknown_selected_targets": 6
+          },
+          "ian": {
+            "route": "specialist",
+            "selected_targets": 13,
+            "scored_targets": 13,
+            "unavailable_targets": 0,
+            "selected_errors": 0,
+            "known_nasal_errors": 0,
+            "unavailable_errors": 0,
+            "selected_normal": 13,
+            "correct_nasal_targets": 13,
+            "unavailable_normal": 0,
+            "correct_error_directions": 0,
+            "missed_selected_errors": 0,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 7,
+            "uncertain_nasal_targets": 6,
+            "unknown_selected_targets": 6
+          },
+          "in": {
+            "route": "specialist",
+            "selected_targets": 26,
+            "scored_targets": 26,
+            "unavailable_targets": 0,
+            "selected_errors": 19,
+            "known_nasal_errors": 19,
+            "unavailable_errors": 0,
+            "selected_normal": 7,
+            "correct_nasal_targets": 7,
+            "unavailable_normal": 0,
+            "correct_error_directions": 13,
+            "missed_selected_errors": 6,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 1,
+            "correct_nasal_matches": 6,
+            "uncertain_nasal_targets": 6,
+            "unknown_selected_targets": 6
+          },
+          "ion": {
+            "route": "shared",
+            "selected_targets": 1,
+            "scored_targets": 1,
+            "unavailable_targets": 0,
+            "selected_errors": 0,
+            "known_nasal_errors": 0,
+            "unavailable_errors": 0,
+            "selected_normal": 1,
+            "correct_nasal_targets": 1,
+            "unavailable_normal": 0,
+            "correct_error_directions": 0,
+            "missed_selected_errors": 0,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 1,
+            "uncertain_nasal_targets": 0,
+            "unknown_selected_targets": 0
+          },
+          "on": {
+            "route": "shared",
+            "selected_targets": 8,
+            "scored_targets": 8,
+            "unavailable_targets": 0,
+            "selected_errors": 0,
+            "known_nasal_errors": 0,
+            "unavailable_errors": 0,
+            "selected_normal": 8,
+            "correct_nasal_targets": 8,
+            "unavailable_normal": 0,
+            "correct_error_directions": 0,
+            "missed_selected_errors": 0,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 8,
+            "uncertain_nasal_targets": 0,
+            "unknown_selected_targets": 0
+          },
+          "uan": {
+            "route": "shared",
+            "selected_targets": 8,
+            "scored_targets": 8,
+            "unavailable_targets": 0,
+            "selected_errors": 5,
+            "known_nasal_errors": 5,
+            "unavailable_errors": 0,
+            "selected_normal": 3,
+            "correct_nasal_targets": 3,
+            "unavailable_normal": 0,
+            "correct_error_directions": 4,
+            "missed_selected_errors": 1,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 3,
+            "uncertain_nasal_targets": 1,
+            "unknown_selected_targets": 1
+          },
+          "uen": {
+            "route": "shared",
+            "selected_targets": 2,
+            "scored_targets": 2,
+            "unavailable_targets": 0,
+            "selected_errors": 0,
+            "known_nasal_errors": 0,
+            "unavailable_errors": 0,
+            "selected_normal": 2,
+            "correct_nasal_targets": 2,
+            "unavailable_normal": 0,
+            "correct_error_directions": 0,
+            "missed_selected_errors": 0,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 1,
+            "uncertain_nasal_targets": 1,
+            "unknown_selected_targets": 1
+          },
+          "unavailable_final": {
+            "route": "unknown",
+            "selected_targets": 8,
+            "scored_targets": 0,
+            "unavailable_targets": 8,
+            "selected_errors": 5,
+            "known_nasal_errors": 0,
+            "unavailable_errors": 5,
+            "selected_normal": 3,
+            "correct_nasal_targets": 0,
+            "unavailable_normal": 3,
+            "correct_error_directions": 0,
+            "missed_selected_errors": 5,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 0,
+            "uncertain_nasal_targets": 0,
+            "unknown_selected_targets": 8
+          }
+        }
+      },
+      "griffith": {
+        "evaluation_only": {
+          "selected_targets": 140,
+          "scored_targets": 128,
+          "unavailable_targets": 12,
+          "selected_errors": 13,
+          "known_nasal_errors": 13,
+          "unavailable_errors": 0,
+          "selected_normal": 127,
+          "correct_nasal_targets": 115,
+          "unavailable_normal": 12,
+          "correct_error_directions": 4,
+          "missed_selected_errors": 9,
+          "false_nasal_accusations": 1,
+          "false_reassurances": 1,
+          "correct_nasal_matches": 82,
+          "uncertain_nasal_targets": 40,
+          "unknown_selected_targets": 52
+        },
+        "directions": {
+          "front": {
+            "selected_targets": 87,
+            "scored_targets": 79,
+            "unavailable_targets": 8,
+            "selected_errors": 9,
+            "known_nasal_errors": 9,
+            "unavailable_errors": 0,
+            "selected_normal": 78,
+            "correct_nasal_targets": 70,
+            "unavailable_normal": 8,
+            "correct_error_directions": 3,
+            "missed_selected_errors": 6,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 43,
+            "uncertain_nasal_targets": 33,
+            "unknown_selected_targets": 41
+          },
+          "back": {
+            "selected_targets": 53,
+            "scored_targets": 49,
+            "unavailable_targets": 4,
+            "selected_errors": 4,
+            "known_nasal_errors": 4,
+            "unavailable_errors": 0,
+            "selected_normal": 49,
+            "correct_nasal_targets": 45,
+            "unavailable_normal": 4,
+            "correct_error_directions": 1,
+            "missed_selected_errors": 3,
+            "false_nasal_accusations": 1,
+            "false_reassurances": 1,
+            "correct_nasal_matches": 39,
+            "uncertain_nasal_targets": 7,
+            "unknown_selected_targets": 11
+          }
+        },
+        "pure_nasal_pairs": {
+          "selected_targets": 6,
+          "scored_targets": 6,
+          "unavailable_targets": 0,
+          "selected_errors": 6,
+          "known_nasal_errors": 6,
+          "unavailable_errors": 0,
+          "selected_normal": 0,
+          "correct_nasal_targets": 0,
+          "unavailable_normal": 0,
+          "correct_error_directions": 2,
+          "missed_selected_errors": 4,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 0,
+          "correct_nasal_matches": 0,
+          "uncertain_nasal_targets": 4,
+          "unknown_selected_targets": 4
+        },
+        "pairs": {
+          "an": {
+            "route": "specialist",
+            "selected_targets": 21,
+            "scored_targets": 20,
+            "unavailable_targets": 1,
+            "selected_errors": 2,
+            "known_nasal_errors": 2,
+            "unavailable_errors": 0,
+            "selected_normal": 19,
+            "correct_nasal_targets": 18,
+            "unavailable_normal": 1,
+            "correct_error_directions": 0,
+            "missed_selected_errors": 2,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 1,
+            "correct_nasal_matches": 8,
+            "uncertain_nasal_targets": 11,
+            "unknown_selected_targets": 12
+          },
+          "en": {
+            "route": "specialist",
+            "selected_targets": 48,
+            "scored_targets": 41,
+            "unavailable_targets": 7,
+            "selected_errors": 4,
+            "known_nasal_errors": 4,
+            "unavailable_errors": 0,
+            "selected_normal": 44,
+            "correct_nasal_targets": 37,
+            "unavailable_normal": 7,
+            "correct_error_directions": 0,
+            "missed_selected_errors": 4,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 29,
+            "uncertain_nasal_targets": 12,
+            "unknown_selected_targets": 19
+          },
+          "ian": {
+            "route": "specialist",
+            "selected_targets": 20,
+            "scored_targets": 19,
+            "unavailable_targets": 1,
+            "selected_errors": 3,
+            "known_nasal_errors": 3,
+            "unavailable_errors": 0,
+            "selected_normal": 17,
+            "correct_nasal_targets": 16,
+            "unavailable_normal": 1,
+            "correct_error_directions": 1,
+            "missed_selected_errors": 2,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 10,
+            "uncertain_nasal_targets": 8,
+            "unknown_selected_targets": 9
+          },
+          "in": {
+            "route": "specialist",
+            "selected_targets": 11,
+            "scored_targets": 10,
+            "unavailable_targets": 1,
+            "selected_errors": 0,
+            "known_nasal_errors": 0,
+            "unavailable_errors": 0,
+            "selected_normal": 11,
+            "correct_nasal_targets": 10,
+            "unavailable_normal": 1,
+            "correct_error_directions": 0,
+            "missed_selected_errors": 0,
+            "false_nasal_accusations": 1,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 7,
+            "uncertain_nasal_targets": 2,
+            "unknown_selected_targets": 3
+          },
+          "on": {
+            "route": "shared",
+            "selected_targets": 20,
+            "scored_targets": 18,
+            "unavailable_targets": 2,
+            "selected_errors": 0,
+            "known_nasal_errors": 0,
+            "unavailable_errors": 0,
+            "selected_normal": 20,
+            "correct_nasal_targets": 18,
+            "unavailable_normal": 2,
+            "correct_error_directions": 0,
+            "missed_selected_errors": 0,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 17,
+            "uncertain_nasal_targets": 1,
+            "unknown_selected_targets": 3
+          },
+          "uan": {
+            "route": "shared",
+            "selected_targets": 8,
+            "scored_targets": 8,
+            "unavailable_targets": 0,
+            "selected_errors": 3,
+            "known_nasal_errors": 3,
+            "unavailable_errors": 0,
+            "selected_normal": 5,
+            "correct_nasal_targets": 5,
+            "unavailable_normal": 0,
+            "correct_error_directions": 3,
+            "missed_selected_errors": 0,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 4,
+            "uncertain_nasal_targets": 1,
+            "unknown_selected_targets": 1
+          },
+          "uen": {
+            "route": "shared",
+            "selected_targets": 6,
+            "scored_targets": 6,
+            "unavailable_targets": 0,
+            "selected_errors": 1,
+            "known_nasal_errors": 1,
+            "unavailable_errors": 0,
+            "selected_normal": 5,
+            "correct_nasal_targets": 5,
+            "unavailable_normal": 0,
+            "correct_error_directions": 0,
+            "missed_selected_errors": 1,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 4,
+            "uncertain_nasal_targets": 2,
+            "unknown_selected_targets": 2
+          },
+          "van": {
+            "route": "shared",
+            "selected_targets": 6,
+            "scored_targets": 6,
+            "unavailable_targets": 0,
+            "selected_errors": 0,
+            "known_nasal_errors": 0,
+            "unavailable_errors": 0,
+            "selected_normal": 6,
+            "correct_nasal_targets": 6,
+            "unavailable_normal": 0,
+            "correct_error_directions": 0,
+            "missed_selected_errors": 0,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 3,
+            "uncertain_nasal_targets": 3,
+            "unknown_selected_targets": 3
+          }
+        }
+      }
+    }
+  },
+  "matched_control_post_hoc": {
+    "settings": {
+      "feature_source": "concatenated",
+      "regularization": 1.0,
+      "specialist_weight": 0.0,
+      "review_margins": {
+        "front": 0.4695872319349844,
+        "back": 0.20817492794638695
+      },
+      "matching_margins": {
+        "front": 0.2988189906825767,
+        "back": 0.0
+      }
+    },
+    "comparison": {
+      "existing": {
+        "evaluation_only": {
+          "selected_targets": 125,
+          "scored_targets": 116,
+          "unavailable_targets": 9,
+          "selected_errors": 50,
+          "known_nasal_errors": 44,
+          "unavailable_errors": 6,
+          "selected_normal": 75,
+          "correct_nasal_targets": 72,
+          "unavailable_normal": 3,
+          "correct_error_directions": 30,
+          "missed_selected_errors": 20,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 2,
+          "correct_nasal_matches": 57,
+          "uncertain_nasal_targets": 27,
+          "unknown_selected_targets": 36
+        },
+        "directions": {
+          "front": {
+            "selected_targets": 65,
+            "scored_targets": 62,
+            "unavailable_targets": 3,
+            "selected_errors": 17,
+            "known_nasal_errors": 15,
+            "unavailable_errors": 2,
+            "selected_normal": 48,
+            "correct_nasal_targets": 47,
+            "unavailable_normal": 1,
+            "correct_error_directions": 7,
+            "missed_selected_errors": 10,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 1,
+            "correct_nasal_matches": 35,
+            "uncertain_nasal_targets": 19,
+            "unknown_selected_targets": 22
+          },
+          "back": {
+            "selected_targets": 60,
+            "scored_targets": 54,
+            "unavailable_targets": 6,
+            "selected_errors": 33,
+            "known_nasal_errors": 29,
+            "unavailable_errors": 4,
+            "selected_normal": 27,
+            "correct_nasal_targets": 25,
+            "unavailable_normal": 2,
+            "correct_error_directions": 23,
+            "missed_selected_errors": 10,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 1,
+            "correct_nasal_matches": 22,
+            "uncertain_nasal_targets": 8,
+            "unknown_selected_targets": 14
+          }
+        },
+        "pure_nasal_pairs": {
+          "selected_targets": 0,
+          "scored_targets": 0,
+          "unavailable_targets": 0,
+          "selected_errors": 0,
+          "known_nasal_errors": 0,
+          "unavailable_errors": 0,
+          "selected_normal": 0,
+          "correct_nasal_targets": 0,
+          "unavailable_normal": 0,
+          "correct_error_directions": 0,
+          "missed_selected_errors": 0,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 0,
+          "correct_nasal_matches": 0,
+          "uncertain_nasal_targets": 0,
+          "unknown_selected_targets": 0
+        }
+      },
+      "griffith": {
+        "evaluation_only": {
+          "selected_targets": 140,
+          "scored_targets": 128,
+          "unavailable_targets": 12,
+          "selected_errors": 13,
+          "known_nasal_errors": 13,
+          "unavailable_errors": 0,
+          "selected_normal": 127,
+          "correct_nasal_targets": 115,
+          "unavailable_normal": 12,
+          "correct_error_directions": 4,
+          "missed_selected_errors": 9,
+          "false_nasal_accusations": 1,
+          "false_reassurances": 1,
+          "correct_nasal_matches": 90,
+          "uncertain_nasal_targets": 32,
+          "unknown_selected_targets": 44
+        },
+        "directions": {
+          "front": {
+            "selected_targets": 87,
+            "scored_targets": 79,
+            "unavailable_targets": 8,
+            "selected_errors": 9,
+            "known_nasal_errors": 9,
+            "unavailable_errors": 0,
+            "selected_normal": 78,
+            "correct_nasal_targets": 70,
+            "unavailable_normal": 8,
+            "correct_error_directions": 4,
+            "missed_selected_errors": 5,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 49,
+            "uncertain_nasal_targets": 26,
+            "unknown_selected_targets": 34
+          },
+          "back": {
+            "selected_targets": 53,
+            "scored_targets": 49,
+            "unavailable_targets": 4,
+            "selected_errors": 4,
+            "known_nasal_errors": 4,
+            "unavailable_errors": 0,
+            "selected_normal": 49,
+            "correct_nasal_targets": 45,
+            "unavailable_normal": 4,
+            "correct_error_directions": 0,
+            "missed_selected_errors": 4,
+            "false_nasal_accusations": 1,
+            "false_reassurances": 1,
+            "correct_nasal_matches": 41,
+            "uncertain_nasal_targets": 6,
+            "unknown_selected_targets": 10
+          }
+        },
+        "pure_nasal_pairs": {
+          "selected_targets": 6,
+          "scored_targets": 6,
+          "unavailable_targets": 0,
+          "selected_errors": 6,
+          "known_nasal_errors": 6,
+          "unavailable_errors": 0,
+          "selected_normal": 0,
+          "correct_nasal_targets": 0,
+          "unavailable_normal": 0,
+          "correct_error_directions": 2,
+          "missed_selected_errors": 4,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 0,
+          "correct_nasal_matches": 0,
+          "uncertain_nasal_targets": 4,
+          "unknown_selected_targets": 4
+        }
+      }
+    }
+  },
+  "source_label_audit": {
+    "train": [
+      {
+        "source": "eduhk",
+        "condition": "sentence_error",
+        "actual": "back",
+        "expected": "front",
+        "targets": 11
+      },
+      {
+        "source": "eduhk",
+        "condition": "sentence_error",
+        "actual": "front",
+        "expected": "back",
+        "targets": 34
+      },
+      {
+        "source": "eduhk",
+        "condition": "word_error",
+        "actual": "back",
+        "expected": "front",
+        "targets": 12
+      },
+      {
+        "source": "eduhk",
+        "condition": "word_error",
+        "actual": "front",
+        "expected": "back",
+        "targets": 32
+      },
+      {
+        "source": "ompal",
+        "condition": "native_reference",
+        "actual": "back",
+        "expected": "back",
+        "targets": 1
+      },
+      {
+        "source": "ompal",
+        "condition": "native_reference",
+        "actual": "other",
+        "expected": "other",
+        "targets": 6
+      },
+      {
+        "source": "ompal",
+        "condition": "teacher_correct",
+        "actual": "back",
+        "expected": "back",
+        "targets": 75
+      },
+      {
+        "source": "ompal",
+        "condition": "teacher_correct",
+        "actual": "front",
+        "expected": "front",
+        "targets": 97
+      },
+      {
+        "source": "ompal",
+        "condition": "teacher_correct",
+        "actual": "other",
+        "expected": "other",
+        "targets": 390
+      }
+    ],
+    "dev": [
+      {
+        "source": "eduhk",
+        "condition": "sentence_error",
+        "actual": "back",
+        "expected": "front",
+        "targets": 2
+      },
+      {
+        "source": "eduhk",
+        "condition": "sentence_error",
+        "actual": "front",
+        "expected": "back",
+        "targets": 12
+      },
+      {
+        "source": "eduhk",
+        "condition": "word_error",
+        "actual": "back",
+        "expected": "front",
+        "targets": 5
+      },
+      {
+        "source": "eduhk",
+        "condition": "word_error",
+        "actual": "front",
+        "expected": "back",
+        "targets": 8
+      },
+      {
+        "source": "ompal",
+        "condition": "native_reference",
+        "actual": "back",
+        "expected": "back",
+        "targets": 3
+      },
+      {
+        "source": "ompal",
+        "condition": "native_reference",
+        "actual": "front",
+        "expected": "front",
+        "targets": 5
+      },
+      {
+        "source": "ompal",
+        "condition": "native_reference",
+        "actual": "other",
+        "expected": "other",
+        "targets": 16
+      },
+      {
+        "source": "ompal",
+        "condition": "teacher_correct",
+        "actual": "back",
+        "expected": "back",
+        "targets": 52
+      },
+      {
+        "source": "ompal",
+        "condition": "teacher_correct",
+        "actual": "front",
+        "expected": "front",
+        "targets": 71
+      },
+      {
+        "source": "ompal",
+        "condition": "teacher_correct",
+        "actual": "other",
+        "expected": "other",
+        "targets": 260
+      }
+    ],
+    "evaluation": [
+      {
+        "source": "eduhk",
+        "condition": "sentence_error",
+        "actual": "back",
+        "expected": "front",
+        "targets": 10
+      },
+      {
+        "source": "eduhk",
+        "condition": "sentence_error",
+        "actual": "front",
+        "expected": "back",
+        "targets": 25
+      },
+      {
+        "source": "eduhk",
+        "condition": "word_error",
+        "actual": "back",
+        "expected": "front",
+        "targets": 5
+      },
+      {
+        "source": "eduhk",
+        "condition": "word_error",
+        "actual": "front",
+        "expected": "back",
+        "targets": 4
+      },
+      {
+        "source": "ompal",
+        "condition": "native_reference",
+        "actual": "back",
+        "expected": "back",
+        "targets": 3
+      },
+      {
+        "source": "ompal",
+        "condition": "native_reference",
+        "actual": "front",
+        "expected": "front",
+        "targets": 2
+      },
+      {
+        "source": "ompal",
+        "condition": "native_reference",
+        "actual": "other",
+        "expected": "other",
+        "targets": 9
+      },
+      {
+        "source": "ompal",
+        "condition": "teacher_correct",
+        "actual": "back",
+        "expected": "back",
+        "targets": 22
+      },
+      {
+        "source": "ompal",
+        "condition": "teacher_correct",
+        "actual": "front",
+        "expected": "front",
+        "targets": 45
+      },
+      {
+        "source": "ompal",
+        "condition": "teacher_correct",
+        "actual": "other",
+        "expected": "other",
+        "targets": 82
+      }
+    ]
+  },
+  "counterfactual_invariance": {
+    "primary": {
+      "existing": {
+        "targets": 116,
+        "maximum_score_difference": 0.0,
+        "features_and_bounds_unchanged": true
+      },
+      "griffith": {
+        "targets": 128,
+        "maximum_score_difference": 0.0,
+        "features_and_bounds_unchanged": true
+      }
+    },
+    "pair": {
+      "existing": {
+        "targets": 116,
+        "maximum_score_difference": 0.0,
+        "features_and_bounds_unchanged": true
+      },
+      "griffith": {
+        "targets": 128,
+        "maximum_score_difference": 0.0,
+        "features_and_bounds_unchanged": true
+      }
+    },
+    "shared": {
+      "existing": {
+        "targets": 116,
+        "maximum_score_difference": 0.0,
+        "features_and_bounds_unchanged": true
+      },
+      "griffith": {
+        "targets": 128,
+        "maximum_score_difference": 0.0,
+        "features_and_bounds_unchanged": true
+      }
+    }
+  },
+  "noise": {
+    "pair": {
+      "recordings": 36,
+      "tested_reference_finals": [
+        "an",
+        "ang",
+        "en",
+        "eng",
+        "ian",
+        "iang",
+        "in",
+        "ing",
+        "uan",
+        "uang"
+      ],
+      "summaries": {
+        "synthetic": {
+          "gated": {
+            "conditions": 120,
+            "false_matches": 0,
+            "false_corrections": 0,
+            "abstentions": 120
+          },
+          "ungated": {
+            "conditions": 120,
+            "false_matches": 0,
+            "false_corrections": 14,
+            "abstentions": 106
+          }
+        },
+        "recorded_environment": {
+          "gated": {
+            "conditions": 240,
+            "false_matches": 0,
+            "false_corrections": 0,
+            "abstentions": 240
+          },
+          "ungated": {
+            "conditions": 240,
+            "false_matches": 0,
+            "false_corrections": 2,
+            "abstentions": 238
+          }
+        }
+      }
+    },
+    "shared": {
+      "recordings": 36,
+      "tested_reference_finals": [
+        "an",
+        "ang",
+        "en",
+        "eng",
+        "ian",
+        "iang",
+        "in",
+        "ing",
+        "uan",
+        "uang"
+      ],
+      "summaries": {
+        "synthetic": {
+          "gated": {
+            "conditions": 120,
+            "false_matches": 0,
+            "false_corrections": 0,
+            "abstentions": 120
+          },
+          "ungated": {
+            "conditions": 120,
+            "false_matches": 40,
+            "false_corrections": 0,
+            "abstentions": 80
+          }
+        },
+        "recorded_environment": {
+          "gated": {
+            "conditions": 240,
+            "false_matches": 0,
+            "false_corrections": 0,
+            "abstentions": 240
+          },
+          "ungated": {
+            "conditions": 240,
+            "false_matches": 110,
+            "false_corrections": 0,
+            "abstentions": 130
+          }
+        }
+      }
+    }
+  },
+  "verification": {
+    "tests_passed": 172,
+    "test_warnings": 1,
+    "old_shared_max_score_difference": 0.0,
+    "progress_files": 198,
+    "progress_unchanged": true,
+    "health": {
+      "status": "ok",
+      "ready": true,
+      "profile_count": 34,
+      "warm_error": null
+    },
+    "cloud_enabled": false,
+    "ise_ledger": 417
+  },
+  "limits": [
+    "Existing speech/backgrounds are explored comparison sets, not fresh blind tests.",
+    "Counterfactual check covers classifier conditioning, not reference-dependent API alignment.",
+    "Outside-pair class cannot diagnose a particular nonnasal error.",
+    "No speech-in-noise, omission, repetition or real microphone validation.",
+    "Sparse pairs use a shared head, not validated pair specialists.",
+    "Chosen for mechanism analysis after seeing parent results, not another independent selection.",
+    "Normal/error condition and source are confounded in existing data; observed association is not proof of causation.",
+    "All original thresholds and classifier weights are unchanged."
+  ],
+  "private_evidence_sha256": {
+    "plan.json": "75b9df6357872324a46bab9eea84d759ba928df234b49f8d9f81b4681979c7d6",
+    "selection.json": "dcee2d66bec74e20f4768a37912b59f50b095738f78c6f5103736ef124ed9382",
+    "evaluation.json": "7b66c29108052db718d09e55b8cf7b0b859268489d96542b8f255123badda1fd",
+    "matched-control-plan.json": "eff66edee8f3fa2514750be0d203593633440c631d1e3991cb1eec6a93072979",
+    "matched-control-diagnostic.json": "9270467458b195474681b8a1303ab434151249d1b3b1d9cfffb10ec60b64cacd",
+    "implementation-amendment.json": "e6b4b29ce63d99f0191c1774e356dd9c792fd658d81daccb78faed4fd1b885c0"
+  }
+}
