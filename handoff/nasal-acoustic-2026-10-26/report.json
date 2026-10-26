@@ -1,0 +1,195 @@
+{
+  "scope": "Research screening only; production diagnosis is not enabled.",
+  "reference_controls": {
+    "phoneme": {
+      "model": {
+        "repo": "facebook/wav2vec2-xlsr-53-espeak-cv-ft",
+        "revision": "2c733782da5604684829819a5eb744c193fe9398",
+        "vocab": "vocab.json"
+      },
+      "count": 36,
+      "label_agreement": 31,
+      "abstained": 3,
+      "disagreed": 2
+    },
+    "final": {
+      "model": {
+        "repo": "thin-nwe-soe/hanziflow-v2-1-multihead-wav2vec2",
+        "revision": "93c4b3f185f67b2f82135b34ca0397ddf8254de1",
+        "vocab": "v2_1_final_vocabulary.json"
+      },
+      "count": 36,
+      "label_agreement": 31,
+      "abstained": 4,
+      "disagreed": 1
+    }
+  },
+  "sources": [
+    "https://huggingface.co/facebook/wav2vec2-xlsr-53-espeak-cv-ft",
+    "https://huggingface.co/thin-nwe-soe/hanziflow-v2-1-multihead-wav2vec2",
+    "https://lml-elearning.eduhk.hk/about_g.aspx"
+  ],
+  "context_controls": [
+    {
+      "kind": "word_context",
+      "target": "零",
+      "voice": "original",
+      "expected_minus_opposite": 3.5936078850373487
+    },
+    {
+      "kind": "word_context",
+      "target": "林",
+      "voice": "original",
+      "expected_minus_opposite": -1.3307886376731606
+    },
+    {
+      "kind": "word_context",
+      "target": "班",
+      "voice": "original",
+      "expected_minus_opposite": 2.702430678193093
+    },
+    {
+      "kind": "word_context",
+      "target": "帮",
+      "voice": "original",
+      "expected_minus_opposite": 0.9351245518661437
+    },
+    {
+      "kind": "sentence",
+      "target": "山",
+      "voice": "original",
+      "expected_minus_opposite": 4.406704721553033
+    },
+    {
+      "kind": "sentence",
+      "target": "山",
+      "voice": "news-female",
+      "expected_minus_opposite": 6.101987744202692
+    },
+    {
+      "kind": "sentence",
+      "target": "山",
+      "voice": "news-male",
+      "expected_minus_opposite": 5.96606961944661
+    },
+    {
+      "kind": "sentence",
+      "target": "清",
+      "voice": "original",
+      "expected_minus_opposite": 4.743110180948228
+    },
+    {
+      "kind": "sentence",
+      "target": "清",
+      "voice": "news-female",
+      "expected_minus_opposite": 5.384920312780353
+    },
+    {
+      "kind": "sentence",
+      "target": "清",
+      "voice": "news-male",
+      "expected_minus_opposite": 4.708328166833126
+    }
+  ],
+  "public_learner_screening": {
+    "speakers_in_pages": 40,
+    "explicit_annotation_targets": 92,
+    "recordings_downloaded": 50,
+    "cropped_words": 610,
+    "excluded_word_candidates": {
+      "ambiguous_or_distant_transcript_match": 480,
+      "suspect_alignment": 24
+    },
+    "explicit_errors_scored": {
+      "targets": 51,
+      "opposite_likelihood_higher": 39,
+      "opposite_best_including_omission": 37,
+      "greedy_supports_opposite_group": 30
+    },
+    "explicit_annotation_targets_not_scored": 41,
+    "explicit_errors_by_partition": {
+      "speakers_1_20": {
+        "targets": 26,
+        "opposite_likelihood_higher": 17,
+        "opposite_best_including_omission": 17,
+        "greedy_supports_opposite_group": 14
+      },
+      "speakers_21_40": {
+        "targets": 25,
+        "opposite_likelihood_higher": 22,
+        "opposite_best_including_omission": 20,
+        "greedy_supports_opposite_group": 16
+      }
+    },
+    "unmarked_targets_provisional_only": {
+      "targets": 475,
+      "opposite_likelihood_higher": 64,
+      "opposite_best_including_omission": 59,
+      "greedy_supports_opposite_group": 33
+    },
+    "limitations": [
+      "Automatic crop localisation is not yet manually audited. No learner accuracy claim.",
+      "Unmarked means no vowel-deviation annotation, not certified correct nasal production.",
+      "All 92 annotated targets remain in the denominator inventory; excluded crops are not successes.",
+      "No thresholds were fitted. Raw CTC likelihood margins are not calibrated confidence.",
+      "Speaker partitions are descriptive screening slices, not an untouched final acceptance set.",
+      "Corpus recordings are retained only locally for research, not redistributed or used as teaching audio."
+    ],
+    "phoneme_single_character_check": {
+      "targets": 244,
+      "annotated_errors": 33,
+      "greedy_agrees_with_annotation": 14,
+      "abstained_on_errors": 15
+    }
+  },
+  "ise_public_error_spot_check": {
+    "selected_controls": 6,
+    "flagged_final_or_substitution": 6,
+    "selection": "Six known annotated errors, both directions in each of in/ing, en/eng, an/ang; includes two local-model raw-margin misses.",
+    "limit": "Generic final error signals do not independently identify n/ng direction. No verified-correct controls in this six-call spot check.",
+    "cells": [
+      {
+        "reference": "屏",
+        "expected": "ping",
+        "annotated_actual": "pin",
+        "local_expected_minus_opposite": 1.1267045883169016,
+        "ise_state": "flagged"
+      },
+      {
+        "reference": "吝",
+        "expected": "lin",
+        "annotated_actual": "ling",
+        "local_expected_minus_opposite": -7.644504216378019,
+        "ise_state": "flagged"
+      },
+      {
+        "reference": "恒",
+        "expected": "heng",
+        "annotated_actual": "hen",
+        "local_expected_minus_opposite": -5.44118980743415,
+        "ise_state": "flagged"
+      },
+      {
+        "reference": "恩",
+        "expected": "en",
+        "annotated_actual": "eng",
+        "local_expected_minus_opposite": 0.7029168339187338,
+        "ise_state": "flagged"
+      },
+      {
+        "reference": "狼",
+        "expected": "lang",
+        "annotated_actual": "lan",
+        "local_expected_minus_opposite": -0.7197992704456251,
+        "ise_state": "flagged"
+      },
+      {
+        "reference": "反省",
+        "expected": "fan",
+        "annotated_actual": "fang",
+        "local_expected_minus_opposite": -7.0958873598306615,
+        "ise_state": "flagged"
+      }
+    ]
+  }
+}

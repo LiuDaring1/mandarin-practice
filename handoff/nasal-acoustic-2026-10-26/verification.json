@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-27",
+  "scope": "Isolated research scripts; no application source changes",
+  "tests": {
+    "passed": 44,
+    "new_tests": 15,
+    "existing_provider_tests": 29,
+    "full_app_suite_rerun": false,
+    "browser_qa_rerun": false
+  },
+  "progress_protection": {
+    "existing_files": 198,
+    "changed_existing_files": 0
+  },
+  "health": {
+    "status": "ok",
+    "ready": true,
+    "profile_count": 34,
+    "warm_error": null
+  },
+  "assessment_status": {
+    "available": false,
+    "configured": false,
+    "cloud_enabled": false,
+    "recording_required": true,
+    "max_audio_sec": 59
+  },
+  "ise_ledger_attempts": 78,
+  "new_ise_calls": 6,
+  "goal_complete": false
+}
