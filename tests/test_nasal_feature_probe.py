@@ -6,7 +6,7 @@ import pytest
 
 sys.path.insert(0,str(Path(__file__).parents[1]/'scripts'))
 from nasal_feature_probe import (assert_speaker_partition,fit_ridge,pool_regions,
-                                 predict_ridge,select_on_development)
+                                 predict_ridge,select_on_development,acoustic_window)
 from prepare_nasal_feature_data import speaker_split
 from train_nasal_feature_probe import observe,select_margin,select_matching_margin,summarize
 
@@ -17,6 +17,18 @@ def test_pools_use_physical_time_and_preserve_last_half():
     assert pooled[:,0].tolist()==[4.5,4.5,3.,6.]
     with pytest.raises(ValueError,match='time axis'):
         pool_regions(hidden,{'syllable':[0,.2],'vowel':[.04,.16]},sample_count=400)
+
+
+def test_long_utterance_windows_preserve_whole_target_and_short_audio_behavior():
+    assert acoustic_window({'syllable':[39.9,40.3]},16000*50)==(0,16000*50)
+    assert acoustic_window({'syllable':[44.8,45.2]},16000*100)==(16000*40,16000*85)
+    for bounds in [[.1,.5],[39.9,40.4],[44.8,45.2],[63.2,63.8],[98.,99.9]]:
+        start,end=acoustic_window({'syllable':bounds},16000*100)
+        assert start/16000<=bounds[0]<bounds[1]<=end/16000
+        assert end-start<=16000*45
+        assert start%320==0
+    with pytest.raises(ValueError,match='complete target'):
+        acoustic_window({'syllable':[39.,86.]},16000*100)
 
 
 def test_classifier_standardization_does_not_use_evaluation_batch():

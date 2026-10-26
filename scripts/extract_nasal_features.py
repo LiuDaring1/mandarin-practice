@@ -4,11 +4,12 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+import wave
 
 import numpy as np
 
 from nasal_acoustics import AcousticModel, read_audio
-from nasal_feature_probe import LAYERS, REGIONS, pool_regions
+from nasal_feature_probe import LAYERS, REGIONS, acoustic_window, pool_regions
 from nasal_window import convolution_geometry
 
 
@@ -31,35 +32,54 @@ def main(args):
         audio_sha = hashlib.sha256(Path(audio).read_bytes()).hexdigest()
         if any(r['audio_sha256'] != audio_sha for r in rows):
             raise ValueError('Audio changed after dataset freeze')
+        with wave.open(audio,'rb') as wav:
+            if (wav.getframerate(),wav.getnchannels(),wav.getsampwidth())!=(16000,1,2):
+                raise ValueError('Feature manifests require 16 kHz mono PCM16 WAV')
+            sample_count=wav.getnframes()
+        chunks=defaultdict(list);rejected=[]
+        for row in rows:
+            try:
+                window=acoustic_window(row['bounds'],sample_count)
+            except ValueError as error:
+                rejected.append({'id':row['id'],'reason':str(error)})
+                continue
+            chunks[window].append(row)
         identity = {'audio_sha256':audio_sha, 'model':model.spec, 'layers':LAYERS, 'regions':REGIONS,
                     'targets':[(r['id'],r['bounds']) for r in rows], 'preprocessing':'normalized-pcm16k-mean-pool-v1'}
+        if sample_count>16000*60:
+            identity['preprocessing']='normalized-pcm16k-windows45s-step40s-pool-v2'
+            identity['windows']=[(list(window),[r['id'] for r in selected]) for window,selected in chunks.items()]
         key = hashlib.sha256(json.dumps(identity,sort_keys=True).encode()).hexdigest()
         path = cache/(key+'.npz')
         meta_path = cache/(key+'.json')
         if not path.exists() or not meta_path.exists():
-            samples = read_audio(Path(audio))
-            inputs = model.extractor(samples,sampling_rate=16000,return_tensors='pt')
-            with torch.inference_mode():
-                states = encoder(**{k:v.to('mps') for k,v in inputs.items()},
-                                 output_hidden_states=True).hidden_states
-                selected = {layer:states[layer][0].float().cpu().numpy() for layer in LAYERS}
-            valid, rejected, vectors = [], [], []
-            for row in rows:
-                try:
-                    vector = np.stack([pool_regions(selected[layer],row['bounds'],sample_count=len(samples),
-                                                    stride=stride,receptive_field=field) for layer in LAYERS])
-                except ValueError as error:
-                    rejected.append({'id':row['id'],'reason':str(error)})
-                    continue
-                valid.append(row['id']);vectors.append(vector)
+            samples = read_audio(Path(audio),max_seconds=180)
+            by_id={}
+            for (start,end),chunk_rows in chunks.items():
+                inputs = model.extractor(samples[start:end],sampling_rate=16000,return_tensors='pt')
+                with torch.inference_mode():
+                    states = encoder(**{k:v.to('mps') for k,v in inputs.items()},
+                                     output_hidden_states=True).hidden_states
+                    selected = {layer:states[layer][0].float().cpu().numpy() for layer in LAYERS}
+                for row in chunk_rows:
+                    bounds={name:[t-start/16000 for t in limits] for name,limits in row['bounds'].items()}
+                    try:
+                        vector = np.stack([pool_regions(selected[layer],bounds,sample_count=end-start,
+                                                        stride=stride,receptive_field=field) for layer in LAYERS])
+                    except ValueError as error:
+                        rejected.append({'id':row['id'],'reason':str(error)})
+                        continue
+                    by_id[row['id']]=vector
+                del states, selected, inputs
+                torch.mps.empty_cache()
+            valid=[r['id'] for r in rows if r['id'] in by_id]
+            vectors=[by_id[uid] for uid in valid]
             arrays = np.stack(vectors) if vectors else np.empty((0,len(LAYERS),len(REGIONS),1024),dtype=np.float32)
             temporary = path.with_suffix('.tmp.npz')
             np.savez_compressed(temporary,features=arrays,ids=np.array(valid,dtype=str))
             temporary.chmod(0o600);temporary.replace(path)
             meta_path.write_text(json.dumps({'identity':identity,'excluded':rejected},ensure_ascii=False,indent=2))
             meta_path.chmod(0o600)
-            del states, selected, inputs
-            torch.mps.empty_cache()
         with np.load(path,allow_pickle=False) as data:
             output.extend({'id':str(identity),'cache':str(path),'index':i} for i,identity in enumerate(data['ids']))
         excluded.extend(json.loads(meta_path.read_text())['excluded'])

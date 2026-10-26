@@ -1,0 +1,1803 @@
+{
+  "date": "2026-10-27",
+  "production_enabled": false,
+  "context": {
+    "input_recordings": 56,
+    "human_error_inventory": 96,
+    "dataset_rows": 1278,
+    "excluded_rows": 58,
+    "new_sentence_rows_by_split": {
+      "dev": 14,
+      "train": 45,
+      "test": 4,
+      "transfer": 7,
+      "validation": 4,
+      "holdout": 1
+    },
+    "comparisons": {
+      "baseline_v3": {
+        "dev": {
+          "targets": 429,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              78,
+              14,
+              0
+            ],
+            [
+              3,
+              58,
+              0
+            ],
+            [
+              4,
+              3,
+              269
+            ]
+          ],
+          "balanced_label_accuracy": 0.9244278134156966,
+          "known_nasal_errors": 22,
+          "correct_error_directions": 5,
+          "missed_error_directions": 17,
+          "raw_expected_label_on_error": 6,
+          "correct_nasal_targets": 131,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 4,
+          "correct_nasal_matches": 111,
+          "uncertain_nasal_targets": 33
+        },
+        "holdout": {
+          "targets": 9,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              7,
+              0,
+              1
+            ],
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "balanced_label_accuracy": 0.4375,
+          "known_nasal_errors": 9,
+          "correct_error_directions": 2,
+          "missed_error_directions": 7,
+          "raw_expected_label_on_error": 1,
+          "correct_nasal_targets": 0,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 0,
+          "correct_nasal_matches": 0,
+          "uncertain_nasal_targets": 7
+        },
+        "test": {
+          "targets": 175,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              49,
+              1,
+              2
+            ],
+            [
+              2,
+              29,
+              1
+            ],
+            [
+              0,
+              0,
+              91
+            ]
+          ],
+          "balanced_label_accuracy": 0.9495192307692308,
+          "known_nasal_errors": 12,
+          "correct_error_directions": 1,
+          "missed_error_directions": 11,
+          "raw_expected_label_on_error": 3,
+          "correct_nasal_targets": 72,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 0,
+          "correct_nasal_matches": 61,
+          "uncertain_nasal_targets": 22
+        },
+        "train": {
+          "targets": 645,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              144,
+              8,
+              1
+            ],
+            [
+              3,
+              93,
+              0
+            ],
+            [
+              0,
+              0,
+              396
+            ]
+          ],
+          "balanced_label_accuracy": 0.9699754901960785,
+          "known_nasal_errors": 76,
+          "correct_error_directions": 39,
+          "missed_error_directions": 37,
+          "raw_expected_label_on_error": 11,
+          "correct_nasal_targets": 173,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 7,
+          "correct_nasal_matches": 160,
+          "uncertain_nasal_targets": 43
+        },
+        "transfer": {
+          "targets": 16,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              6,
+              5,
+              0
+            ],
+            [
+              0,
+              5,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "balanced_label_accuracy": 0.7727272727272727,
+          "known_nasal_errors": 16,
+          "correct_error_directions": 4,
+          "missed_error_directions": 12,
+          "raw_expected_label_on_error": 5,
+          "correct_nasal_targets": 0,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 1,
+          "correct_nasal_matches": 0,
+          "uncertain_nasal_targets": 11
+        },
+        "validation": {
+          "targets": 4,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              2,
+              0,
+              0
+            ],
+            [
+              0,
+              2,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "balanced_label_accuracy": 1.0,
+          "known_nasal_errors": 4,
+          "correct_error_directions": 2,
+          "missed_error_directions": 2,
+          "raw_expected_label_on_error": 0,
+          "correct_nasal_targets": 0,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 0,
+          "correct_nasal_matches": 0,
+          "uncertain_nasal_targets": 2
+        },
+        "new_sentence_evaluation": {
+          "targets": 16,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              7,
+              2,
+              1
+            ],
+            [
+              0,
+              6,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "balanced_label_accuracy": 0.85,
+          "known_nasal_errors": 16,
+          "correct_error_directions": 4,
+          "missed_error_directions": 12,
+          "raw_expected_label_on_error": 2,
+          "correct_nasal_targets": 0,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 1,
+          "correct_nasal_matches": 0,
+          "uncertain_nasal_targets": 11
+        },
+        "new_sentence_directions": {
+          "front": {
+            "targets": 6,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                6,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "balanced_label_accuracy": 1.0,
+            "known_nasal_errors": 6,
+            "correct_error_directions": 4,
+            "missed_error_directions": 2,
+            "raw_expected_label_on_error": 0,
+            "correct_nasal_targets": 0,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 0,
+            "uncertain_nasal_targets": 2
+          },
+          "back": {
+            "targets": 10,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                7,
+                2,
+                1
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "balanced_label_accuracy": 0.7,
+            "known_nasal_errors": 10,
+            "correct_error_directions": 0,
+            "missed_error_directions": 10,
+            "raw_expected_label_on_error": 2,
+            "correct_nasal_targets": 0,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 1,
+            "correct_nasal_matches": 0,
+            "uncertain_nasal_targets": 9
+          }
+        }
+      },
+      "context_v4": {
+        "dev": {
+          "targets": 429,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              84,
+              8,
+              0
+            ],
+            [
+              4,
+              57,
+              0
+            ],
+            [
+              5,
+              3,
+              268
+            ]
+          ],
+          "balanced_label_accuracy": 0.9394947335075631,
+          "known_nasal_errors": 22,
+          "correct_error_directions": 0,
+          "missed_error_directions": 22,
+          "raw_expected_label_on_error": 4,
+          "correct_nasal_targets": 131,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 0,
+          "correct_nasal_matches": 80,
+          "uncertain_nasal_targets": 73
+        },
+        "holdout": {
+          "targets": 9,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              7,
+              1,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "balanced_label_accuracy": 0.9375,
+          "known_nasal_errors": 9,
+          "correct_error_directions": 0,
+          "missed_error_directions": 9,
+          "raw_expected_label_on_error": 1,
+          "correct_nasal_targets": 0,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 0,
+          "correct_nasal_matches": 0,
+          "uncertain_nasal_targets": 9
+        },
+        "test": {
+          "targets": 175,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              47,
+              3,
+              2
+            ],
+            [
+              3,
+              29,
+              0
+            ],
+            [
+              0,
+              0,
+              91
+            ]
+          ],
+          "balanced_label_accuracy": 0.936698717948718,
+          "known_nasal_errors": 12,
+          "correct_error_directions": 0,
+          "missed_error_directions": 12,
+          "raw_expected_label_on_error": 3,
+          "correct_nasal_targets": 72,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 0,
+          "correct_nasal_matches": 44,
+          "uncertain_nasal_targets": 40
+        },
+        "train": {
+          "targets": 645,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              153,
+              0,
+              0
+            ],
+            [
+              0,
+              96,
+              0
+            ],
+            [
+              0,
+              0,
+              396
+            ]
+          ],
+          "balanced_label_accuracy": 1.0,
+          "known_nasal_errors": 76,
+          "correct_error_directions": 0,
+          "missed_error_directions": 76,
+          "raw_expected_label_on_error": 0,
+          "correct_nasal_targets": 173,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 0,
+          "correct_nasal_matches": 160,
+          "uncertain_nasal_targets": 89
+        },
+        "transfer": {
+          "targets": 16,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              11,
+              0,
+              0
+            ],
+            [
+              1,
+              4,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "balanced_label_accuracy": 0.9,
+          "known_nasal_errors": 16,
+          "correct_error_directions": 0,
+          "missed_error_directions": 16,
+          "raw_expected_label_on_error": 1,
+          "correct_nasal_targets": 0,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 0,
+          "correct_nasal_matches": 0,
+          "uncertain_nasal_targets": 16
+        },
+        "validation": {
+          "targets": 4,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              2,
+              0,
+              0
+            ],
+            [
+              0,
+              2,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "balanced_label_accuracy": 1.0,
+          "known_nasal_errors": 4,
+          "correct_error_directions": 0,
+          "missed_error_directions": 4,
+          "raw_expected_label_on_error": 0,
+          "correct_nasal_targets": 0,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 0,
+          "correct_nasal_matches": 0,
+          "uncertain_nasal_targets": 4
+        },
+        "new_sentence_evaluation": {
+          "targets": 16,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              9,
+              1,
+              0
+            ],
+            [
+              0,
+              6,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "balanced_label_accuracy": 0.95,
+          "known_nasal_errors": 16,
+          "correct_error_directions": 0,
+          "missed_error_directions": 16,
+          "raw_expected_label_on_error": 1,
+          "correct_nasal_targets": 0,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 0,
+          "correct_nasal_matches": 0,
+          "uncertain_nasal_targets": 16
+        },
+        "new_sentence_directions": {
+          "front": {
+            "targets": 6,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                6,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "balanced_label_accuracy": 1.0,
+            "known_nasal_errors": 6,
+            "correct_error_directions": 0,
+            "missed_error_directions": 6,
+            "raw_expected_label_on_error": 0,
+            "correct_nasal_targets": 0,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 0,
+            "uncertain_nasal_targets": 6
+          },
+          "back": {
+            "targets": 10,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                9,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "balanced_label_accuracy": 0.9,
+            "known_nasal_errors": 10,
+            "correct_error_directions": 0,
+            "missed_error_directions": 10,
+            "raw_expected_label_on_error": 1,
+            "correct_nasal_targets": 0,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 0,
+            "uncertain_nasal_targets": 10
+          }
+        }
+      }
+    },
+    "exact_margin_v5": {
+      "dev": {
+        "targets": 429,
+        "label_order": [
+          "front",
+          "back",
+          "other"
+        ],
+        "confusion_matrix": [
+          [
+            84,
+            8,
+            0
+          ],
+          [
+            4,
+            57,
+            0
+          ],
+          [
+            5,
+            3,
+            268
+          ]
+        ],
+        "balanced_label_accuracy": 0.9394947335075631,
+        "known_nasal_errors": 22,
+        "correct_error_directions": 8,
+        "missed_error_directions": 14,
+        "raw_expected_label_on_error": 4,
+        "correct_nasal_targets": 131,
+        "false_nasal_accusations": 0,
+        "false_reassurances": 0,
+        "correct_nasal_matches": 104,
+        "uncertain_nasal_targets": 41
+      },
+      "holdout": {
+        "targets": 9,
+        "label_order": [
+          "front",
+          "back",
+          "other"
+        ],
+        "confusion_matrix": [
+          [
+            7,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "balanced_label_accuracy": 0.9375,
+        "known_nasal_errors": 9,
+        "correct_error_directions": 3,
+        "missed_error_directions": 6,
+        "raw_expected_label_on_error": 1,
+        "correct_nasal_targets": 0,
+        "false_nasal_accusations": 0,
+        "false_reassurances": 0,
+        "correct_nasal_matches": 0,
+        "uncertain_nasal_targets": 6
+      },
+      "test": {
+        "targets": 175,
+        "label_order": [
+          "front",
+          "back",
+          "other"
+        ],
+        "confusion_matrix": [
+          [
+            47,
+            3,
+            2
+          ],
+          [
+            3,
+            29,
+            0
+          ],
+          [
+            0,
+            0,
+            91
+          ]
+        ],
+        "balanced_label_accuracy": 0.936698717948718,
+        "known_nasal_errors": 12,
+        "correct_error_directions": 3,
+        "missed_error_directions": 9,
+        "raw_expected_label_on_error": 3,
+        "correct_nasal_targets": 72,
+        "false_nasal_accusations": 0,
+        "false_reassurances": 0,
+        "correct_nasal_matches": 53,
+        "uncertain_nasal_targets": 28
+      },
+      "train": {
+        "targets": 645,
+        "label_order": [
+          "front",
+          "back",
+          "other"
+        ],
+        "confusion_matrix": [
+          [
+            153,
+            0,
+            0
+          ],
+          [
+            0,
+            96,
+            0
+          ],
+          [
+            0,
+            0,
+            396
+          ]
+        ],
+        "balanced_label_accuracy": 1.0,
+        "known_nasal_errors": 76,
+        "correct_error_directions": 76,
+        "missed_error_directions": 0,
+        "raw_expected_label_on_error": 0,
+        "correct_nasal_targets": 173,
+        "false_nasal_accusations": 0,
+        "false_reassurances": 0,
+        "correct_nasal_matches": 160,
+        "uncertain_nasal_targets": 13
+      },
+      "transfer": {
+        "targets": 16,
+        "label_order": [
+          "front",
+          "back",
+          "other"
+        ],
+        "confusion_matrix": [
+          [
+            11,
+            0,
+            0
+          ],
+          [
+            1,
+            4,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "balanced_label_accuracy": 0.9,
+        "known_nasal_errors": 16,
+        "correct_error_directions": 4,
+        "missed_error_directions": 12,
+        "raw_expected_label_on_error": 1,
+        "correct_nasal_targets": 0,
+        "false_nasal_accusations": 0,
+        "false_reassurances": 0,
+        "correct_nasal_matches": 0,
+        "uncertain_nasal_targets": 12
+      },
+      "validation": {
+        "targets": 4,
+        "label_order": [
+          "front",
+          "back",
+          "other"
+        ],
+        "confusion_matrix": [
+          [
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "balanced_label_accuracy": 1.0,
+        "known_nasal_errors": 4,
+        "correct_error_directions": 2,
+        "missed_error_directions": 2,
+        "raw_expected_label_on_error": 0,
+        "correct_nasal_targets": 0,
+        "false_nasal_accusations": 0,
+        "false_reassurances": 0,
+        "correct_nasal_matches": 0,
+        "uncertain_nasal_targets": 2
+      },
+      "new_sentence_evaluation": {
+        "targets": 16,
+        "label_order": [
+          "front",
+          "back",
+          "other"
+        ],
+        "confusion_matrix": [
+          [
+            9,
+            1,
+            0
+          ],
+          [
+            0,
+            6,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "balanced_label_accuracy": 0.95,
+        "known_nasal_errors": 16,
+        "correct_error_directions": 5,
+        "missed_error_directions": 11,
+        "raw_expected_label_on_error": 1,
+        "correct_nasal_targets": 0,
+        "false_nasal_accusations": 0,
+        "false_reassurances": 0,
+        "correct_nasal_matches": 0,
+        "uncertain_nasal_targets": 11
+      },
+      "new_sentence_directions": {
+        "front": {
+          "targets": 6,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              6,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "balanced_label_accuracy": 1.0,
+          "known_nasal_errors": 6,
+          "correct_error_directions": 2,
+          "missed_error_directions": 4,
+          "raw_expected_label_on_error": 0,
+          "correct_nasal_targets": 0,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 0,
+          "correct_nasal_matches": 0,
+          "uncertain_nasal_targets": 4
+        },
+        "back": {
+          "targets": 10,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              9,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "balanced_label_accuracy": 0.9,
+          "known_nasal_errors": 10,
+          "correct_error_directions": 3,
+          "missed_error_directions": 7,
+          "raw_expected_label_on_error": 1,
+          "correct_nasal_targets": 0,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 0,
+          "correct_nasal_matches": 0,
+          "uncertain_nasal_targets": 7
+        }
+      }
+    },
+    "timing": {
+      "unavailable": 5,
+      "consistent": 88,
+      "timing_conflict": 3
+    },
+    "free_transcript": {
+      "not_matched": 2,
+      "unique_match": 93,
+      "ambiguous": 1
+    }
+  },
+  "external": {
+    "source": "https://doi.org/10.4225/01/549223A3704CF",
+    "selection_recordings": 70,
+    "selection_targets": 140,
+    "selected_normal": 127,
+    "selected_errors": 13,
+    "usable_targets": 128,
+    "excluded_targets": 12,
+    "exclusion_states": {
+      "unavailable": 8,
+      "rejected": 3,
+      "unusable_alignment": 1
+    },
+    "comparison": {
+      "feature-feedback-v3": {
+        "all": {
+          "targets": 128,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              64,
+              5,
+              5
+            ],
+            [
+              4,
+              50,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "balanced_label_accuracy": 0.8953953953953955,
+          "known_nasal_errors": 13,
+          "correct_error_directions": 4,
+          "missed_error_directions": 9,
+          "raw_expected_label_on_error": 6,
+          "correct_nasal_targets": 115,
+          "false_nasal_accusations": 1,
+          "false_reassurances": 1,
+          "correct_nasal_matches": 93,
+          "uncertain_nasal_targets": 29
+        },
+        "pure_nasal_pairs": {
+          "targets": 6,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              1,
+              1,
+              0
+            ],
+            [
+              1,
+              3,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "balanced_label_accuracy": 0.625,
+          "known_nasal_errors": 6,
+          "correct_error_directions": 1,
+          "missed_error_directions": 5,
+          "raw_expected_label_on_error": 2,
+          "correct_nasal_targets": 0,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 0,
+          "correct_nasal_matches": 0,
+          "uncertain_nasal_targets": 5
+        },
+        "directions": {
+          "front": {
+            "targets": 79,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                63,
+                2,
+                5
+              ],
+              [
+                3,
+                6,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "balanced_label_accuracy": 0.7833333333333333,
+            "known_nasal_errors": 9,
+            "correct_error_directions": 4,
+            "missed_error_directions": 5,
+            "raw_expected_label_on_error": 3,
+            "correct_nasal_targets": 70,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 53,
+            "uncertain_nasal_targets": 22
+          },
+          "back": {
+            "targets": 49,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                1,
+                3,
+                0
+              ],
+              [
+                1,
+                44,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "balanced_label_accuracy": 0.6138888888888889,
+            "known_nasal_errors": 4,
+            "correct_error_directions": 0,
+            "missed_error_directions": 4,
+            "raw_expected_label_on_error": 3,
+            "correct_nasal_targets": 45,
+            "false_nasal_accusations": 1,
+            "false_reassurances": 1,
+            "correct_nasal_matches": 40,
+            "uncertain_nasal_targets": 7
+          }
+        },
+        "timing_states": {
+          "consistent": 128
+        },
+        "timing_consistent": {
+          "targets": 128,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              64,
+              5,
+              5
+            ],
+            [
+              4,
+              50,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "balanced_label_accuracy": 0.8953953953953955,
+          "known_nasal_errors": 13,
+          "correct_error_directions": 4,
+          "missed_error_directions": 9,
+          "raw_expected_label_on_error": 6,
+          "correct_nasal_targets": 115,
+          "false_nasal_accusations": 1,
+          "false_reassurances": 1,
+          "correct_nasal_matches": 93,
+          "uncertain_nasal_targets": 29
+        },
+        "with_content_gate": {
+          "targets": 128,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              64,
+              5,
+              5
+            ],
+            [
+              4,
+              50,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "balanced_label_accuracy": 0.8953953953953955,
+          "known_nasal_errors": 13,
+          "correct_error_directions": 2,
+          "missed_error_directions": 11,
+          "raw_expected_label_on_error": 6,
+          "correct_nasal_targets": 115,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 1,
+          "correct_nasal_matches": 70,
+          "uncertain_nasal_targets": 55
+        },
+        "with_content_gate_pure_pairs": {
+          "targets": 6,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              1,
+              1,
+              0
+            ],
+            [
+              1,
+              3,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "balanced_label_accuracy": 0.625,
+          "known_nasal_errors": 6,
+          "correct_error_directions": 0,
+          "missed_error_directions": 6,
+          "raw_expected_label_on_error": 2,
+          "correct_nasal_targets": 0,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 0,
+          "correct_nasal_matches": 0,
+          "uncertain_nasal_targets": 6
+        }
+      },
+      "context-training-v4": {
+        "all": {
+          "targets": 128,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              63,
+              6,
+              5
+            ],
+            [
+              4,
+              50,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "balanced_label_accuracy": 0.8886386386386387,
+          "known_nasal_errors": 13,
+          "correct_error_directions": 0,
+          "missed_error_directions": 13,
+          "raw_expected_label_on_error": 6,
+          "correct_nasal_targets": 115,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 1,
+          "correct_nasal_matches": 58,
+          "uncertain_nasal_targets": 69
+        },
+        "pure_nasal_pairs": {
+          "targets": 6,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              1,
+              1,
+              0
+            ],
+            [
+              1,
+              3,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "balanced_label_accuracy": 0.625,
+          "known_nasal_errors": 6,
+          "correct_error_directions": 0,
+          "missed_error_directions": 6,
+          "raw_expected_label_on_error": 2,
+          "correct_nasal_targets": 0,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 0,
+          "correct_nasal_matches": 0,
+          "uncertain_nasal_targets": 6
+        },
+        "directions": {
+          "front": {
+            "targets": 79,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                62,
+                3,
+                5
+              ],
+              [
+                3,
+                6,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "balanced_label_accuracy": 0.7761904761904761,
+            "known_nasal_errors": 9,
+            "correct_error_directions": 0,
+            "missed_error_directions": 9,
+            "raw_expected_label_on_error": 3,
+            "correct_nasal_targets": 70,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 28,
+            "uncertain_nasal_targets": 51
+          },
+          "back": {
+            "targets": 49,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                1,
+                3,
+                0
+              ],
+              [
+                1,
+                44,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "balanced_label_accuracy": 0.6138888888888889,
+            "known_nasal_errors": 4,
+            "correct_error_directions": 0,
+            "missed_error_directions": 4,
+            "raw_expected_label_on_error": 3,
+            "correct_nasal_targets": 45,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 1,
+            "correct_nasal_matches": 30,
+            "uncertain_nasal_targets": 18
+          }
+        },
+        "timing_states": {
+          "consistent": 128
+        },
+        "timing_consistent": {
+          "targets": 128,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              63,
+              6,
+              5
+            ],
+            [
+              4,
+              50,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "balanced_label_accuracy": 0.8886386386386387,
+          "known_nasal_errors": 13,
+          "correct_error_directions": 0,
+          "missed_error_directions": 13,
+          "raw_expected_label_on_error": 6,
+          "correct_nasal_targets": 115,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 1,
+          "correct_nasal_matches": 58,
+          "uncertain_nasal_targets": 69
+        },
+        "with_content_gate": {
+          "targets": 128,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              63,
+              6,
+              5
+            ],
+            [
+              4,
+              50,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "balanced_label_accuracy": 0.8886386386386387,
+          "known_nasal_errors": 13,
+          "correct_error_directions": 0,
+          "missed_error_directions": 13,
+          "raw_expected_label_on_error": 6,
+          "correct_nasal_targets": 115,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 1,
+          "correct_nasal_matches": 43,
+          "uncertain_nasal_targets": 84
+        },
+        "with_content_gate_pure_pairs": {
+          "targets": 6,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              1,
+              1,
+              0
+            ],
+            [
+              1,
+              3,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "balanced_label_accuracy": 0.625,
+          "known_nasal_errors": 6,
+          "correct_error_directions": 0,
+          "missed_error_directions": 6,
+          "raw_expected_label_on_error": 2,
+          "correct_nasal_targets": 0,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 0,
+          "correct_nasal_matches": 0,
+          "uncertain_nasal_targets": 6
+        }
+      },
+      "context-exact-margin-v5": {
+        "all": {
+          "targets": 128,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              63,
+              6,
+              5
+            ],
+            [
+              4,
+              50,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "balanced_label_accuracy": 0.8886386386386387,
+          "known_nasal_errors": 13,
+          "correct_error_directions": 4,
+          "missed_error_directions": 9,
+          "raw_expected_label_on_error": 6,
+          "correct_nasal_targets": 115,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 1,
+          "correct_nasal_matches": 81,
+          "uncertain_nasal_targets": 42
+        },
+        "pure_nasal_pairs": {
+          "targets": 6,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              1,
+              1,
+              0
+            ],
+            [
+              1,
+              3,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "balanced_label_accuracy": 0.625,
+          "known_nasal_errors": 6,
+          "correct_error_directions": 2,
+          "missed_error_directions": 4,
+          "raw_expected_label_on_error": 2,
+          "correct_nasal_targets": 0,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 0,
+          "correct_nasal_matches": 0,
+          "uncertain_nasal_targets": 4
+        },
+        "directions": {
+          "front": {
+            "targets": 79,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                62,
+                3,
+                5
+              ],
+              [
+                3,
+                6,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "balanced_label_accuracy": 0.7761904761904761,
+            "known_nasal_errors": 9,
+            "correct_error_directions": 3,
+            "missed_error_directions": 6,
+            "raw_expected_label_on_error": 3,
+            "correct_nasal_targets": 70,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 0,
+            "correct_nasal_matches": 44,
+            "uncertain_nasal_targets": 32
+          },
+          "back": {
+            "targets": 49,
+            "label_order": [
+              "front",
+              "back",
+              "other"
+            ],
+            "confusion_matrix": [
+              [
+                1,
+                3,
+                0
+              ],
+              [
+                1,
+                44,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "balanced_label_accuracy": 0.6138888888888889,
+            "known_nasal_errors": 4,
+            "correct_error_directions": 1,
+            "missed_error_directions": 3,
+            "raw_expected_label_on_error": 3,
+            "correct_nasal_targets": 45,
+            "false_nasal_accusations": 0,
+            "false_reassurances": 1,
+            "correct_nasal_matches": 37,
+            "uncertain_nasal_targets": 10
+          }
+        },
+        "timing_states": {
+          "consistent": 128
+        },
+        "timing_consistent": {
+          "targets": 128,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              63,
+              6,
+              5
+            ],
+            [
+              4,
+              50,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "balanced_label_accuracy": 0.8886386386386387,
+          "known_nasal_errors": 13,
+          "correct_error_directions": 4,
+          "missed_error_directions": 9,
+          "raw_expected_label_on_error": 6,
+          "correct_nasal_targets": 115,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 1,
+          "correct_nasal_matches": 81,
+          "uncertain_nasal_targets": 42
+        },
+        "with_content_gate": {
+          "targets": 128,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              63,
+              6,
+              5
+            ],
+            [
+              4,
+              50,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "balanced_label_accuracy": 0.8886386386386387,
+          "known_nasal_errors": 13,
+          "correct_error_directions": 3,
+          "missed_error_directions": 10,
+          "raw_expected_label_on_error": 6,
+          "correct_nasal_targets": 115,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 1,
+          "correct_nasal_matches": 60,
+          "uncertain_nasal_targets": 64
+        },
+        "with_content_gate_pure_pairs": {
+          "targets": 6,
+          "label_order": [
+            "front",
+            "back",
+            "other"
+          ],
+          "confusion_matrix": [
+            [
+              1,
+              1,
+              0
+            ],
+            [
+              1,
+              3,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "balanced_label_accuracy": 0.625,
+          "known_nasal_errors": 6,
+          "correct_error_directions": 1,
+          "missed_error_directions": 5,
+          "raw_expected_label_on_error": 2,
+          "correct_nasal_targets": 0,
+          "false_nasal_accusations": 0,
+          "false_reassurances": 0,
+          "correct_nasal_matches": 0,
+          "uncertain_nasal_targets": 5
+        }
+      }
+    },
+    "free_transcript": {
+      "unique_match": 104,
+      "not_matched": 34,
+      "ambiguous": 2
+    },
+    "source_label_repair": {
+      "retained_all_recordings": true,
+      "uncertain_normal_targets_removed": 6,
+      "repair_before_acoustic_evaluation": true
+    }
+  },
+  "pooling_audit": {
+    "post_hoc": true,
+    "targets": 128,
+    "majority_outside_human_syllable": 35,
+    "false_reassurance_tail_frames": [
+      {
+        "frames": 6,
+        "frames_in_human_syllable": 2,
+        "outside_fraction": 0.6666666666666667
+      }
+    ]
+  },
+  "billing": {
+    "previous_total": 279,
+    "context_smoke_new": 2,
+    "context_full_new": 44,
+    "external_new": 70,
+    "total": 395,
+    "last_cumulative_ceiling": 420
+  },
+  "verification": {
+    "related_tests_passed": 100,
+    "progress_files_checked": 198,
+    "progress_unchanged": true,
+    "app_ready": true,
+    "cloud_enabled": false
+  },
+  "limits": [
+    "No deployed feedback or live microphone validation.",
+    "Source annotations and timing are not infallible.",
+    "Most nasal errors still missed.",
+    "API veto and free-transcript location checks do not eliminate false reassurance.",
+    "Oracle/human timing inspection is diagnostic, not an available production feature."
+  ]
+}

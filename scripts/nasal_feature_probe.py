@@ -11,6 +11,29 @@ LAYERS = (6, 12, 18, 24)
 REGIONS = ('syllable', 'vowel', 'first_half', 'last_half')
 
 
+def acoustic_window(bounds, sample_count):
+    """A fixed waveform window containing the complete target, never a cut tail.
+
+    Preserve whole-utterance extraction for <=60 s. Longer utterances use 45 s
+    windows every 40 s; choose the containing window with most context. Window
+    boundaries do not depend on labels, expected text or predictions.
+    """
+    if not 1600<=sample_count<=16000*180:
+        raise ValueError('Audio outside research duration envelope')
+    left,right=bounds['syllable']
+    if not 0<=left<right<=sample_count/16000+.01:
+        raise ValueError('Invalid target interval')
+    if sample_count<=16000*60:
+        return 0,sample_count
+    candidates=[(start,min(sample_count,start+16000*45))
+                for start in range(0,sample_count,16000*40)]
+    containing=[(start,end) for start,end in candidates
+                if start/16000<=left and right<=end/16000+.01]
+    if not containing:
+        raise ValueError('No window contains the complete target')
+    return max(containing,key=lambda window:(min(left-window[0]/16000,window[1]/16000-right),-window[0]))
+
+
 def pool_regions(hidden, bounds, *, sample_count, stride=320, receptive_field=400):
     values = np.asarray(hidden)
     if values.ndim != 2 or not np.isfinite(values).all():

@@ -3,6 +3,7 @@ import asyncio
 import base64
 import io
 import json
+from pathlib import Path
 import wave
 from lxml import etree
 import websockets
@@ -17,13 +18,28 @@ def parameters(reference, core='read_syllable', **extra):
             'ise_unite':'1','extra_ability':'syll_phone_err_msg;multi_dimension',**extra}
 
 
-def frames(config, params, wav):
+def pcm_audio(wav):
     with wave.open(io.BytesIO(wav),'rb') as source:
         if (source.getframerate(),source.getnchannels(),source.getsampwidth())!=(16000,1,2):
             raise ValueError('ISE probe needs 16kHz mono PCM16 WAV')
+        if source.getnframes()>16000*180:
+            raise ValueError('ISE research audio must not exceed 180 seconds')
         pcm=source.readframes(source.getnframes())
     if len(pcm)<4:
         raise ValueError('Empty or too short WAV')
+    return pcm
+
+
+def request_timeout(packet_count):
+    # 40 ms streaming plus bounded connection/result overhead. Short inputs
+    # retain the old deadline; long inputs are no longer cut off at 45 seconds.
+    if not 3<=packet_count<=4501:
+        raise ValueError('Unexpected ISE packet count')
+    return max(45.,packet_count*.04+20.)
+
+
+def frames(config, params, wav):
+    pcm=pcm_audio(wav)
     yield {'common':{'app_id':config['app_id']},'business':params,'data':{'status':0,'data':''}}
     chunks=[pcm[i:i+1280] for i in range(0,len(pcm),1280)]
     if len(chunks)==1:
@@ -36,7 +52,7 @@ def frames(config, params, wav):
 
 async def evaluate(config, params, wav):
     packets=list(frames(config,params,wav))
-    async with asyncio.timeout(45):
+    async with asyncio.timeout(request_timeout(len(packets))):
         url=signed_url(config,host='ise-api.xfyun.cn',path='/v2/open-ise')
         async with websockets.connect(url,open_timeout=15,max_size=8_000_000) as ws:
             async def send():
@@ -65,6 +81,8 @@ class IseProbe(Probe):
     parameters=staticmethod(parameters)
 
     async def call(self,audio_path,reference,core='read_syllable',**extra):
+        # Validate before reserving a request in the persistent billing ledger.
+        pcm_audio(Path(audio_path).read_bytes())
         return await super().call(audio_path,reference,core,**extra)
 
     async def evaluate(self,config,params,audio):
@@ -83,7 +101,7 @@ def public_result(response):
     syllable_indices = {n: index for index, n in enumerate(paper_syllables)}
     nodes=[]
     for node in root.iter():
-        if node.tag not in ('read_syllable','read_word','read_sentence','word','syll','phone'):
+        if node.tag not in ('read_syllable','read_word','read_sentence','read_chapter','word','syll','phone'):
             continue
         row={'tag':node.tag,**{k:v for k,v in node.attrib.items() if k in allowed}}
         if node in syllable_indices:
