@@ -22,6 +22,17 @@ def plain_pinyin(value):
     return "".join(c for c in unicodedata.normalize("NFD", value) if not unicodedata.combining(c)).lower().strip()
 
 
+def nasal_substitutions(annotation):
+    errors = []
+    for expected, actual in re.findall(r"([^\s→]+)→([^\s→]+)", annotation):
+        left, right = plain_pinyin(expected), plain_pinyin(actual)
+        if (left.endswith("n") and right == left + "g") or (left.endswith("ng") and right == left[:-1]):
+            errors.append({"expected_pinyin": expected, "actual_pinyin": actual,
+                           "expected_plain": left, "actual_plain": right,
+                           "actual_group": "back" if right.endswith("ng") else "front"})
+    return errors
+
+
 def parse_annotations(raw, speaker, source):
     doc = html.fromstring(raw)
     rows = []
@@ -32,12 +43,7 @@ def parse_annotations(raw, speaker, source):
         annotations = [f.text_content().strip() for f in node.xpath('.//font')]
         errors = []
         for annotation in annotations:
-            for expected, actual in re.findall(r"([^\s→]+)→([^\s→]+)", annotation):
-                left, right = plain_pinyin(expected), plain_pinyin(actual)
-                if (left.endswith("n") and right == left + "g") or (left.endswith("ng") and right == left[:-1]):
-                    errors.append({"expected_pinyin": expected, "actual_pinyin": actual,
-                                   "expected_plain": left, "actual_plain": right,
-                                   "actual_group": "back" if right.endswith("ng") else "front"})
+            errors.extend(nasal_substitutions(annotation))
         rows.append({"speaker": speaker, "task": task, "word_index": position, "word": word,
                      "vowel_annotations": annotations, "nasal_errors": errors, "source": source})
     return rows

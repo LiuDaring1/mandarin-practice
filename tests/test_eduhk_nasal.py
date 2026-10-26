@@ -5,7 +5,7 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).parents[1] / "scripts"))
 from collect_eduhk_nasal import parse_annotations, plain_pinyin
-from prepare_eduhk_crops import find_word
+from prepare_eduhk_crops import find_word, spoken_list_start
 from probe_eduhk_nasal import model_final
 from report_nasal_acoustics import load_completed_report
 
@@ -41,3 +41,13 @@ def test_partial_batch_is_not_published_as_completed(tmp_path):
     path.write_text('{"complete": false, "rows": []}')
     with pytest.raises(ValueError, match="incomplete"):
         load_completed_report(path)
+
+
+def test_spoken_instruction_is_not_matched_as_the_practice_word():
+    text = "一朗读单音节佳狼"
+    assert spoken_list_start(text) == 6
+    row = {"word": "狼", "nasal_errors": []}
+    syllables = ["yi", "lang", "du", "dan", "yin", "jie", "jia", "lang"]
+    assert find_word(syllables, row) is None
+    assert find_word(syllables, row, spoken_list_start(text))["start"] == 7
+    assert spoken_list_start("这是一个包含朗读单音节的句子") == 0

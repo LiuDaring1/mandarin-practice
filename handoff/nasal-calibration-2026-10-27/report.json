@@ -1,0 +1,212 @@
+{
+  "scope": "Research observations on public recordings; no production diagnostic accuracy claim",
+  "conditions": {
+    "annotated_error": {
+      "targets": 51,
+      "ise_states": {
+        "flagged": 37,
+        "not_flagged": 8,
+        "rejected": 5,
+        "unusable_alignment": 1
+      },
+      "api_vowel_flag": 37,
+      "global_opposite_best": 37,
+      "global_opposite_and_api": 27,
+      "syllable_consensus_sensitivity": {
+        "0": {
+          "flagged": 19,
+          "directions": {
+            "ng_to_n": 9,
+            "n_to_ng": 10
+          }
+        },
+        "1": {
+          "flagged": 14,
+          "directions": {
+            "ng_to_n": 4,
+            "n_to_ng": 10
+          }
+        },
+        "2": {
+          "flagged": 12,
+          "directions": {
+            "ng_to_n": 3,
+            "n_to_ng": 9
+          }
+        },
+        "3": {
+          "flagged": 9,
+          "directions": {
+            "ng_to_n": 2,
+            "n_to_ng": 7
+          }
+        }
+      }
+    },
+    "annotated_sentence_error": {
+      "targets": 9,
+      "ise_states": {
+        "not_flagged": 6,
+        "flagged": 3
+      },
+      "api_vowel_flag": 3,
+      "global_opposite_best": 3,
+      "global_opposite_and_api": 0,
+      "syllable_consensus_sensitivity": {
+        "0": {
+          "flagged": 0,
+          "directions": {}
+        },
+        "1": {
+          "flagged": 0,
+          "directions": {}
+        },
+        "2": {
+          "flagged": 0,
+          "directions": {}
+        },
+        "3": {
+          "flagged": 0,
+          "directions": {}
+        }
+      }
+    },
+    "native_reference_score": {
+      "targets": 13,
+      "ise_states": {
+        "not_flagged": 10,
+        "flagged": 1,
+        "unavailable": 2
+      },
+      "api_vowel_flag": 1,
+      "global_opposite_best": 2,
+      "global_opposite_and_api": 0,
+      "syllable_consensus_sensitivity": {
+        "0": {
+          "flagged": 0,
+          "directions": {}
+        },
+        "1": {
+          "flagged": 0,
+          "directions": {}
+        },
+        "2": {
+          "flagged": 0,
+          "directions": {}
+        },
+        "3": {
+          "flagged": 0,
+          "directions": {}
+        }
+      }
+    },
+    "standard_reference": {
+      "targets": 32,
+      "ise_states": {
+        "flagged": 5,
+        "not_flagged": 27
+      },
+      "api_vowel_flag": 5,
+      "global_opposite_best": 2,
+      "global_opposite_and_api": 1,
+      "syllable_consensus_sensitivity": {
+        "0": {
+          "flagged": 1,
+          "directions": {
+            "ng_to_n": 1
+          }
+        },
+        "1": {
+          "flagged": 0,
+          "directions": {}
+        },
+        "2": {
+          "flagged": 0,
+          "directions": {}
+        },
+        "3": {
+          "flagged": 0,
+          "directions": {}
+        }
+      }
+    },
+    "unanimous_learner_vowel_correct": {
+      "targets": 33,
+      "ise_states": {
+        "not_flagged": 29,
+        "flagged": 4
+      },
+      "api_vowel_flag": 4,
+      "global_opposite_best": 3,
+      "global_opposite_and_api": 1,
+      "syllable_consensus_sensitivity": {
+        "0": {
+          "flagged": 0,
+          "directions": {}
+        },
+        "1": {
+          "flagged": 0,
+          "directions": {}
+        },
+        "2": {
+          "flagged": 0,
+          "directions": {}
+        },
+        "3": {
+          "flagged": 0,
+          "directions": {}
+        }
+      }
+    }
+  },
+  "ise_ledger_total": 178,
+  "ise_ledger_before_this_milestone": 78,
+  "new_requests_including_transport_failure": 100,
+  "word_error_inventory": {
+    "annotated": 92,
+    "scored": 51,
+    "not_located": 41
+  },
+  "sentence_error_inventory": {
+    "public_passages": 80,
+    "annotated_targets": 96,
+    "selected_speakers": [
+      2,
+      17,
+      23,
+      24,
+      32,
+      33,
+      34,
+      39
+    ],
+    "evaluated_recordings": 7,
+    "evaluated_targets": 9,
+    "excluded": [
+      {
+        "uid": "eduhk-s33-p1",
+        "reason": "exceeds_existing_probe_duration",
+        "duration": 63.959,
+        "error_targets": 1
+      }
+    ]
+  },
+  "limits": [
+    "Word crops use automatic alignment and have not received human boundary audit.",
+    "Unmarked EdUHK characters are not certified correct controls.",
+    "Beijing reference-file designation is not per-phone expert confirmation.",
+    "OMPAL learner positives require at least three unanimous vowel scores and matching aggregate identity.",
+    "OMPAL native scores are reported separately from teacher-vote positives.",
+    "One failed API request remains cached/unknown; it was not retried or removed.",
+    "CTC likelihood and score gaps are not calibrated correctness probabilities.",
+    "The threshold table is exploratory; none is approved for deployment.",
+    "Continuous-reading speakers are outside the word-error batch, not a fully untouched speaker holdout.",
+    "No automatic correctness/pass verdict or production feedback has been enabled."
+  ],
+  "sources": [
+    "https://www.xfyun.cn/doc/Ise/IseAPI.html",
+    "https://www.xfyun.cn/doc/voiceservice/ise/ise_faq.html",
+    "https://lml-elearning.eduhk.hk/about_g.aspx",
+    "https://github.com/phantomhsieh/OMPAL-corpus/tree/c3aaa9e892e4b1c2a25b637401f52f6e35b53e74"
+  ]
+}
