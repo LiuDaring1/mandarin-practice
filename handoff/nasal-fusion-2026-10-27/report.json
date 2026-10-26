@@ -1,0 +1,784 @@
+{
+  "date": "2026-10-27",
+  "production_enabled": false,
+  "experiments": {
+    "fusion-gating-v1": {
+      "selected": {
+        "feature_source": "xeus",
+        "regularization": 0.1,
+        "calibration_mode": "directional",
+        "review_margins": {
+          "front": 0.42625767122181507,
+          "back": 0.26759752774690615
+        },
+        "matching_margins": {
+          "front": 0.0,
+          "back": 0.0
+        }
+      },
+      "development_all_classes": {
+        "selected_targets": 435,
+        "scored_targets": 434,
+        "unavailable_targets": 1,
+        "selected_errors": 28,
+        "known_nasal_errors": 27,
+        "unavailable_errors": 1,
+        "correct_error_directions": 11,
+        "selected_normal": 407,
+        "correct_nasal_targets": 131,
+        "unavailable_normal": 0,
+        "false_nasal_accusations": 0,
+        "false_reassurances": 0,
+        "correct_nasal_matches": 42,
+        "unknown_selected_targets": 106
+      },
+      "comparison": {
+        "existing": {
+          "gated": {
+            "all": {
+              "selected_targets": 125,
+              "scored_targets": 116,
+              "unavailable_targets": 9,
+              "selected_errors": 50,
+              "known_nasal_errors": 44,
+              "unavailable_errors": 6,
+              "correct_error_directions": 11,
+              "selected_normal": 75,
+              "correct_nasal_targets": 72,
+              "unavailable_normal": 3,
+              "false_nasal_accusations": 0,
+              "false_reassurances": 1,
+              "correct_nasal_matches": 23,
+              "unknown_selected_targets": 90
+            },
+            "directions": {
+              "front": {
+                "selected_targets": 65,
+                "scored_targets": 62,
+                "unavailable_targets": 3,
+                "selected_errors": 17,
+                "known_nasal_errors": 15,
+                "unavailable_errors": 2,
+                "correct_error_directions": 2,
+                "selected_normal": 48,
+                "correct_nasal_targets": 47,
+                "unavailable_normal": 1,
+                "false_nasal_accusations": 0,
+                "false_reassurances": 1,
+                "correct_nasal_matches": 14,
+                "unknown_selected_targets": 48
+              },
+              "back": {
+                "selected_targets": 60,
+                "scored_targets": 54,
+                "unavailable_targets": 6,
+                "selected_errors": 33,
+                "known_nasal_errors": 29,
+                "unavailable_errors": 4,
+                "correct_error_directions": 9,
+                "selected_normal": 27,
+                "correct_nasal_targets": 25,
+                "unavailable_normal": 2,
+                "false_nasal_accusations": 0,
+                "false_reassurances": 0,
+                "correct_nasal_matches": 9,
+                "unknown_selected_targets": 42
+              }
+            },
+            "pure_nasal_pairs": {
+              "selected_targets": 0,
+              "scored_targets": 0,
+              "unavailable_targets": 0,
+              "selected_errors": 0,
+              "known_nasal_errors": 0,
+              "unavailable_errors": 0,
+              "correct_error_directions": 0,
+              "selected_normal": 0,
+              "correct_nasal_targets": 0,
+              "unavailable_normal": 0,
+              "false_nasal_accusations": 0,
+              "false_reassurances": 0,
+              "correct_nasal_matches": 0,
+              "unknown_selected_targets": 0
+            }
+          },
+          "ungated": {
+            "all": {
+              "selected_targets": 125,
+              "scored_targets": 116,
+              "unavailable_targets": 9,
+              "selected_errors": 50,
+              "known_nasal_errors": 44,
+              "unavailable_errors": 6,
+              "correct_error_directions": 33,
+              "selected_normal": 75,
+              "correct_nasal_targets": 72,
+              "unavailable_normal": 3,
+              "false_nasal_accusations": 0,
+              "false_reassurances": 2,
+              "correct_nasal_matches": 58,
+              "unknown_selected_targets": 32
+            },
+            "directions": {
+              "front": {
+                "selected_targets": 65,
+                "scored_targets": 62,
+                "unavailable_targets": 3,
+                "selected_errors": 17,
+                "known_nasal_errors": 15,
+                "unavailable_errors": 2,
+                "correct_error_directions": 11,
+                "selected_normal": 48,
+                "correct_nasal_targets": 47,
+                "unavailable_normal": 1,
+                "false_nasal_accusations": 0,
+                "false_reassurances": 1,
+                "correct_nasal_matches": 36,
+                "unknown_selected_targets": 17
+              },
+              "back": {
+                "selected_targets": 60,
+                "scored_targets": 54,
+                "unavailable_targets": 6,
+                "selected_errors": 33,
+                "known_nasal_errors": 29,
+                "unavailable_errors": 4,
+                "correct_error_directions": 22,
+                "selected_normal": 27,
+                "correct_nasal_targets": 25,
+                "unavailable_normal": 2,
+                "false_nasal_accusations": 0,
+                "false_reassurances": 1,
+                "correct_nasal_matches": 22,
+                "unknown_selected_targets": 15
+              }
+            },
+            "pure_nasal_pairs": {
+              "selected_targets": 0,
+              "scored_targets": 0,
+              "unavailable_targets": 0,
+              "selected_errors": 0,
+              "known_nasal_errors": 0,
+              "unavailable_errors": 0,
+              "correct_error_directions": 0,
+              "selected_normal": 0,
+              "correct_nasal_targets": 0,
+              "unavailable_normal": 0,
+              "false_nasal_accusations": 0,
+              "false_reassurances": 0,
+              "correct_nasal_matches": 0,
+              "unknown_selected_targets": 0
+            }
+          }
+        },
+        "griffith": {
+          "gated": {
+            "all": {
+              "selected_targets": 140,
+              "scored_targets": 128,
+              "unavailable_targets": 12,
+              "selected_errors": 13,
+              "known_nasal_errors": 13,
+              "unavailable_errors": 0,
+              "correct_error_directions": 0,
+              "selected_normal": 127,
+              "correct_nasal_targets": 115,
+              "unavailable_normal": 12,
+              "false_nasal_accusations": 1,
+              "false_reassurances": 0,
+              "correct_nasal_matches": 40,
+              "unknown_selected_targets": 99
+            },
+            "directions": {
+              "front": {
+                "selected_targets": 87,
+                "scored_targets": 79,
+                "unavailable_targets": 8,
+                "selected_errors": 9,
+                "known_nasal_errors": 9,
+                "unavailable_errors": 0,
+                "correct_error_directions": 0,
+                "selected_normal": 78,
+                "correct_nasal_targets": 70,
+                "unavailable_normal": 8,
+                "false_nasal_accusations": 1,
+                "false_reassurances": 0,
+                "correct_nasal_matches": 26,
+                "unknown_selected_targets": 60
+              },
+              "back": {
+                "selected_targets": 53,
+                "scored_targets": 49,
+                "unavailable_targets": 4,
+                "selected_errors": 4,
+                "known_nasal_errors": 4,
+                "unavailable_errors": 0,
+                "correct_error_directions": 0,
+                "selected_normal": 49,
+                "correct_nasal_targets": 45,
+                "unavailable_normal": 4,
+                "false_nasal_accusations": 0,
+                "false_reassurances": 0,
+                "correct_nasal_matches": 14,
+                "unknown_selected_targets": 39
+              }
+            },
+            "pure_nasal_pairs": {
+              "selected_targets": 6,
+              "scored_targets": 6,
+              "unavailable_targets": 0,
+              "selected_errors": 6,
+              "known_nasal_errors": 6,
+              "unavailable_errors": 0,
+              "correct_error_directions": 0,
+              "selected_normal": 0,
+              "correct_nasal_targets": 0,
+              "unavailable_normal": 0,
+              "false_nasal_accusations": 0,
+              "false_reassurances": 0,
+              "correct_nasal_matches": 0,
+              "unknown_selected_targets": 6
+            }
+          },
+          "ungated": {
+            "all": {
+              "selected_targets": 140,
+              "scored_targets": 128,
+              "unavailable_targets": 12,
+              "selected_errors": 13,
+              "known_nasal_errors": 13,
+              "unavailable_errors": 0,
+              "correct_error_directions": 4,
+              "selected_normal": 127,
+              "correct_nasal_targets": 115,
+              "unavailable_normal": 12,
+              "false_nasal_accusations": 4,
+              "false_reassurances": 2,
+              "correct_nasal_matches": 91,
+              "unknown_selected_targets": 39
+            },
+            "directions": {
+              "front": {
+                "selected_targets": 87,
+                "scored_targets": 79,
+                "unavailable_targets": 8,
+                "selected_errors": 9,
+                "known_nasal_errors": 9,
+                "unavailable_errors": 0,
+                "correct_error_directions": 4,
+                "selected_normal": 78,
+                "correct_nasal_targets": 70,
+                "unavailable_normal": 8,
+                "false_nasal_accusations": 3,
+                "false_reassurances": 1,
+                "correct_nasal_matches": 52,
+                "unknown_selected_targets": 27
+              },
+              "back": {
+                "selected_targets": 53,
+                "scored_targets": 49,
+                "unavailable_targets": 4,
+                "selected_errors": 4,
+                "known_nasal_errors": 4,
+                "unavailable_errors": 0,
+                "correct_error_directions": 0,
+                "selected_normal": 49,
+                "correct_nasal_targets": 45,
+                "unavailable_normal": 4,
+                "false_nasal_accusations": 1,
+                "false_reassurances": 1,
+                "correct_nasal_matches": 39,
+                "unknown_selected_targets": 12
+              }
+            },
+            "pure_nasal_pairs": {
+              "selected_targets": 6,
+              "scored_targets": 6,
+              "unavailable_targets": 0,
+              "selected_errors": 6,
+              "known_nasal_errors": 6,
+              "unavailable_errors": 0,
+              "correct_error_directions": 2,
+              "selected_normal": 0,
+              "correct_nasal_targets": 0,
+              "unavailable_normal": 0,
+              "false_nasal_accusations": 0,
+              "false_reassurances": 0,
+              "correct_nasal_matches": 0,
+              "unknown_selected_targets": 4
+            }
+          }
+        }
+      },
+      "noise": {
+        "synthetic": {
+          "gated": {
+            "cases": 24,
+            "false_matches": 0,
+            "false_corrections": 0,
+            "abstentions": 24
+          },
+          "ungated": {
+            "cases": 24,
+            "false_matches": 12,
+            "false_corrections": 0,
+            "abstentions": 12
+          }
+        },
+        "recorded_environment": {
+          "gated": {
+            "cases": 48,
+            "false_matches": 0,
+            "false_corrections": 0,
+            "abstentions": 48
+          },
+          "ungated": {
+            "cases": 48,
+            "false_matches": 24,
+            "false_corrections": 0,
+            "abstentions": 24
+          }
+        }
+      },
+      "gate_retention": null,
+      "limits": [
+        "Evidence presence is a phonetic proxy, not verified speech or correct target content.",
+        "No new independently labelled nasal speech corpus or actual device check.",
+        "Gate-only comparison keeps the same trained head and margins; ungated is not separately optimized."
+      ]
+    },
+    "fusion-vad-v2": {
+      "selected": {
+        "feature_source": "xeus",
+        "regularization": 0.1,
+        "calibration_mode": "directional",
+        "review_margins": {
+          "front": 0.42625767122181507,
+          "back": 0.26759752774690615
+        },
+        "matching_margins": {
+          "front": 0.12198613084419797,
+          "back": 0.07107390237093482
+        }
+      },
+      "development_all_classes": {
+        "selected_targets": 435,
+        "scored_targets": 434,
+        "unavailable_targets": 1,
+        "selected_errors": 28,
+        "known_nasal_errors": 27,
+        "unavailable_errors": 1,
+        "correct_error_directions": 21,
+        "selected_normal": 407,
+        "correct_nasal_targets": 131,
+        "unavailable_normal": 0,
+        "false_nasal_accusations": 0,
+        "false_reassurances": 0,
+        "correct_nasal_matches": 116,
+        "unknown_selected_targets": 22
+      },
+      "comparison": {
+        "existing": {
+          "gated": {
+            "all": {
+              "selected_targets": 125,
+              "scored_targets": 116,
+              "unavailable_targets": 9,
+              "selected_errors": 50,
+              "known_nasal_errors": 44,
+              "unavailable_errors": 6,
+              "correct_error_directions": 33,
+              "selected_normal": 75,
+              "correct_nasal_targets": 72,
+              "unavailable_normal": 3,
+              "false_nasal_accusations": 0,
+              "false_reassurances": 1,
+              "correct_nasal_matches": 56,
+              "unknown_selected_targets": 35
+            },
+            "directions": {
+              "front": {
+                "selected_targets": 65,
+                "scored_targets": 62,
+                "unavailable_targets": 3,
+                "selected_errors": 17,
+                "known_nasal_errors": 15,
+                "unavailable_errors": 2,
+                "correct_error_directions": 11,
+                "selected_normal": 48,
+                "correct_nasal_targets": 47,
+                "unavailable_normal": 1,
+                "false_nasal_accusations": 0,
+                "false_reassurances": 1,
+                "correct_nasal_matches": 34,
+                "unknown_selected_targets": 19
+              },
+              "back": {
+                "selected_targets": 60,
+                "scored_targets": 54,
+                "unavailable_targets": 6,
+                "selected_errors": 33,
+                "known_nasal_errors": 29,
+                "unavailable_errors": 4,
+                "correct_error_directions": 22,
+                "selected_normal": 27,
+                "correct_nasal_targets": 25,
+                "unavailable_normal": 2,
+                "false_nasal_accusations": 0,
+                "false_reassurances": 0,
+                "correct_nasal_matches": 22,
+                "unknown_selected_targets": 16
+              }
+            },
+            "pure_nasal_pairs": {
+              "selected_targets": 0,
+              "scored_targets": 0,
+              "unavailable_targets": 0,
+              "selected_errors": 0,
+              "known_nasal_errors": 0,
+              "unavailable_errors": 0,
+              "correct_error_directions": 0,
+              "selected_normal": 0,
+              "correct_nasal_targets": 0,
+              "unavailable_normal": 0,
+              "false_nasal_accusations": 0,
+              "false_reassurances": 0,
+              "correct_nasal_matches": 0,
+              "unknown_selected_targets": 0
+            }
+          },
+          "ungated": {
+            "all": {
+              "selected_targets": 125,
+              "scored_targets": 116,
+              "unavailable_targets": 9,
+              "selected_errors": 50,
+              "known_nasal_errors": 44,
+              "unavailable_errors": 6,
+              "correct_error_directions": 33,
+              "selected_normal": 75,
+              "correct_nasal_targets": 72,
+              "unavailable_normal": 3,
+              "false_nasal_accusations": 0,
+              "false_reassurances": 1,
+              "correct_nasal_matches": 56,
+              "unknown_selected_targets": 35
+            },
+            "directions": {
+              "front": {
+                "selected_targets": 65,
+                "scored_targets": 62,
+                "unavailable_targets": 3,
+                "selected_errors": 17,
+                "known_nasal_errors": 15,
+                "unavailable_errors": 2,
+                "correct_error_directions": 11,
+                "selected_normal": 48,
+                "correct_nasal_targets": 47,
+                "unavailable_normal": 1,
+                "false_nasal_accusations": 0,
+                "false_reassurances": 1,
+                "correct_nasal_matches": 34,
+                "unknown_selected_targets": 19
+              },
+              "back": {
+                "selected_targets": 60,
+                "scored_targets": 54,
+                "unavailable_targets": 6,
+                "selected_errors": 33,
+                "known_nasal_errors": 29,
+                "unavailable_errors": 4,
+                "correct_error_directions": 22,
+                "selected_normal": 27,
+                "correct_nasal_targets": 25,
+                "unavailable_normal": 2,
+                "false_nasal_accusations": 0,
+                "false_reassurances": 0,
+                "correct_nasal_matches": 22,
+                "unknown_selected_targets": 16
+              }
+            },
+            "pure_nasal_pairs": {
+              "selected_targets": 0,
+              "scored_targets": 0,
+              "unavailable_targets": 0,
+              "selected_errors": 0,
+              "known_nasal_errors": 0,
+              "unavailable_errors": 0,
+              "correct_error_directions": 0,
+              "selected_normal": 0,
+              "correct_nasal_targets": 0,
+              "unavailable_normal": 0,
+              "false_nasal_accusations": 0,
+              "false_reassurances": 0,
+              "correct_nasal_matches": 0,
+              "unknown_selected_targets": 0
+            }
+          }
+        },
+        "griffith": {
+          "gated": {
+            "all": {
+              "selected_targets": 140,
+              "scored_targets": 128,
+              "unavailable_targets": 12,
+              "selected_errors": 13,
+              "known_nasal_errors": 13,
+              "unavailable_errors": 0,
+              "correct_error_directions": 4,
+              "selected_normal": 127,
+              "correct_nasal_targets": 115,
+              "unavailable_normal": 12,
+              "false_nasal_accusations": 4,
+              "false_reassurances": 2,
+              "correct_nasal_matches": 87,
+              "unknown_selected_targets": 43
+            },
+            "directions": {
+              "front": {
+                "selected_targets": 87,
+                "scored_targets": 79,
+                "unavailable_targets": 8,
+                "selected_errors": 9,
+                "known_nasal_errors": 9,
+                "unavailable_errors": 0,
+                "correct_error_directions": 4,
+                "selected_normal": 78,
+                "correct_nasal_targets": 70,
+                "unavailable_normal": 8,
+                "false_nasal_accusations": 3,
+                "false_reassurances": 1,
+                "correct_nasal_matches": 49,
+                "unknown_selected_targets": 30
+              },
+              "back": {
+                "selected_targets": 53,
+                "scored_targets": 49,
+                "unavailable_targets": 4,
+                "selected_errors": 4,
+                "known_nasal_errors": 4,
+                "unavailable_errors": 0,
+                "correct_error_directions": 0,
+                "selected_normal": 49,
+                "correct_nasal_targets": 45,
+                "unavailable_normal": 4,
+                "false_nasal_accusations": 1,
+                "false_reassurances": 1,
+                "correct_nasal_matches": 38,
+                "unknown_selected_targets": 13
+              }
+            },
+            "pure_nasal_pairs": {
+              "selected_targets": 6,
+              "scored_targets": 6,
+              "unavailable_targets": 0,
+              "selected_errors": 6,
+              "known_nasal_errors": 6,
+              "unavailable_errors": 0,
+              "correct_error_directions": 2,
+              "selected_normal": 0,
+              "correct_nasal_targets": 0,
+              "unavailable_normal": 0,
+              "false_nasal_accusations": 0,
+              "false_reassurances": 0,
+              "correct_nasal_matches": 0,
+              "unknown_selected_targets": 4
+            }
+          },
+          "ungated": {
+            "all": {
+              "selected_targets": 140,
+              "scored_targets": 128,
+              "unavailable_targets": 12,
+              "selected_errors": 13,
+              "known_nasal_errors": 13,
+              "unavailable_errors": 0,
+              "correct_error_directions": 4,
+              "selected_normal": 127,
+              "correct_nasal_targets": 115,
+              "unavailable_normal": 12,
+              "false_nasal_accusations": 4,
+              "false_reassurances": 2,
+              "correct_nasal_matches": 87,
+              "unknown_selected_targets": 43
+            },
+            "directions": {
+              "front": {
+                "selected_targets": 87,
+                "scored_targets": 79,
+                "unavailable_targets": 8,
+                "selected_errors": 9,
+                "known_nasal_errors": 9,
+                "unavailable_errors": 0,
+                "correct_error_directions": 4,
+                "selected_normal": 78,
+                "correct_nasal_targets": 70,
+                "unavailable_normal": 8,
+                "false_nasal_accusations": 3,
+                "false_reassurances": 1,
+                "correct_nasal_matches": 49,
+                "unknown_selected_targets": 30
+              },
+              "back": {
+                "selected_targets": 53,
+                "scored_targets": 49,
+                "unavailable_targets": 4,
+                "selected_errors": 4,
+                "known_nasal_errors": 4,
+                "unavailable_errors": 0,
+                "correct_error_directions": 0,
+                "selected_normal": 49,
+                "correct_nasal_targets": 45,
+                "unavailable_normal": 4,
+                "false_nasal_accusations": 1,
+                "false_reassurances": 1,
+                "correct_nasal_matches": 38,
+                "unknown_selected_targets": 13
+              }
+            },
+            "pure_nasal_pairs": {
+              "selected_targets": 6,
+              "scored_targets": 6,
+              "unavailable_targets": 0,
+              "selected_errors": 6,
+              "known_nasal_errors": 6,
+              "unavailable_errors": 0,
+              "correct_error_directions": 2,
+              "selected_normal": 0,
+              "correct_nasal_targets": 0,
+              "unavailable_normal": 0,
+              "false_nasal_accusations": 0,
+              "false_reassurances": 0,
+              "correct_nasal_matches": 0,
+              "unknown_selected_targets": 4
+            }
+          }
+        }
+      },
+      "noise": {
+        "synthetic": {
+          "gated": {
+            "cases": 24,
+            "false_matches": 0,
+            "false_corrections": 0,
+            "abstentions": 24
+          },
+          "ungated": {
+            "cases": 24,
+            "false_matches": 8,
+            "false_corrections": 0,
+            "abstentions": 16
+          }
+        },
+        "recorded_environment": {
+          "gated": {
+            "cases": 48,
+            "false_matches": 0,
+            "false_corrections": 0,
+            "abstentions": 48
+          },
+          "ungated": {
+            "cases": 48,
+            "false_matches": 22,
+            "false_corrections": 0,
+            "abstentions": 26
+          }
+        }
+      },
+      "gate_retention": {
+        "existing": {
+          "nasal_targets": 116,
+          "retained": 116,
+          "errors_retained": 44,
+          "normal_retained": 72
+        },
+        "griffith": {
+          "nasal_targets": 128,
+          "retained": 128,
+          "errors_retained": 13,
+          "normal_retained": 115
+        }
+      },
+      "limits": [
+        "Speech presence does not verify target identity or n/ng correctness.",
+        "Existing speech and background samples were explored before this method; not final blind validation.",
+        "No microphone, speech-in-noise, omission or repetition validation.",
+        "Ungated comparison keeps the same head and margins; no separate optimization."
+      ]
+    }
+  },
+  "background_selection": {
+    "source": "https://github.com/karolpiczak/ESC-50",
+    "revision": "33c8ce9eb2cf0b1c2f8bcf322eb349b6be34dbb6",
+    "license": "CC-BY-NC-3.0",
+    "real_recordings": 24,
+    "categories": 8,
+    "independent_source_files_per_category": 3,
+    "synthetic_recordings": 12,
+    "conditions_per_recording": 2,
+    "used_for_training_or_calibration": false
+  },
+  "vad_runtime": {
+    "model": {
+      "revision": "066409f3d9db45a30d21dfcbf9147826ffdd7052",
+      "model_sha256": "1a153a22f4509e292a94e67d6f9b85e8deb25b4988682b7e174c65279d8788e3",
+      "onnxruntime": "1.24.2",
+      "providers": [
+        "CPUExecutionProvider"
+      ],
+      "sample_rate": 16000,
+      "chunk_samples": 512,
+      "context_samples": 64
+    },
+    "checks": [
+      {
+        "input": "speech",
+        "frames": 24,
+        "maximum_difference": 0.0,
+        "target_speech": true
+      },
+      {
+        "input": "silence_after_speech",
+        "frames": 25,
+        "maximum_difference": 0.0,
+        "target_speech": false
+      },
+      {
+        "input": "speech_again",
+        "frames": 24,
+        "maximum_difference": 0.0,
+        "target_speech": true
+      }
+    ],
+    "official_class_only": true
+  },
+  "vad_noise_gate_accepted_recordings": 0,
+  "validation": {
+    "related_tests_passed": 154,
+    "warnings": 1,
+    "new_ise_requests": 0,
+    "ise_total_requests": 417,
+    "protected_progress_files": 198,
+    "protected_progress_unchanged": true,
+    "server_ready": true,
+    "production_cloud_enabled": false
+  },
+  "evidence_sha256": {
+    "fusion-gating-v1/plan.json": "38cdd9937230c6eae16649e339db0e340ea5aa1a2a8c49a11906f52d8fbaa290",
+    "fusion-gating-v1/implementation-amendment.json": "034dbf6b6423c88f9c71be0832a430ac304a23d74cfed435046cd4ebd8e4b2f1",
+    "fusion-gating-v1/evaluation.json": "b6000b10384fa94008d9a14e467bc9d349ad390ba1ca96b40a00636cbbbd745e",
+    "fusion-vad-v2/plan.json": "d000336466e1c031f5ee1e299bac0e6e53ea304ed44a4864cc0cdd74cf493386",
+    "fusion-vad-v2/evaluation.json": "47ee77dbf46e980072c1d9c65e9d65315ad856b2c862bc28204a99c67a8d26dc",
+    "background-validation-v1/plan.json": "15b09c7990c6803b54315f3d6c789e47ecb96d991fbeebb51799917bf53629de",
+    "background-validation-v1/manifest.json": "2607b17d35dc22ae35e545f303f5ae4a868dd8bd4f2979da2f8da41f77e3c531",
+    "silero-vad-v1/source.json": "65f49ea4103751ccc10f3ed83ba5a567ae1a7b22881e886f2b7981109dbd8877",
+    "silero-vad-v1/parity.json": "cf6e9943c680e84fefc6644c75a4f9faa2ac0745b296d41389087e895ea60d32"
+  },
+  "limits": [
+    "All speech evaluation corpora were previously explored; no new blind pronunciation corpus.",
+    "Environmental set was fixed before the first method; the second method reused it without calibration.",
+    "36 noise recordings produce 72 requested-category conditions, not 72 independent recordings.",
+    "VAD presence does not prove correct word, complete reading or nasal correctness.",
+    "Real microphone, speech-in-noise, omission, repetition and useful in-app feedback remain incomplete."
+  ]
+}
