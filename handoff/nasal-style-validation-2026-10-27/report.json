@@ -1,0 +1,335 @@
+{
+  "schema": "nasal-matrix-style-validation-v1",
+  "source": "https://zenodo.org/records/7063030",
+  "selected_recordings": 44,
+  "successful_recordings": 43,
+  "selected_speakers": 11,
+  "sentence_texts": 2,
+  "distinct_target_positions_per_speaker": 7,
+  "selected_targets": 154,
+  "selected_front": 66,
+  "selected_back": 88,
+  "scored_targets": 151,
+  "unavailable_targets": 3,
+  "asr_content_checks": 44,
+  "asr_content_matches": 44,
+  "normal_basis": "Published whole-recording pronunciation QC, not independently annotated actual phones.",
+  "comparisons": {
+    "xeus": {
+      "all": {
+        "selected": 154,
+        "scored": 151,
+        "unavailable": 3,
+        "correction_outputs": 1,
+        "matching_outputs": 136,
+        "unknown_outputs": 17,
+        "actual_phone_accuracy_measured": false
+      },
+      "styles": {
+        "Plain": {
+          "selected": 77,
+          "scored": 74,
+          "unavailable": 3,
+          "correction_outputs": 0,
+          "matching_outputs": 67,
+          "unknown_outputs": 10,
+          "actual_phone_accuracy_measured": false
+        },
+        "Lombard": {
+          "selected": 77,
+          "scored": 77,
+          "unavailable": 0,
+          "correction_outputs": 1,
+          "matching_outputs": 69,
+          "unknown_outputs": 7,
+          "actual_phone_accuracy_measured": false
+        }
+      },
+      "pairs": {
+        "selected_pairs": 77,
+        "both_scored": 74,
+        "raw_category_changed": 4,
+        "plain_to_lombard_outputs": {
+          "match -> match": 63,
+          "match -> unknown": 4,
+          "unknown -> match": 3,
+          "unknown -> unknown": 3,
+          "unavailable -> match": 3,
+          "unknown -> correction": 1
+        }
+      }
+    },
+    "hubert": {
+      "all": {
+        "selected": 154,
+        "scored": 151,
+        "unavailable": 3,
+        "correction_outputs": 0,
+        "matching_outputs": 140,
+        "unknown_outputs": 14,
+        "actual_phone_accuracy_measured": false
+      },
+      "styles": {
+        "Plain": {
+          "selected": 77,
+          "scored": 74,
+          "unavailable": 3,
+          "correction_outputs": 0,
+          "matching_outputs": 66,
+          "unknown_outputs": 11,
+          "actual_phone_accuracy_measured": false
+        },
+        "Lombard": {
+          "selected": 77,
+          "scored": 77,
+          "unavailable": 0,
+          "correction_outputs": 0,
+          "matching_outputs": 74,
+          "unknown_outputs": 3,
+          "actual_phone_accuracy_measured": false
+        }
+      },
+      "pairs": {
+        "selected_pairs": 77,
+        "both_scored": 74,
+        "raw_category_changed": 3,
+        "plain_to_lombard_outputs": {
+          "match -> match": 66,
+          "unknown -> match": 5,
+          "unknown -> unknown": 3,
+          "unavailable -> match": 3
+        }
+      }
+    },
+    "fusion": {
+      "all": {
+        "selected": 154,
+        "scored": 151,
+        "unavailable": 3,
+        "correction_outputs": 0,
+        "matching_outputs": 141,
+        "unknown_outputs": 13,
+        "actual_phone_accuracy_measured": false
+      },
+      "styles": {
+        "Plain": {
+          "selected": 77,
+          "scored": 74,
+          "unavailable": 3,
+          "correction_outputs": 0,
+          "matching_outputs": 69,
+          "unknown_outputs": 8,
+          "actual_phone_accuracy_measured": false
+        },
+        "Lombard": {
+          "selected": 77,
+          "scored": 77,
+          "unavailable": 0,
+          "correction_outputs": 0,
+          "matching_outputs": 72,
+          "unknown_outputs": 5,
+          "actual_phone_accuracy_measured": false
+        }
+      },
+      "pairs": {
+        "selected_pairs": 77,
+        "both_scored": 74,
+        "raw_category_changed": 1,
+        "plain_to_lombard_outputs": {
+          "match -> match": 66,
+          "unknown -> match": 3,
+          "match -> unknown": 3,
+          "unknown -> unknown": 2,
+          "unavailable -> match": 3
+        }
+      }
+    },
+    "hubert_pair": {
+      "all": {
+        "selected": 154,
+        "scored": 151,
+        "unavailable": 3,
+        "correction_outputs": 1,
+        "matching_outputs": 132,
+        "unknown_outputs": 21,
+        "actual_phone_accuracy_measured": false
+      },
+      "styles": {
+        "Plain": {
+          "selected": 77,
+          "scored": 74,
+          "unavailable": 3,
+          "correction_outputs": 1,
+          "matching_outputs": 67,
+          "unknown_outputs": 9,
+          "actual_phone_accuracy_measured": false
+        },
+        "Lombard": {
+          "selected": 77,
+          "scored": 77,
+          "unavailable": 0,
+          "correction_outputs": 0,
+          "matching_outputs": 65,
+          "unknown_outputs": 12,
+          "actual_phone_accuracy_measured": false
+        }
+      },
+      "pairs": {
+        "selected_pairs": 77,
+        "both_scored": 74,
+        "raw_category_changed": 7,
+        "plain_to_lombard_outputs": {
+          "match -> match": 62,
+          "match -> unknown": 5,
+          "correction -> unknown": 1,
+          "unknown -> unknown": 6,
+          "unavailable -> match": 3
+        }
+      }
+    },
+    "hubert_temporal": {
+      "all": {
+        "selected": 154,
+        "scored": 151,
+        "unavailable": 3,
+        "correction_outputs": 0,
+        "matching_outputs": 133,
+        "unknown_outputs": 21,
+        "actual_phone_accuracy_measured": false
+      },
+      "styles": {
+        "Plain": {
+          "selected": 77,
+          "scored": 74,
+          "unavailable": 3,
+          "correction_outputs": 0,
+          "matching_outputs": 66,
+          "unknown_outputs": 11,
+          "actual_phone_accuracy_measured": false
+        },
+        "Lombard": {
+          "selected": 77,
+          "scored": 77,
+          "unavailable": 0,
+          "correction_outputs": 0,
+          "matching_outputs": 67,
+          "unknown_outputs": 10,
+          "actual_phone_accuracy_measured": false
+        }
+      },
+      "pairs": {
+        "selected_pairs": 77,
+        "both_scored": 74,
+        "raw_category_changed": 8,
+        "plain_to_lombard_outputs": {
+          "match -> unknown": 3,
+          "match -> match": 63,
+          "unknown -> unknown": 7,
+          "unavailable -> match": 3,
+          "unknown -> match": 1
+        }
+      }
+    }
+  },
+  "ise": {
+    "aligned_targets": 151,
+    "general_final_flagged": 6,
+    "not_flagged": 145,
+    "interpretation": "A general final flag is not a recognized n/ng substitution or ground truth."
+  },
+  "interruptions": {
+    "api_process_terminal_exit": 138,
+    "successful_responses_preserved_in_internal_mirror": 23,
+    "unresolved_reserved_requests_not_retried": 1,
+    "confirmed_new_requests_on_resume": 20,
+    "subsequent_model_failure": "OSError: Device not configured, before VAD/encoder inference",
+    "internal_execution_files_verified": 243,
+    "old_feature_anchors": 3,
+    "feature_max_differences": {
+      "paired": 0.0,
+      "temporal": 0.0
+    },
+    "changed_model_math_or_parameters": false
+  },
+  "verification": {
+    "complete": true,
+    "protected_progress_files_unchanged": 198,
+    "ledger_prefix_preserved": 524,
+    "cumulative_reservations": 568,
+    "confirmed_new_responses": 43,
+    "new_possibly_sent_requests": 1,
+    "historical_confirmed_calls": 566,
+    "historical_possibly_sent_calls": 2,
+    "selected_targets": 154,
+    "scored_targets": 151,
+    "unavailable_targets": 3,
+    "available_by_block": [
+      151,
+      151,
+      151
+    ],
+    "vad_present": 151,
+    "all_actual_labels_unknown": true,
+    "prediction_rows": 755,
+    "independent_output_counts_verified": true,
+    "relocation_anchor_feature_max_differences": {
+      "paired": 0.0,
+      "temporal": 0.0
+    },
+    "home_http_status": 200,
+    "related_tests_passed": 35,
+    "full_app_or_mobile_tests_run": false,
+    "production_enabled": false,
+    "feature_sources_verified_by_evaluation": true
+  },
+  "new_tests_passed": 16,
+  "candidate_models": [
+    {
+      "repo": "sturka/see-my-voice-mandarin-phone-ctc",
+      "revision": "0b10568ba22e4b8299ab4bb551384b9aeb6b8aa5",
+      "source": "https://huggingface.co/sturka/see-my-voice-mandarin-phone-ctc",
+      "model_run": false,
+      "weights_downloaded": false,
+      "schema_audit": {
+        "separate_phone_map_tokens": 67,
+        "generic_vocab_tokens": 3503,
+        "config_head_outputs": 67,
+        "nasal_tokens": {
+          "F_an": 34,
+          "F_ang": 36,
+          "F_en": 35,
+          "F_eng": 37,
+          "F_in": 44,
+          "F_ing": 46
+        },
+        "train_speakers": 2,
+        "eval_speakers": 1,
+        "speaker_overlap": 1,
+        "model_run": false,
+        "weights_downloaded": false,
+        "usage_note": "Generic character vocabulary cannot decode the 67-class phone head; use explicit phone mapping only after checking weight shape."
+      }
+    },
+    {
+      "repo": "lyonlu13/wav2vec2-large-zh-singing-phoneme-ctc",
+      "revision": "aa19db9ca380d6aac0f8b5dd5e7c6fa6359f0518",
+      "source": "https://huggingface.co/lyonlu13/wav2vec2-large-zh-singing-phoneme-ctc",
+      "model_run": false,
+      "weights_downloaded": false,
+      "vocabulary_size": 39,
+      "nasal_tokens": [
+        "n",
+        "ng"
+      ],
+      "scope": "Mandarin speech then singing fine-tuning; learner mispronunciation reliability not established."
+    }
+  ],
+  "fit_or_threshold_changes": false,
+  "actual_phone_accuracy_measured": false,
+  "natural_population_false_positive_rate_measured": false,
+  "real_mobile_or_mixed_microphone_noise_test": false,
+  "latic_audio_obtained": false,
+  "ieee_login_completion_confirmed": false,
+  "browser_handoff_preserved": true,
+  "production_enabled": false
+}
