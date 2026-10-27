@@ -1,0 +1,72 @@
+{
+  "schema": "latic-validation-pipeline-v1",
+  "branch": "codex/latic-validation-pipeline",
+  "base_commit": "2bae8921e255734f9b8fdf83aeb532717ba3d77f",
+  "frozen_sources": 57,
+  "selected_targets": 72,
+  "selected_recordings": 69,
+  "frozen_models": [
+    "xeus",
+    "hubert",
+    "fusion",
+    "hubert_pair",
+    "hubert_temporal"
+  ],
+  "real_old_audio_preflight": {
+    "complete": true,
+    "targets": 3,
+    "alignment_exact": true,
+    "feature_max_differences": {
+      "paired": 0.0,
+      "temporal": 0.0
+    },
+    "vad_exact": true,
+    "prediction_rows": 15,
+    "all_nonnumeric_prediction_fields_exact": true,
+    "maximum_score_difference": 0.0,
+    "maximum_gap_difference": 0.0,
+    "new_api_calls": 0,
+    "latic_audio_used": false,
+    "new_accuracy_evidence": false
+  },
+  "automated_tests": {
+    "passed": 137,
+    "files": 11,
+    "new_pipeline_cases": 11,
+    "mocked_provider_and_encoder_integration": {
+      "selected_targets": 72,
+      "recordings": 69,
+      "provider_calls": 67,
+      "missing_import_targets": 2,
+      "api_or_alignment_failures": 3,
+      "aligned_targets": 67,
+      "model_scored_targets": {
+        "xeus": 66,
+        "hubert": 66,
+        "fusion": 65,
+        "hubert_pair": 66,
+        "hubert_temporal": 66
+      },
+      "all_failures_in_denominator": true,
+      "live_network": false
+    }
+  },
+  "data_protection": {
+    "original_progress_files_unchanged": 198,
+    "request_reservations_unchanged": 524,
+    "historically_confirmed_calls": 523,
+    "historically_possibly_sent_calls": 1,
+    "new_api_calls": 0,
+    "production_enabled": false,
+    "health": {
+      "status": "ok",
+      "ready": true,
+      "profile_count": 34,
+      "warm_error": null
+    }
+  },
+  "latic_audio_obtained": false,
+  "new_latic_accuracy_evidence": false,
+  "real_microphone_or_mobile_e2e": false,
+  "next_dependency": "Explicit IEEE login-complete confirmation, followed by official archive import; budget separately frozen after import."
+}
