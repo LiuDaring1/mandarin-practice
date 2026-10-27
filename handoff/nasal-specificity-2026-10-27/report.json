@@ -1,0 +1,188 @@
+{
+  "complete": true,
+  "goal_achieved": false,
+  "production_enabled": false,
+  "selection": {
+    "targets": 24,
+    "recordings": 19,
+    "speakers": 11,
+    "front": 21,
+    "back": 3,
+    "same_tail_other_segment_errors": true,
+    "whole_word_correctness_assessed": false,
+    "same_explored_corpus": true
+  },
+  "coverage": {
+    "local_scored": 11,
+    "local_unavailable_due_to_lost_plain_results": 13,
+    "prepared_paired_targets": 6,
+    "pair_preparation_failures": {
+      "Missing plain cached result": 13,
+      "Reference contains a syllable absent from the pinned basic-Han dictionary": 2,
+      "Reference pinyin differs from published nominal reading": 3
+    },
+    "pair_states": {
+      "both_flagged": 3,
+      "both_not_flagged": 3,
+      "unavailable": 18
+    },
+    "plain_general_vowel_flags": 6
+  },
+  "summary": {
+    "api": {
+      "all": {
+        "targets": 24,
+        "false_nasal_changes": 0,
+        "nasal_class_matches": 0,
+        "unknown": 24,
+        "whole_word_correctness_assessed": false
+      },
+      "front": {
+        "targets": 21,
+        "false_nasal_changes": 0,
+        "nasal_class_matches": 0,
+        "unknown": 21,
+        "whole_word_correctness_assessed": false
+      },
+      "back": {
+        "targets": 3,
+        "false_nasal_changes": 0,
+        "nasal_class_matches": 0,
+        "unknown": 3,
+        "whole_word_correctness_assessed": false
+      }
+    },
+    "local": {
+      "all": {
+        "targets": 24,
+        "false_nasal_changes": 0,
+        "nasal_class_matches": 5,
+        "unknown": 19,
+        "whole_word_correctness_assessed": false
+      },
+      "front": {
+        "targets": 21,
+        "false_nasal_changes": 0,
+        "nasal_class_matches": 5,
+        "unknown": 16,
+        "whole_word_correctness_assessed": false
+      },
+      "back": {
+        "targets": 3,
+        "false_nasal_changes": 0,
+        "nasal_class_matches": 0,
+        "unknown": 3,
+        "whole_word_correctness_assessed": false
+      }
+    },
+    "agreement": {
+      "all": {
+        "targets": 24,
+        "false_nasal_changes": 0,
+        "nasal_class_matches": 0,
+        "unknown": 24,
+        "whole_word_correctness_assessed": false
+      },
+      "front": {
+        "targets": 21,
+        "false_nasal_changes": 0,
+        "nasal_class_matches": 0,
+        "unknown": 21,
+        "whole_word_correctness_assessed": false
+      },
+      "back": {
+        "targets": 3,
+        "false_nasal_changes": 0,
+        "nasal_class_matches": 0,
+        "unknown": 3,
+        "whole_word_correctness_assessed": false
+      }
+    },
+    "correction_union": {
+      "all": {
+        "targets": 24,
+        "false_nasal_changes": 0,
+        "nasal_class_matches": 0,
+        "unknown": 24,
+        "whole_word_correctness_assessed": false
+      },
+      "front": {
+        "targets": 21,
+        "false_nasal_changes": 0,
+        "nasal_class_matches": 0,
+        "unknown": 21,
+        "whole_word_correctness_assessed": false
+      },
+      "back": {
+        "targets": 3,
+        "false_nasal_changes": 0,
+        "nasal_class_matches": 0,
+        "unknown": 3,
+        "whole_word_correctness_assessed": false
+      }
+    }
+  },
+  "interruption": {
+    "disk_temporarily_disconnected": true,
+    "project_volume_reconnected_by_user": true,
+    "confirmed_new_responses_lost": 8,
+    "possibly_sent_without_response": 1,
+    "never_resent_requests": 9,
+    "plain_plan_reconstructed_from_frozen_inputs": true,
+    "original_plain_plan_hash_not_recoverable": true,
+    "rules_or_labels_changed": false,
+    "missing_results_retained_unknown": true,
+    "after_recovery_fresh_plain_requests": 6,
+    "paired_new_requests": 12,
+    "fresh_responses_mirrored_on_internal_disk": 18,
+    "ledger_count_is_reservation_upper_bound": true
+  },
+  "verification": {
+    "tests_passed": 189,
+    "test_files": 14,
+    "new_tests": 23,
+    "protected_progress_files": 198,
+    "progress_hashes_unchanged": true,
+    "old_ledger_prefix_unchanged": true,
+    "ledger_reservations": 524,
+    "confirmed_new_calls": 26,
+    "possibly_sent_new_calls": 1,
+    "cumulative_confirmed_calls": 523,
+    "cumulative_possible_calls": 524,
+    "lost_responses_never_retried": 9,
+    "fresh_cached_responses_mirrored_internally": 18,
+    "main_sources_verified": 139,
+    "local_features": 11,
+    "feature_replay_targets": 3,
+    "feature_replay_max_difference": 0.0,
+    "health": {
+      "status": "ok",
+      "ready": true,
+      "profile_count": 34,
+      "warm_error": null
+    },
+    "service_pid": 60274,
+    "full_app_regression_run": false,
+    "real_microphone_or_mobile_e2e_run": false
+  },
+  "protocol_correction": "The pair rule checks overlap between the two API-returned syllable intervals, not overlap with human bounds. The preceding MEMORY wording was inaccurate; no code/rule change occurred.",
+  "latic": {
+    "audio_obtained": false,
+    "models_frozen": 5,
+    "login_completion_confirmed": false,
+    "disk_reconnection_confirmation_is_not_ieee_login_confirmation": true,
+    "original_budget_needs_amendment": true
+  },
+  "artifact_sha256": {
+    "plan.json": "585c05302b602797406e410ce23627928178014c940e54ea39db7f62a361a2d8",
+    "plain-plan.json": "73b95f9164651b90ebec2ed4f8f545b17b196f0755b8b2cb24877bc764345ca1",
+    "disk-recovery-plan.json": "911d3a008961f918ab2cfcfb2d8904db777a4b9836da5f950e057d6dffe3699e",
+    "plain-result.json": "b4e1a92327479d565e3554c09e0694085f14cdbb53f6cc870f9076ebaaa35754",
+    "pairs-plan.json": "4a2ea9fd6f73ba6b340486fd7a5933a9eb9d918247458387e8d3aaf810a32e50",
+    "pairs-result.json": "03d5645d624059da18a15a5da1d6624cba389c526305c3079a31f65987d6dcf8",
+    "dataset.json": "9c47bd7e0ff45bb921061e49a61c4d74e798132b82b1c79ac20e9b77536886be",
+    "feature-report.json": "7890f3f4ec5142a5e0df5c2da9b4b8527ae57df726393f0a5b2b4ba470cccd21",
+    "evaluation.json": "e7ceb48ba83d3eeb620b6592f6cd42677cdf8ea1ddae18c33a33885f545ab00b",
+    "verification.json": "e18faca921cf88b2b0afac4bb541dd6ecea3bcb1147ff44298d24c636a63e217"
+  }
+}
