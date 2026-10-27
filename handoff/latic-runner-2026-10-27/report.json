@@ -1,0 +1,131 @@
+{
+  "runner_component_complete": true,
+  "end_to_end_latic_pipeline_complete": false,
+  "goal_achieved": false,
+  "production_enabled": false,
+  "frozen_validation": {
+    "targets": 72,
+    "errors": 18,
+    "normal_notations": 54,
+    "utterances": 69,
+    "speakers": 3,
+    "models": [
+      "xeus",
+      "hubert",
+      "fusion",
+      "hubert_pair",
+      "hubert_temporal"
+    ],
+    "selection_changed": false
+  },
+  "replay": {
+    "existing": {
+      "xeus": {
+        "targets": 116,
+        "all_prediction_fields_identical": true
+      },
+      "hubert": {
+        "targets": 116,
+        "all_prediction_fields_identical": true
+      },
+      "fusion": {
+        "targets": 116,
+        "all_prediction_fields_identical": true
+      },
+      "hubert_pair": {
+        "targets": 116,
+        "all_prediction_fields_identical": true
+      },
+      "hubert_temporal": {
+        "targets": 116,
+        "all_prediction_fields_identical": true
+      }
+    },
+    "griffith": {
+      "xeus": {
+        "targets": 128,
+        "all_prediction_fields_identical": true
+      },
+      "hubert": {
+        "targets": 128,
+        "all_prediction_fields_identical": true
+      },
+      "fusion": {
+        "targets": 128,
+        "all_prediction_fields_identical": true
+      },
+      "hubert_pair": {
+        "targets": 128,
+        "all_prediction_fields_identical": true
+      },
+      "hubert_temporal": {
+        "targets": 128,
+        "all_prediction_fields_identical": true
+      }
+    },
+    "restored": {
+      "xeus": {
+        "targets": 92,
+        "all_prediction_fields_identical": true
+      },
+      "hubert": {
+        "targets": 92,
+        "all_prediction_fields_identical": true
+      },
+      "fusion": {
+        "targets": 92,
+        "all_prediction_fields_identical": true
+      },
+      "hubert_pair": {
+        "targets": 92,
+        "all_prediction_fields_identical": true
+      },
+      "hubert_temporal": {
+        "targets": 92,
+        "all_prediction_fields_identical": true
+      }
+    }
+  },
+  "verification": {
+    "tests_passed": 127,
+    "test_files": 10,
+    "new_tests": 19,
+    "frozen_sources_verified": 29,
+    "exact_replay_prediction_rows": 1680,
+    "distinct_replayed_targets": 336,
+    "models": 5,
+    "new_latic_audio_obtained": false,
+    "latic_inference_run": false,
+    "new_api_calls": 0,
+    "ledger_reservations": 524,
+    "ledger_unchanged": true,
+    "protected_progress_files": 198,
+    "progress_hashes_unchanged": true,
+    "synthetic_import_integration": {
+      "source_utterances": 69,
+      "selected_targets": 72,
+      "imported_recordings": 66,
+      "imported_targets": 69,
+      "unavailable_targets": 3,
+      "real_audio_or_user_progress_used": false
+    },
+    "health": {
+      "status": "ok",
+      "ready": true,
+      "profile_count": 34,
+      "warm_error": null
+    },
+    "full_application_or_real_microphone_or_mobile_e2e_run": false
+  },
+  "pending": [
+    "User confirmation of IEEE login completion and official audio download",
+    "Real archive structure/source inspection and import",
+    "Current-ledger API budget amendment, durable request mirroring, target alignment and feature extraction",
+    "New-audio evaluation and then useful application feedback if reliability is supported"
+  ],
+  "artifact_sha256": {
+    "plan.json": "1feb023790bc236a70e769a9c5667e21b60709d033682c02b00c9d6acb1f0001",
+    "replay.json": "b383e8dd85669e1f9e7a02f658df397f769a1934f736f2a58e89b64c45260d0c",
+    "verification.json": "434d8da964a585967dfb5a2fad9e0c83c3a44a7cef20dff12f4db24b6dcbae35"
+  }
+}
