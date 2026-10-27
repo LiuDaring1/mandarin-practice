@@ -1,0 +1,92 @@
+{
+  "schema": "nasal-source-expansion-v1",
+  "new_labeled_nasal_errors_obtained": 0,
+  "source_findings": [
+    {
+      "source": "https://www.mdpi.com/2076-3417/16/8/3675",
+      "finding": "Relevant actual nasal-confusion research, but primary article says data available from author on request; supplements describe stimuli and aggregate tables. No author contacted and no recordings obtained."
+    },
+    {
+      "source": "https://zenodo.org/records/17506802",
+      "paper": "https://www.nature.com/articles/s41597-026-07237-9",
+      "finding": "Official metadata and checksum-verified README obtained. Audio/articulatory data open, but paper describes MFA automatic alignment, not independently transcribed actual learner phones. Not imported as error labels; large speaker archives not downloaded."
+    },
+    {
+      "source": "https://github.com/Evanchan1923/MDD_SpeechAttribute",
+      "paper": "https://arxiv.org/html/2606.22022v1",
+      "finding": "Inspected author repository READMEs and config: training code and unfinished evaluation; eval_model_path is a local placeholder. No ready trained checkpoint identified in inspected resources. No model was run; paper scores are not our results."
+    },
+    {
+      "source": "https://arxiv.org/html/2610.23079v1",
+      "finding": "Paper uses manual actual-phone annotation of LATIC and two MagicHub corpora. Inspected article does not supply a usable model/annotation download. No accuracy or data availability inferred beyond the inspected article."
+    }
+  ],
+  "matrix": {
+    "source": "https://zenodo.org/records/7063030",
+    "license": "CC-BY-4.0",
+    "archive_bytes": 620571090,
+    "official_md5": "66ddcd4e46debc44ce4f331cbb7220f5",
+    "sha256": "b7909620284aa0b9fd52b5a67fee05859e66dfa32a8cc2e22c62d96580718070",
+    "checksum_verified": true,
+    "speakers": 11,
+    "sentence_codes": 100,
+    "styles": [
+      "Lombard",
+      "Plain"
+    ],
+    "expected_sentence_recordings": 2200,
+    "available_sentence_recordings": 2198,
+    "missing_recordings": 2,
+    "auxiliary_audio_files": 40,
+    "directory_entries": 33,
+    "unexpected_or_duplicate_paths": 0,
+    "speaker_prefix_counts": {
+      "F": 5,
+      "M": 6
+    },
+    "metadata_discrepancy": "2022 record describes six female/five male; archive has five SF/six SM identifiers, consistent with the 2025 associated article. No participant demographics inferred beyond identifiers.",
+    "asr_identity_anchors": {
+      "count": 4,
+      "same_hanzi": 4,
+      "same_tonal_pinyin": 4,
+      "reference_prompt": false,
+      "model": "Qwen3-ASR-1.7B-8bit",
+      "purpose": "Candidate code-to-content check only; not phonetic labels or pronunciation accuracy."
+    },
+    "prospective_control": {
+      "recordings": 44,
+      "targets": 154,
+      "expected_front": 66,
+      "expected_back": 88,
+      "frozen_models": [
+        "xeus",
+        "hubert",
+        "fusion",
+        "hubert_pair",
+        "hubert_temporal"
+      ],
+      "new_fit_or_threshold_tuning": false,
+      "maximum_future_new_requests": 44,
+      "api_budget_frozen": false,
+      "diagnosis_run": false,
+      "normal_basis": "Published whole-recording manual pronunciation QC; not per-target actual-phone annotation.",
+      "scope": "Within-speaker style stability and model correction outputs; cannot estimate error sensitivity or natural-population false-positive rate."
+    },
+    "noise_limit": "Lombard speech was induced by headphone noise in a booth; this is not a real-phone noisy-microphone test."
+  },
+  "verification": {
+    "new_tests_passed": 8,
+    "full_application_tests_run": false,
+    "real_microphone_or_mobile_test": false,
+    "original_progress_files_unchanged": 198,
+    "request_reservations_unchanged": 524,
+    "new_api_calls": 0,
+    "historically_confirmed_calls": 523,
+    "historically_possibly_sent_calls": 1,
+    "app_ready": true,
+    "production_enabled": false
+  },
+  "latic_audio_obtained": false,
+  "ieee_login_completion_confirmed": false,
+  "browser_handoff_preserved": true
+}
